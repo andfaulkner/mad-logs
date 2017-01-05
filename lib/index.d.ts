@@ -1,9 +1,11 @@
-declare const buildFileTag: any;
+/************************************* IMPORT PROJECT MODULES *************************************/
+import { logMarkers } from './src/theming';
+declare const buildFileTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
     logLevel: string;
 }
-export interface LogFactoryOpts {
+export interface LogOpts {
     tagPrefix: string;
     tagSuffix: string;
     style: string;

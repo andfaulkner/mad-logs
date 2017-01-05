@@ -62,14 +62,23 @@ describe('logFactory', function() {
         expect(logFactory()).to.be.a('function');
     });
 
-    it('throws TypeError if given an invalid (or no) log level or config object', function () {
-        expect(partial(logFactory, {})).to.throw(TypeError);
-        expect(partial(logFactory, '')).to.throw(TypeError);
+    it('throws TypeError if given an invalid log level or config object', function () {
         expect(partial(logFactory, ['asdf'])).to.throw(TypeError);
         expect(partial(logFactory, { poo: "poooooo" })).to.throw(TypeError);
         expect(partial(logFactory, { logLevel: {} })).to.throw(TypeError);
         expect(partial(logFactory, { logLevel: "notARealLevel" })).to.throw(TypeError);
         expect(partial(logFactory, { logLevel: "" })).to.throw(TypeError);
+    });
+
+    it('does not throw TypeError if given no or a falsy value as a config object', function () {
+        expect(partial(logFactory)).to.not.throw(TypeError);
+        expect(partial(logFactory, null)).to.not.throw(TypeError);
+        expect(partial(logFactory, {})).to.not.throw(TypeError);
+        expect(partial(logFactory, '')).to.not.throw(TypeError);
+    });
+
+    it('returns default if given no or a falsy value as a config object', function () {
+
     });
 
     describe('log function constructed by logFactory', function() {

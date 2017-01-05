@@ -38,11 +38,11 @@ export declare const style: {
  *   -   style:         string of CSS style directives separated by ;s. Used to style the
  *                      tag (i.e. ${tagPrefix}${filename}${tagSuffix}) beside each log.
  *
- * @example logFactory()('my-cool-file', logMarkers.cartoonSwearing)
- * @example logFactory()('my-cool-file', logMarkers.vendetta)
+ * @example logFactory()('my-cool-file', madLogMarkers.cartoonSwearing)
+ * @example logFactory()('my-cool-file', madLogMarkers.vendetta)
  *
  */
-export declare const logMarkers: {
+export declare const madLogMarkers: {
     angryBird: {
         tagPrefix: string;
         tagSuffix: string;
@@ -148,4 +148,116 @@ export declare const logMarkers: {
         tagSuffix: string;
         style: string;
     };
+};
+export declare const saneLogMarkers: {
+    blueOnWhite: string;
+};
+export declare const logMarkers: {} & {
+    angryBird: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    arrow: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    backAndForth: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    barbells: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
+    brainwave: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    cartoonSwearing: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    checkmate: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    default: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    dirtRoad: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
+    escherBarbieLego: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    farmerBrown: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    grasslands: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
+    lispyKatana: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
+    maceWindu: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    lakeLouise: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
+    nightmare: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    swimmers: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    tangerines: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    vendetta: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    xmlHell: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+} & {
+    blueOnWhite: string;
 };

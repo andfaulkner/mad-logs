@@ -6,8 +6,8 @@ import { find, isString } from 'lodash';
 import * as isNode from 'detect-node';
 
 /************************************* IMPORT PROJECT MODULES *************************************/
-const { colours, style, logMarkers } = require('./src/theming');
-const { buildFileTagString } = require('./src/build-file-tag-string');
+import { colours, style, logMarkers } from './src/theming';
+import { buildFileTagString } from './src/build-file-tag-string';
 const buildFileTag = buildFileTagString;
 
 const colors = (isNode)
@@ -20,7 +20,7 @@ export interface AppConf {
     logLevel: string;
 }
 
-export interface LogFactoryOpts {
+export interface LogOpts {
   tagPrefix: string;
   tagSuffix: string;
   style: string;
@@ -77,6 +77,9 @@ const getLogVal = (logLevel = 'info'): number | boolean => {
  * @return {Function} next
  */
 const verifyConfig = (config, next) => {
+    if (!config) {
+        return next(config);
+    }
     if (!(config.logLevel)) {
         throw new TypeError('config object passed to mad-logs logFactory must have key logLevel')
     }
@@ -88,16 +91,17 @@ const verifyConfig = (config, next) => {
             `config.logLevel must be one of the following: ${Object.keys(logValues).join(', ')}`
         );
     }
-    return next;
+    return next(config);
 };
 
 /**
  * Default config options
  */
-const defLogFactoryOpts = { tagPrefix: '', tagSuffix: '', style: '' };
+const defLogOpts = { tagPrefix: '', tagSuffix: '', style: '' };
 const defConfig = { logLevel: logLevelBase };
 
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
+
 
 /**
  *  Build 'logger' object for reuse throughout any module it's constructed in. Strings passed
@@ -112,57 +116,56 @@ const defConfig = { logLevel: logLevelBase };
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
 const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
-        (fileName: string, opts: LogFactoryOpts = defLogFactoryOpts): MadLog => {
-    const logLevelNum = getLogVal(config.logLevel);
-    const fileTag = buildFileTagForBrowser(fileName, opts)
+    (conf: AppConf) => function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
+        const logLevelNum = getLogVal(conf.logLevel);
+        const fileTag = buildFileTagForBrowser(fileName, opts)
 
-    const basicLog = (...strs: any[]): void => {
-        console.log(fileTag, opts.style, ...strs);
-    };
+        const basicLog = (...strs: any[]): void => {
+            console.log(fileTag, opts.style, ...strs);
+        };
 
-    /**
-     * Builder for logging functions called by (most) properties on outputted log function-object
-     */
-    const logMethodFactory = (levelNum: number, output: ToConsoleFunc = basicLog): LogMethod => {
-        return (...strs) => {
-            if (logLevelNum < levelNum) {
-                output(...strs);
+        /**
+         * Builder for logging functions called by (most) properties on outputted log function-object
+         */
+        const logMethodFactory = (levelNum: number, output: ToConsoleFunc = basicLog): LogMethod => {
+            return (...strs) => {
+                if (logLevelNum < levelNum) {
+                    output(...strs);
+                }
+                return strs[0];
             }
-            return strs[0];
-        }
-    };
+        };
 
-    /************* CONSTRUCT LOG OBJECT METHODS FROM logMethodFactory **************/
-    const log = logMethodFactory(4) as MadLog;
-    log.silly = logMethodFactory(2);
-    log.verbose = logMethodFactory(3);
-    log.debug = logMethodFactory(4);
-    log.info = logMethodFactory(5);
-    log.warn = logMethodFactory(6, warnLogOut(fileTag));
+        /************* CONSTRUCT LOG OBJECT METHODS FROM logMethodFactory **************/
+        const log = logMethodFactory(4) as MadLog;
+        log.silly = logMethodFactory(2);
+        log.verbose = logMethodFactory(3);
+        log.debug = logMethodFactory(4);
+        log.info = logMethodFactory(5);
+        log.warn = logMethodFactory(6, warnLogOut(fileTag));
 
-    /*********************** CONSTRUCT ERROR OBJECT METHOD *************************/
-    log.error = logMethodFactory(7, (...strs) => {
-        (isNode)
-            ? console.error(colors.bgRed.white(`[ERROR] ${fileTag}`), ' :: ', ...strs)
-            : console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
+        /*********************** CONSTRUCT ERROR OBJECT METHOD *************************/
+        log.error = logMethodFactory(7, (...strs) => {
+            (isNode)
+                ? console.error(colors.bgRed.white(`[ERROR] ${fileTag}`), ' :: ', ...strs)
+                : console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
+        });
+
+        /******************** CONSTRUCT SEVERE ERROR OBJECT METHOD *********************/
+        log.wtf = logMethodFactory(8, (...strs) => {
+            (isNode)
+                ? console.error('\n', colors.red.bgWhite(`[! DANGER: HUGE ERROR !] ${fileTag}`),
+                                ' :: ', ...strs, '\n')
+                : console.error(fileTag, ': ', '%c[! DANGER: HUGE ERROR !]', 'color: red;', ':: ',
+                                ...strs);
+        });
+
+        /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
+        return log;
     });
-
-    /******************** CONSTRUCT SEVERE ERROR OBJECT METHOD *********************/
-    log.wtf = logMethodFactory(8, (...strs) => {
-        (isNode)
-            ? console.error('\n', colors.red.bgWhite(`[! DANGER: HUGE ERROR !] ${fileTag}`),
-                            ' :: ', ...strs, '\n')
-            : console.error(fileTag, ': ', '%c[! DANGER: HUGE ERROR !]', 'color: red;', ':: ',
-                            ...strs);
-    });
-
-    /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
-    return log;
-});
-
 
 /******************************************** HELPERS *********************************************/
-function buildFileTagForBrowser(fileName: string, opts: LogFactoryOpts): string {
+function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
     return (isNode)
         ? `${opts.tagPrefix}[${fileName}]${opts.tagSuffix}`
         : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
