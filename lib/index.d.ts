@@ -34,4 +34,5 @@ export interface MadLog {
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
 declare const logFactory: (config?: AppConf) => any;
+/********************************************* EXPORT *********************************************/
 export { logMarkers, logFactory, buildFileTag };

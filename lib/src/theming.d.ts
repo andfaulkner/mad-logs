@@ -150,6 +150,8 @@ export declare const madLogMarkers: {
     };
 };
 export declare const saneLogMarkers: {
+    tagPrefix: string;
+    tagSuffix: string;
     blueOnWhite: string;
 };
 export declare const logMarkers: {} & {
@@ -258,6 +260,4 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
-} & {
-    blueOnWhite: string;
 };

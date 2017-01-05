@@ -139,7 +139,7 @@ describe('logFactory', function() {
                 curLog.some((lBit) => lBit === 'testOutputError'))).to.be.true;
             expect(storeWarnErrorLogs.some((curLog) =>
                 curLog.some((lBit) => lBit === 'testOutputWtf'))).to.be.true;
-        });
+            });
     });
 });
 

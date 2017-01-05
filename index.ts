@@ -5,14 +5,11 @@
 import { find, isString } from 'lodash';
 import * as isNode from 'detect-node';
 
+
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { colours, style, logMarkers } from './src/theming';
 import { buildFileTagString } from './src/build-file-tag-string';
 const buildFileTag = buildFileTagString;
-
-const colors = (isNode)
-    ? require('colors/safe')
-    : {};
 
 
 /**************************************** TYPE DEFINITIONS ****************************************/
@@ -77,7 +74,7 @@ const getLogVal = (logLevel = 'info'): number | boolean => {
  * @return {Function} next
  */
 const verifyConfig = (config, next) => {
-    if (!config) {
+    if (!config || (typeof config === 'object' && Object.keys(config).length === 0)) {
         return next(config);
     }
     if (!(config.logLevel)) {
@@ -100,9 +97,8 @@ const verifyConfig = (config, next) => {
 const defLogOpts = { tagPrefix: '', tagSuffix: '', style: '' };
 const defConfig = { logLevel: logLevelBase };
 
+
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
-
-
 /**
  *  Build 'logger' object for reuse throughout any module it's constructed in. Strings passed
  *  to the factory appear on the left of all logs emitted by functions in the returned object,
@@ -127,10 +123,10 @@ const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
         /**
          * Builder for logging functions called by (most) properties on outputted log function-object
          */
-        const logMethodFactory = (levelNum: number, output: ToConsoleFunc = basicLog): LogMethod => {
+        const logMethodFactory = (levelNum: number, out: ToConsoleFunc = basicLog): LogMethod => {
             return (...strs) => {
                 if (logLevelNum < levelNum) {
-                    output(...strs);
+                    out(...strs);
                 }
                 return strs[0];
             }
@@ -147,22 +143,25 @@ const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
         /*********************** CONSTRUCT ERROR OBJECT METHOD *************************/
         log.error = logMethodFactory(7, (...strs) => {
             (isNode)
-                ? console.error(colors.bgRed.white(`[ERROR] ${fileTag}`), ' :: ', ...strs)
+                  // \u001b[41m \u001b[49m   \u001b[37m \u001b[39m
+                ? console.error(bgRed(white((`[ERROR] ${fileTag}`))), ' :: ', ...strs)
                 : console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
         });
 
         /******************** CONSTRUCT SEVERE ERROR OBJECT METHOD *********************/
         log.wtf = logMethodFactory(8, (...strs) => {
             (isNode)
-                ? console.error('\n', colors.red.bgWhite(`[! DANGER: HUGE ERROR !] ${fileTag}`),
+                  // \u001b[31m \u001b[39m   \u001b[47m \u001b[49m
+                ? console.error('\n', red(bgWhite(`[! DANGER: FATAL ERROR !] ${fileTag}`)),
                                 ' :: ', ...strs, '\n')
-                : console.error(fileTag, ': ', '%c[! DANGER: HUGE ERROR !]', 'color: red;', ':: ',
+                : console.error(fileTag, ': ', '%c[! DANGER: FATAL ERROR !]', 'color: red;', ':: ',
                                 ...strs);
         });
 
         /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
         return log;
     });
+
 
 /******************************************** HELPERS *********************************************/
 function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
@@ -171,13 +170,45 @@ function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
         : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
 }
 
+/**
+ * Output a warning to the console with fileTag as a "marker" as ...strs as the output.
+ * Isomorphic.
+ */
 function warnLogOut(fileTag: string): ToConsoleFunc {
     return (...strs) => {
         (isNode)
-            ? console.warn(colors.yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs)
+            ? console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs)
             : console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
     };
 }
 
-export { logMarkers, logFactory, buildFileTag }
 
+/****************************************** COLOUR UTILS ******************************************/
+// Start: \u001b[33m     End: \u001b[39m
+function yellow(text) {
+    return `\u001b[33m${text}\u001b[39m`;
+}
+
+// Start: \u001b[31m     End: \u001b[39m
+function red(text) {
+    return `\u001b[31m${text}\u001b[39m`;
+}
+
+// Start: \u001b[37m     End: \u001b[39m
+function white(text) {
+    return `\u001b[37m${text}\u001b[39m`;
+}
+
+// Start: \u001b[41m     End: \u001b[49m
+function bgRed(text) {
+    return `\u001b[41m${text}\u001b[49m`;
+}
+
+// Start: \u001b[47m     End: \u001b[49m
+function bgWhite(text) {
+    return `\u001b[47m${text}\u001b[49m`;
+}
+
+
+/********************************************* EXPORT *********************************************/
+export { logMarkers, logFactory, buildFileTag }
