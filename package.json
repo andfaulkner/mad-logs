@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andfaulkner/mad-logs.git"
+    "url": "git+https://github.com/andfaulkner/mad-logs.git#5.2.0"
   },
   "keywords": [
     "logging",
