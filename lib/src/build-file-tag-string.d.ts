@@ -10,4 +10,4 @@
  * @return {string} styled output string
  */
 declare const bldTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
-export { bldTag as buildFileTagString };
+export { bldTag as buildFileTagForCli };

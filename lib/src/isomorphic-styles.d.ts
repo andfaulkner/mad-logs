@@ -8,115 +8,115 @@ export declare const isomorphicStyles: {
         browser: string;
     };
     black: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     blue: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     cyan: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     gray: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     grey: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     green: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     magenta: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     red: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     white: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     yellow: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgBlack: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgBlue: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgCyan: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgGray: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgGrey: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgGreen: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgMagenta: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgRed: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgWhite: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bgYellow: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     blink: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     bold: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     dim: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     hidden: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     inverse: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     italic: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     strikethrough: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
     underline: {
-        cli: string;
+        cli: (msg: any) => string;
         browser: string;
     };
 };

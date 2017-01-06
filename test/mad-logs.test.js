@@ -8,16 +8,18 @@ const oldProcArgs = Object.assign({}, process.argv);
 const { expect } = require('chai');
 const sinon = require('sinon');
 const mocha = require('mocha');
-
 const fs = require('fs');
 const path = require('path');
 const partial = require('lodash.partial');
 const { stderr, stdout } = require('test-console');
 const colors = require('colors');
 
+const inspect = require('util').inspect;
+
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 const madLogs = require('../lib/index');
 const { buildFileTag, logFactory, logMarkers } = madLogs;
+const { buildFileTagForCli } = require('../lib/src/build-file-tag-string');
 
 /******************************************** HELPERS *********************************************/
 /**
@@ -124,12 +126,12 @@ describe('logFactory', function() {
             });
 
             // test against the text intended for the terminal (but captured by the stub)
-            expect(output).to.have.members([
-                '[mad-logs.test]  testOutputBaseLog\n',
-                '[mad-logs.test]  testOutputSilly\n',
-                '[mad-logs.test]  testOutputVerbose\n',
-                '[mad-logs.test]  testOutputDebug\n',
-                '[mad-logs.test]  testOutputInfo\n'
+            expect(output, `output was: ${inspect(output)}`).to.have.members([
+                'mad-logs.test         testOutputBaseLog\n',
+                'mad-logs.test         testOutputSilly\n',
+                'mad-logs.test         testOutputVerbose\n',
+                'mad-logs.test         testOutputDebug\n',
+                'mad-logs.test         testOutputInfo\n'
             ]);
 
             // ensure the console outputs reached the console.warn & .error using log methods

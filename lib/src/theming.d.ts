@@ -46,7 +46,7 @@ export declare const madLogMarkers: {
     angryBird: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     arrow: {
         tagPrefix: string;
@@ -56,32 +56,32 @@ export declare const madLogMarkers: {
     backAndForth: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     barbells: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     brainwave: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     cartoonSwearing: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     checkmate: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     default: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     dirtRoad: {
         tagSuffix: string;
@@ -91,74 +91,70 @@ export declare const madLogMarkers: {
     escherBarbieLego: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     farmerBrown: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     grasslands: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     lispyKatana: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     maceWindu: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     lakeLouise: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     nightmare: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     swimmers: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     tangerines: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     springy: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     vendetta: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     xmlHell: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
 };
-export declare const saneLogMarkers: {
-    tagPrefix: string;
-    tagSuffix: string;
-    blueOnWhite: string;
-};
+export declare const saneLogMarkers: {};
 export declare const logMarkers: {} & {
     angryBird: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     arrow: {
         tagPrefix: string;
@@ -168,32 +164,32 @@ export declare const logMarkers: {} & {
     backAndForth: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     barbells: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     brainwave: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     cartoonSwearing: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     checkmate: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     default: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     dirtRoad: {
         tagSuffix: string;
@@ -203,61 +199,61 @@ export declare const logMarkers: {} & {
     escherBarbieLego: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     farmerBrown: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     grasslands: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     lispyKatana: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     maceWindu: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     lakeLouise: {
         tagSuffix: string;
         tagPrefix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     nightmare: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     swimmers: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     tangerines: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     springy: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     vendetta: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
     xmlHell: {
         tagPrefix: string;
         tagSuffix: string;
-        style: string;
+        style: string | ((msg: any) => string);
     };
 };

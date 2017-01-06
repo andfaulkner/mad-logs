@@ -55,4 +55,4 @@ const bldTag = (filename: string, colourizer?: Function | number, rpadLen = 20):
     return TAG;
 };
 
-export { bldTag as buildFileTagString }
+export { bldTag as buildFileTagForCli }

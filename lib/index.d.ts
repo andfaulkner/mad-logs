@@ -1,6 +1,8 @@
+import { isomorphicStyles } from './src/isomorphic-styles';
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { logMarkers } from './src/theming';
-declare const buildFileTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
+/**************************** CONDITIONAL IMPORT/EXPORT BY ENVIRONMENT ****************************/
+export declare const buildFileTag: ((filename: string, colourizer?: number | Function, rpadLen?: number) => string) | ((fileName: string, opts: LogOpts) => string);
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
     logLevel: string;
@@ -8,7 +10,7 @@ export interface AppConf {
 export interface LogOpts {
     tagPrefix: string;
     tagSuffix: string;
-    style: string;
+    style: string | ((msg: string) => string);
 }
 export interface MadLog {
     (...strs: any[]): any;
@@ -35,4 +37,4 @@ export interface MadLog {
  */
 declare const logFactory: (config?: AppConf) => any;
 /********************************************* EXPORT *********************************************/
-export { logMarkers, logFactory, buildFileTag };
+export { logMarkers, logFactory, isomorphicStyles };

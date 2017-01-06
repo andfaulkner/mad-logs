@@ -1,5 +1,5 @@
 import isNode from 'detect-node';
-import { isomorphicStyles as isoStyles } from './isomorphic-styles';
+import { isomorphicStyles as iStyl } from './isomorphic-styles';
 
 /************************************************************************************************
  *
@@ -52,7 +52,7 @@ export const madLogMarkers = {
     angryBird: {
         tagPrefix: '＼(｀0´)／',
         tagSuffix: '',
-        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}${isoStyles.bold}`
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgYellow.cli(iStyl.bold.cli(msg))))
                         : `color: ${colours.yellowishGold};`,
     },
     arrow: {
@@ -63,43 +63,43 @@ export const madLogMarkers = {
     backAndForth: {
         tagPrefix: '))><((',
         tagSuffix: '))><((',
-        style: (isNode) ? `${isoStyles.black}${isoStyles.bold}${isoStyles.underline}`
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bold.cli(iStyl.underline.cli(msg))))
                         : `color: ${colours.brown}; ${style.bold} ${style.underline}`,
     },
     barbells: {
         tagSuffix: '--()-()',
         tagPrefix: '()-()--',
-        style: (isNode) ? `${isoStyles.gray}${isoStyles.bgWhite}${isoStyles.bold}`
+        style: (isNode) ? ((msg) => iStyl.gray.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
                         : `color: ${colours.darkGray}; ${style.bold}`,
     },
     brainwave: {
         tagPrefix: '~^~^~^-',
         tagSuffix: '-~^~^~^',
-        style: (isNode) ? `${isoStyles.blue}${isoStyles.bgWhite}`
+        style: (isNode) ? ((msg) => iStyl.blue.cli(iStyl.bgWhite.cli(msg)))
                         : `color: ${colours.darkMidnightBlue};`,
     },
     cartoonSwearing: {
         tagPrefix: '@%@%@%',
         tagSuffix: '@%@%@%',
-        style: (isNode) ? `${isoStyles.magenta}${isoStyles.bold}`
+        style: (isNode) ? ((msg) => iStyl.magenta.cli(iStyl.bold.cli(msg)))
                         : `color: ${colours.indigo}`,
     },
     checkmate: {
         tagPrefix: '♜♞♝♚♛♝♞♜_',
         tagSuffix: '_♟♟♟♟♟♟♟♟',
-        style: (isNode) ? `${isoStyles.black}${isoStyles.bgWhite}`
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(msg)))
                         : `color: ${colours.brown}`,
     },
     default: {
         tagPrefix: '[',
         tagSuffix: ']',
-        style: (isNode) ? `${isoStyles.black}${isoStyles.bgWhite}`
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(msg)))
                         : `color: ${colours.darkGreen}`,
     },
     dirtRoad: {
         tagSuffix: '= = = =',
         tagPrefix: '= = = =',
-        style: (isNode) ? `${isoStyles.bgGray}${isoStyles.yellow}${isoStyles.bold}`
+        style: (isNode) ? `${iStyl.bgGray}${iStyl.yellow}${iStyl.bold}`
                         : `color:          ${colours.tan};
                            ${style.bold}
                            border-top:     1px inset ${colours.tan};
@@ -113,71 +113,93 @@ export const madLogMarkers = {
     escherBarbieLego: {
         tagPrefix: '||┗┛┏┓',
         tagSuffix: '┏┓┗┛||',
-        style: 'background-color: ${colours.hotPink}; color: ${colours.white}',
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : 'background-color: ${colours.hotPink}; color: ${colours.white}',
     },
     farmerBrown: {
         tagPrefix: '[🐑🐂🐑]-',
         tagSuffix: '-[🐑🐂🐑] ',
-        style: '',
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : '',
     },
     grasslands: {
         tagSuffix: '^^^^',
         tagPrefix: '^^^^',
-        style: `color: ${colours.green}; ${style.bold}`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.green}; ${style.bold}`,
     },
     lispyKatana: {
         tagSuffix: ';;;;;;;;;;;;;;()()',
         tagPrefix: '',
-        style: `color: ${colours.gray}; ${style.bold}`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.gray}; ${style.bold}`,
     },
     maceWindu: {
         tagPrefix: '',
         tagSuffix: ' o==[]::::::::::::::::> ',
-        style: `color: ${colours.violet}; ${style.bold}`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.violet}; ${style.bold}`,
     },
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
-        style: `color: ${colours.cyan};`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.cyan};`,
     },
     nightmare: {
         tagPrefix: '>:~',
         tagSuffix: '~:<',
-        style: `color: ${colours.white}; background-color: ${colours.black};`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.white}; background-color: ${colours.black};`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
-        style: `color: ${colours.blue}; ${style.bold}`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.blue}; ${style.bold}`,
     },
     tangerines: {
         tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
         tagSuffix: ' _ ()()()*()',
-        style: `color: ${colours.orange};`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.orange};`,
     },
     springy: {
         tagPrefix: '◀-\\__/--',
         tagSuffix: '--\\__/-►',
-        style: `color: ${colours.blue}; background-color: ${colours.white};`,
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.blue}; background-color: ${colours.white};`,
     },
     vendetta: {
         tagPrefix: "/~~VVV~~|| ",
         tagSuffix: ' ||~~VVV~~\\',
-        style: `color: ${colours.deepRed}; ` +
+        // TODO change node colours
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : `color: ${colours.deepRed}; ` +
                `${style.bold} background-color: ${colours.ultraPaleGreen}`,
     },
     xmlHell: {
         tagPrefix: '<<<<<>>>>>',
         tagSuffix: ' >> ',
-        style: '',
+        style: (isNode) ? ((msg) => iStyl.black.cli(iStyl.bgWhite.cli(iStyl.bold.cli(msg))))
+                        : '',
     },
 };
 
 // TODO - WIP
 export const saneLogMarkers = {
-    tagPrefix: `${isoStyles.blue.cli}${isoStyles.bgWhite.cli}`,
-    tagSuffix: `${isoStyles.default}${isoStyles.default}`,
-    blueOnWhite: (isoStyles.blue.cli + isoStyles.bgWhite.cli),
+    // tagPrefix: `${iStyl.blue.cli}${iStyl.bgWhite.cli}`,
+    // tagSuffix: `${iStyl.default}${iStyl.default}`,
+    // blueOnWhite: (iStyl.blue.cli + iStyl.bgWhite.cli),
 };
 
 export const logMarkers = Object.assign({}, madLogMarkers/*, saneLogMarkers*/);

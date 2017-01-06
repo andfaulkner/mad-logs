@@ -4,13 +4,16 @@
 
 import { find, isString } from 'lodash';
 import * as isNode from 'detect-node';
-
+import { isomorphicStyles } from './src/isomorphic-styles';
 
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { colours, style, logMarkers } from './src/theming';
-import { buildFileTagString } from './src/build-file-tag-string';
-const buildFileTag = buildFileTagString;
+import { buildFileTagForCli } from './src/build-file-tag-string';
 
+/**************************** CONDITIONAL IMPORT/EXPORT BY ENVIRONMENT ****************************/
+export const buildFileTag = (isNode)
+    ? buildFileTagForCli
+    : buildFileTagForBrowser;
 
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
@@ -20,7 +23,7 @@ export interface AppConf {
 export interface LogOpts {
   tagPrefix: string;
   tagSuffix: string;
-  style: string;
+  style: string | ((msg: string) => string);
 }
 
 export interface MadLog {
@@ -113,8 +116,11 @@ const defConfig = { logLevel: logLevelBase };
  */
 const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
     (conf: AppConf) => function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
+
         const logLevelNum = getLogVal(conf.logLevel);
-        const fileTag = buildFileTagForBrowser(fileName, opts)
+        const fileTag = (isNode)
+            ? buildFileTagForCli(fileName, opts.style as (msg) => string)
+            : buildFileTagForBrowser(fileName, opts)
 
         const basicLog = (...strs: any[]): void => {
             console.log(fileTag, opts.style, ...strs);
@@ -211,4 +217,4 @@ function bgWhite(text) {
 
 
 /********************************************* EXPORT *********************************************/
-export { logMarkers, logFactory, buildFileTag }
+export { logMarkers, logFactory, isomorphicStyles }
