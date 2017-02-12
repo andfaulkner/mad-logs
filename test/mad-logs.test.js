@@ -125,11 +125,11 @@ describe('logFactory', function() {
 
             // test against the text intended for the terminal (but captured by the stub)
             expect(output).to.have.members([
-                '[mad-logs.test]  testOutputBaseLog\n',
-                '[mad-logs.test]  testOutputSilly\n',
-                '[mad-logs.test]  testOutputVerbose\n',
-                '[mad-logs.test]  testOutputDebug\n',
-                '[mad-logs.test]  testOutputInfo\n'
+                'mad-logs.test  testOutputBaseLog\n',
+                'mad-logs.test  testOutputSilly\n',
+                'mad-logs.test  testOutputVerbose\n',
+                'mad-logs.test  testOutputDebug\n',
+                'mad-logs.test  testOutputInfo\n'
             ]);
 
             // ensure the console outputs reached the console.warn & .error using log methods
@@ -232,6 +232,180 @@ describe('buildFileTag', function() {
         expect(testOutput).to.not.contain('                 '); // 17 char space
     });
 });
+
+describe('simple-by-log-level functions', function() {
+    if('has function builder isolog, which can be instantiated', function() {
+        expect(madLogs.isolog).to.exist;
+    })
+    it('has function logSilly that logs if LOG_LEVEL >= silly', function() {
+        process.env.LOG_LEVEL = 'silly';
+        global.process.env.LOG_LEVEL= 'silly';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+    });
+
+    it('has func logVerbose that logs if LOG_LEVEL >= verbose', function() {
+        process.env.LOG_LEVEL = 'verbose';
+        global.process.env.LOG_LEVEL= 'verbose';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged'], ['TestTag', 'verbose:logged']);
+    });
+    it('has func logDebug that logs if LOG_LEVEL >= debug', function() {
+        process.env.LOG_LEVEL = 'debug';
+        global.process.env.LOG_LEVEL= 'debug';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(
+            ['TestTag', 'silly:logged'],
+            ['TestTag', 'verbose:logged'],
+            ['TestTag', 'debug:logged']);
+    });
+    it('has func logInfo that logs if LOG_LEVEL >= info', function() {
+        process.env.LOG_LEVEL = 'info';
+        global.process.env.LOG_LEVEL= 'info';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(
+            ['TestTag', 'silly:logged'],
+            ['TestTag', 'verbose:logged'],
+            ['TestTag', 'debug:logged'],
+            ['TestTag', 'info:logged']);
+    });
+    it('has func logWarn that logs if LOG_LEVEL >= warn', function() {
+        process.env.LOG_LEVEL = 'warn';
+        global.process.env.LOG_LEVEL= 'warn';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(
+            ['TestTag', 'silly:logged'],
+            ['TestTag', 'verbose:logged'],
+            ['TestTag', 'debug:logged'],
+            ['TestTag', 'info:logged'],
+            ['TestTag', 'warn:logged']);
+    });
+    it('has func logError that logs if LOG_LEVEL >= error', function() {
+        process.env.LOG_LEVEL = 'error';
+        global.process.env.LOG_LEVEL= 'error';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(
+            ['TestTag', 'silly:logged'],
+            ['TestTag', 'verbose:logged'],
+            ['TestTag', 'debug:logged'],
+            ['TestTag', 'info:logged'],
+            ['TestTag', 'warn:logged'],
+            ['TestTag', 'error:logged']);
+    });
+    it('has func logWtf that logs if LOG_LEVEL is wtf', function() {
+        process.env.LOG_LEVEL = 'wtf';
+        global.process.env.LOG_LEVEL= 'wtf';
+
+        const storeLogs = [];
+        origConsoleLog = console.log;
+        console.log = (...msg) => storeLogs.push(msg);
+
+        const log = madLogs.isolog('TestTag');
+        log.silly('silly:logged');
+        log.verbose('verbose:logged');
+        log.debug('debug:logged');
+        log.info('info:logged');
+        log.warn('warn:logged');
+        log.error('error:logged');
+        log.wtf('wtf:logged');
+
+        console.log = origConsoleLog;
+        expect(storeLogs[0]).to.eql(
+            ['TestTag', 'silly:logged'],
+            ['TestTag', 'verbose:logged'],
+            ['TestTag', 'debug:logged'],
+            ['TestTag', 'info:logged'],
+            ['TestTag', 'warn:logged'],
+            ['TestTag', 'error:logged'],
+            ['TestTag', 'error:wtf']);
+
+    });
+});
+
 
 // Restore original process.argv
 process.argv = Object.assign({}, oldProcArgs);

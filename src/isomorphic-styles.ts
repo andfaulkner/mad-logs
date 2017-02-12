@@ -1,7 +1,7 @@
 const cssInverse = 'filter: invert(100%); -moz-filter: invert(100%); -webkit-filter: invert(100%);';
 
 /**
- * @EXPORT
+ * @export
  * Collection of styles that can be used in both the browser and the cli
  */
 export const isomorphicStyles = {

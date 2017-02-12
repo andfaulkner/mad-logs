@@ -36,3 +36,4 @@ export interface MadLog {
 declare const logFactory: (config?: AppConf) => any;
 /********************************************* EXPORT *********************************************/
 export { logMarkers, logFactory, buildFileTag };
+export { isolog } from './src/simple-by-log-level';

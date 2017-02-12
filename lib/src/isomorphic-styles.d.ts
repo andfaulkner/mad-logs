@@ -1,5 +1,5 @@
 /**
- * @EXPORT
+ * @export
  * Collection of styles that can be used in both the browser and the cli
  */
 export declare const isomorphicStyles: {

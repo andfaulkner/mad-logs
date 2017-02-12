@@ -166,7 +166,7 @@ const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
 /******************************************** HELPERS *********************************************/
 function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
     return (isNode)
-        ? `${opts.tagPrefix}[${fileName}]${opts.tagSuffix}`
+        ? `${opts.tagPrefix}${fileName}${opts.tagSuffix}`
         : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
 }
 
@@ -212,3 +212,8 @@ function bgWhite(text) {
 
 /********************************************* EXPORT *********************************************/
 export { logMarkers, logFactory, buildFileTag }
+
+export {
+    isolog
+    // logSilly, logVerbose, logDebug, logInfo, logWarn, logError, logWTF, logWtf
+} from './src/simple-by-log-level';
