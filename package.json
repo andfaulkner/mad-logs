@@ -1,6 +1,6 @@
 {
   "name": "mad-logs",
-  "version": "5.2.1",
+  "version": "5.3.0",
   "description": "Winston-lite-esque Log lib for terminal and browser debugging, with piles of unignorable log tags and marker styles.",
   "main": "lib/index.js",
   "typings": "lib/index",
@@ -10,13 +10,13 @@
   "scripts": {
     "compile-ts": "./node_modules/typescript/bin/tsc -p ./",
     "compile-ts:watch": "./node_modules/typescript/bin/tsc -p ./ --watch",
-    "start": "npm run test:watch",
+    "start": "LOG_LEVEL=silly npm run test:watch",
     "test": "npm run compile-ts; mocha test/",
     "test:watch": "chokidar ./src/**/*.ts ./config/** ./test/** ./index.ts ./test/** --initial -c \"npm run compile-ts; mocha test/\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andfaulkner/mad-logs.git#5.2.1"
+    "url": "git+https://github.com/andfaulkner/mad-logs.git#5.3.0"
   },
   "keywords": [
     "logging",
