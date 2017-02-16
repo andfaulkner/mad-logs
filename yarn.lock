@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/colors@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@types/colors/-/colors-1.1.1.tgz#49733928fb47cf11254b7611e2f6f85ff6020521"
-
 "@types/lodash":
   version "4.14.43"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.43.tgz#0373de422e70f5bce12c15340103a3c126c81086"
