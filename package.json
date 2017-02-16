@@ -10,7 +10,8 @@
   "scripts": {
     "compile-ts": "./node_modules/typescript/bin/tsc -p ./",
     "compile-ts:watch": "./node_modules/typescript/bin/tsc -p ./ --watch",
-    "start": "LOG_LEVEL=silly npm run test:watch",
+    "HACK:fix-lodash": "tir node_modules/@types/lodash/index.d.ts --replace \"interface WeakMap\" \"// interface WeakMap\"",
+    "start": "npm run HACK:fix-lodash 2>dev/null; LOG_LEVEL=silly npm run test:watch",
     "test": "LOG_LEVEL=silly npm run compile-ts; LOG_LEVEL=silly mocha test/",
     "test:watch": "chokidar ./src/**/*.ts ./config/** ./test/** ./index.ts ./test/** --initial -c \"npm run compile-ts; mocha test/\""
   },
@@ -63,6 +64,7 @@
     "typescript": "2.2.0"
   },
   "peerDependencies": {
+    "@types/colors": "^1.1.1",
     "lodash": "^4.x"
   }
 }
