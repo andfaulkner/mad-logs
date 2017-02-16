@@ -1,3 +1,4 @@
+/// <reference path="./typings/index.d.ts" />
 import * as colors from 'colors';
 
 /****
