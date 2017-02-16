@@ -1,4 +1,4 @@
-import * as colors from 'colors';
+/// <reference path="../typings/index.d.ts" />
 /****
  *
  * Taken from colors - this is a collection of styles that are nicely visible on the terminal.
@@ -6,13 +6,13 @@ import * as colors from 'colors';
  *
  */
 export declare const serverStyles: {
-    blueBgWhite: colors.Color;
-    magentaBgWhite: colors.Color;
-    cyanBgBlack: colors.Color;
-    whiteBgYellow: colors.Color;
-    whiteBgBlack: colors.Color;
-    blackBgCyanItalic: colors.Color;
-    blackBgGreen: colors.Color;
-    blackBgYellow: colors.Color;
-    blackBgWhite: colors.Color;
+    blueBgWhite: any;
+    magentaBgWhite: any;
+    cyanBgBlack: any;
+    whiteBgYellow: any;
+    whiteBgBlack: any;
+    blackBgCyanItalic: any;
+    blackBgGreen: any;
+    blackBgYellow: any;
+    blackBgWhite: any;
 };
