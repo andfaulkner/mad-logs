@@ -5,7 +5,8 @@
     "main": "lib/index.js",
     "typings": "lib/index",
     "files": [
-        "lib/"
+        "lib/",
+        "typings/"
     ],
     "scripts": {
         "compile-ts": "./node_modules/typescript/bin/tsc -p ./",
