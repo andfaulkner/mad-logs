@@ -1,7 +1,7 @@
 import { logGtEqlSilly, logGtEqlDebug, logGtEqlVerbose, logGtEqlInfo,
          logGtEqlWarn, logGtEqlError, logGtEqlWtf } from 'env-var-helpers';
 
-if (process.env.mocha = true) {
+if (process.env.mocha === true) {
 
 }
 
