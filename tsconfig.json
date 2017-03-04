@@ -30,6 +30,12 @@
         "./src/theming.ts",
         "./src/build-file-tag-string.ts",
         "./server-styles.ts",
-        "./node-log.ts"
+        "./node-log.ts",
+        "./node-logs.ts",
+        "./node.ts",
+        "./src/node-log.ts",
+        "./src/node-logs.ts",
+        "./src/node.ts"
+
     ]
 }
