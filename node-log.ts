@@ -60,13 +60,13 @@ export const nodeLogFactory = (TAG: string) => {
             if (isInfo) console.log(`${TAG} `, ...argsToLog);
         },
         warn: (...argsToLog: any[]): void => {
-            if (isWarn) console.log(`${TAG} `, ...argsToLog);
+            if (isWarn) console.warn(`${TAG} `, ...argsToLog);
         },
         error: (...argsToLog: any[]): void => {
-            if (isError) console.log(`${TAG} `, ...argsToLog);
+            if (isError) console.error(`${TAG} `, ...argsToLog);
         },
         wtf: (...argsToLog: any[]): void => {
-            if (isWtf) console.log(`${TAG} `, ...argsToLog);
+            if (isWtf) console.error(`${TAG} `, ...argsToLog);
         },
         inspect
     });
