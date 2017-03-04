@@ -29,6 +29,7 @@
         "./typings/index.d.ts",
         "./src/theming.ts",
         "./src/build-file-tag-string.ts",
-        "./server-styles.ts"
+        "./server-styles.ts",
+        "./node-log.ts"
     ]
 }

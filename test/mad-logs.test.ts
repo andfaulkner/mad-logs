@@ -1,22 +1,28 @@
+/// <reference path="../node_modules/@types/mocha/index.d.ts" />
+/// <reference path="../node_modules/@types/node/index.d.ts" />
+
 // ensure environment knows testing is occurring
 process.env.mocha === true;
 
 // Store original process.argv
 const oldProcArgs = Object.assign({}, process.argv);
 
-/************************************** THIRD-PARTY IMPORTS ***************************************/
-const { expect } = require('chai');
-const sinon = require('sinon');
-const mocha = require('mocha');
+// Fix process.argv to work with colors
+process.argv = Array.from(process.argv) || [];
+global.process.argv = Array.from(global.process.argv) || process.argv || [];
 
-const fs = require('fs');
-const path = require('path');
-const partial = require('lodash.partial');
-const { stderr, stdout } = require('test-console');
-const colors = require('colors');
+/************************************** THIRD-PARTY IMPORTS ***************************************/
+import { expect } from 'chai';
+import * as sinon from 'sinon';
+
+import * as fs from 'fs';
+import * as path from 'path';
+import * as partial from 'lodash.partial';
+import { stderr, stdout } from 'test-console';
+import * as colors from 'colors';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
-const madLogs = require('../lib/index');
+import * as madLogs from '../lib/index';
 const { buildFileTag, logFactory, logMarkers } = madLogs;
 
 /******************************************** HELPERS *********************************************/
@@ -54,7 +60,7 @@ describe('logFactory', function() {
             expect(logFactory({ logLevel: lvl })).to.be.a('function');
         });
 
-        expect(logFactory({ logLevel: 'info', port: 8080, host: 'localhost' })).to.be.a('function');
+        expect(logFactory({ logLevel: 'info' })).to.be.a('function');
     });
 
     it('returns function if given no config object (this triggers default log level)', function() {
@@ -204,7 +210,7 @@ describe('buildFileTag', function() {
         blockErrorOutput(() => {
             const output = stdout.inspectSync(function(out) {
                 expect(
-                    () => buildFileTag('test-name', 'ccawa', 25)
+                    () => buildFileTag('test-name', 'ccawa' as any, 25)
                 ).to.throw(TypeError);
                 expect(
                     () => buildFileTag('test-name', (() => 'out'), 25)
@@ -216,7 +222,7 @@ describe('buildFileTag', function() {
         blockErrorOutput(() => {
             const output = stdout.inspectSync(function(out) {
                 expect(
-                    () => buildFileTag((() => ''), colors.blue, 25)
+                    () => buildFileTag((() => '') as any, colors.blue, 25)
                 ).to.throw(TypeError);
             });
         });
@@ -234,7 +240,7 @@ describe('buildFileTag', function() {
 });
 
 describe('simple-by-log-level functions', function() {
-    if('has function builder isolog, which can be instantiated', function() {
+    it('has function builder isolog, which can be instantiated', function() {
         expect(madLogs.isolog).to.exist;
     })
     it('has function logSilly that logs if LOG_LEVEL >= silly', function() {
@@ -242,7 +248,7 @@ describe('simple-by-log-level functions', function() {
         global.process.env.LOG_LEVEL= 'silly';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -263,7 +269,7 @@ describe('simple-by-log-level functions', function() {
         global.process.env.LOG_LEVEL= 'verbose';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -276,14 +282,15 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged'], ['TestTag', 'verbose:logged']);
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
     });
     it('has func logDebug that logs if LOG_LEVEL >= debug', function() {
         process.env.LOG_LEVEL = 'debug';
         global.process.env.LOG_LEVEL= 'debug';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -296,17 +303,16 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(
-            ['TestTag', 'silly:logged'],
-            ['TestTag', 'verbose:logged'],
-            ['TestTag', 'debug:logged']);
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
+        expect(storeLogs[2]).to.eql(['TestTag', 'debug:logged']);
     });
     it('has func logInfo that logs if LOG_LEVEL >= info', function() {
         process.env.LOG_LEVEL = 'info';
         global.process.env.LOG_LEVEL= 'info';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -319,18 +325,17 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(
-            ['TestTag', 'silly:logged'],
-            ['TestTag', 'verbose:logged'],
-            ['TestTag', 'debug:logged'],
-            ['TestTag', 'info:logged']);
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
+        expect(storeLogs[2]).to.eql(['TestTag', 'debug:logged']);
+        expect(storeLogs[3]).to.eql(['TestTag', 'info:logged']);
     });
     it('has func logWarn that logs if LOG_LEVEL >= warn', function() {
         process.env.LOG_LEVEL = 'warn';
         global.process.env.LOG_LEVEL= 'warn';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -343,19 +348,18 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(
-            ['TestTag', 'silly:logged'],
-            ['TestTag', 'verbose:logged'],
-            ['TestTag', 'debug:logged'],
-            ['TestTag', 'info:logged'],
-            ['TestTag', 'warn:logged']);
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
+        expect(storeLogs[2]).to.eql(['TestTag', 'debug:logged']);
+        expect(storeLogs[3]).to.eql(['TestTag', 'info:logged']);
+        expect(storeLogs[4]).to.eql(['TestTag', 'warn:logged']);
     });
     it('has func logError that logs if LOG_LEVEL >= error', function() {
         process.env.LOG_LEVEL = 'error';
         global.process.env.LOG_LEVEL= 'error';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -368,20 +372,19 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(
-            ['TestTag', 'silly:logged'],
-            ['TestTag', 'verbose:logged'],
-            ['TestTag', 'debug:logged'],
-            ['TestTag', 'info:logged'],
-            ['TestTag', 'warn:logged'],
-            ['TestTag', 'error:logged']);
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
+        expect(storeLogs[2]).to.eql(['TestTag', 'debug:logged']);
+        expect(storeLogs[3]).to.eql(['TestTag', 'info:logged']);
+        expect(storeLogs[4]).to.eql(['TestTag', 'warn:logged']);
+        expect(storeLogs[5]).to.eql(['TestTag', 'error:logged']);
     });
     it('has func logWtf that logs if LOG_LEVEL is wtf', function() {
         process.env.LOG_LEVEL = 'wtf';
         global.process.env.LOG_LEVEL= 'wtf';
 
         const storeLogs = [];
-        origConsoleLog = console.log;
+        let origConsoleLog = console.log;
         console.log = (...msg) => storeLogs.push(msg);
 
         const log = madLogs.isolog('TestTag');
@@ -394,15 +397,13 @@ describe('simple-by-log-level functions', function() {
         log.wtf('wtf:logged');
 
         console.log = origConsoleLog;
-        expect(storeLogs[0]).to.eql(
-            ['TestTag', 'silly:logged'],
-            ['TestTag', 'verbose:logged'],
-            ['TestTag', 'debug:logged'],
-            ['TestTag', 'info:logged'],
-            ['TestTag', 'warn:logged'],
-            ['TestTag', 'error:logged'],
-            ['TestTag', 'error:wtf']);
-
+        expect(storeLogs[0]).to.eql(['TestTag', 'silly:logged']);
+        expect(storeLogs[1]).to.eql(['TestTag', 'verbose:logged']);
+        expect(storeLogs[2]).to.eql(['TestTag', 'debug:logged']);
+        expect(storeLogs[3]).to.eql(['TestTag', 'info:logged']);
+        expect(storeLogs[4]).to.eql(['TestTag', 'warn:logged']);
+        expect(storeLogs[5]).to.eql(['TestTag', 'error:logged']);
+        expect(storeLogs[6]).to.eql(['TestTag', 'wtf:logged']);
     });
 });
 
