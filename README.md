@@ -93,3 +93,77 @@ Examples:
     // Output: [current-file]           Connecting to postgres...
     //        |
     //        |<--terminal edge here {not included in actual output}
+
+----
+## NodeJS logging
+
+#### Import syntax:
+
+    import { nodeLogFactory } from 'mad-logs/lib/node-log'
+
+*   Kept in a separate file to avoid browser <-> Node incompatibilities
+
+#### NodeJS logging usage Examples:
+
+    // my-fun-node-file.ts
+
+    import * as colors from 'colors';
+    import { buildFileTag, logFactory, logMarkers } from 'mad-logs';
+    import { nodeLogFactory } from 'mad-logs/lib/node-log'
+
+    const TAG = buildFileTag('[my-fun-node-file.ts]', colors.black.bgWhite);
+
+    /**
+     * Instantiate the nodeLogFactory object. This binds the string passed to nodeLogFactory.
+     * The string will be displayed before each item is logged using this object.
+     */
+    const log = nodeLogFactory(TAG);
+
+    //
+    // Log all the things!
+    // Note that output text below would be black with a white background for all examples below,
+    // because of the TAG set above
+    //
+
+    /**
+     * Output if environent var LOG_LEVEL equals silly. Otherwise, no output is displayed.
+     */
+    log.silly('Displaying because LOG_LEVEL=silly! Yay! O_o');
+        // => 'my-fun-node-file.ts  Displaying because LOG_LEVEL=silly! Yay! O_o'
+        // Return value: none (undefined)
+
+    /**
+     * Outputs if environent var LOG_LEVEL is silly, verbose, or info (the default).
+     * If LOG_LEVEL is wtf, error, or warn, nothing is displayed here.
+     */
+    log.info('Show me!');
+        // => 'my-fun-node-file.ts  Show me!'
+        // Return value: undefined
+
+    /**
+     * Assume LOG_LEVEL=silly, debug, or verbose.
+     */
+    log.warn.thru(() => 'yay return value!');
+        // => 'my-fun-node-file.ts  my-fun-node-file.ts  yay return value!'
+        // Return value: 'yay return value!'
+
+    /**
+     * Assume LOG_LEVEL=silly, debug, or verbose.
+     */
+    log.verbose.thru((() => 'yay a verbose return value! Woot!')());
+        // => 'my-fun-node-file.ts : yay a verbose return value! Woot!'
+        // Return value: 'yay a verbose return value! Woot!'
+
+    /** 
+     * Assume LOG_LEVEL=error, warn, info, debug, verbose, or silly.
+     */
+    log.error.thru('bringDaFunk', (function bringDaFunk() { return 'bowChicaChicaBow' })());
+        // => 'my-fun-node-file.ts  bringDaFunk : bowChicaChicaBow'
+        // Return value: 'yay a verbose return value! Woot!'
+
+    /** 
+     * Assume LOG_LEVEL=silly, verbose, or debug.
+     */
+    log.debug.thru('funktasticString', 'boom-chi-boom-ba-boom-chi');
+        // => 'my-fun-node-file.ts  funktasticString : boom-chi-boom-ba-boom-chi'
+        // Return value: 'yay a verbose return value! Woot!'

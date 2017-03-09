@@ -37,7 +37,7 @@ const passThruLog = (logFn: (...argsToLog: any[]) => void) => (fnNameOrVal: stri
         logFn(fnNameOrVal);
         return fnNameOrVal;
     } else {
-        logFn(fnNameOrVal, val);
+        logFn(fnNameOrVal, ':', val);
         return val;
     }
 };
