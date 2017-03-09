@@ -102,18 +102,10 @@ export const nodeLogFactory = (TAG: string) => {
     };
 
     const logObjBoundThru = Object.keys(logObj).reduce((acc, logFnName: string) => {
-        console.log('logObj[logFnName]: initial:', logObj[logFnName]);
         const outVal = Object.assign(logObj[logFnName], { thru: passThruLog(logObj[logFnName]) });
-        console.log('outVal:', outVal);
         acc[logFnName] = outVal as MadLogFnObj;
         return acc;
     }, {}) as NodeMadLogsInstance;
-
-    console.log(`inspect logObjBoundThru:`, logObj.inspect(logObjBoundThru));
-    console.log(`logObjBoundThru:`, logObjBoundThru);
-    console.log(`logObjBoundThru.silly.thru:`, logObjBoundThru.silly.thru);
-    console.log(`logObjBoundThru.verbose.thru:`, logObjBoundThru.verbose.thru);
-    console.log(`logObjBoundThru.info.thru:`, logObjBoundThru.info.thru);
 
     return logObjBoundThru;
 };
