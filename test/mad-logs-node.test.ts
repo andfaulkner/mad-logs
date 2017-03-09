@@ -71,6 +71,45 @@ describe('nodeLogFactory', function() {
         expect(log2.warn('Logged from warn')).to.be.undefined;
         expect(log2.wtf('Logged from wtf')).to.be.undefined;
     });
+    it('has thru function attached to all log functions', function() {
+        const log3 = nodeLogFactory(TAG);
+        expect(log3.blankWrap.thru).to.be.a('function');
+        expect(log3.blankWrap2.thru).to.be.a('function');
+        expect(log3.blankWrap3.thru).to.be.a('function');
+        expect(log3.silly.thru).to.be.a('function');
+        expect(log3.verbose.thru).to.be.a('function');
+        expect(log3.debug.thru).to.be.a('function');
+        expect(log3.info.thru).to.be.a('function');
+        expect(log3.error.thru).to.be.a('function');
+        expect(log3.warn.thru).to.be.a('function');
+        expect(log3.wtf.thru).to.be.a('function');
+    });
+    it('thru function on all log functions passes returned value thru if 1 arg given', function() {
+        const log4 = nodeLogFactory(TAG);
+        expect(log4.blankWrap.thru('grrrr')).to.eql('grrrr');
+        expect(log4.blankWrap2.thru('grrrr')).to.eql('grrrr');
+        expect(log4.blankWrap3.thru('grrrr')).to.eql('grrrr');
+        expect(log4.silly.thru('grrrr')).to.eql('grrrr');
+        expect(log4.verbose.thru('grrrr')).to.eql('grrrr');
+        expect(log4.debug.thru('grrrr')).to.eql('grrrr');
+        expect(log4.info.thru('grrrr')).to.eql('grrrr');
+        expect(log4.error.thru('grrrr')).to.eql('grrrr');
+        expect(log4.warn.thru('grrrr')).to.eql('grrrr');
+        expect(log4.wtf.thru('grrrr')).to.eql('grrrr');
+    });
+    it('thru function on all log functions returns output of arg 2, if 2 args given', function() {
+        const log5 = nodeLogFactory(TAG);
+        expect(log5.blankWrap.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.blankWrap2.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.blankWrap3.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.silly.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.verbose.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.debug.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.info.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.error.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.warn.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.wtf.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+    });
 });
 
 // Restore original process.argv

@@ -8,20 +8,25 @@
  * @return {string} Readable string representation of object (standard util.inspect output)
  */
 export declare const inspect: (obj: any, isHidden?: boolean) => string;
+export interface MadLogFnObj {
+    (...argsToLog: any[]): void;
+    thru: (...argsToLog: any[]) => void;
+}
+export interface NodeMadLogsInstance {
+    blankWrap3: MadLogFnObj;
+    blankWrap2: MadLogFnObj;
+    blankWrap: MadLogFnObj;
+    silly: MadLogFnObj;
+    verbose: MadLogFnObj;
+    debug: MadLogFnObj;
+    info: MadLogFnObj;
+    warn: MadLogFnObj;
+    error: MadLogFnObj;
+    wtf: MadLogFnObj;
+    inspect: MadLogFnObj;
+}
 /**
  * Create a special log for the current file
  * @param {string} TAG - filename, possible decorated by a style.
  */
-export declare const nodeLogFactory: (TAG: string) => {
-    blankWrap3: (...argsToLog: any[]) => void;
-    blankWrap2: (...argsToLog: any[]) => void;
-    blankWrap: (...argsToLog: any[]) => void;
-    silly: (...argsToLog: any[]) => void;
-    verbose: (...argsToLog: any[]) => void;
-    debug: (...argsToLog: any[]) => void;
-    info: (...argsToLog: any[]) => void;
-    warn: (...argsToLog: any[]) => void;
-    error: (...argsToLog: any[]) => void;
-    wtf: (...argsToLog: any[]) => void;
-    inspect: (obj: any, isHidden?: boolean) => string;
-};
+export declare const nodeLogFactory: (TAG: string) => NodeMadLogsInstance;

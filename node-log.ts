@@ -32,12 +32,41 @@ export const inspect = (obj: any, isHidden?: boolean): string => {
     });
 }
 
+const passThruLog = (logFn: (...argsToLog: any[]) => void) => (fnNameOrVal: string | any, val?) => {
+    if (!val) {
+        logFn(fnNameOrVal);
+        return fnNameOrVal;
+    } else {
+        logFn(fnNameOrVal, val);
+        return val;
+    }
+};
+
+export interface MadLogFnObj {
+    (...argsToLog: any[]): void;
+    thru: (...argsToLog: any[]) => void;
+}
+
+export interface NodeMadLogsInstance {
+    blankWrap3: MadLogFnObj;
+    blankWrap2: MadLogFnObj;
+    blankWrap: MadLogFnObj;
+    silly: MadLogFnObj;
+    verbose: MadLogFnObj;
+    debug: MadLogFnObj;
+    info: MadLogFnObj;
+    warn: MadLogFnObj;
+    error: MadLogFnObj;
+    wtf: MadLogFnObj;
+    inspect: MadLogFnObj;
+}
+
 /**
  * Create a special log for the current file
  * @param {string} TAG - filename, possible decorated by a style.
  */
 export const nodeLogFactory = (TAG: string) => {
-    return ({
+    const logObj = {
         blankWrap3: (...argsToLog: any[]): void => {
             console.log(`\n\n\n${TAG} `, ...argsToLog, '\n\n\n');
         },
@@ -48,6 +77,7 @@ export const nodeLogFactory = (TAG: string) => {
             console.log(`\n${TAG} `, ...argsToLog, '\n');
         },
         silly: (...argsToLog: any[]): void => {
+            Object.keys(this);
             if (isSilly) console.log(`${TAG} `, ...argsToLog);
         },
         verbose: (...argsToLog: any[]): void => {
@@ -69,5 +99,21 @@ export const nodeLogFactory = (TAG: string) => {
             if (isWtf) console.error(`${TAG} `, ...argsToLog);
         },
         inspect
-    });
+    };
+
+    const logObjBoundThru = Object.keys(logObj).reduce((acc, logFnName: string) => {
+        console.log('logObj[logFnName]: initial:', logObj[logFnName]);
+        const outVal = Object.assign(logObj[logFnName], { thru: passThruLog(logObj[logFnName]) });
+        console.log('outVal:', outVal);
+        acc[logFnName] = outVal as MadLogFnObj;
+        return acc;
+    }, {}) as NodeMadLogsInstance;
+
+    console.log(`inspect logObjBoundThru:`, logObj.inspect(logObjBoundThru));
+    console.log(`logObjBoundThru:`, logObjBoundThru);
+    console.log(`logObjBoundThru.silly.thru:`, logObjBoundThru.silly.thru);
+    console.log(`logObjBoundThru.verbose.thru:`, logObjBoundThru.verbose.thru);
+    console.log(`logObjBoundThru.info.thru:`, logObjBoundThru.info.thru);
+
+    return logObjBoundThru;
 };
