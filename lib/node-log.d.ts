@@ -13,6 +13,7 @@ export interface MadLogFnObj {
     thru: (...argsToLog: any[]) => void;
 }
 export interface NodeMadLogsInstance {
+    (...argsToLog: any[]): void;
     blankWrap3: MadLogFnObj;
     blankWrap2: MadLogFnObj;
     blankWrap: MadLogFnObj;
@@ -23,7 +24,12 @@ export interface NodeMadLogsInstance {
     warn: MadLogFnObj;
     error: MadLogFnObj;
     wtf: MadLogFnObj;
+    sillyError: MadLogFnObj;
+    verboseError: MadLogFnObj;
+    debugError: MadLogFnObj;
+    infoError: MadLogFnObj;
     inspect: MadLogFnObj;
+    always: MadLogFnObj;
 }
 /**
  * Create a special log for the current file

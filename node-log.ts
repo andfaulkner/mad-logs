@@ -48,6 +48,7 @@ export interface MadLogFnObj {
 }
 
 export interface NodeMadLogsInstance {
+    (...argsToLog: any[]): void; // acts identically to log.info
     blankWrap3: MadLogFnObj;
     blankWrap2: MadLogFnObj;
     blankWrap: MadLogFnObj;
@@ -58,7 +59,14 @@ export interface NodeMadLogsInstance {
     warn: MadLogFnObj;
     error: MadLogFnObj;
     wtf: MadLogFnObj;
+
+    sillyError: MadLogFnObj;
+    verboseError: MadLogFnObj;
+    debugError: MadLogFnObj;
+    infoError: MadLogFnObj;
+
     inspect: MadLogFnObj;
+    always: MadLogFnObj;
 }
 
 /**
@@ -66,46 +74,81 @@ export interface NodeMadLogsInstance {
  * @param {string} TAG - filename, possible decorated by a style.
  */
 export const nodeLogFactory = (TAG: string) => {
-    const logObj = {
-        blankWrap3: (...argsToLog: any[]): void => {
-            console.log(`\n\n\n${TAG} `, ...argsToLog, '\n\n\n');
-        },
-        blankWrap2: (...argsToLog: any[]): void => {
-            console.log(`\n\n${TAG} `, ...argsToLog, '\n\n');
-        },
-        blankWrap: (...argsToLog: any[]): void => {
-            console.log(`\n${TAG} `, ...argsToLog, '\n');
-        },
-        silly: (...argsToLog: any[]): void => {
-            Object.keys(this);
-            if (isSilly) console.log(`${TAG} `, ...argsToLog);
-        },
-        verbose: (...argsToLog: any[]): void => {
-            if (isVerbose) console.log(`${TAG} `, ...argsToLog);
-        },
-        debug: (...argsToLog: any[]): void => {
-            if (isDebug) console.log(`${TAG} `, ...argsToLog);
-        },
-        info: (...argsToLog: any[]): void => {
-            if (isInfo) console.log(`${TAG} `, ...argsToLog);
-        },
-        warn: (...argsToLog: any[]): void => {
-            if (isWarn) console.warn(`${TAG} `, ...argsToLog);
-        },
-        error: (...argsToLog: any[]): void => {
-            if (isError) console.error(`${TAG} `, ...argsToLog);
-        },
-        wtf: (...argsToLog: any[]): void => {
-            if (isWtf) console.error(`${TAG} `, ...argsToLog);
-        },
-        inspect
+    const logObjFnBase = (...argsToLog: any[]): void => {
+        if (isInfo) console.log(`${TAG} `, ...argsToLog);
     };
 
+    const logObj = Object.assign(logObjFnBase,
+        {
+            blankWrap3: (...argsToLog: any[]): void => {
+                console.log(`\n\n\n${TAG} `, ...argsToLog, '\n\n\n');
+            },
+            blankWrap2: (...argsToLog: any[]): void => {
+                console.log(`\n\n${TAG} `, ...argsToLog, '\n\n');
+            },
+            blankWrap: (...argsToLog: any[]): void => {
+                console.log(`\n${TAG} `, ...argsToLog, '\n');
+            },
+
+            silly: (...argsToLog: any[]): void => {
+                Object.keys(this);
+                if (isSilly) console.log(`${TAG} `, ...argsToLog);
+            },
+            sillyError: (...argsToLog: any[]): void => {
+                Object.keys(this);
+                if (isSilly) console.error(`${TAG} `, ...argsToLog);
+            },
+
+            verbose: (...argsToLog: any[]): void => {
+                if (isVerbose) console.log(`${TAG} `, ...argsToLog);
+            },
+            verboseError: (...argsToLog: any[]): void => {
+                if (isVerbose) console.error(`${TAG} `, ...argsToLog);
+            },
+
+            debug: (...argsToLog: any[]): void => {
+                if (isDebug) console.log(`${TAG} `, ...argsToLog);
+            },
+            debugError: (...argsToLog: any[]): void => {
+                if (isDebug) console.error(`${TAG} `, ...argsToLog);
+            },
+
+            info: (...argsToLog: any[]): void => {
+                if (isInfo) console.log(`${TAG} `, ...argsToLog);
+            },
+            infoError: (...argsToLog: any[]): void => {
+                if (isInfo) console.error(`${TAG} `, ...argsToLog);
+            },
+
+            warn: (...argsToLog: any[]): void => {
+                if (isWarn) console.warn(`${TAG} `, ...argsToLog);
+            },
+            error: (...argsToLog: any[]): void => {
+                if (isError) console.error(`${TAG} `, ...argsToLog);
+            },
+            wtf: (...argsToLog: any[]): void => {
+                if (isWtf) console.error(`${TAG} `, ...argsToLog);
+            },
+
+            always: (...argsToLog: any[]): void => {
+                console.log(`${TAG} `, ...argsToLog);
+            },
+            inspect
+        }
+    );
+
+    /**
+     * Set up log object to have a 'thru' property
+     */
     const logObjBoundThru = Object.keys(logObj).reduce((acc, logFnName: string) => {
-        const outVal = Object.assign(logObj[logFnName], { thru: passThruLog(logObj[logFnName]) });
+        const outVal = Object.assign(logObj[logFnName],
+            {
+                thru: passThruLog(logObj[logFnName])
+            }
+        );
         acc[logFnName] = outVal as MadLogFnObj;
         return acc;
-    }, {}) as NodeMadLogsInstance;
+    }, logObjFnBase) as NodeMadLogsInstance;
 
     return logObjBoundThru;
 };
