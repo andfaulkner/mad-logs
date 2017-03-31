@@ -47,8 +47,6 @@ describe('nodeLogFactory', function() {
 
     it('returns an object with a set of log functions, that is itself a function', function() {
         const log = nodeLogFactory(TAG);
-        console.log(`log:`, log);
-        console.log(log);
         log('things!');
         expect(log).to.be.a('function');
         expect(log.blankWrap).to.be.a('function');
@@ -69,6 +67,28 @@ describe('nodeLogFactory', function() {
         expect(log.verboseError).to.be.a('function');
         expect(log.debugError).to.be.a('function');
         expect(log.infoError).to.be.a('function');
+    });
+
+    it('returns an object with a working inspect method that logs (in info mode) and returns deep object details', function() {
+        const log = nodeLogFactory(TAG);
+        const obj = { a: 'asdf', b: 'asdfasdf' };
+
+        // Returns an object as a terminal-friendly string if the object is the 1st arg.
+        expect(log.inspect(obj)).to.match(/\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/);
+        
+        // Returns undefined if a string is passed to inspect
+        // (but still logs it. WIP: test the logging aspect)
+        expect(log.inspect('asdf')).to.be.undefined;
+
+        // Returns an object as a terminal-friendly string if the object is the 2nd arg.
+        // (but still logs it. WIP: test the logging aspect)
+        expect(log.inspect('my object:', obj)).to.match(/\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/);
+
+        // WIP test all of the following 'logging' behaviours from inspect.
+        log.inspect(obj);
+        log.inspect('my string');
+        log.inspect('my object', obj);
+        log.inspect({ a: 'asdf', b: 'asdfasdf', name: 'hello' });
     });
 
     it('returns void from all functions on instance, except inspect', function() {

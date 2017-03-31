@@ -1,3 +1,8 @@
+// TODO:
+// 1) Make this throw instantly if it's imported outside Node.
+// 2) log.fn constructor that creates a copy of the log object, with the function name added to the TAG.
+// 3) 
+
 import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
 import { inspect as nodeInspect } from 'util';
 
@@ -49,9 +54,9 @@ export interface MadLogFnObj {
 
 export interface NodeMadLogsInstance {
     (...argsToLog: any[]): void; // acts identically to log.info
-    blankWrap3: MadLogFnObj;
-    blankWrap2: MadLogFnObj;
     blankWrap: MadLogFnObj;
+    blankWrap2: MadLogFnObj;
+    blankWrap3: MadLogFnObj;
     silly: MadLogFnObj;
     verbose: MadLogFnObj;
     debug: MadLogFnObj;
@@ -70,24 +75,29 @@ export interface NodeMadLogsInstance {
 }
 
 /**
- * Create a special log for the current file
+ * Create a special log for the current file.
+ * Produces an ultra-dynamic object with functions that also operate as objects at every layer.
+ * The "root-level" function acts like log.info. Each key on that function contains a function
+ * that either does specialized logging, or logs dependent on the current LOG_LEVEL value.
+ *
  * @param {string} TAG - filename, possible decorated by a style.
  */
-export const nodeLogFactory = (TAG: string) => {
+export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
     const logObjFnBase = (...argsToLog: any[]): void => {
         if (isInfo) console.log(`${TAG} `, ...argsToLog);
     };
 
     const logObj = Object.assign(logObjFnBase,
         {
-            blankWrap3: (...argsToLog: any[]): void => {
-                console.log(`\n\n\n${TAG} `, ...argsToLog, '\n\n\n');
+            TAG,
+            blankWrap: (...argsToLog: any[]): void => {
+                console.log(`\n${TAG} `, ...argsToLog, '\n');
             },
             blankWrap2: (...argsToLog: any[]): void => {
                 console.log(`\n\n${TAG} `, ...argsToLog, '\n\n');
             },
-            blankWrap: (...argsToLog: any[]): void => {
-                console.log(`\n${TAG} `, ...argsToLog, '\n');
+            blankWrap3: (...argsToLog: any[]): void => {
+                console.log(`\n\n\n${TAG} `, ...argsToLog, '\n\n\n');
             },
 
             silly: (...argsToLog: any[]): void => {
@@ -133,7 +143,28 @@ export const nodeLogFactory = (TAG: string) => {
             always: (...argsToLog: any[]): void => {
                 console.log(`${TAG} `, ...argsToLog);
             },
-            inspect
+
+            inspect: (msgOrObj: string | Object, obj?: Object): string | void => {
+                if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
+                    const objInfoString = inspect(obj);
+                    if (isInfo) {
+                        console.log(`${TAG} ${msgOrObj}:`, objInfoString)
+                    }
+                    return objInfoString;
+
+                } else if (typeof msgOrObj === 'string') {
+                    console.log(`${TAG} (inspected obj already string): ${msgOrObj}`);
+                    return;
+
+                } else if (typeof msgOrObj === 'object') {
+                    const objInfoString = inspect(msgOrObj);
+                    const name = ((msgOrObj as any).name) ? (msgOrObj as any).name + ': ' : '';
+                    if (isInfo) {
+                        console.log(`${TAG} ${name}: `, objInfoString);
+                    }
+                    return objInfoString;
+                }
+            },
         }
     );
 
@@ -149,6 +180,15 @@ export const nodeLogFactory = (TAG: string) => {
         acc[logFnName] = outVal as MadLogFnObj;
         return acc;
     }, logObjFnBase) as NodeMadLogsInstance;
+
+    // const logObjBoundThruPlusFn = Object.assign(logObjBoundThru, {
+    //     fn: (this: NodeMadLogsInstance, fnName: string) => {
+    //         // TODO clone deep. Version below won't work: it'll point to the original, not make a copy
+    //         const self = Object.this;
+    //         self.TAG = JSON.parse(JSON.stringify({ TAG: self.TAG })).TAG + fnName;
+    //         return self;
+    //     }
+    // })
 
     return logObjBoundThru;
 };

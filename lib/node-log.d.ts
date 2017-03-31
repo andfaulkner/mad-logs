@@ -14,9 +14,9 @@ export interface MadLogFnObj {
 }
 export interface NodeMadLogsInstance {
     (...argsToLog: any[]): void;
-    blankWrap3: MadLogFnObj;
-    blankWrap2: MadLogFnObj;
     blankWrap: MadLogFnObj;
+    blankWrap2: MadLogFnObj;
+    blankWrap3: MadLogFnObj;
     silly: MadLogFnObj;
     verbose: MadLogFnObj;
     debug: MadLogFnObj;
@@ -32,7 +32,11 @@ export interface NodeMadLogsInstance {
     always: MadLogFnObj;
 }
 /**
- * Create a special log for the current file
+ * Create a special log for the current file.
+ * Produces an ultra-dynamic object with functions that also operate as objects at every layer.
+ * The "root-level" function acts like log.info. Each key on that function contains a function
+ * that either does specialized logging, or logs dependent on the current LOG_LEVEL value.
+ *
  * @param {string} TAG - filename, possible decorated by a style.
  */
 export declare const nodeLogFactory: (TAG: string) => NodeMadLogsInstance;
