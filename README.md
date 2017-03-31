@@ -103,7 +103,7 @@ Examples:
 
 *   Kept in a separate file to avoid browser <-> Node incompatibilities
 
-#### NodeJS logging usage Examples:
+#### NodeJS logging usage examples:
 
     // my-fun-node-file.ts
 
@@ -167,3 +167,11 @@ Examples:
     log.debug.thru('funktasticString', 'boom-chi-boom-ba-boom-chi');
         // => 'my-fun-node-file.ts  funktasticString : boom-chi-boom-ba-boom-chi'
         // Return value: 'yay a verbose return value! Woot!'
+
+    // Does Node util.inspect action with 
+    /**
+     * Assume LOG_LEVEL=silly, verbose, debug, or inspect.
+     */
+    log.inspect({ a: 'asdf', b: 'oooo' });
+        // => `my-fun-node-file.ts { a: 'asdf', b: 'oooo' }`
+
