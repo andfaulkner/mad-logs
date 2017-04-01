@@ -43,7 +43,6 @@ import { inspect, nodeLogFactory } from '../node-log';
 function blockLogOutput(fn: () => any) {
     const stores = {
         log:   { logged: [], orig: global.console.log   },
-        debug: { logged: [], orig: global.console.debug },
         warn:  { logged: [], orig: global.console.warn  },
         error: { logged: [], orig: global.console.error },
     };
@@ -51,7 +50,10 @@ function blockLogOutput(fn: () => any) {
     // Stub all the console methods
     Object.keys(stores).forEach((logFn) => {
         stores[logFn].orig = global.console[logFn];
-        global.console[logFn] = (...msgs) => stores[logFn].push(msgs);
+        global.console[logFn] = (...msgs) => {
+            stores[logFn].logged.push(...msgs);
+            // process.stdout.write(msgs.reduce((acc, msg) => (acc + ', ' + msg), ''), 'utf8');
+        }
     });
 
     // Run the function with everything stubbed.
@@ -100,28 +102,38 @@ describe('nodeLogFactory', function() {
     });
 
 
-    it('returns an object with a working inspect method that logs (in info mode) and returns deep object details', function() {
+    it('returns object with a working inspect method that logs (in info mode) & returns deep object details', function() {
         const log = nodeLogFactory(TAG);
+
         const obj = { a: 'asdf', b: 'asdfasdf' };
+        const namedObject = { a: 'asdf', b: 'asdfasdf', name: 'hello' };
+        const nestedObject = { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }};
+
+        const objJsonRegexMatch = /\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/;
 
         // Returns an object as a terminal-friendly string if the object is the 1st arg.
-        expect(log.inspect(obj)).to.match(/\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/);
-        
+        // Also ensures it gets logged.
+        const { stores: storesObj, result: resultObj } = blockLogOutput(() => log.inspect(obj));
+        expect([...storesObj.log.logged]).to.match(objJsonRegexMatch);
+        console.log(`stores:`, log.inspect(storesObj), '\nresult:', log.inspect(resultObj));
+
+        expect(log.inspect(obj)).to.match(objJsonRegexMatch);
+
         // If inspect is passed a single argument, and it's a string, return the string as-is.
         // (but still log it. WIP: test the logging aspect)
         expect(log.inspect('asdf')).to.eql('asdf');
 
         // Returns an object as a terminal-friendly string if the object is the 2nd arg.
         // (but still logs it. WIP: test the logging aspect)
-        expect(log.inspect('my object:', obj)).to.match(/\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/);
+        expect(log.inspect('my object:', obj)).to.match(objJsonRegexMatch);
 
         // WIP test all of the following 'logging' behaviours from inspect.
         log.inspect(obj);
         log.inspect('my string');
         log.inspect('my object', obj);
-        log.inspect({ a: 'asdf', b: 'asdfasdf', name: 'hello' });
-        log.info.inspect('log.info.inspect made me:', { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }});
-        log.silly.inspect('log.silly.inspect made me:', { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }});
+        log.inspect(namedObject);
+        log.info.inspect('log.info.inspect made me:', nestedObject);
+        log.silly.inspect('log.silly.inspect made me:', nestedObject);
     });
 
     it('returns void from all functions on instance, except inspect', function() {

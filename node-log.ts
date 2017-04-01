@@ -214,7 +214,7 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
     /**
      * Set up log object to have a 'thru' property
      */
-    const logObjBoundThru = Object.keys(logObj).reduce((acc, logFnName: string) => {
+    const logObjBoundDeep = Object.keys(logObj).reduce((acc, logFnName: string) => {
         const outVal = Object.assign(logObj[logFnName],
             {
                 thru: passThruLog(logObj[logFnName]),
@@ -240,5 +240,5 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
         return acc;
     }, logObjFnBase) as NodeMadLogsInstance;
 
-    return logObjBoundThru;
+    return logObjBoundDeep;
 };
