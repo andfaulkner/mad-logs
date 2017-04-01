@@ -33,6 +33,36 @@ const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
 /************************************ IMPORT FILE TO BE TESTED ************************************/
 import { inspect, nodeLogFactory } from '../node-log';
 
+/******************************************** HELPERS *********************************************/
+/**
+ * Prevents console.error messages emitted by code from reaching the console for given function
+ * @param  {Function} fn - function to run without showing errors
+ * @return {Object<{errorLogs: string[], warnLogs: string[], result: any}>} array containing
+ *              warnings & errors outputted running the function, and the function result
+ */
+function blockLogOutput(fn: () => any) {
+    const stores = {
+        log:   { logged: [], orig: global.console.log   },
+        debug: { logged: [], orig: global.console.debug },
+        warn:  { logged: [], orig: global.console.warn  },
+        error: { logged: [], orig: global.console.error },
+    };
+
+    // Stub all the console methods
+    Object.keys(stores).forEach((logFn) => {
+        stores[logFn].orig = global.console[logFn];
+        global.console[logFn] = (...msgs) => stores[logFn].push(msgs);
+    });
+
+    // Run the function with everything stubbed.
+    const result = fn();
+
+    // Restore all the console methods after function done running.
+    Object.keys(stores).forEach((fn) => global.console[fn] = stores[fn].orig);
+
+    return { stores, result };
+}
+
 /********************************************* TESTS **********************************************/
 describe('inspect', function() {
     it('exists', function() {
@@ -69,6 +99,7 @@ describe('nodeLogFactory', function() {
         expect(log.infoError).to.be.a('function');
     });
 
+
     it('returns an object with a working inspect method that logs (in info mode) and returns deep object details', function() {
         const log = nodeLogFactory(TAG);
         const obj = { a: 'asdf', b: 'asdfasdf' };
@@ -76,9 +107,9 @@ describe('nodeLogFactory', function() {
         // Returns an object as a terminal-friendly string if the object is the 1st arg.
         expect(log.inspect(obj)).to.match(/\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/);
         
-        // Returns undefined if a string is passed to inspect
-        // (but still logs it. WIP: test the logging aspect)
-        expect(log.inspect('asdf')).to.be.undefined;
+        // If inspect is passed a single argument, and it's a string, return the string as-is.
+        // (but still log it. WIP: test the logging aspect)
+        expect(log.inspect('asdf')).to.eql('asdf');
 
         // Returns an object as a terminal-friendly string if the object is the 2nd arg.
         // (but still logs it. WIP: test the logging aspect)
@@ -89,6 +120,8 @@ describe('nodeLogFactory', function() {
         log.inspect('my string');
         log.inspect('my object', obj);
         log.inspect({ a: 'asdf', b: 'asdfasdf', name: 'hello' });
+        log.info.inspect('log.info.inspect made me:', { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }});
+        log.silly.inspect('log.silly.inspect made me:', { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }});
     });
 
     it('returns void from all functions on instance, except inspect', function() {

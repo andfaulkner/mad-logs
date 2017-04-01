@@ -97,13 +97,13 @@ Examples:
 ----
 ## NodeJS logging
 
-#### Import syntax:
+### Import syntax:
 
     import { nodeLogFactory } from 'mad-logs/lib/node-log'
 
 *   Kept in a separate file to avoid browser <-> Node incompatibilities
 
-#### NodeJS logging usage examples:
+### NodeJS logging usage examples: file log construction:
 
     // my-fun-node-file.ts
 
@@ -129,49 +129,109 @@ Examples:
      * Output if environent var LOG_LEVEL equals silly. Otherwise, no output is displayed.
      */
     log.silly('Displaying because LOG_LEVEL=silly! Yay! O_o');
-        // => 'my-fun-node-file.ts  Displaying because LOG_LEVEL=silly! Yay! O_o'
-        // Return value: none (undefined)
+        // {Logs}    :: 'my-fun-node-file.ts  Displaying because LOG_LEVEL=silly! Yay! O_o'
+        // {Returns} :: undefined
 
     /**
      * Outputs if environent var LOG_LEVEL is silly, verbose, or info (the default).
      * If LOG_LEVEL is wtf, error, or warn, nothing is displayed here.
      */
     log.info('Show me!');
-        // => 'my-fun-node-file.ts  Show me!'
-        // Return value: undefined
+        // {Logs}    :: 'my-fun-node-file.ts  Show me!'
+        // {Returns} :: undefined
+
+### NodeJS logging usage examples: pass-through logging (assumes constructed log object):
 
     /**
      * Assume LOG_LEVEL=silly, debug, or verbose.
      */
     log.warn.thru(() => 'yay return value!');
-        // => 'my-fun-node-file.ts  my-fun-node-file.ts  yay return value!'
-        // Return value: 'yay return value!'
+        // {Logs}    :: 'my-fun-node-file.ts  my-fun-node-file.ts  yay return value!'
+        // {Returns} :: 'yay return value!'
 
     /**
      * Assume LOG_LEVEL=silly, debug, or verbose.
      */
     log.verbose.thru((() => 'yay a verbose return value! Woot!')());
-        // => 'my-fun-node-file.ts : yay a verbose return value! Woot!'
-        // Return value: 'yay a verbose return value! Woot!'
+        // {Logs}    :: 'my-fun-node-file.ts : yay a verbose return value! Woot!'
+        // {Returns} :: 'yay a verbose return value! Woot!'
 
     /** 
      * Assume LOG_LEVEL=error, warn, info, debug, verbose, or silly.
      */
     log.error.thru('bringDaFunk', (function bringDaFunk() { return 'bowChicaChicaBow' })());
-        // => 'my-fun-node-file.ts  bringDaFunk : bowChicaChicaBow'
-        // Return value: 'yay a verbose return value! Woot!'
+        // {Logs}    :: 'my-fun-node-file.ts  bringDaFunk : bowChicaChicaBow'
+        // {Returns} :: 'yay a verbose return value! Woot!'
 
     /** 
      * Assume LOG_LEVEL=silly, verbose, or debug.
      */
     log.debug.thru('funktasticString', 'boom-chi-boom-ba-boom-chi');
-        // => 'my-fun-node-file.ts  funktasticString : boom-chi-boom-ba-boom-chi'
-        // Return value: 'yay a verbose return value! Woot!'
+        // {Logs}    :: 'my-fun-node-file.ts  funktasticString : boom-chi-boom-ba-boom-chi'
+        // {Returns} :: 'yay a verbose return value! Woot!'
 
-    // Does Node util.inspect action with 
-    /**
-     * Assume LOG_LEVEL=silly, verbose, debug, or inspect.
-     */
-    log.inspect({ a: 'asdf', b: 'oooo' });
-        // => `my-fun-node-file.ts { a: 'asdf', b: 'oooo' }`
+### NodeJS inspect logging: log.inspect()
+*   Log (and return) human-readable deep-nested versions of objects.
 
+log.inspect() method signatures:
+    (obj: Object) => string
+    *   Convert 'obj' to a human-readable string, and return it.
+    *   If LOG_LEVEL is info or higher, log the object before returning it, including use of the log instance's currently defined tag.
+        *   If (when logging it) obj has key 'name', includes its associated value in the identifying message shown before the inspected object string.
+
+    (message: string, obj: Object) => string
+    *   Will log the value in 'message' before the inspected object.
+    *   The return value will not include this message - just the 'inspected' object.
+
+The higher the log level, the more deeply the object's properties are logged, where:
+*   LOG_LEVEL=wtf displays only one level. e.g.:
+        ```
+        log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
+        // {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: [Object object]}`
+        ```
+*   LOG_LEVEL=info displays 5 levels. e.g.:
+        ```
+        log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
+        // {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`
+        ```
+*   LOG_LEVEL=silly displays 10 levels.
+
+Examples:
+    ```
+    const myObject = {
+        a: 'asdf',
+        b: 'oooo',
+        c: {
+            k1: 'V'
+        };
+    };
+
+    const myNamedObject = {
+        name: 'yogi'
+        bearType: 'grizzly',
+    };
+
+    // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
+    log.inspect(myObject);
+        // => {Logs}    :: `my-fun-node-file.ts || { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Returns} :: `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+
+    // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
+    log.inspect('My Object:', myObject);
+        // => {Logs}    ::  `my-fun-node-file.ts || My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+
+    // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
+    log.inspect('My Object:', myObject);
+        // => {Logs}    ::  `my-fun-node-file.ts || My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+
+    log.inspect(myNamedObject);
+        // => {Logs}    ::  `my-fun-node-file.ts || yogi: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+
+    // Assume LOG_LEVEL=wtf
+    log.inspect('My Object:', myObject);
+        // [[ Does not log anything ]]
+        // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: [Object] }`
+     ```

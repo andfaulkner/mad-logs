@@ -6,6 +6,55 @@
 import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
 import { inspect as nodeInspect } from 'util';
 
+
+/**************************************** TYPE DEFINITIONS ****************************************/
+
+export interface InspectFn {
+    /**
+     * Deep-inspect object & return it as string.
+     * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
+     * @param {Object} obj - Object to inspect.
+     */
+    (obj: Object): string;
+    /**
+     * Deep-inspect object & return as string.
+     * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
+     * @param {Object} obj - Object to inspect.
+     */
+    (msg: string, obj: Object): string;
+}
+
+export interface MadLogFnObj {
+    (...argsToLog: any[]): void;
+    thru: (...argsToLog: any[]) => void;
+    inspect: InspectFn;
+}
+
+export interface NodeMadLogsInstance {
+    (...argsToLog: any[]): void; // acts identically to log.info
+    blankWrap: MadLogFnObj;
+    blankWrap2: MadLogFnObj;
+    blankWrap3: MadLogFnObj;
+    silly: MadLogFnObj;
+    verbose: MadLogFnObj;
+    debug: MadLogFnObj;
+    info: MadLogFnObj;
+    warn: MadLogFnObj;
+    error: MadLogFnObj;
+    wtf: MadLogFnObj;
+
+    sillyError: MadLogFnObj;
+    verboseError: MadLogFnObj;
+    debugError: MadLogFnObj;
+    infoError: MadLogFnObj;
+
+    inspect: InspectFn;
+
+    always: MadLogFnObj;
+}
+
+
+/******************************************** HELPERS *********************************************/
 /**
  * Preconfigured version of Node's util.inspect function. Automatically changes
  * depth based on the current process.env.LOG_LEVEL.
@@ -47,33 +96,47 @@ const passThruLog = (logFn: (...argsToLog: any[]) => void) => (fnNameOrVal: stri
     }
 };
 
-export interface MadLogFnObj {
-    (...argsToLog: any[]): void;
-    thru: (...argsToLog: any[]) => void;
-}
+/**
+ * Outer function returns a reusable 'inspector' function for returning deep-inspected versions of
+ * objects, and automatically logging them with IDing information if (by default) LOG_LEVEL is
+ * silly, verbose, debug, or info.
+ *
+ * @param {string} TAG - Decorated name of the file being logged from
+ * @param {boolean} logCond - If true, don't just return the output, also log it.
+ *
+ * @return {Function} Inspector function with the following params:
+ *     | @param {string|Object} msgOrObj - Message describing the object to be inspected (in the 2nd arg),
+ *     | @param {string|Object} obj?     - Object for inspection, if 1st arg contained a message string.
+ *     | @return {string} Pretty-printed string form of the object being inspected.
+ */
+const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | Object, obj?: Object): string => {
+    // Handle object inspection when a message arg was provided.
+    if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
+        const objInfoString = inspect(obj);
+        if (logCond) {
+            console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
+        }
+        return objInfoString;
 
-export interface NodeMadLogsInstance {
-    (...argsToLog: any[]): void; // acts identically to log.info
-    blankWrap: MadLogFnObj;
-    blankWrap2: MadLogFnObj;
-    blankWrap3: MadLogFnObj;
-    silly: MadLogFnObj;
-    verbose: MadLogFnObj;
-    debug: MadLogFnObj;
-    info: MadLogFnObj;
-    warn: MadLogFnObj;
-    error: MadLogFnObj;
-    wtf: MadLogFnObj;
+    // If provided val was a string, include warning in the log, but return val as-is.
+    } else if (typeof msgOrObj === 'string') {
+        console.log(`${TAG} ~> (NOTE: INSPECTED OBJ ALREADY STRING) : ${msgOrObj}`);
+        return msgOrObj;
 
-    sillyError: MadLogFnObj;
-    verboseError: MadLogFnObj;
-    debugError: MadLogFnObj;
-    infoError: MadLogFnObj;
+    // Handle object inspection when no message arg is provided.
+    } else if (typeof msgOrObj === 'object') {
+        const objInfoString = inspect(msgOrObj);
+        const name = ((msgOrObj as any).name) ? ` ${(msgOrObj as any).name}: ` : '';
+        if (logCond) {
+            console.log(`${TAG} ~>${name}`, objInfoString);
+        }
+        return objInfoString;
+    }
 
-    inspect: MadLogFnObj;
-    always: MadLogFnObj;
-}
+    return msgOrObj;
+};
 
+/********************************************* EXPORT *********************************************/
 /**
  * Create a special log for the current file.
  * Produces an ultra-dynamic object with functions that also operate as objects at every layer.
@@ -144,27 +207,7 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
                 console.log(`${TAG} `, ...argsToLog);
             },
 
-            inspect: (msgOrObj: string | Object, obj?: Object): string | void => {
-                if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
-                    const objInfoString = inspect(obj);
-                    if (isInfo) {
-                        console.log(`${TAG} ${msgOrObj}:`, objInfoString)
-                    }
-                    return objInfoString;
-
-                } else if (typeof msgOrObj === 'string') {
-                    console.log(`${TAG} (inspected obj already string): ${msgOrObj}`);
-                    return;
-
-                } else if (typeof msgOrObj === 'object') {
-                    const objInfoString = inspect(msgOrObj);
-                    const name = ((msgOrObj as any).name) ? (msgOrObj as any).name + ': ' : '';
-                    if (isInfo) {
-                        console.log(`${TAG} ${name}: `, objInfoString);
-                    }
-                    return objInfoString;
-                }
-            },
+            inspect: inspector(TAG),
         }
     );
 
@@ -174,21 +217,28 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
     const logObjBoundThru = Object.keys(logObj).reduce((acc, logFnName: string) => {
         const outVal = Object.assign(logObj[logFnName],
             {
-                thru: passThruLog(logObj[logFnName])
+                thru: passThruLog(logObj[logFnName]),
+                inspect: (() => {
+                    switch (logFnName) {
+                        case 'silly':        return inspector(TAG, isSilly);
+                        case 'sillyError':   return inspector(TAG, isSilly);
+                        case 'verbose':      return inspector(TAG, isVerbose);
+                        case 'verboseError': return inspector(TAG, isVerbose);
+                        case 'debug':        return inspector(TAG, isDebug);
+                        case 'debugError':   return inspector(TAG, isDebug);
+                        case 'infoError':    return inspector(TAG, isInfo);
+                        case 'info':         return inspector(TAG, isInfo);
+                        case 'warn':         return inspector(TAG, isWarn);
+                        case 'error':        return inspector(TAG, isError);
+                        case 'wtf':          return inspector(TAG, isWtf);
+                        default:             return inspector(TAG);
+                    }
+                })()
             }
         );
         acc[logFnName] = outVal as MadLogFnObj;
         return acc;
     }, logObjFnBase) as NodeMadLogsInstance;
-
-    // const logObjBoundThruPlusFn = Object.assign(logObjBoundThru, {
-    //     fn: (this: NodeMadLogsInstance, fnName: string) => {
-    //         // TODO clone deep. Version below won't work: it'll point to the original, not make a copy
-    //         const self = Object.this;
-    //         self.TAG = JSON.parse(JSON.stringify({ TAG: self.TAG })).TAG + fnName;
-    //         return self;
-    //     }
-    // })
 
     return logObjBoundThru;
 };

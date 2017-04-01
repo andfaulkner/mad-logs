@@ -1,16 +1,22 @@
-/**
- * Preconfigured version of Node's util.inspect function. Automatically changes
- * depth based on the current process.env.LOG_LEVEL.
- *
- * @param {Object} obj - Object to inspect
- * @param {boolean} isHidden - [OPTIONAL] If true, show hidden values. Defaults to true
- *                             if process.env.LOG_LEVEL is 'silly' (otherwise it's false).
- * @return {string} Readable string representation of object (standard util.inspect output)
- */
-export declare const inspect: (obj: any, isHidden?: boolean) => string;
+/**************************************** TYPE DEFINITIONS ****************************************/
+export interface InspectFn {
+    /**
+     * Deep-inspect object & return it as string.
+     * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
+     * @param {Object} obj - Object to inspect.
+     */
+    (obj: Object): string;
+    /**
+     * Deep-inspect object & return as string.
+     * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
+     * @param {Object} obj - Object to inspect.
+     */
+    (msg: string, obj: Object): string;
+}
 export interface MadLogFnObj {
     (...argsToLog: any[]): void;
     thru: (...argsToLog: any[]) => void;
+    inspect: InspectFn;
 }
 export interface NodeMadLogsInstance {
     (...argsToLog: any[]): void;
@@ -28,9 +34,21 @@ export interface NodeMadLogsInstance {
     verboseError: MadLogFnObj;
     debugError: MadLogFnObj;
     infoError: MadLogFnObj;
-    inspect: MadLogFnObj;
+    inspect: InspectFn;
     always: MadLogFnObj;
 }
+/******************************************** HELPERS *********************************************/
+/**
+ * Preconfigured version of Node's util.inspect function. Automatically changes
+ * depth based on the current process.env.LOG_LEVEL.
+ *
+ * @param {Object} obj - Object to inspect
+ * @param {boolean} isHidden - [OPTIONAL] If true, show hidden values. Defaults to true
+ *                             if process.env.LOG_LEVEL is 'silly' (otherwise it's false).
+ * @return {string} Readable string representation of object (standard util.inspect output)
+ */
+export declare const inspect: (obj: any, isHidden?: boolean) => string;
+/********************************************* EXPORT *********************************************/
 /**
  * Create a special log for the current file.
  * Produces an ultra-dynamic object with functions that also operate as objects at every layer.
