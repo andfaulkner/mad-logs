@@ -112,7 +112,7 @@ const passThruLog = (logFn: (...argsToLog: any[]) => void) => (fnNameOrVal: stri
  *     | @param {string|Object} obj?     - Object for inspection, if 1st arg contained a message string.
  *     | @return {string} Pretty-printed string form of the object being inspected.
  */
-const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | Object, obj?: Object): string => {
+const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | any, obj?: any): string => {
     // Handle object inspection when a message arg was provided.
     if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
         const objInfoString = inspect(obj);
