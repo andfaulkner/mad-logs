@@ -140,6 +140,9 @@ const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | Object, obj?: O
     return msgOrObj;
 };
 
+/**
+ * Actual builder for the log library, minus the fn method.
+ */
 const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance => {
     const fTAG = (fnName) ? `${TAG} [func: ${fnName}] ::` : TAG;
 

@@ -111,7 +111,7 @@ Examples:
     import { buildFileTag, logFactory, logMarkers } from 'mad-logs';
     import { nodeLogFactory } from 'mad-logs/lib/node-log'
 
-    const TAG = buildFileTag('[my-fun-node-file.ts]', colors.black.bgWhite);
+    const TAG = buildFileTag('my-fun-node-file.ts', colors.black.bgWhite);
 
     /**
      * Instantiate the nodeLogFactory object. This binds the string passed to nodeLogFactory.
@@ -130,6 +130,9 @@ Examples:
      */
     log.silly('Displaying because LOG_LEVEL=silly! Yay! O_o');
         // {Logs}    :: 'my-fun-node-file.ts  Displaying because LOG_LEVEL=silly! Yay! O_o'
+        //               \_________________/
+        //                 |<-- this part is styled, making its separation from the message clear
+        //
         // {Returns} :: undefined
 
     /**
@@ -146,14 +149,14 @@ Examples:
      * Assume LOG_LEVEL=silly, debug, or verbose.
      */
     log.warn.thru(() => 'yay return value!');
-        // {Logs}    :: 'my-fun-node-file.ts  my-fun-node-file.ts  yay return value!'
+        // {Logs}    :: 'my-fun-node-file.ts  yay return value!'
         // {Returns} :: 'yay return value!'
 
     /**
      * Assume LOG_LEVEL=silly, debug, or verbose.
      */
     log.verbose.thru((() => 'yay a verbose return value! Woot!')());
-        // {Logs}    :: 'my-fun-node-file.ts : yay a verbose return value! Woot!'
+        // {Logs}    :: 'my-fun-node-file.ts  yay a verbose return value! Woot!'
         // {Returns} :: 'yay a verbose return value! Woot!'
 
     /** 
@@ -213,21 +216,21 @@ Examples:
 
     // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
     log.inspect(myObject);
-        // => {Logs}    :: `my-fun-node-file.ts || { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Logs}    :: `my-fun-node-file.ts ~> { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
         // => {Returns} :: `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
 
     // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
     log.inspect('My Object:', myObject);
-        // => {Logs}    ::  `my-fun-node-file.ts || My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Logs}    ::  `my-fun-node-file.ts ~> My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
 
     // Assume LOG_LEVEL=silly, verbose, debug, or inspect.
     log.inspect('My Object:', myObject);
-        // => {Logs}    ::  `my-fun-node-file.ts || My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Logs}    ::  `my-fun-node-file.ts ~> My Object: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
 
     log.inspect(myNamedObject);
-        // => {Logs}    ::  `my-fun-node-file.ts || yogi: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
+        // => {Logs}    ::  `my-fun-node-file.ts ~> yogi: { a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: { k1: 'V' } }`
 
     // Assume LOG_LEVEL=wtf
@@ -235,3 +238,28 @@ Examples:
         // [[ Does not log anything ]]
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: [Object] }`
      ```
+
+### NodeJS function-scoped logs: someFileScopedLogInstance.fn('fnName')
+*   Essentially returns new instance of log from a file-scoped instance of a log, which automatically contains the given name of the function in the logged output string.
+
+Examples:
+    ```
+    // Assume LOG_LEVEL of verbose.
+
+    import * as colors from 'colors';
+    import { buildFileTag, logFactory, logMarkers } from 'mad-logs';
+    import { nodeLogFactory } from 'mad-logs/lib/node-log'
+
+    const TAG = buildFileTag('fun-node-file.ts', colors.black.bgWhite);
+    const log = nodeLogFactory(TAG);
+
+    function someFunction() {
+        const fnLog = log.fn('someFunction');
+
+        fnLog.info('message');
+        // => {Logs}    ::  `fun-node-file.ts :: someFunction :: message`
+
+        log.info('message');
+        // => {Logs}    ::  `fun-node-file.ts  message`
+    }
+    ```
