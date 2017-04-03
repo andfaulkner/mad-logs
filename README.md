@@ -101,8 +101,9 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 
 Examples:
 
-    import { buildFileTagString } from 'mad-logs';
-    const colors = require('colors'); // required if you want to apply styles
+    import { buildFileTag, colors } from 'mad-logs/lib/node';
+    // note: colors import required if you want to apply styles.
+    It's literally the npm module 'colors', re-exported as a convenience.
 
     const TAG = buildFileTagString('current-file.ts', colors.black.bgGreen.bold, 25);
 
@@ -184,7 +185,7 @@ Examples:
 
 #### NodeJS log factory import syntax:
 
-`import { nodeLogFactory } from 'mad-logs/lib/node-log'`
+`import { nodeLogFactory } from 'mad-logs/lib/node'`
 
 *   Kept in a separate file to avoid browser <-> Node incompatibilities
 
@@ -193,10 +194,7 @@ Examples:
 
     // my-fun-node-file.ts
 
-    import * as colors from 'colors';
-    import { buildFileTag, logFactory, logMarkers } from 'mad-logs';
-    import { nodeLogFactory } from 'mad-logs/lib/node-log'
-
+    import { nodeLogFactory, buildFileTag, colors } from 'mad-logs/lib/node'
     const TAG = buildFileTag('my-fun-node-file.ts', colors.black.bgWhite);
 
     /**
@@ -340,9 +338,7 @@ Examples:
 
     // Assume LOG_LEVEL of verbose.
 
-    import * as colors from 'colors';
-    import { buildFileTag, logFactory, logMarkers } from 'mad-logs';
-    import { nodeLogFactory } from 'mad-logs/lib/node-log'
+    import { nodeLogFactory, buildFileTag, colors } from 'mad-logs/lib/node'
 
     const TAG = buildFileTag('fun-node-file.ts', colors.black.bgWhite);
     const log = nodeLogFactory(TAG);
@@ -356,4 +352,3 @@ Examples:
         log.info('message');
         // => {Logs} ::  `fun-node-file.ts  message`
     }
-    ```
