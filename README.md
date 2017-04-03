@@ -1,10 +1,11 @@
 ----
 # mad-logs
 ----
-*   colourful, obtrusive logs for the browser console and NodeJS.
-*   just like with Winston, alter amount of text shown based on current log level:
-    *   comes with log level-based logging, with automatic handling of any of the following LOG_LEVEL environment variable values:
+*   Colourful, obtrusive, Typescript-friendly logs for the browser console and NodeJS.
+*   As with Winston, lets you alter the amount of text shown based on current log level:
+    *   automatic handling of any of the following LOG_LEVEL environment variable values:
         *   silly, verbose, debug, info, warn, error, wtf
+            *   ...via scoped functions within the log object instance.
     *   in Node, comes with special error-specific level-scoped log functions:
         *   sillyError, verboseError, debugError, infoError
 *   Factories for file-specific logging: logFactory and nodeLogFactory
@@ -68,14 +69,14 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 ### Log marker usage
 *   When first "constructing" the log factory, define the log marker as the second argument (as seen above)
 
+
 ----
 ## NodeJS logging
 
 ### buildFileTag
-*   Construct a styled tag for inclusion at the beginning of console logs. Intended for use in all manual logs in a specific file. Also
-*   Reason: in some environments the stack trace gets messed up by calling a wrapper function    around console methods (console.log etc.). This provides a nice marker for such environments
-*   Optimized for terminal use - outputs terminal colour string wrappers rather than browser CSS. However, it is still usage in the browser if you do not use the 
-    colourization options
+*   Construct a styled tag for inclusion at the beginning of console logs.
+*   Intended for use in all manual logs in a specific file, and for passing to nodeLogFactory (see below).
+
 
 #### buildFileTag Usage
 
@@ -102,6 +103,7 @@ Examples:
     //        |
     //        |<--terminal edge here {not included in actual output}
 
+
 ### NodeJS log factory (nodeLogFactory):
 
 (TAG: string): MadLogInstance
@@ -109,49 +111,72 @@ Examples:
 *   TAG: Identifier for files to include in all log outputs from the constructed
 *   returns object containing functions: 
 
-    // Log - including file tag - if LOG_LEVEL is silly.
-    silly: (..args: string[]): void;
+    `silly: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly.
 
-    // Log - including file tag - if LOG_LEVEL is silly or verbose.
-    verbose: (..args: string[]): void;
 
-    // Log - including file tag - if LOG_LEVEL is silly, verbose, or info.
-    info: (..args: string[]): void;
+    `verbose: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly or verbose.
 
-    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, or warn.
-    warn: (..args: string[]): void;
 
-    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, or error.
-    error: (..args: string[]): void;
+    `info: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, or info.
 
-    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, error, or wtf.
-    wtf: (..args: string[]): void;
 
-    // Log an error - including file tag - if LOG_LEVEL is silly.
-    sillyError: (..args: string[]): void;
+    `warn: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, or warn.
 
-    // Log an error - including file tag - if LOG_LEVEL is silly or verbose.
-    verboseError: (..args: string[]): void;
 
-    // Log an error - including file tag - if LOG_LEVEL is silly verbose, or info.
-    infoError: (..args: string[]): void;
+    `error: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, or error.
 
-    // Build object identical to the one containing it, minus the fn method, where the 
-    // function name is added to the output string of all logging methods.
-    fn: (fnName: string): MadLogInstanceNoFn; // << same as this object, minus the fn method.
 
-    // Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly.
-    inspect: (obj: Object) => string
+    `wtf: (..args: string[]): void;`
+    
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, error, or wtf.
+
+
+    `sillyError: (..args: string[]): void;`
+    
+    *   Log an error - including file tag - if LOG_LEVEL is silly.
+
+
+    `verboseError: (..args: string[]): void;`
+    
+    *   Log an error - including file tag - if LOG_LEVEL is silly or verbose.
+
+
+    `infoError: (..args: string[]): void;`
+    
+    *   Log an error - including file tag - if LOG_LEVEL is silly verbose, or info.
+
+
+    `fn: (fnName: string): MadLogInstanceNoFn;`
+
+    *   Build object identical to the one containing it, minus the fn method, where the function name is added to the output string of all logging methods.
+
+
+    `inspect: (obj: Object) => string`
+    
+    *   Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly.
+
 
 *   All logging methods in the above object then also contain:
     *   a 'thru' object that does passthrough logging (see below)
     *   an 'inspect' object that inspects an object if the given LOG_LEVEL is met (see below)
 
+
 #### NodeJS log factory import syntax:
 
-    import { nodeLogFactory } from 'mad-logs/lib/node-log'
+`import { nodeLogFactory } from 'mad-logs/lib/node-log'`
 
 *   Kept in a separate file to avoid browser <-> Node incompatibilities
+
 
 #### NodeJS log factory usage examples: file log construction:
 
@@ -227,30 +252,39 @@ Examples:
 *   Log (and return) human-readable deep-nested versions of objects.
 
 log.inspect method signatures:
-    (obj: Object) => string
+
+    `(obj: Object) => string`
+
     *   Convert 'obj' to a human-readable string, and return it.
     *   If LOG_LEVEL is info or higher, log the object before returning it, including use of the log instance's currently defined tag.
         *   If (when logging it) obj has key 'name', includes its associated value in the identifying message shown before the inspected object string.
 
-    (message: string, obj: Object) => string
+
+    `(message: string, obj: Object) => string`
+
     *   Will log the value in 'message' before the inspected object.
     *   The return value will not include this message - just the 'inspected' object.
 
 The higher the log level, the more deeply the object's properties are logged, where:
+
 *   LOG_LEVEL=wtf displays only one level. e.g.:
-        ```
-        log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
-        // {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: [Object object]}`
-        ```
+
+    ```
+    log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
+    // => {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: [Object object]}`
+    ```
+
 *   LOG_LEVEL=info displays 5 levels. e.g.:
-        ```
-        log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
-        // {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`
-        ```
+
+    ```
+    log.inspect(`{ k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`);
+    // => {Logs} :: `ValueOfTag: { k1: 'v1', k2: 'v2', k3: { nk1: 'nv1' }}`
+    ```
+
 *   LOG_LEVEL=silly displays 10 levels.
 
 Examples:
-    ```
+
     const myObject = {
         a: 'asdf',
         b: 'oooo',
@@ -287,13 +321,12 @@ Examples:
     log.inspect('My Object:', myObject);
         // [[ Does not log anything ]]
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: [Object] }`
-     ```
 
 ### NodeJS function-scoped logs: someFileScopedLogInstance.fn('fnName')
 *   Essentially returns new instance of log from a file-scoped instance of a log, which automatically contains the given name of the function in the logged output string.
 
 Examples:
-    ```
+
     // Assume LOG_LEVEL of verbose.
 
     import * as colors from 'colors';
@@ -307,9 +340,9 @@ Examples:
         const fnLog = log.fn('someFunction');
 
         fnLog.info('message');
-        // => {Logs}    ::  `fun-node-file.ts :: someFunction :: message`
+        // => {Logs} ::  `fun-node-file.ts :: someFunction :: message`
 
         log.info('message');
-        // => {Logs}    ::  `fun-node-file.ts  message`
+        // => {Logs} ::  `fun-node-file.ts  message`
     }
     ```
