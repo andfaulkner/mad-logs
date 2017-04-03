@@ -271,4 +271,5 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
     return logObjBoundDeep as NodeMadLogsInstance;
 };
 
-export { buildFileTagString as buildFileTag } from './src/build-file-tag-string';
+import { buildFileTagString } from './src/build-file-tag-string';
+export { buildFileTagString as buildFileTag }

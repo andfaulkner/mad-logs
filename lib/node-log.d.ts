@@ -61,4 +61,5 @@ export declare const inspect: (obj: any, isHidden?: boolean) => string;
  * @param {string} TAG - filename, possible decorated by a style.
  */
 export declare const nodeLogFactory: (TAG: string) => NodeMadLogsInstance;
-export { buildFileTagString as buildFileTag } from './src/build-file-tag-string';
+import { buildFileTagString } from './src/build-file-tag-string';
+export { buildFileTagString as buildFileTag };
