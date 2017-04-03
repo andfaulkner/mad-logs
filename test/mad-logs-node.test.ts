@@ -19,6 +19,7 @@ import { stderr, stdout }  from 'test-console';
 import * as fs from 'fs';
 import * as path from 'path';
 import { inspect as nodeInspect } from 'util';
+import * as _ from 'lodash';
 
 // spawn other apps
 import { spawn, spawnSync, fork } from 'child_process';
@@ -51,8 +52,8 @@ function blockLogOutput(fn: () => any) {
     Object.keys(stores).forEach((logFn) => {
         stores[logFn].orig = global.console[logFn];
         global.console[logFn] = (...msgs) => {
-            stores[logFn].logged.push(...msgs);
-            // process.stdout.write(msgs.reduce((acc, msg) => (acc + ', ' + msg), ''), 'utf8');
+            const message = msgs.join('');
+            stores[logFn].logged.push(message);
         }
     });
 
@@ -109,15 +110,21 @@ describe('nodeLogFactory', function() {
         const namedObject = { a: 'asdf', b: 'asdfasdf', name: 'hello' };
         const nestedObject = { a: 'oooaoaooo', b: { z: 'eek', '1': 2 }};
 
-        const objJsonRegexMatch = /\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/;
+        // Regular expression matches used in test.
+        const retItem1Match = /\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/;
+        const logItem1Match = /mad\-logs\-node\.test\.ts.+\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/; // tslint:disable-line
+        const logItem2Match = /mad\-logs\-node\.test\.ts.+hello.+\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.*,.*name:.*'hello'.+\}/; // tslint:disable-line
 
         // Returns an object as a terminal-friendly string if the object is the 1st arg.
         // Also ensures it gets logged.
-        const { stores: storesObj, result: resultObj } = blockLogOutput(() => log.inspect(obj));
-        expect([...storesObj.log.logged]).to.match(objJsonRegexMatch);
-        console.log(`stores:`, log.inspect(storesObj), '\nresult:', log.inspect(resultObj));
+        const { stores, result } = blockLogOutput(() => {
+            log.inspect(obj);
+            log.info.inspect(namedObject);
+        });
+        expect(stores.log.logged[0]).to.match(logItem1Match);
+        expect(stores.log.logged[1]).to.match(logItem2Match);
 
-        expect(log.inspect(obj)).to.match(objJsonRegexMatch);
+        expect(log.inspect(obj)).to.match(retItem1Match);
 
         // If inspect is passed a single argument, and it's a string, return the string as-is.
         // (but still log it. WIP: test the logging aspect)
@@ -125,7 +132,7 @@ describe('nodeLogFactory', function() {
 
         // Returns an object as a terminal-friendly string if the object is the 2nd arg.
         // (but still logs it. WIP: test the logging aspect)
-        expect(log.inspect('my object:', obj)).to.match(objJsonRegexMatch);
+        expect(log.inspect('my object:', obj)).to.match(retItem1Match);
 
         // WIP test all of the following 'logging' behaviours from inspect.
         log.inspect(obj);
@@ -214,6 +221,28 @@ describe('nodeLogFactory', function() {
         expect(log5.verboseError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
         expect(log5.debugError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
         expect(log5.infoError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+    });
+
+    it(`has fn method that returns method-scoped log instance that includes fn name in outputs, but has no fn function itself`, function() {
+        const log6 = nodeLogFactory(TAG);
+        const fnLog = log6.fn('someMethod');
+
+        // Store the log output of everything run inside, globally.
+        const { stores, result } = blockLogOutput(() => {
+            fnLog.info('fnLog_info');
+            fnLog.silly('fnLog_silly');
+        });
+
+        expect(stores.log.logged[0]).to.match(/func: someMethod/);
+        expect(stores.log.logged[0]).to.match(/fnLog_info/);
+        expect(stores.log.logged[0]).to.match(/mad-logs-node\.test\.ts/);
+
+        expect(stores.log.logged[1]).to.match(/func: someMethod/);
+        expect(stores.log.logged[1]).to.match(/fnLog_silly/);
+        expect(stores.log.logged[1]).to.match(/mad-logs-node\.test\.ts/);
+
+        expect((fnLog as any).fn).to.be.empty;
+        expect(log6.fn).to.be.a('function');
     });
 });
 

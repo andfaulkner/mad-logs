@@ -18,7 +18,7 @@ export interface MadLogFnObj {
     thru: (...argsToLog: any[]) => void;
     inspect: InspectFn;
 }
-export interface NodeMadLogsInstance {
+export interface NodeMadLogsFuncInstance {
     (...argsToLog: any[]): void;
     blankWrap: MadLogFnObj;
     blankWrap2: MadLogFnObj;
@@ -36,6 +36,9 @@ export interface NodeMadLogsInstance {
     infoError: MadLogFnObj;
     inspect: InspectFn;
     always: MadLogFnObj;
+}
+export interface NodeMadLogsInstance extends NodeMadLogsFuncInstance {
+    fn: (fnName: string) => NodeMadLogsFuncInstance;
 }
 /******************************************** HELPERS *********************************************/
 /**
