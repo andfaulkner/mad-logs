@@ -12,15 +12,15 @@ export interface InspectFn {
     /**
      * Deep-inspect object & return it as string.
      * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
-     * @param {Object} obj - Object to inspect.
+     * @param {any} obj - Object to inspect.
      */
-    (obj: Object): string;
+    (obj: any): string;
     /**
      * Deep-inspect object & return as string.
      * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
-     * @param {Object} obj - Object to inspect.
+     * @param {any} obj - Object to inspect.
      */
-    (msg: string, obj: Object): string;
+    (msg: string, obj: any): string;
 }
 
 export interface MadLogFnObj {

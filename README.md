@@ -174,7 +174,7 @@ Examples:
 
     *   Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly:
     
-    `inspect: (obj: Object) => string`
+    `inspect: (obj: any) => string`
     
 
 *   All logging methods in the above object then also contain:
