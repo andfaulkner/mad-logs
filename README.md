@@ -1,6 +1,6 @@
 ----
 # mad-logs
-----
+
 *   Colourful, obtrusive, Typescript-friendly logs for the browser console and NodeJS.
 *   As with Winston, lets you alter the amount of text shown based on current log level:
     *   automatic handling of any of the following LOG_LEVEL environment variable values:
@@ -13,6 +13,17 @@
 *   Automatic tag building.
 
 *   In the browser, provides over 20 styles to ensure logs of different types stay differentiable from one another at a glance.
+
+
+---
+## Installation
+
+    yarn add mad-logs
+
+...or...
+
+    npm install --save mad-logs
+
 
 ----
 ## Usage (browser, commonJS);
@@ -28,13 +39,13 @@
     log.verbose('display me on the browser console, but only if we're in verbose mode or higher');
     log.error('display me on the browser console, but only if we're in verbose mode or higher');
 
-###Details (on above)
+### Details (on above)
 *   { logLevel: someLevel } defines the logLevel for the current context. Logs only display if they are "higher" than this level
 *   'my-fun-file.js' is a placeholder for the name of the current file. This appears in each log line, as part of the "tag"
 *   logMarkers.maceWindu << replace with any item in the log marker styles list (see below)
     *   or make your own log markers (Details on this coming soon)
 
-###Invoking the log factory with default or environment config:
+### Invoking the log factory with default or environment config:
 If process.env.LOG_LEVEL is set (which you should - passing config objects in all the time is annoying and poorly encapsulated),
 or if you like the default level of 'info', you can construct the log object for a file like this:
 
@@ -106,65 +117,65 @@ Examples:
 
 ### NodeJS log factory (nodeLogFactory):
 
-(TAG: string): MadLogInstance
+`(TAG: string): MadLogInstance`
 
 *   TAG: Identifier for files to include in all log outputs from the constructed
-*   returns object containing functions: 
+*   Returns object containing functions: 
 
+    *   Log - including file tag - if LOG_LEVEL is silly:
+    
     `silly: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly.
 
-
+    *   Log - including file tag - if LOG_LEVEL is silly or verbose:
+    
     `verbose: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly or verbose.
 
-
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, or info:
+    
     `info: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly, verbose, or info.
 
-
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, or warn:
+    
     `warn: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, or warn.
 
-
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, or error:
+    
     `error: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, or error.
 
-
+    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, error, or wtf:
+    
     `wtf: (..args: string[]): void;`
     
-    *   Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, error, or wtf.
 
-
+    *   Log an error - including file tag - if LOG_LEVEL is silly:
+    
     `sillyError: (..args: string[]): void;`
     
-    *   Log an error - including file tag - if LOG_LEVEL is silly.
 
-
+    *   Log an error - including file tag - if LOG_LEVEL is silly or verbose:
+    
     `verboseError: (..args: string[]): void;`
     
-    *   Log an error - including file tag - if LOG_LEVEL is silly or verbose.
 
-
+    *   Log an error - including file tag - if LOG_LEVEL is silly verbose, or info:
+    
     `infoError: (..args: string[]): void;`
     
-    *   Log an error - including file tag - if LOG_LEVEL is silly verbose, or info.
 
-
+    *   Build object identical to the one containing it, minus the fn method, where the function name is added to the output string of all logging methods:
+    
     `fn: (fnName: string): MadLogInstanceNoFn;`
 
-    *   Build object identical to the one containing it, minus the fn method, where the function name is added to the output string of all logging methods.
 
-
+    *   Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly:
+    
     `inspect: (obj: Object) => string`
     
-    *   Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly.
-
 
 *   All logging methods in the above object then also contain:
     *   a 'thru' object that does passthrough logging (see below)
