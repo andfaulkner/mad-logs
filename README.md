@@ -338,7 +338,7 @@ Examples:
 
     // Assume LOG_LEVEL of verbose.
 
-    import { nodeLogFactory, buildFileTag, colors } from 'mad-logs/lib/node'
+    import { nodeLogFactory, buildFileTag, colors } from 'mad-logs/lib/node';
 
     const TAG = buildFileTag('fun-node-file.ts', colors.black.bgWhite);
     const log = nodeLogFactory(TAG);
@@ -352,3 +352,10 @@ Examples:
         log.info('message');
         // => {Logs} ::  `fun-node-file.ts  message`
     }
+
+### Convenience: exports colors module from Node mad-logs submodule
+
+    import { colors } from 'mad-logs/lib/node';
+
+*   Works exactly like the standard 'colors' module we all know and love.
+    *   (Yep, it's *that* colors)
