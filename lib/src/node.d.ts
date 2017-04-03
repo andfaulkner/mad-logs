@@ -1,1 +1,1 @@
-export { inspect, nodeLogFactory, buildFileTag } from '../node-log';
+export { inspect, nodeLogFactory, buildFileTag, colors } from '../node-log';

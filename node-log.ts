@@ -273,3 +273,6 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
 
 import { buildFileTagString } from './src/build-file-tag-string';
 export { buildFileTagString as buildFileTag }
+
+import * as colors from 'colors';
+export { colors };
