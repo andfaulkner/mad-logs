@@ -1,14 +1,20 @@
+----
 # mad-logs
-
+----
 *   colourful, obtrusive logs for the browser console and NodeJS.
 *   just like with Winston, alter amount of text shown based on current log level:
-    *   comes with levels:  silly, verbose, debug, info, warn, error, wtf
+    *   comes with log level-based logging, with automatic handling of any of the following LOG_LEVEL environment variable values:
+        *   silly, verbose, debug, info, warn, error, wtf
+    *   in Node, comes with special error-specific level-scoped log functions:
+        *   sillyError, verboseError, debugError, infoError
+*   Factories for file-specific logging: logFactory and nodeLogFactory
+        *   in Node, also has sub-factory for function level-specific logging: fileLogInstance.fn
+*   Automatic tag building.
 
 *   In the browser, provides over 20 styles to ensure logs of different types stay differentiable from one another at a glance.
 
 ----
 ## Usage (browser, commonJS);
-
     // my-fun-file.js
     const madLogs = require('mad-logs');
     const logMarkers = madLogs.logMarkers;
@@ -62,13 +68,16 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 ### Log marker usage
 *   When first "constructing" the log factory, define the log marker as the second argument (as seen above)
 
-### buildFileTagString
+----
+## NodeJS logging
+
+### buildFileTag
 *   Construct a styled tag for inclusion at the beginning of console logs. Intended for use in all manual logs in a specific file. Also
 *   Reason: in some environments the stack trace gets messed up by calling a wrapper function    around console methods (console.log etc.). This provides a nice marker for such environments
-*   Note: currently optimized for terminal use - outputs terminal colour string wrappers rather than browser CSS. However, it is still usage in the browser if you do not use the 
+*   Optimized for terminal use - outputs terminal colour string wrappers rather than browser CSS. However, it is still usage in the browser if you do not use the 
     colourization options
 
-####buildFileTagString Usage
+#### buildFileTag Usage
 
 (filename: string, colourizer?: Function | number, rpadSize?: string = 20): string
 
@@ -83,7 +92,7 @@ Examples:
     import { buildFileTagString } from 'mad-logs';
     const colors = require('colors'); // required if you want to apply styles
 
-    const TAG = buildFileTagString('[current-file]', colors.black.bgGreen.bold, 25);
+    const TAG = buildFileTagString('current-file.ts', colors.black.bgGreen.bold, 25);
 
     //...
     if (process.env.LOG_LEVEL === 'verbose') {
@@ -93,16 +102,58 @@ Examples:
     //        |
     //        |<--terminal edge here {not included in actual output}
 
-----
-## NodeJS logging
+### NodeJS log factory (nodeLogFactory):
 
-### Import syntax:
+(TAG: string): MadLogInstance
+
+*   TAG: Identifier for files to include in all log outputs from the constructed
+*   returns object containing functions: 
+
+    // Log - including file tag - if LOG_LEVEL is silly.
+    silly: (..args: string[]): void;
+
+    // Log - including file tag - if LOG_LEVEL is silly or verbose.
+    verbose: (..args: string[]): void;
+
+    // Log - including file tag - if LOG_LEVEL is silly, verbose, or info.
+    info: (..args: string[]): void;
+
+    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, or warn.
+    warn: (..args: string[]): void;
+
+    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, or error.
+    error: (..args: string[]): void;
+
+    // Log - including file tag - if LOG_LEVEL is silly, verbose, info, warn, error, or wtf.
+    wtf: (..args: string[]): void;
+
+    // Log an error - including file tag - if LOG_LEVEL is silly.
+    sillyError: (..args: string[]): void;
+
+    // Log an error - including file tag - if LOG_LEVEL is silly or verbose.
+    verboseError: (..args: string[]): void;
+
+    // Log an error - including file tag - if LOG_LEVEL is silly verbose, or info.
+    infoError: (..args: string[]): void;
+
+    // Build object identical to the one containing it, minus the fn method, where the 
+    // function name is added to the output string of all logging methods.
+    fn: (fnName: string): MadLogInstanceNoFn; // << same as this object, minus the fn method.
+
+    // Convert object into human-readable string, and log it if LOG_LEVEL is info, verbose, silly.
+    inspect: (obj: Object) => string
+
+*   All logging methods in the above object then also contain:
+    *   a 'thru' object that does passthrough logging (see below)
+    *   an 'inspect' object that inspects an object if the given LOG_LEVEL is met (see below)
+
+#### NodeJS log factory import syntax:
 
     import { nodeLogFactory } from 'mad-logs/lib/node-log'
 
 *   Kept in a separate file to avoid browser <-> Node incompatibilities
 
-### NodeJS logging usage examples: file log construction:
+#### NodeJS log factory usage examples: file log construction:
 
     // my-fun-node-file.ts
 
@@ -172,10 +223,10 @@ Examples:
         // {Logs}    :: 'my-fun-node-file.ts  funktasticString : boom-chi-boom-ba-boom-chi'
         // {Returns} :: 'yay a verbose return value! Woot!'
 
-### NodeJS inspect logging: log.inspect()
+### NodeJS inspect logging: log.inspect
 *   Log (and return) human-readable deep-nested versions of objects.
 
-log.inspect() method signatures:
+log.inspect method signatures:
     (obj: Object) => string
     *   Convert 'obj' to a human-readable string, and return it.
     *   If LOG_LEVEL is info or higher, log the object before returning it, including use of the log instance's currently defined tag.
