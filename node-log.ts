@@ -6,7 +6,6 @@
 import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
 import { inspect as nodeInspect } from 'util';
 
-
 /**************************************** TYPE DEFINITIONS ****************************************/
 
 export interface InspectFn {
@@ -271,3 +270,5 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
 
     return logObjBoundDeep as NodeMadLogsInstance;
 };
+
+export { buildFileTagString as buildFileTag } from './src/build-file-tag-string';

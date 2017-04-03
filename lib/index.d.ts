@@ -1,6 +1,9 @@
+/**
+ * Provide deprecation warning if buildFileTag used in the browser.
+ */
+export declare const buildFileTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { logMarkers } from './src/theming';
-declare const buildFileTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
     logLevel: string;
@@ -33,7 +36,6 @@ export interface MadLog {
  *           A log won't display unless the global log level is higher than the log level tied
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
-declare const logFactory: (config?: AppConf) => any;
+export declare const logFactory: (config?: AppConf) => any;
 /********************************************* EXPORT *********************************************/
-export { logMarkers, logFactory, buildFileTag };
-export { isolog } from './src/simple-by-log-level';
+export { logMarkers };

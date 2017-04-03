@@ -26,13 +26,12 @@ import { spawn, spawnSync, fork } from 'child_process';
 const spawnSyncOpts = { detached: true, env: process.env, stdio: 'inherit' };
 
 /******************************************** LOGGING *********************************************/
-import { buildFileTag } from '../index';
+
+/************************************ IMPORT FILE TO BE TESTED ************************************/
+import { inspect, nodeLogFactory, buildFileTag } from '../node-log';
 import * as colors from 'colors';
 
 const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
-
-/************************************ IMPORT FILE TO BE TESTED ************************************/
-import { inspect, nodeLogFactory } from '../node-log';
 
 /******************************************** HELPERS *********************************************/
 /**
@@ -243,6 +242,79 @@ describe('nodeLogFactory', function() {
 
         expect((fnLog as any).fn).to.be.empty;
         expect(log6.fn).to.be.a('function');
+    });
+});
+
+describe('buildFileTag', function() {
+    it('exists', function () {
+        expect(buildFileTag).to.exist;
+    });
+    it('outputs a string', function() {
+        expect(buildFileTag('test-name')).to.be.a('string');
+    });
+    it('includes the filename in the output', function () {
+        expect(buildFileTag('test-name')).to.contain('test-name');
+    });
+    it('surrounds output w colour codes if given function chain from colours module', function () {
+        const testOutput = buildFileTag('test-name', colors.blue);
+        expect(testOutput).to.contain('\u001b[34m');
+        expect(testOutput).to.contain('\u001b[39m');
+        expect(testOutput).to.contain('\u001b[34mtest-name\u001b[39m');
+    });
+    it('does not leave the terminal output colourized after running', function() {
+        const testOutput = buildFileTag('test-name', colors.blue);
+        const output = stdout.inspectSync(function(out) {
+            console.log(`${testOutput} hey`);
+            console.log(`this should not contain a colour code`);
+        });
+        expect(output[0]).to.contain('\u001b');
+        expect(output[1]).to.not.contain('\u001b[39m');
+    });
+    it('pads the output to 20 characters if a pad length is not provided', function () {
+        const testOutput = buildFileTag('test-name', colors.blue);
+        expect(testOutput).to.contain('           '); // 11 char space
+        expect(testOutput).to.not.contain('            '); // 12 char space
+        const testOutput2 = buildFileTag('eighteen-char-str!', colors.blue);
+        expect(testOutput2).to.contain('  ');
+    });
+    it('if a pad length is provided, pads output to given # of chars', function () {
+        const testOutput = buildFileTag('test-name', colors.blue, 25);
+        expect(testOutput).to.contain('                '); // 16 char space
+        expect(testOutput).to.not.contain('                 '); // 17 char space
+        const testOutput2 = buildFileTag('eighteen-char-str!', colors.blue, 25);
+        expect(testOutput2).to.contain('       ');
+        expect(_.partial(buildFileTag, 'test-name', colors.blue, 25)).to.not.throw(TypeError);
+    });
+    it('throws if colourizer arg is non-function or function without _styles prop', function () {
+        blockLogOutput(() => {
+            const output = stdout.inspectSync(function(out) {
+                expect(
+                    () => buildFileTag('test-name', 'ccawa' as any, 25)
+                ).to.throw(TypeError);
+                expect(
+                    () => buildFileTag('test-name', (() => 'out'), 25)
+                ).to.throw(TypeError);
+            });
+        })
+    });
+    it('does not accept non-strings as tag argument', function () {
+        blockLogOutput(() => {
+            const output = stdout.inspectSync(function(out) {
+                expect(
+                    () => buildFileTag((() => '') as any, colors.blue, 25)
+                ).to.throw(TypeError);
+            });
+        });
+    });
+    it('allows null as an arg for colourizer, & still pads if arg 3 is then a #', function () {
+        const testOutput = buildFileTag('test-name', null, 25);
+        expect(testOutput).to.contain('                '); // 16 char space
+        expect(testOutput).to.not.contain('                 '); // 17 char space
+    });
+    it('allows a number as 2nd arg, & pads by that amount', function () {
+        const testOutput = buildFileTag('test-name', 25);
+        expect(testOutput).to.contain('                '); // 16 char space
+        expect(testOutput).to.not.contain('                 '); // 17 char space
     });
 });
 

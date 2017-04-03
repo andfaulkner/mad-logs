@@ -1,16 +1,25 @@
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-// const find = require("lodash.find"); 
-// const isString = require("lodash.isstring"); 
+// const find = require("lodash.find");
+// const isString = require("lodash.isstring");
 
 import { find, isString } from 'lodash';
 import * as isNode from 'detect-node';
 
+import { buildFileTagString } from './src/build-file-tag-string';
+
+/**
+ * Provide deprecation warning if buildFileTag used in the browser.
+ */
+// tslint:disable-next-line
+export const buildFileTag = (filename: string, colourizer?: Function | number, rpadLen = 20): string => {
+    console.log(`DEPRECATION WARNING: mad-logs: buildFileTag method is intended for use in Node, `);
+    console.log(`and its inclusion in the browser build is now deprecated. Please import it from `);
+    console.log(`mad-logs/lib/node if using in Node, and remove uses from browser.`);
+    return buildFileTagString(filename)
+};
 
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { colours, style, logMarkers } from './src/theming';
-import { buildFileTagString } from './src/build-file-tag-string';
-const buildFileTag = buildFileTagString;
-
 
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
@@ -103,7 +112,7 @@ const defConfig = { logLevel: logLevelBase };
  *  Build 'logger' object for reuse throughout any module it's constructed in. Strings passed
  *  to the factory appear on the left of all logs emitted by functions in the returned object,
  *  easing identification (visually and by search) of logs emitted in a specific file/module.
- * 
+ *
  *  @param {string} filename - name of the module it is being built in.
  *  @param {Object} opts - config log object being built. Values in logMarkers object are intended
  *                         for assignment to this arg.
@@ -111,7 +120,7 @@ const defConfig = { logLevel: logLevelBase };
  *           A log won't display unless the global log level is higher than the log level tied
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
-const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
+export const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
     (conf: AppConf) => function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
         const logLevelNum = getLogVal(conf.logLevel);
         const fileTag = buildFileTagForBrowser(fileName, opts)
@@ -211,9 +220,4 @@ function bgWhite(text) {
 
 
 /********************************************* EXPORT *********************************************/
-export { logMarkers, logFactory, buildFileTag }
-
-export {
-    isolog
-    // logSilly, logVerbose, logDebug, logInfo, logWarn, logError, logWTF, logWtf
-} from './src/simple-by-log-level';
+export { logMarkers }
