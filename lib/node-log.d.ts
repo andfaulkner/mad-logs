@@ -14,12 +14,12 @@ export interface InspectFn {
     (msg: string, obj: any): string;
 }
 export interface MadLogFnObj {
-    (...argsToLog: any[]): void;
-    thru: (...argsToLog: any[]) => void;
+    (...args: any[]): void;
+    thru: (...args: any[]) => void;
     inspect: InspectFn;
 }
 export interface NodeMadLogsFuncInstance {
-    (...argsToLog: any[]): void;
+    (...args: any[]): void;
     blankWrap: MadLogFnObj;
     blankWrap2: MadLogFnObj;
     blankWrap3: MadLogFnObj;

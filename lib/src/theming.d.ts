@@ -12,6 +12,7 @@ export declare const colours: {
     darkMidnightBlue: string;
     deepRed: string;
     yellowishGold: string;
+    gold: string;
     darkGray: string;
     hotPink: string;
     tan: string;
@@ -103,6 +104,11 @@ export declare const madLogMarkers: {
         tagPrefix: string;
         style: string;
     };
+    lakeLouise: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
     lispyKatana: {
         tagSuffix: string;
         tagPrefix: string;
@@ -113,9 +119,14 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    lakeLouise: {
-        tagSuffix: string;
+    mechanicalAtFists: {
         tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    moProblems: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     nightmare: {
@@ -129,6 +140,11 @@ export declare const madLogMarkers: {
         style: string;
     };
     tangerines: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    smokeyHatesChristmasMusic: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -215,6 +231,11 @@ export declare const logMarkers: {} & {
         tagPrefix: string;
         style: string;
     };
+    lakeLouise: {
+        tagSuffix: string;
+        tagPrefix: string;
+        style: string;
+    };
     lispyKatana: {
         tagSuffix: string;
         tagPrefix: string;
@@ -225,9 +246,14 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
-    lakeLouise: {
-        tagSuffix: string;
+    mechanicalAtFists: {
         tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    moProblems: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     nightmare: {
@@ -241,6 +267,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     tangerines: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    smokeyHatesChristmasMusic: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;

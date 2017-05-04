@@ -15,6 +15,7 @@ export const colours = {
     darkMidnightBlue: '#003366',
     deepRed:          '#800000',
     yellowishGold:    '#E5C100',
+    gold:             '#FFD700',
     darkGray:         '#818181',
     hotPink:          '#FF69B4',
     tan:              '#C4AEAD',
@@ -125,6 +126,11 @@ export const madLogMarkers = {
         tagPrefix: '^^^^',
         style: `color: ${colours.green}; ${style.bold}`,
     },
+    lakeLouise: {
+        tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
+        tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
+        style: `color: ${colours.cyan};`,
+    },
     lispyKatana: {
         tagSuffix: ';;;;;;;;;;;;;;()()',
         tagPrefix: '',
@@ -135,10 +141,15 @@ export const madLogMarkers = {
         tagSuffix: ' o==[]::::::::::::::::> ',
         style: `color: ${colours.violet}; ${style.bold}`,
     },
-    lakeLouise: {
-        tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
-        tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
-        style: `color: ${colours.cyan};`,
+    mechanicalAtFists: {
+        tagPrefix: '--#@!@#--',
+        tagSuffix: ' || ',
+        style: `color: ${colours.indigo};`,
+    },
+    moProblems: {
+        tagPrefix: '$$$$$$$ |💰| ',
+        tagSuffix: ' |💰| $$$$$$$',
+        style: `color: ${colours.gold}; ${style.bold}`,
     },
     nightmare: {
         tagPrefix: '>:~',
@@ -154,6 +165,11 @@ export const madLogMarkers = {
         tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
         tagSuffix: ' _ ()()()*()',
         style: `color: ${colours.orange};`,
+    },
+    smokeyHatesChristmasMusic: {
+        tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
+        tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
+        style: `color: ${colours.orange}; ${style.underline}; ${style.bold}`,
     },
     springy: {
         tagPrefix: '◀-\\__/--',
@@ -181,3 +197,5 @@ export const saneLogMarkers = {
 };
 
 export const logMarkers = Object.assign({}, madLogMarkers/*, saneLogMarkers*/);
+
+//'🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣💣💣🗡⚔🔫💧❄☃☄🌊
