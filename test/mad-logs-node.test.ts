@@ -28,7 +28,7 @@ const spawnSyncOpts = { detached: true, env: process.env, stdio: 'inherit' };
 /******************************************** LOGGING *********************************************/
 
 /************************************ IMPORT FILE TO BE TESTED ************************************/
-import { inspect, nodeLogFactory, buildFileTag } from '../node-log';
+import { inspect, nodeLogFactory, buildFileTag } from '../node';
 import * as colors from 'colors';
 
 const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);

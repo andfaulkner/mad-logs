@@ -134,6 +134,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    pipeDream: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     swimmers: {
         tagPrefix: string;
         tagSuffix: string;
@@ -144,7 +149,7 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    smokeyHatesChristmasMusic: {
+    smokeyHatesChristmas: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -261,6 +266,11 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
+    pipeDream: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     swimmers: {
         tagPrefix: string;
         tagSuffix: string;
@@ -271,7 +281,7 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
-    smokeyHatesChristmasMusic: {
+    smokeyHatesChristmas: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;

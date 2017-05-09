@@ -114,7 +114,8 @@ export const madLogMarkers = {
     escherBarbieLego: {
         tagPrefix: '||┗┛┏┓',
         tagSuffix: '┏┓┗┛||',
-        style: 'background-color: ${colours.hotPink}; color: ${colours.white}',
+        style: (isNode) ? `${isoStyles.bgWhite}${isoStyles.magenta}`
+                        : 'background-color: ${colours.hotPink}; color: ${colours.white}',
     },
     farmerBrown: {
         tagPrefix: '[🐑🐂🐑]-',
