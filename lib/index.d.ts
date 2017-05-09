@@ -6,7 +6,7 @@ export declare const buildFileTag: (filenm: string, clrize?: number | Function, 
 import { logMarkers } from './src/theming';
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
-    logLevel: string;
+    logLevel: keyof MadLog;
 }
 export interface LogOpts {
     tagPrefix: string;

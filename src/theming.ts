@@ -175,12 +175,14 @@ export const madLogMarkers = {
     smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
         tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
-        style: `color: ${colours.orange}; ${style.underline}; ${style.bold}`,
+        style: (isNode) ? `${isoStyles.green}${isoStyles.bold}${isoStyles.bgWhite}`
+                        : `color: ${colours.orange}; ${style.underline}; ${style.bold}`,
     },
     springy: {
         tagPrefix: '◀-\\__/--',
         tagSuffix: '--\\__/-►',
-        style: `color: ${colours.blue}; background-color: ${colours.white};`,
+        style: (isNode) ? `${isoStyles.blue}${isoStyles.bgWhite}`
+                        : `color: ${colours.blue}; background-color: ${colours.white};`,
     },
     vendetta: {
         tagPrefix: "/~~VVV~~|| ",
@@ -193,6 +195,12 @@ export const madLogMarkers = {
         tagSuffix: ' >> ',
         style: '',
     },
+    zebra: {
+        tagPrefix: '| | | | |',
+        tagSuffix: '| | | | |',
+        style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
+                        : `color: ${colours.white}; background-color: ${colours.black};`
+    }
 };
 
 // TODO - WIP

@@ -10,7 +10,6 @@ import { buildFileTagString } from './src/build-file-tag-string';
 /**
  * Provide deprecation warning if buildFileTag used in the browser.
  */
-// tslint:disable-next-line
 export const buildFileTag = (filenm: string, clrize?: Function | number, rpadLen = 20): string => {
     console.warn(`DEPRECATION WARNING: mad-logs: buildFileTag method is intended for use in Node,`);
     console.warn(` & its inclusion in the browser build is now deprecated. Please import it from`);
@@ -23,7 +22,7 @@ import { colours, style, logMarkers } from './src/theming';
 
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface AppConf {
-    logLevel: string;
+    logLevel: keyof MadLog;
 }
 
 export interface LogOpts {
@@ -47,10 +46,8 @@ type LogMethod = (...strs: any[]) => string;
 type ToConsoleFunc = (...strs: any[]) => void;
 
 /********************************** CONFIG & LOG LEVEL HANDLING ***********************************/
-// default log level is 'info', if no config object is given, and none is set in the environment
-const logLevelBase = (process.env.LOG_LEVEL)
-    ? process.env.LOG_LEVEL
-    : 'info';
+// Default log level is info, if no config object given & no level set in the environment.
+const logLevelBase = (process.env.LOG_LEVEL) ? process.env.LOG_LEVEL : 'info';
 
 /**
  * Default config options
@@ -59,34 +56,40 @@ const defLogOpts = { tagPrefix: '', tagSuffix: '', style: '' };
 const defConfig = { logLevel: logLevelBase };
 
 /**
- * Defines the available log levels in the application
+ * Defines the available log levels in the application.
  */
-const logValues = {
-    silly: 1,
-    verbose: 2,
-    debug: 3,
-    info: 4,
-    warn: 5,
-    error: 6,
-    wtf: 7,
-};
+const logValues = { silly: 1, verbose: 2, debug: 3, info: 4, warn: 5, error: 6, wtf: 7 };
 
 /**
  * Get the log level value (number) corresponding to the log level string.
  */
-const getLogVal = <T extends keyof typeof logValues>(logLvl: T): number | boolean =>
-    find(logValues, (logNum: number, logStr: string) => logStr === (logLvl || 'info') ? logNum : false);
+const getLogVal = <T extends keyof typeof logValues>(logLvl: T): number => logValues[logLvl];
 
 /****************************************** COLOUR UTILS ******************************************/
-// Start: \u001b[33m     End: \u001b[39m
+/**
+ * Wrap text with tags to change the fg colour to yellow
+ *     START TAG: \u001b[33m    END TAG: \u001b[39m
+ */
 const yellow = (text: string): string => `\u001b[33m${text}\u001b[39m`;
-// Start: \u001b[31m     End: \u001b[39m
+/**
+ * Wrap text with tags to change the fg colour to red
+ *     START TAG: \u001b[31m    END TAG: \u001b[39m
+ */
 const red = (text: string): string => `\u001b[31m${text}\u001b[39m`;
-// Start: \u001b[37m     End: \u001b[39m
+/**
+ * Wrap text with tags to change the fg colour to white
+ *     START TAG: \u001b[37m    END TAG: \u001b[39m
+ */
 const white = (text: string): string => `\u001b[37m${text}\u001b[39m`;
-// Start: \u001b[41m     End: \u001b[49m
+/**
+ * Wrap text with tags to change the bg colour to red
+ *     START TAG: \u001b[41m    END TAG: \u001b[49m
+ */
 const bgRed = (text: string): string => `\u001b[41m${text}\u001b[49m`;
-// Start: \u001b[47m     End: \u001b[49m
+/**
+ * Wrap text with tags to change the fg colour to white
+ *     START TAG: \u001b[47m    END TAG: \u001b[49m
+ */
 const bgWhite = (text: string): string => `\u001b[47m${text}\u001b[49m`;
 
 /****************************************** VERIFICATION ******************************************/
@@ -103,14 +106,14 @@ const verifyConfig = (config) => {
     if (typeof config === 'object' && Object.keys(config).length === 0) {
         return;
     }
-    if (!(config.logLevel)) {
+    if (!config.logLevel) {
         throw new TypeError('Config object passed to mad-logs logFactory must be null or have ' +
                             'key logLevel')
     }
     if (!isString(config.logLevel)) {
         throw new TypeError('Config.logLevel must be a string');
     }
-    if (!(Object.keys(logValues).some((logValue) => (logValue === config.logLevel)))) {
+    if (!Object.keys(logValues).some(logValue => logValue === config.logLevel)) {
         throw new TypeError(
             `config.logLevel must be one of the following: ${Object.keys(logValues).join(', ')}`
         );
@@ -135,7 +138,7 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
     verifyConfig(config);
 
     return function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
-        const logLevelNum = getLogVal((config as any).logLevel || 4);
+        const logLevelNum = getLogVal((config as any).logLevel || 'info');
         const fileTag = buildFileTagForBrowser(fileName, opts)
 
         const basicLog = (...strs: any[]): any => {

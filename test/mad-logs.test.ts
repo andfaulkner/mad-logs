@@ -23,7 +23,7 @@ import * as colors from 'colors';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../lib/index';
-const { buildFileTag, logFactory, logMarkers } = madLogs;
+import { buildFileTag, logFactory, logMarkers } from '../lib/index';
 
 /******************************************** HELPERS *********************************************/
 /**

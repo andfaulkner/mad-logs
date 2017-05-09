@@ -169,6 +169,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    zebra: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
 };
 export declare const saneLogMarkers: {
     tagPrefix: string;
@@ -297,6 +302,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     xmlHell: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    zebra: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;

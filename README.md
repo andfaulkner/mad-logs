@@ -12,7 +12,7 @@
         *   in Node, also has sub-factory for function level-specific logging: fileLogInstance.fn
 *   Automatic tag building.
 
-*   In the browser, provides over 20 styles to ensure logs of different types stay differentiable from one another at a glance.
+*   In the browser, provides over 25 styles to ensure logs of different types stay differentiable from one another at a glance.
 
 
 ---
@@ -26,24 +26,73 @@
 
 
 ----
+
 ## Usage (browser, commonJS);
+Import the library 
+
+    // my-fun-file.ts
+    import { logFactory, logMarkers } from 'mad-logs';
+
     // my-fun-file.js
     const madLogs = require('mad-logs');
     const logMarkers = madLogs.logMarkers;
+    const logFactory = madLogs.logFactory;
 
-    // invoke the log factory for this file
-    const log = madLogs.logFactory({ logLevel: "debug" })('my-fun-file.js', logMarkers.maceWindu);
+Build a logger with the log factory
+
+    const log = logFactory()('my-fun-file.js', logMarkers.maceWindu);
+
+*   You can also explicitly set the object's log level when constructing it:
+
+    ```javascript
+    const log = logFactory({ logLevel: "debug" })('my-fun-file.ts', logMarkers.maceWindu);
+    ```
+
+*   If not explicitly set, logLevel defaults to the global environment value of process.env.LOG_LEVEL.
+    *   e.g. the value set with:
+
+        ```bash
+            LOG_LEVEL=verbose node some-process.js
+        ```
+
+Do some mad, mad logging!
 
     log('display me on the browser console!');
         // => displays "display me on the browser console!" preceded by a purple lightsaber
-    log.verbose('display me on the browser console, but only if we're in verbose mode or higher');
-    log.error('display me on the browser console, but only if we're in verbose mode or higher');
+        // returns 'display me on the browser console!'
+
+    log.silly('display me on the browser console, but only if the log level is set to "silly"');
+
+    log.verbose('display me on the browser console, but only if the log level is "verbose" ' +
+                'or higher (verbose or silly mode)');
+
+    log.info('display me on the browser console, but only if the log level is "info" ' +
+             'or higher (info, verbose, or silly)');
+
+    log.warn('display me on the browser console, but only if the log level is "warn" ' +
+             'or higher (warn, info, verbose, or silly)');
+
+    log.error('display this on the browser console as an error message, but only if the ' +
+              'log level is "error" or higher (error, warn, info, verbose, or silly)');
+
+    log.wtf('Also display this on the browser console, as an error message');
+
+    const funcRes =
+        log.silly('Log return value of myFunction(). Pass result thru & assign it to var "funcRes"',
+                  myFunction());
+    // resultOfFunction now contains the return value of myFunction()
+
+    // my-fun-static-file.ts
+    import { logFactory, logMarkers } from 'mad-logs';
+
 
 ### Details (on above)
 *   { logLevel: someLevel } defines the logLevel for the current context. Logs only display if they are "higher" than this level
 *   'my-fun-file.js' is a placeholder for the name of the current file. This appears in each log line, as part of the "tag"
 *   logMarkers.maceWindu << replace with any item in the log marker styles list (see below)
     *   or make your own log markers (Details on this coming soon)
+*   All log instance functions return the last value they were passed.
+
 
 ### Invoking the log factory with default or environment config:
 If process.env.LOG_LEVEL is set (which you should - passing config objects in all the time is annoying and poorly encapsulated),
@@ -70,19 +119,31 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 *   lispyKatana
 *   maceWindu
 *   lakeLouise
+*   moProblems
 *   nightmare
+*   pipeDream
 *   swimmers
+*   smokeyHatesChristmas
 *   tangerines
 *   springy
 *   vendetta
 *   xmlHell
+*   zebra
 
 ### Log marker usage
 *   When first "constructing" the log factory, define the log marker as the second argument (as seen above)
+    *   if not given, it uses the logMarkers.default style.
 
 
 ----
-## NodeJS logging
+
+## NodeJS-specific logging
+
+*   Note that you can still use the main mad-logs module in Node, there just may be some formatting oddness.
+    *   ...however, it's not optimized for Node. Some styles work quite well, others don't. Efficacy also varies between terminals.
+    *   The NodeJS-specific logging sub-module should always work in every terminal environment, under all circumstances (it uses terminal colour codes rather than CSS styling)
+        *   Uses the famous colors.js module for styling - which can also be imported through this library for convenience.
+
 
 ### buildFileTag
 *   Construct a styled tag for inclusion at the beginning of console logs.
