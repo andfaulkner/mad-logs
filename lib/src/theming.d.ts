@@ -159,6 +159,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    theHeist: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     vendetta: {
         tagPrefix: string;
         tagSuffix: string;
@@ -292,6 +297,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    theHeist: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
