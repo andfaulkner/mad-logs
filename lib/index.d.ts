@@ -1,7 +1,7 @@
 /**
  * Provide deprecation warning if buildFileTag used in the browser.
  */
-export declare const buildFileTag: (filename: string, colourizer?: number | Function, rpadLen?: number) => string;
+export declare const buildFileTag: (filenm: string, clrize?: number | Function, rpadLen?: number) => string;
 /************************************* IMPORT PROJECT MODULES *************************************/
 import { logMarkers } from './src/theming';
 /**************************************** TYPE DEFINITIONS ****************************************/
