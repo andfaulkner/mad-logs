@@ -144,7 +144,32 @@ describe('logFactory', function() {
                 curLog.some((lBit) => lBit === 'testOutputError'))).to.be.true;
             expect(storeWarnErrorLogs.some((curLog) =>
                 curLog.some((lBit) => lBit === 'testOutputWtf'))).to.be.true;
-            });
+        });
+
+        it('All log instance methods return last arg given, when 1 args provided', function () {
+            expect(logger.silly('omnomnom')).to.eql('omnomnom');
+            expect(logger.verbose('omnomnom')).to.eql('omnomnom');
+            expect(logger.info('omnomnom')).to.eql('omnomnom');
+            expect(logger.warn('omnomnom')).to.eql('omnomnom');
+            expect(logger.error('omnomnom')).to.eql('omnomnom');
+            expect(logger.wtf('omnomnom')).to.eql('omnomnom');
+        });
+        it('All log instance methods return last arg given, when 2 args provided', function () {
+            expect(logger.silly('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+            expect(logger.verbose('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+            expect(logger.info('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+            expect(logger.warn('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+            expect(logger.error('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+            expect(logger.wtf('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
+        });
+        it('All log instance methods return last arg given, when 4 args provided', function () {
+            expect(logger.silly('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+            expect(logger.verbose('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+            expect(logger.info('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+            expect(logger.warn('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+            expect(logger.error('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+            expect(logger.wtf('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
+        });
     });
 });
 

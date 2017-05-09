@@ -15,13 +15,13 @@ export interface LogOpts {
 }
 export interface MadLog {
     (...strs: any[]): any;
-    silly: any;
-    verbose: any;
-    debug: any;
-    info: any;
-    warn: any;
-    error: any;
-    wtf: any;
+    silly: (...args: Array<(string | any)>) => void;
+    verbose: (...args: Array<(string | any)>) => void;
+    debug: (...args: Array<(string | any)>) => void;
+    info: (...args: Array<(string | any)>) => void;
+    warn: (...args: Array<(string | any)>) => void;
+    error: (...args: Array<(string | any)>) => void;
+    wtf: (...args: Array<(string | any)>) => void;
 }
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
 /**

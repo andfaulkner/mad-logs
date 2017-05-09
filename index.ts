@@ -34,13 +34,13 @@ export interface LogOpts {
 
 export interface MadLog {
     (...strs: any[]): any;
-    silly: any;
-    verbose: any;
-    debug: any;
-    info: any;
-    warn: any;
-    error: any;
-    wtf: any;
+    silly:   (...args: Array<(string | any)>) => void;
+    verbose: (...args: Array<(string | any)>) => void;
+    debug:   (...args: Array<(string | any)>) => void;
+    info:    (...args: Array<(string | any)>) => void;
+    warn:    (...args: Array<(string | any)>) => void;
+    error:   (...args: Array<(string | any)>) => void;
+    wtf:     (...args: Array<(string | any)>) => void;
 }
 
 type LogMethod = (...strs: any[]) => string;
@@ -72,13 +72,22 @@ const logValues = {
 };
 
 /**
- * Get the log level value (number) corresponding to the log level string
+ * Get the log level value (number) corresponding to the log level string.
  */
-const getLogVal = (logLevel = 'info'): number | boolean => {
-    return find(logValues, (logValNum: number, logVal: string) => {
-        return ((logVal === logLevel) ? logValNum : (false));
-    });
-};
+const getLogVal = <T extends keyof typeof logValues>(logLvl: T): number | boolean =>
+    find(logValues, (logNum: number, logStr: string) => logStr === (logLvl || 'info') ? logNum : false);
+
+/****************************************** COLOUR UTILS ******************************************/
+// Start: \u001b[33m     End: \u001b[39m
+const yellow = (text: string): string => `\u001b[33m${text}\u001b[39m`;
+// Start: \u001b[31m     End: \u001b[39m
+const red = (text: string): string => `\u001b[31m${text}\u001b[39m`;
+// Start: \u001b[37m     End: \u001b[39m
+const white = (text: string): string => `\u001b[37m${text}\u001b[39m`;
+// Start: \u001b[41m     End: \u001b[49m
+const bgRed = (text: string): string => `\u001b[41m${text}\u001b[49m`;
+// Start: \u001b[47m     End: \u001b[49m
+const bgWhite = (text: string): string => `\u001b[47m${text}\u001b[49m`;
 
 /****************************************** VERIFICATION ******************************************/
 /**
@@ -129,46 +138,48 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
         const logLevelNum = getLogVal((config as any).logLevel || 4);
         const fileTag = buildFileTagForBrowser(fileName, opts)
 
-        const basicLog = (...strs: any[]): void => {
+        const basicLog = (...strs: any[]): any => {
             console.log(fileTag, opts.style, ...strs);
+            return strs[strs.length - 1];
         };
 
         /**
          * Builder for logging functions called by (most) properties on outputted log function-object
          */
-        const logMethodFactory = (levelNum: number, out: ToConsoleFunc = basicLog): LogMethod => {
-            return (...strs) => {
-                if (logLevelNum < levelNum) {
-                    out(...strs);
-                }
-                return strs[0];
+        const logMethodFactory = (lvl: number, out: ToConsoleFunc = basicLog): LogMethod => {
+            return (...strs: any[]): any => {
+                if (logLevelNum < lvl) out(...strs);
+                return strs[strs.length - 1];
             }
-        };
+        }
 
         /************* CONSTRUCT LOG OBJECT METHODS FROM logMethodFactory **************/
-        const log = logMethodFactory(4) as MadLog;
-        log.silly = logMethodFactory(2);
+        const log   = logMethodFactory(4) as MadLog;
+        log.silly   = logMethodFactory(2);
         log.verbose = logMethodFactory(3);
-        log.debug = logMethodFactory(4);
-        log.info = logMethodFactory(5);
-        log.warn = logMethodFactory(6, warnLogOut(fileTag));
+        log.debug   = logMethodFactory(4);
+        log.info    = logMethodFactory(5);
+        log.warn    = logMethodFactory(6, warnLogOut(fileTag));
 
         /*********************** CONSTRUCT ERROR OBJECT METHOD *************************/
-        log.error = logMethodFactory(7, (...strs) => {
-            (isNode)
-                  // \u001b[41m \u001b[49m   \u001b[37m \u001b[39m
-                ? console.error(bgRed(white((`[ERROR] ${fileTag}`))), ' :: ', ...strs)
-                : console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
+        log.error = logMethodFactory(7, (...strs: any[]): any => {
+            if (isNode){
+                console.error(bgRed(white((`[ERROR] ${fileTag}`))), ' :: ', ...strs)
+            } else {
+                console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
+            }
+            return strs[strs.length - 1];
         });
 
         /******************** CONSTRUCT SEVERE ERROR OBJECT METHOD *********************/
-        log.wtf = logMethodFactory(8, (...strs) => {
-            (isNode)
-                  // \u001b[31m \u001b[39m   \u001b[47m \u001b[49m
-                ? console.error('\n', red(bgWhite(`[! DANGER: FATAL ERROR !] ${fileTag}`)),
-                                ' :: ', ...strs, '\n')
-                : console.error(fileTag, ': ', '%c[! DANGER: FATAL ERROR !]', 'color: red;', ':: ',
-                                ...strs);
+        log.wtf = logMethodFactory(8, (...strs: any[]): any => {
+            const wtfTag = `[! DANGER: FATAL ERROR !]`;
+            if (isNode) {
+                console.error('\n', red(bgWhite(`${wtfTag} ${fileTag}`)), ' :: ', ...strs, '\n');
+            } else {
+                console.error(fileTag, ': ', `%c${wtfTag}`, 'color: red;', ':: ', ...strs);
+            }
+            return strs[strs.length - 1];
         });
 
         /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
@@ -184,41 +195,18 @@ function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
 }
 
 /**
- * Output a warning to the console with fileTag as a "marker" as ...strs as the output.
- * Isomorphic.
+ * Output a warning to the console with fileTag as a "marker" as ...strs as
+ * the output. Isomorphic.
  */
 function warnLogOut(fileTag: string): ToConsoleFunc {
-    return (...strs) => {
-        (isNode)
-            ? console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs)
-            : console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
+    return (...strs: any[]): any => {
+        if (isNode) {
+            console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs)
+        } else {
+            console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
+        }
+        return strs[strs.length - 1];
     };
-}
-
-/****************************************** COLOUR UTILS ******************************************/
-// Start: \u001b[33m     End: \u001b[39m
-function yellow(text) {
-    return `\u001b[33m${text}\u001b[39m`;
-}
-
-// Start: \u001b[31m     End: \u001b[39m
-function red(text) {
-    return `\u001b[31m${text}\u001b[39m`;
-}
-
-// Start: \u001b[37m     End: \u001b[39m
-function white(text) {
-    return `\u001b[37m${text}\u001b[39m`;
-}
-
-// Start: \u001b[41m     End: \u001b[49m
-function bgRed(text) {
-    return `\u001b[41m${text}\u001b[49m`;
-}
-
-// Start: \u001b[47m     End: \u001b[49m
-function bgWhite(text) {
-    return `\u001b[47m${text}\u001b[49m`;
 }
 
 /********************************************* EXPORT *********************************************/
