@@ -156,6 +156,11 @@ export const madLogMarkers = {
         tagSuffix: '~:<',
         style: `color: ${colours.white}; background-color: ${colours.black};`,
     },
+    pipeDream: {
+        tagPrefix: '┣╋━╋~🛀~╋━╋┫',
+        tagSuffix: '┣┫',
+        style: `color: ${colours.gray}; background-color: ${colours.blue};`,
+    },
     swimmers: {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
@@ -166,7 +171,7 @@ export const madLogMarkers = {
         tagSuffix: ' _ ()()()*()',
         style: `color: ${colours.orange};`,
     },
-    smokeyHatesChristmasMusic: {
+    smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
         tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
         style: `color: ${colours.orange}; ${style.underline}; ${style.bold}`,
