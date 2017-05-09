@@ -11,11 +11,11 @@ import { buildFileTagString } from './src/build-file-tag-string';
  * Provide deprecation warning if buildFileTag used in the browser.
  */
 // tslint:disable-next-line
-export const buildFileTag = (filename: string, colourizer?: Function | number, rpadLen = 20): string => {
-    console.log(`DEPRECATION WARNING: mad-logs: buildFileTag method is intended for use in Node, `);
-    console.log(`and its inclusion in the browser build is now deprecated. Please import it from `);
-    console.log(`mad-logs/lib/node if using in Node, and remove uses from browser.`);
-    return buildFileTagString(filename)
+export const buildFileTag = (filenm: string, clrize?: Function | number, rpadLen = 20): string => {
+    console.warn(`DEPRECATION WARNING: mad-logs: buildFileTag method is intended for use in Node,`);
+    console.warn(` & its inclusion in the browser build is now deprecated. Please import it from`);
+    console.warn(` mad-logs/lib/node if using in Node, and remove uses from browser.`);
+    return buildFileTagString(filenm)
 };
 
 /************************************* IMPORT PROJECT MODULES *************************************/
@@ -46,12 +46,17 @@ export interface MadLog {
 type LogMethod = (...strs: any[]) => string;
 type ToConsoleFunc = (...strs: any[]) => void;
 
-
-/*************************************** LOG LEVEL HANDLING ***************************************/
+/********************************** CONFIG & LOG LEVEL HANDLING ***********************************/
 // default log level is 'info', if no config object is given, and none is set in the environment
 const logLevelBase = (process.env.LOG_LEVEL)
     ? process.env.LOG_LEVEL
     : 'info';
+
+/**
+ * Default config options
+ */
+const defLogOpts = { tagPrefix: '', tagSuffix: '', style: '' };
+const defConfig = { logLevel: logLevelBase };
 
 /**
  * Defines the available log levels in the application
@@ -75,37 +80,33 @@ const getLogVal = (logLevel = 'info'): number | boolean => {
     });
 };
 
+/****************************************** VERIFICATION ******************************************/
 /**
- * Ensure valid config object is passed in
- * @param  {Function} next - next function in the sequence. Passed in to allow this function to
- *                           wrap other functions
- * @param  {Object<String>}> string must be 1 of the logValues object's keys to be valid
- * @return {Function} next
+ * Ensure valid config object is passed in.
+ * @param  {Object} string must be 1 of the logValues object's keys to be valid.
+ * @return {undefined} - this operates via side effects (thrown exception on fail)
  */
-const verifyConfig = (config, next) => {
-    if (!config || (typeof config === 'object' && Object.keys(config).length === 0)) {
-        return next(config);
+const verifyConfig = (config) => {
+    if (!config) return;
+    if (config.constructor.name === 'Array') {
+        throw new TypeError('Config object passed to mad-logs logFactory must not be an Array');
+    }
+    if (typeof config === 'object' && Object.keys(config).length === 0) {
+        return;
     }
     if (!(config.logLevel)) {
-        throw new TypeError('config object passed to mad-logs logFactory must have key logLevel')
+        throw new TypeError('Config object passed to mad-logs logFactory must be null or have ' +
+                            'key logLevel')
     }
     if (!isString(config.logLevel)) {
-        throw new TypeError('config.logLevel must be a string');
+        throw new TypeError('Config.logLevel must be a string');
     }
     if (!(Object.keys(logValues).some((logValue) => (logValue === config.logLevel)))) {
         throw new TypeError(
             `config.logLevel must be one of the following: ${Object.keys(logValues).join(', ')}`
         );
     }
-    return next(config);
 };
-
-/**
- * Default config options
- */
-const defLogOpts = { tagPrefix: '', tagSuffix: '', style: '' };
-const defConfig = { logLevel: logLevelBase };
-
 
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
 /**
@@ -120,9 +121,12 @@ const defConfig = { logLevel: logLevelBase };
  *           A log won't display unless the global log level is higher than the log level tied
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
-export const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
-    (conf: AppConf) => function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
-        const logLevelNum = getLogVal(conf.logLevel);
+export const logFactory = (config: (AppConf | {}) = defConfig) => {
+    // Throw if invalid params given.
+    verifyConfig(config);
+
+    return function buildLog(fileName: string, opts: LogOpts = defLogOpts): MadLog {
+        const logLevelNum = getLogVal((config as any).logLevel || 4);
         const fileTag = buildFileTagForBrowser(fileName, opts)
 
         const basicLog = (...strs: any[]): void => {
@@ -169,8 +173,8 @@ export const logFactory = (config: AppConf = defConfig) => verifyConfig(config,
 
         /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
         return log;
-    });
-
+    };
+}
 
 /******************************************** HELPERS *********************************************/
 function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
@@ -190,7 +194,6 @@ function warnLogOut(fileTag: string): ToConsoleFunc {
             : console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
     };
 }
-
 
 /****************************************** COLOUR UTILS ******************************************/
 // Start: \u001b[33m     End: \u001b[39m
@@ -217,7 +220,6 @@ function bgRed(text) {
 function bgWhite(text) {
     return `\u001b[47m${text}\u001b[49m`;
 }
-
 
 /********************************************* EXPORT *********************************************/
 export { logMarkers }

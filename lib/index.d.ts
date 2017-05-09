@@ -36,6 +36,6 @@ export interface MadLog {
  *           A log won't display unless the global log level is higher than the log level tied
  *           to the function (e.g. if LOG_LEVEL=info, a message passed to log.debug won't show).
  */
-export declare const logFactory: (config?: AppConf) => any;
+export declare const logFactory: (config?: {} | AppConf) => (fileName: string, opts?: LogOpts) => MadLog;
 /********************************************* EXPORT *********************************************/
 export { logMarkers };

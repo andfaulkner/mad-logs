@@ -4,6 +4,8 @@
  * Taken from colors - this is a collection of styles that are nicely visible on the terminal.
  * It was a royal pain in the ass determining which were good and which were invisible.
  *
+ * WIP - not included in library yet.
+ *
  */
 export declare const serverStyles: {
     blueBgWhite: any;
