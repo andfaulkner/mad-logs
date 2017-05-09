@@ -184,6 +184,13 @@ export const madLogMarkers = {
         style: (isNode) ? `${isoStyles.blue}${isoStyles.bgWhite}`
                         : `color: ${colours.blue}; background-color: ${colours.white};`,
     },
+    theHeist: {
+        tagPrefix: "🚚==|💰😰🔫😎|_",
+        tagSuffix: "_|😎🔧🔒|📦",
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
+                        : `${colours.black}; ${style.underline}; ${style.bold}; ` +
+                              `background-color: ${colours.black};`
+    },
     vendetta: {
         tagPrefix: "/~~VVV~~|| ",
         tagSuffix: ' ||~~VVV~~\\',
@@ -212,4 +219,6 @@ export const saneLogMarkers = {
 
 export const logMarkers = Object.assign({}, madLogMarkers/*, saneLogMarkers*/);
 
-//'🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣💣💣🗡⚔🔫💧❄☃☄🌊
+// '🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣💣💣🗡⚔🔫💧❄☃☄🌊
+// 🚚 🔒|🔐  🔒 🔓 🗝 🏦 💣 💳 📦 💼 🔦 🔧 🔨 🔩 🔪 🔫
+
