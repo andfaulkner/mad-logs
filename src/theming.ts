@@ -188,8 +188,8 @@ export const madLogMarkers = {
         tagPrefix: "🚚==|💰😰🔫😎|_",
         tagSuffix: "_|😎🔧🔒|📦",
         style: (isNode) ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
-                        : `${colours.black}; ${style.underline}; ${style.bold}; ` +
-                              `background-color: ${colours.black};`
+                        : `color: ${colours.white}; ${style.underline}; ` +
+                          `background-color: ${colours.black}; ${style.bold};`
     },
     vendetta: {
         tagPrefix: "/~~VVV~~|| ",
