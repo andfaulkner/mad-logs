@@ -24,7 +24,7 @@ import { isVerbose } from 'env-var-helpers';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../lib/index';
-import { buildFileTag, logFactory, logMarkers } from '../lib/index';
+import { buildFileTag, logFactory, logMarkers, MadLog } from '../lib/index';
 
 /******************************************** HELPERS *********************************************/
 /**
@@ -88,7 +88,7 @@ describe('logFactory', function() {
     });
 
     describe('log function constructed by logFactory (with no styling)', function() {
-        let logger;
+        let logger: MadLog;
         before(() => {
             const config = { logLevel: 'silly' };
             logger = logFactory(config)('mad-logs.test');

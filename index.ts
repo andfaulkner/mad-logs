@@ -32,18 +32,18 @@ export interface LogOpts {
 }
 
 export interface MadLog {
-    (...strs: any[]): any;
-    silly:   (...args: Array<(string | any)>) => any;
-    verbose: (...args: Array<(string | any)>) => any;
-    debug:   (...args: Array<(string | any)>) => any;
-    info:    (...args: Array<(string | any)>) => any;
-    warn:    (...args: Array<(string | any)>) => any;
-    error:   (...args: Array<(string | any)>) => any;
-    wtf:     (...args: Array<(string | any)>) => any;
+    <T>(...strs: any[]): T;
+    silly:   <T>(...args: Array<(string | any)>) => T;
+    verbose: <T>(...args: Array<(string | any)>) => T;
+    debug:   <T>(...args: Array<(string | any)>) => T;
+    info:    <T>(...args: Array<(string | any)>) => T;
+    warn:    <T>(...args: Array<(string | any)>) => T;
+    error:   <T>(...args: Array<(string | any)>) => T;
+    wtf:     <T>(...args: Array<(string | any)>) => T;
 }
 
-type LogMethod = (...strs: any[]) => string;
-type ToConsoleFunc = (...strs: any[]) => any;
+type LogMethod = <T>(...strs: any[]) => T;
+type ToConsoleFunc = <T>(...strs: any[]) => T;
 
 /********************************** CONFIG & LOG LEVEL HANDLING ***********************************/
 // Default log level is info, if no config object given & no level set in the environment.
@@ -150,9 +150,9 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
          * Builder for logging functions called by (most) properties on outputted log function-object
          */
         const logMethodFactory = (lvl: number, out: ToConsoleFunc = basicLog): LogMethod => {
-            return (...strs: any[]): any => {
+            return <T>(...strs: any[]): T => {
                 if (logLevelNum < lvl) out(...strs);
-                return strs[strs.length - 1];
+                return strs[strs.length - 1] as T;
             }
         }
 

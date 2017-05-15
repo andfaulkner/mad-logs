@@ -14,14 +14,14 @@ export interface LogOpts {
     style: string;
 }
 export interface MadLog {
-    (...strs: any[]): any;
-    silly: (...args: Array<(string | any)>) => any;
-    verbose: (...args: Array<(string | any)>) => any;
-    debug: (...args: Array<(string | any)>) => any;
-    info: (...args: Array<(string | any)>) => any;
-    warn: (...args: Array<(string | any)>) => any;
-    error: (...args: Array<(string | any)>) => any;
-    wtf: (...args: Array<(string | any)>) => any;
+    <T>(...strs: any[]): T;
+    silly: <T>(...args: Array<(string | any)>) => T;
+    verbose: <T>(...args: Array<(string | any)>) => T;
+    debug: <T>(...args: Array<(string | any)>) => T;
+    info: <T>(...args: Array<(string | any)>) => T;
+    warn: <T>(...args: Array<(string | any)>) => T;
+    error: <T>(...args: Array<(string | any)>) => T;
+    wtf: <T>(...args: Array<(string | any)>) => T;
 }
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
 /**
