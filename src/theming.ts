@@ -175,7 +175,8 @@ export const madLogMarkers = {
     swimmers: {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
-        style: `color: ${colours.blue}; ${style.bold};`,
+        style: (isNode) ? `${isoStyles.blue};${isoStyles.bgWhite}`
+                        : `color: ${colours.blue}; ${style.bold};`,
     },
     smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
