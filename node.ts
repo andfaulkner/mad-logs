@@ -23,9 +23,11 @@ export interface InspectFn {
     (msg: string, obj: any): string;
 }
 
+export type AnyArgsWithLastArgT<T> = (T | any)[];
+
 export interface MadLogFnObj {
     (...args: any[]): void;
-    thru: (...args: any[]) => void;
+    thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
 }
 
@@ -89,13 +91,12 @@ export const inspect = (obj: any, isHidden?: boolean): string => {
     });
 }
 
-const passThruLog = (logFn: (...args: any[]) => void) => (fnNameOrVal: string | any, val?) => {
-    if (!val) {
-        logFn(fnNameOrVal);
-        return fnNameOrVal;
+const passThruLog = (logFn: (...args: any[]) => void) => <T>(...anyArgsWLastArgT: (T|any)[]): T => {
+    if (anyArgsWLastArgT.length > 0) {
+        logFn(anyArgsWLastArgT);
+        return anyArgsWLastArgT[anyArgsWLastArgT.length - 1];
     } else {
-        logFn(fnNameOrVal, ':', val);
-        return val;
+        logFn('');
     }
 };
 
@@ -147,9 +148,9 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
 
     const logTemplate = (logGate: boolean, logType: 'log' | 'error' | 'warn', wrap: string = '') => (...args: any[]): void => {
         if (logGate) {
-            if (logGate && logType === 'log') console.log(`${wrap}${fTAG} `, ...args, `${wrap}`);
-            if (logGate && logType === 'error') console.error(`${wrap}${fTAG} `, ...args, `${wrap}`);
-            if (logGate && logType === 'warn') console.warn(`${wrap}${fTAG} `, ...args, `${wrap}`);
+            if (logType === 'log')   console.log(`${wrap}${fTAG} `, ...args, `${wrap}`);
+            if (logType === 'error') console.error(`${wrap}${fTAG} `, ...args, `${wrap}`);
+            if (logType === 'warn')  console.warn(`${wrap}${fTAG} `, ...args, `${wrap}`);
         }
     };
 
@@ -157,28 +158,28 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
         {
             TAG,
 
-            blankWrap: logTemplate(isWtf, 'log', `\n`),
-            blankWrap2: logTemplate(isWtf, 'log', `\n\n`),
-            blankWrap3: logTemplate(isWtf, 'log', `\n\n\n`),
+            blankWrap:    logTemplate(isWtf, 'log', `\n`),
+            blankWrap2:   logTemplate(isWtf, 'log', `\n\n`),
+            blankWrap3:   logTemplate(isWtf, 'log', `\n\n\n`),
 
-            silly: logTemplate(isSilly, 'log'),
-            sillyError: logTemplate(isSilly, 'error'),
+            silly:        logTemplate(isSilly, 'log'),
+            sillyError:   logTemplate(isSilly, 'error'),
 
-            verbose: logTemplate(isVerbose, 'log'),
+            verbose:      logTemplate(isVerbose, 'log'),
             verboseError: logTemplate(isVerbose, 'error'),
 
-            debug: logTemplate(isDebug, 'log'),
-            debugError: logTemplate(isDebug, 'error'),
+            debug:        logTemplate(isDebug, 'log'),
+            debugError:   logTemplate(isDebug, 'error'),
 
-            info: logTemplate(isInfo, 'log'),
-            infoError: logTemplate(isInfo, 'error'),
+            info:         logTemplate(isInfo, 'log'),
+            infoError:    logTemplate(isInfo, 'error'),
 
-            warn: logTemplate(isWarn, 'warn'),
-            error: logTemplate(isError, 'error'),
-            wtf: logTemplate(isWtf, 'error'),
-            always: logTemplate(isWtf, 'log'),
+            warn:         logTemplate(isWarn, 'warn'),
+            error:        logTemplate(isError, 'error'),
+            wtf:          logTemplate(isWtf, 'error'),
+            always:       logTemplate(isWtf, 'log'),
 
-            inspect: inspector(fTAG),
+            inspect:      inspector(fTAG),
         }
     );
 

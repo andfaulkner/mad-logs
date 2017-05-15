@@ -184,42 +184,71 @@ describe('nodeLogFactory', function() {
 
     it('thru function on all log functions passes returned value thru if 1 arg given', function() {
         const log4 = nodeLogFactory(TAG);
-        expect(log4.blankWrap.thru('grrrr')).to.eql('grrrr');
-        expect(log4.blankWrap2.thru('grrrr')).to.eql('grrrr');
-        expect(log4.blankWrap3.thru('grrrr')).to.eql('grrrr');
-        expect(log4.silly.thru('grrrr')).to.eql('grrrr');
-        expect(log4.verbose.thru('grrrr')).to.eql('grrrr');
-        expect(log4.debug.thru('grrrr')).to.eql('grrrr');
-        expect(log4.info.thru('grrrr')).to.eql('grrrr');
-        expect(log4.error.thru('grrrr')).to.eql('grrrr');
-        expect(log4.warn.thru('grrrr')).to.eql('grrrr');
-        expect(log4.wtf.thru('grrrr')).to.eql('grrrr');
-        expect(log4.always.thru('grrrr')).to.eql('grrrr');
+        expect(log4.blankWrap.thru(   'grrrr')).to.eql('grrrr');
+        expect(log4.blankWrap2.thru(  'grrrr')).to.eql('grrrr');
+        expect(log4.blankWrap3.thru(  'grrrr')).to.eql('grrrr');
+        expect(log4.silly.thru(       'grrrr')).to.eql('grrrr');
+        expect(log4.verbose.thru(     'grrrr')).to.eql('grrrr');
+        expect(log4.debug.thru(       'grrrr')).to.eql('grrrr');
+        expect(log4.info.thru(        'grrrr')).to.eql('grrrr');
+        expect(log4.error.thru(       'grrrr')).to.eql('grrrr');
+        expect(log4.warn.thru(        'grrrr')).to.eql('grrrr');
+        expect(log4.wtf.thru(         'grrrr')).to.eql('grrrr');
+        expect(log4.always.thru(      'grrrr')).to.eql('grrrr');
 
-        expect(log4.sillyError.thru('grrrr')).to.eql('grrrr');
+        expect(log4.sillyError.thru(  'grrrr')).to.eql('grrrr');
         expect(log4.verboseError.thru('grrrr')).to.eql('grrrr');
-        expect(log4.debugError.thru('grrrr')).to.eql('grrrr');
-        expect(log4.infoError.thru('grrrr')).to.eql('grrrr');
+        expect(log4.debugError.thru(  'grrrr')).to.eql('grrrr');
+        expect(log4.infoError.thru(   'grrrr')).to.eql('grrrr');
     });
 
     // tslint:disable-next-line
     it('thru function on all log functions returns output containing arg 2, if 2 args given', function() {
         const log5 = nodeLogFactory(TAG);
-        expect(log5.blankWrap.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.blankWrap2.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.blankWrap3.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.silly.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.verbose.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.debug.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.info.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.error.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.warn.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.wtf.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.blankWrap.thru( 'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.blankWrap2.thru('my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.blankWrap3.thru('my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.silly.thru(     'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.verbose.thru(   'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.debug.thru(     'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.info.thru(      'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.error.thru(     'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.warn.thru(      'my_tag',   'expected_return')).to.eql('expected_return');
+        expect(log5.wtf.thru(       'my_tag',   'expected_return')).to.eql('expected_return');
 
-        expect(log5.sillyError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.verboseError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.debugError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
-        expect(log5.infoError.thru('my_tag', 'should_return_this')).to.eql('should_return_this');
+        expect(log5.sillyError.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.verboseError.thru('my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.debugError.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.infoError.thru(   'my_tag', 'expected_return')).to.eql('expected_return');
+    });
+
+    it('thru function on all log functions returns output containing arg 3, if 3 args given', function() {
+        const log5 = nodeLogFactory(TAG);
+        expect(log5.blankWrap.thru( 'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.blankWrap2.thru('my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.blankWrap3.thru('my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.silly.thru(     'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.verbose.thru(   'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.debug.thru(     'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.info.thru(      'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.error.thru(     'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.warn.thru(      'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.wtf.thru(       'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+
+        expect(log5.sillyError.thru(  'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.verboseError.thru('my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.debugError.thru(  'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.infoError.thru(   'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+    });
+
+    it(`thru function on all log functions is generic & accepts a return type`, function() {
+        const log6 = nodeLogFactory(TAG);
+        expect(log6.silly.thru<string>(    'my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log6.info.thru<string>(     'my_tag', 'expected_return')).to.eql('expected_return');
+
+        expect(log6.infoError.thru<number>('my_tag', 5)).to.eql(5);
+        log6.info.thru<number>(            'my_tag', 'val2', 12);
+        expect(log6.infoError.thru<number>('my_tag', 'val2', 12)).to.eql(12);
     });
 
     it(`has fn method that returns method-scoped log instance that includes fn name in outputs, but has no fn function itself`, function() {

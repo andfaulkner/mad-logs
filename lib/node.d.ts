@@ -13,9 +13,10 @@ export interface InspectFn {
      */
     (msg: string, obj: any): string;
 }
+export declare type AnyArgsWithLastArgT<T> = (T | any)[];
 export interface MadLogFnObj {
     (...args: any[]): void;
-    thru: (...args: any[]) => void;
+    thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
 }
 export interface NodeMadLogsFuncInstance {
