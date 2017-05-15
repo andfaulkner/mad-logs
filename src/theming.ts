@@ -170,8 +170,9 @@ export const madLogMarkers = {
     pipeDream: {
         tagPrefix: '┣╋━╋~🛀~╋━╋┫ ',
         tagSuffix: ' ┣┫',
-        style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
-                        : `color: ${colours.gray}; background-color: ${colours.blue};`,
+        style: (isNode)
+                   ? `${isoStyles.white}${isoStyles.bgBlack}`
+                   : `color: ${colours.gray}; background-color: ${colours.white}; ${style.bold}`,
     },
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
