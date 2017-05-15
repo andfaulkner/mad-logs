@@ -15,6 +15,8 @@ export const colours = {
     lightBlue:        '#add8e6',
     darkMidnightBlue: '#003366',
     deepRed:          '#800000',
+    yellow:           'yellow',
+    orangeBasic:      'orange',
     yellowishGold:    '#E5C100',
     gold:             '#FFD700',
     darkGray:         '#818181',
@@ -128,6 +130,11 @@ export const madLogMarkers = {
         tagPrefix: '^^^^',
         style: `color: ${colours.green}; ${style.bold}`,
     },
+    hotPursuit: {
+        tagPrefix: '🎄🎄 !🍯🐻--🎄!🐝🐝--',
+        tagSuffix: '!🐝🐝🐝🐝-- 🎄🎄',
+        style: `color: ${colours.black}; background-color: ${colours.orangeBasic}`,
+    },
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
@@ -158,20 +165,15 @@ export const madLogMarkers = {
         tagSuffix: '~:<',
         style: `color: ${colours.white}; background-color: ${colours.black};`,
     },
-    pipeDream: {
-        tagPrefix: '┣╋━╋~🛀~╋━╋┫',
-        tagSuffix: '┣┫',
-        style: `color: ${colours.gray}; background-color: ${colours.lightBlue};`,
+    rockIsDead: {
+        tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
+        tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
+        style: `color: ${colours.yellow}; background-color: ${colours.black};`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
         style: `color: ${colours.blue}; ${style.bold}`,
-    },
-    tangerines: {
-        tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
-        tagSuffix: ' _ ()()()*()',
-        style: `color: ${colours.orange};`,
     },
     smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
@@ -184,6 +186,11 @@ export const madLogMarkers = {
         tagSuffix: '--\\__/-►',
         style: (isNode) ? `${isoStyles.blue}${isoStyles.bgWhite}`
                         : `color: ${colours.blue}; background-color: ${colours.white};`,
+    },
+    tangerines: {
+        tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
+        tagSuffix: ' _ ()()()*()',
+        style: `color: ${colours.orange};`,
     },
     theHeist: {
         tagPrefix: "🚚==|💰😰🔫😎|_",
