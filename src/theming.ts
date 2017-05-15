@@ -154,7 +154,8 @@ export const madLogMarkers = {
     mechanicalAtFists: {
         tagPrefix: '--#@!@#--',
         tagSuffix: ' || ',
-        style: `color: ${colours.indigo};`,
+        style: (isNode) ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
+                        : `color: ${colours.indigo};`,
     },
     moProblems: {
         tagPrefix: '$$$$$$$ |💰| ',
