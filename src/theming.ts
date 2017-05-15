@@ -167,6 +167,12 @@ export const madLogMarkers = {
         tagSuffix: '~:<',
         style: `color: ${colours.white}; background-color: ${colours.black};`,
     },
+    pipeDream: {
+        tagPrefix: '┣╋━╋~🛀~╋━╋┫',
+        tagSuffix: '┣┫',
+        style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
+                        : `color: ${colours.gray}; background-color: ${colours.blue};`,
+    },
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
