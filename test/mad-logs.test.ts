@@ -20,6 +20,7 @@ import * as path from 'path';
 import * as partial from 'lodash.partial';
 import { stderr, stdout } from 'test-console';
 import * as colors from 'colors';
+import { isVerbose } from 'env-var-helpers';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../lib/index';
@@ -86,7 +87,7 @@ describe('logFactory', function() {
 
     });
 
-    describe('log function constructed by logFactory', function() {
+    describe('log function constructed by logFactory (with no styling)', function() {
         let logger;
         before(() => {
             const config = { logLevel: 'silly' };
@@ -174,20 +175,67 @@ describe('logFactory', function() {
 });
 
 describe('logMarkers', function() {
+    const styles = ['lakeLouise', 'farmerBrown', 'escherBarbieLego', 'smokeyHatesChristmas',
+                    'barbells', 'angryBird', 'zebra', 'vendetta', 'moProblems', 'theHeist',
+                    'vendetta', 'rockIsDead', 'mechanicalAtFists', 'nightmare', 'tangerines',
+                    'maceWindu', 'grasslands', 'default', 'cartoonSwearing', 'backAndForth'];
+
+    // tslint:disable
+    const stylesWMatch = [
+        {
+          name: 'arrow',
+          outMatch: />>--mad-logs.test.ts---\|>   Should be logged\n/
+        }, {
+          name: 'brainwave',
+          outMatch: /~\^~\^~\^-mad-logs.test.ts-~\^~\^~\^ color: #003366; Should be logged\n/
+        }, {
+          name: 'checkmate',
+          outMatch: /♜♞♝♚♛♝♞♜_ \[mad-logs.test\.ts\] _♟♟♟♟♟♟♟♟ color: #593001; Should be logged/
+        }, {
+          name: 'hotPursuit',
+          outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange; Should be logged/
+        },
+    ];
+    // tslint:enable
+
     it('exists', function() {
         expect(logMarkers).to.exist;
     });
+
     it('has over 20 defined styles', function () {
         expect(Object.keys(logMarkers)).to.have.length.above(20);
     });
+
     it('only contains objects with keys tagPrefix, tagSuffix, and style', function () {
         Object.keys(logMarkers).forEach((markerKey) => {
             const curLogMarker = logMarkers[markerKey];
             expect(curLogMarker.tagPrefix).to.be.a('string');
             expect(curLogMarker.tagSuffix).to.be.a('string');
             expect(curLogMarker.style).to.be.a('string');
-        })
+        });
     });
+
+    // Ensure expected styles included (not-exhaustive)
+    styles.forEach(style => {
+        it(`includes style ${style}`, function () {
+            expect(Object.keys(logMarkers)).to.contain(style);
+        });
+    });
+
+    // Just an example
+    it(`includes style 'arrow', which includes prefix >>-- and suffix ---|>`, function() {
+        expect(logMarkers.arrow).to.exist;
+        expect(logMarkers.arrow.tagPrefix).to.match(/>>--/);
+        expect(logMarkers.arrow.tagSuffix).to.match(/--|>/);
+    });
+
+    // Another example, to include one with emojis
+    it(`includes style 'rockIsDead', which includes prefix >>-- and suffix ---|>`, function() {
+        expect(logMarkers.rockIsDead).to.exist;
+        expect(logMarkers.rockIsDead.tagPrefix).to.match(/💀☠🎸💀💎💀🎸💀 \|/);
+        expect(logMarkers.rockIsDead.tagSuffix).to.match(/\| 😃🔊♪♪💃💃💃💃💃🎧😃/);
+    });
+
 });
 
 // Restore original process.argv

@@ -9,8 +9,11 @@ export declare const colours: {
     brown: string;
     maroon: string;
     blue: string;
+    lightBlue: string;
     darkMidnightBlue: string;
     deepRed: string;
+    yellow: string;
+    orangeBasic: string;
     yellowishGold: string;
     gold: string;
     darkGray: string;
@@ -104,6 +107,11 @@ export declare const madLogMarkers: {
         tagPrefix: string;
         style: string;
     };
+    hotPursuit: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     lakeLouise: {
         tagSuffix: string;
         tagPrefix: string;
@@ -134,17 +142,12 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    pipeDream: {
+    rockIsDead: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
     };
     swimmers: {
-        tagPrefix: string;
-        tagSuffix: string;
-        style: string;
-    };
-    tangerines: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -155,6 +158,11 @@ export declare const madLogMarkers: {
         style: string;
     };
     springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    tangerines: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -246,6 +254,11 @@ export declare const logMarkers: {} & {
         tagPrefix: string;
         style: string;
     };
+    hotPursuit: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     lakeLouise: {
         tagSuffix: string;
         tagPrefix: string;
@@ -276,17 +289,12 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
-    pipeDream: {
+    rockIsDead: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
     };
     swimmers: {
-        tagPrefix: string;
-        tagSuffix: string;
-        style: string;
-    };
-    tangerines: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -297,6 +305,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    tangerines: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
