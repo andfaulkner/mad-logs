@@ -236,6 +236,28 @@ describe('logMarkers', function() {
         expect(logMarkers.rockIsDead.tagSuffix).to.match(/\| 😃🔊♪♪💃💃💃💃💃🎧😃/);
     });
 
+    // Ensure expected styles included, & giving expected output when used in a log (not-exhaustive)
+    stylesWMatch.forEach(style => {
+        const logger = logFactory()('mad-logs.test.ts', logMarkers[style.name]);
+
+        it(`has style ${style.name}, w/ output that matches ${style.outMatch.toString()}`, function() {
+            // Stub console.log and most of console's internals
+            const output = stdout.inspectSync(function() {
+                logger('Should be logged');
+            });
+
+            if (isVerbose) {
+                console.log(`\n------------------------------------`);
+                console.log(`Output of ${style.name} log (below):`);
+                console.log(output[0]);
+                console.log(`Regexp for ${style.name}:`, style.outMatch);
+                console.log(`------------------------------------\n`);
+            }
+
+            expect(output[0]).to.match(style.outMatch);
+        });
+    });
+
     // Manual repeat example of previous test group, as comparison for writing more tests
     it(`has style arrow, which adds >>-- & ---|> to output if used in log constructor`, function() {
         const arrowLogger = logFactory()('mad-logs.test.ts', logMarkers.arrow);
