@@ -190,7 +190,11 @@ describe('logMarkers', function() {
         }, {
           name: 'hotPursuit',
           outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange; Should be logged/
+        }, {
+          name: 'pipeDream',
+          outMatch: /┣╋━╋~🛀~╋━╋┫ mad-logs.test\.ts ┣┫ color: #777777; background-color: #0000FF; Should be logged/
         },
+
     ];
     // tslint:enable
 

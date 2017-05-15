@@ -168,8 +168,8 @@ export const madLogMarkers = {
         style: `color: ${colours.white}; background-color: ${colours.black};`,
     },
     pipeDream: {
-        tagPrefix: '┣╋━╋~🛀~╋━╋┫',
-        tagSuffix: '┣┫',
+        tagPrefix: '┣╋━╋~🛀~╋━╋┫ ',
+        tagSuffix: ' ┣┫',
         style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
                         : `color: ${colours.gray}; background-color: ${colours.blue};`,
     },
