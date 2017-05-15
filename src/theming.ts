@@ -12,6 +12,7 @@ export const colours = {
     brown:            '#593001',
     maroon:           '#5d0000',
     blue:             '#0000FF',
+    lightBlue:        '#add8e6',
     darkMidnightBlue: '#003366',
     deepRed:          '#800000',
     yellowishGold:    '#E5C100',
@@ -160,7 +161,7 @@ export const madLogMarkers = {
     pipeDream: {
         tagPrefix: '┣╋━╋~🛀~╋━╋┫',
         tagSuffix: '┣┫',
-        style: `color: ${colours.gray}; background-color: ${colours.blue};`,
+        style: `color: ${colours.gray}; background-color: ${colours.lightBlue};`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
