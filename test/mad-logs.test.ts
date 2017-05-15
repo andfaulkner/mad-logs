@@ -83,10 +83,6 @@ describe('logFactory', function() {
         expect(() => logFactory({})).to.not.throw(TypeError);
     });
 
-    it('returns default if given no or a falsy value as a config object', function () {
-
-    });
-
     describe('log function constructed by logFactory (with no styling)', function() {
         let logger: MadLog;
         before(() => {
