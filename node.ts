@@ -1,13 +1,23 @@
-// TODO:
-// 1) Make this throw instantly if it's imported outside Node.
-// 2) log.fn constructor that creates a copy of the log object, with the function name added to the TAG.
-// 3)
-
+/******************************************** IMPORTS *********************************************/
 import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
 import { inspect as nodeInspect } from 'util';
+import * as isNode from 'detect-node'
+
+
+/************************ ENSURE MODULE ONLY LOADED IN CORRECT ENVIRONMENT ************************/
+// Log environment status (in node? in Mocha?)
+if (isSilly) console.log(`node.ts: isNode:`, isNode);
+if (isSilly) console.log(`node.ts: process.env.mocha:`, process.env.mocha);
+
+// Throw error & crash the app if attempt made to load this sub-module outside Node.
+if (!isNode && !process.env.mocha) {
+    const mlogsErrStr = `mad-logs: Can't import mad-logs/lib/node into browser env. NodeJS only.`;
+    console.error(mlogsErrStr);
+    throw new TypeError(mlogsErrStr);
+}
+
 
 /**************************************** TYPE DEFINITIONS ****************************************/
-
 export interface InspectFn {
     /**
      * Deep-inspect object & return it as string.
@@ -124,8 +134,19 @@ const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | any, obj?: any)
 
     // If provided val was a string, include warning in the log, but return val as-is.
     } else if (typeof msgOrObj === 'string') {
-        console.log(`${TAG} ~> ${msgOrObj}`);
-        return msgOrObj;
+        const msgTag = `${TAG} ~> ${msgOrObj}`;
+        switch (typeof obj) {
+            case "undefined": if (logCond) console.log(`${msgTag}`);
+                              return msgOrObj;
+            case "string":    if (logCond) console.log(`${msgTag}`, obj);
+                              return obj;
+            case "object":    if (logCond) console.log(`${msgTag}`, inspect(obj));
+                              return obj;
+            case "function":  if (logCond) console.log(`${msgTag}`, (obj as Function).toString());
+                              return obj;
+            default:          if (logCond) console.log(`${msgTag} [TYPE UNKNOWN]:`, inspect(obj));
+                              return obj;
+        }
 
     // Handle object inspection when no message arg is provided.
     } else if (typeof msgOrObj === 'object') {

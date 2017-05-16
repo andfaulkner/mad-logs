@@ -10,11 +10,13 @@
     ],
     "scripts": {
         "compile-ts": "./node_modules/typescript/bin/tsc -p ./",
-        "compile-ts:watch": "./node_modules/typescript/bin/tsc -p ./ --watch",
+        "ts-compile": "npm run compile-ts",
+        "compile-ts-watch": "./node_modules/typescript/bin/tsc -p ./ --watch",
+        "ts-compile-watch": "npm run compile-ts-watch",
         "HACK:fix-lodash": "tir node_modules/@types/lodash/index.d.ts --replace \"interface WeakMap\" \"// interface WeakMap\" >/dev/null",
-        "start": "npm run HACK:fix-lodash 2>/dev/null; LOG_LEVEL=silly npm run test:watch",
+        "start": "npm run HACK:fix-lodash 2>/dev/null; LOG_LEVEL=silly npm run test-watch",
         "test": "LOG_LEVEL=silly npm run compile-ts; LOG_LEVEL=silly mocha test/",
-        "test:watch": "chokidar ./src/**/*.ts ./config/** ./test/** ./index.ts ./test/** --initial -c \"npm run compile-ts; mocha test/\""
+        "test-watch": "chokidar ./src/**/*.ts ./config/** ./test/** ./index.ts ./test/** --initial -c \"npm run compile-ts; mocha test/\""
     },
     "repository": {
         "type": "git",
@@ -41,6 +43,7 @@
     },
     "homepage": "https://github.com/andfaulkner/mad-logs#readme",
     "dependencies": {
+        "@types/lodash": "^4.14.64",
         "colors": "^1.1.2",
         "detect-node": "^2.0.3",
         "env-var-helpers": "^2.2.2",
