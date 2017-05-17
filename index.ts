@@ -1,8 +1,4 @@
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-// const find = require("lodash.find");
-// const isString = require("lodash.isstring");
-
-import { find, isString } from 'lodash';
 import * as isNode from 'detect-node';
 
 import { buildFileTagString } from './src/build-file-tag-string';
@@ -95,7 +91,7 @@ const bgWhite = (text: string): string => `\u001b[47m${text}\u001b[49m`;
 /****************************************** VERIFICATION ******************************************/
 /**
  * Ensure valid config object is passed in.
- * @param  {Object} string must be 1 of the logValues object's keys to be valid.
+ * @param  {Object} string must be one of the logValues object's keys to be valid.
  * @return {undefined} - this operates via side effects (thrown exception on fail)
  */
 const verifyConfig = (config) => {
@@ -110,7 +106,7 @@ const verifyConfig = (config) => {
         throw new TypeError('Config object passed to mad-logs logFactory must be null or have ' +
                             'key logLevel')
     }
-    if (!isString(config.logLevel)) {
+    if (typeof config.logLevel !== 'string') {
         throw new TypeError('Config.logLevel must be a string');
     }
     if (!Object.keys(logValues).some(logValue => logValue === config.logLevel)) {

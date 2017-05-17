@@ -3,19 +3,13 @@ import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env
 import { inspect as nodeInspect } from 'util';
 import * as isNode from 'detect-node'
 
-
 /************************ ENSURE MODULE ONLY LOADED IN CORRECT ENVIRONMENT ************************/
-// Log environment status (in node? in Mocha?)
-if (isSilly) console.log(`node.ts: isNode:`, isNode);
-if (isSilly) console.log(`node.ts: process.env.mocha:`, process.env.mocha);
-
 // Throw error & crash the app if attempt made to load this sub-module outside Node.
 if (!isNode && !process.env.mocha) {
     const mlogsErrStr = `mad-logs: Can't import mad-logs/lib/node into browser env. NodeJS only.`;
     console.error(mlogsErrStr);
     throw new TypeError(mlogsErrStr);
 }
-
 
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface InspectFn {
