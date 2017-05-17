@@ -178,8 +178,8 @@ export const madLogMarkers = {
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
-        style: (isNode) ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgBlack}`
-                        : `color: ${colours.yellow}; background-color: ${colours.black};`,
+        style: (isNode) ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgGreen}`
+                        : `color: ${colours.yellow}; background-color: ${colours.darkGreen};`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
