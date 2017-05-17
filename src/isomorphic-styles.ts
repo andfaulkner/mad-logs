@@ -45,5 +45,3 @@ export const isomorphicStyles = {
     strikethrough: { cli: '\u001b[9m', browser: 'text-decoration: line-through' },
     underline:     { cli: '\u001b[4m', browser: 'text-decoration: underline'    },
 };
-
-// const styler = ()
