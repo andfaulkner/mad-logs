@@ -11,7 +11,7 @@ export declare const colours: {
     blue: string;
     lightBlue: string;
     darkMidnightBlue: string;
-    darkGreen: string;
+    midDarkGreen: string;
     deepRed: string;
     yellow: string;
     orangeBasic: string;
@@ -23,6 +23,7 @@ export declare const colours: {
     white: string;
     indigo: string;
     green: string;
+    darkGreen: string;
     gray: string;
     cyan: string;
     black: string;
