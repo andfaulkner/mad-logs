@@ -194,11 +194,6 @@ export declare const madLogMarkers: {
         style: string;
     };
 };
-export declare const saneLogMarkers: {
-    tagPrefix: string;
-    tagSuffix: string;
-    blueOnWhite: string;
-};
 export declare const logMarkers: {} & {
     angryBird: {
         tagPrefix: string;
