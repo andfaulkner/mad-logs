@@ -231,15 +231,6 @@ export const madLogMarkers = {
     }
 };
 
-// TODO - WIP
-export const saneLogMarkers = {
-    tagPrefix: `${isoStyles.blue.cli}${isoStyles.bgWhite.cli}`,
-    tagSuffix: `${isoStyles.default}${isoStyles.default}`,
-    blueOnWhite: (isoStyles.blue.cli + isoStyles.bgWhite.cli),
-};
+export const logMarkers = Object.assign({}, madLogMarkers);
 
-export const logMarkers = Object.assign({}, madLogMarkers/*, saneLogMarkers*/);
-
-// '🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣💣💣🗡⚔🔫💧❄☃☄🌊
-// 🚚 🔒|🔐  🔒 🔓 🗝 🏦 💣 💳 📦 💼 🔦 🔧 🔨 🔩 🔪 🔫
-
+// 🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣🗡⚔🔫💧❄☃☄🌊🚚🔒🔐🔓🗝🏦💣💳📦💼🔦🔧🔨🔩🔪🔫
