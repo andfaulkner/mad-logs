@@ -14,7 +14,7 @@ export const colours = {
     blue:             '#0000FF',
     lightBlue:        '#add8e6',
     darkMidnightBlue: '#003366',
-    darkGreen:        'darkgreen',
+    midDarkGreen:     'darkgreen',
     deepRed:          '#800000',
     yellow:           'yellow',
     orangeBasic:      'orange',
@@ -179,7 +179,7 @@ export const madLogMarkers = {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
         style: (isNode) ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgGreen}`
-                        : `color: ${colours.yellow}; background-color: ${colours.darkGreen};`,
+                        : `color: ${colours.yellow}; background-color: ${colours.midDarkGreen};`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
@@ -202,7 +202,8 @@ export const madLogMarkers = {
     tangerines: {
         tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
         tagSuffix: ' _ ()()()*()',
-        style: `color: ${colours.orange};`,
+        style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
+                        : `color: ${colours.orange};`,
     },
     theHeist: {
         tagPrefix: "🚚==|💰😰🔫😎|_",
