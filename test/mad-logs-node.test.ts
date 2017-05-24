@@ -272,6 +272,18 @@ describe('nodeLogFactory', function() {
         expect((fnLog as any).fn).to.be.empty;
         expect(log6.fn).to.be.a('function');
     });
+
+    it(`noTag function on all log functions blocks tag from being displayed`, function() {
+        const log7 = nodeLogFactory(TAG);
+        const { stores, result } = blockLogOutput(() => {
+            log7.info.noTag('ok');
+            log7.info('ok');
+        });
+        expect(stores.log.logged[0]).to.match(/^ok/);
+        expect(stores.log.logged[0]).to.not.match(/mad-logs-node\.test/);
+        expect(stores.log.logged[1]).to.not.match(/^ok/);
+        expect(stores.log.logged[1]).to.match(/mad-logs-node\.test/);
+    });
 });
 
 describe('buildFileTag', function() {

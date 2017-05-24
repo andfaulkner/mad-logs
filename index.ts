@@ -200,7 +200,7 @@ function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
 function warnLogOut(fileTag: string): ToConsoleFunc {
     return (...strs: any[]): any => {
         if (isNode) {
-            console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs)
+            console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs);
         } else {
             console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
         }

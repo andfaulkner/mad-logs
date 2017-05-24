@@ -18,6 +18,8 @@ export interface MadLogFnObj {
     (...args: any[]): void;
     thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
+    noTag: (...args: any[]) => void;
+    TAG: string;
 }
 export interface NodeMadLogsFuncInstance {
     (...args: any[]): void;

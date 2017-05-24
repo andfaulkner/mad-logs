@@ -33,6 +33,8 @@ export interface MadLogFnObj {
     (...args: any[]): void;
     thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
+    noTag: (...args: any[]) => void;
+    TAG: string;
 }
 
 export interface NodeMadLogsFuncInstance {
@@ -95,13 +97,17 @@ export const inspect = (obj: any, isHidden?: boolean): string => {
     });
 }
 
+/**
+ * Log given items normally, but let the the last argument pass through as the return value.
+ * @param {any[]} args - Items to log (true any)
+ * @return {any} Last argument given to function (pass it through unchanged)
+ */
 const passThruLog = (logFn: (...args: any[]) => void) => <T>(...anyArgsWLastArgT: (T|any)[]): T => {
     if (anyArgsWLastArgT.length > 0) {
         logFn(anyArgsWLastArgT);
         return anyArgsWLastArgT[anyArgsWLastArgT.length - 1];
-    } else {
-        logFn('');
     }
+    logFn('');
 };
 
 /**
@@ -155,17 +161,31 @@ const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | any, obj?: any)
     return msgOrObj;
 };
 
+type LogType = 'log' | 'error' | 'warn';
+
 /**
  * Actual builder for the log library, minus the fn method.
  */
 const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance => {
     const fTAG = (fnName) ? `${TAG} [func: ${fnName}] ::` : TAG;
 
-    const logTemplate = (logGate: boolean, logType: 'log' | 'error' | 'warn', wrap: string = '') => (...args: any[]): void => {
+    /**
+     * Main logging function. Actual logging to the console occurs through here.
+     *
+     * @param {boolean} logGate - Only log if true. This is determined by the LOG_LEVEL env value.
+     * @param {LogType} logType - log, error, or warn. Determines which console method to use
+     * @param {string} wrap - Text to wrap the output in.
+     * @param {boolean} blockTag - If true, don't display the tag.
+     */
+    const logTemplate = (logGate: boolean, logType: LogType, wrap: string = '', blockTag = false) =>
+        (...args: any[]): void =>
+    {
         if (logGate) {
-            if (logType === 'log')   console.log(`${wrap}${fTAG} `, ...args, `${wrap}`);
-            if (logType === 'error') console.error(`${wrap}${fTAG} `, ...args, `${wrap}`);
-            if (logType === 'warn')  console.warn(`${wrap}${fTAG} `, ...args, `${wrap}`);
+            if (blockTag) {
+                console[logType](`${wrap}`, ...args, `${wrap}`);
+            } else {
+                console[logType](`${wrap}${fTAG} `, ...args, `${wrap}`);
+            }
         }
     };
 
@@ -199,12 +219,29 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
     );
 
     /**
-     * Set up log object to have 'thru' and inspect properties attached to all methods.
+     * Set up log object to have thru and inspect properties attached to all methods.
      */
     const logObjBoundDeep = Object.keys(logObj).reduce((acc, logFnName: string) => {
         const outVal = Object.assign(logObj[logFnName],
             {
                 thru: passThruLog(logObj[logFnName]),
+                noTag: (() => {
+                    // TODO find cleaner solution than repeating above function calls w/ added arg
+                    switch(logFnName) {
+                        case 'silly':        return logTemplate(isSilly, 'log', '', true);
+                        case 'sillyError':   return logTemplate(isSilly, 'error', '', true);
+                        case 'verbose':      return logTemplate(isVerbose, 'log', '', true);
+                        case 'verboseError': return logTemplate(isVerbose, 'error', '', true);
+                        case 'debug':        return logTemplate(isDebug, 'log', '', true);
+                        case 'debugError':   return logTemplate(isDebug, 'error', '', true);
+                        case 'info':         return logTemplate(isInfo, 'log', '', true);
+                        case 'infoError':    return logTemplate(isInfo, 'error', '', true);
+                        case 'warn':         return logTemplate(isWarn, 'warn', '', true);
+                        case 'error':        return logTemplate(isError, 'error', '', true);
+                        case 'wtf':          return logTemplate(isWtf, 'error', '', true);
+                        case 'always':       return logTemplate(isWtf, 'log', '', true);
+                    }
+                })(),
                 inspect: (() => {
                     switch (logFnName) {
                         case 'silly':        return inspector(fTAG, isSilly);
