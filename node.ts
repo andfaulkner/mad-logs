@@ -116,18 +116,18 @@ const passThruLog = (logFn: (...args: any[]) => void) => <T>(...anyArgsWLastArgT
  * silly, verbose, debug, or info.
  *
  * @param {string} TAG - Decorated name of the file being logged from
- * @param {boolean} logCond - If true, don't just return the output, also log it.
+ * @param {boolean} doAutoLog - If true, don't just return the output, also log it.
  *
  * @return {Function} Inspector function with the following params:
  *     | @param {string|Object} msgOrObj - Message describing the object to be inspected (in the 2nd arg),
  *     | @param {string|Object} obj?     - Object for inspection, if 1st arg contained a message string.
  *     | @return {string} Pretty-printed string form of the object being inspected.
  */
-const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | any, obj?: any): string => {
+const inspector = (TAG, doAutoLog = isInfo) => (msgOrObj: string | any, obj?: any): string => {
     // Handle object inspection when a message arg was provided.
     if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
         const objInfoString = inspect(obj);
-        if (logCond) {
+        if (doAutoLog) {
             console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
         }
         return objInfoString;
@@ -136,25 +136,26 @@ const inspector = (TAG, logCond = isInfo) => (msgOrObj: string | any, obj?: any)
     } else if (typeof msgOrObj === 'string') {
         const msgTag = `${TAG} ~> ${msgOrObj}`;
         switch (typeof obj) {
-            case "undefined": if (logCond) console.log(`${msgTag}`);
+            case "undefined": if (doAutoLog) console.log(`${msgTag}`);
                               return msgOrObj;
-            case "string":    if (logCond) console.log(`${msgTag}`, obj);
+            case "string":    if (doAutoLog) console.log(`${msgTag}`, obj);
                               return obj;
-            case "object":    if (logCond) console.log(`${msgTag}`, inspect(obj));
+            case "object":    if (doAutoLog) console.log(`${msgTag}`, inspect(obj));
                               return obj;
-            case "function":  if (logCond) console.log(`${msgTag}`, (obj as Function).toString());
+            case "function":  if (doAutoLog) console.log(`${msgTag}`, (obj as Function).toString());
                               return obj;
-            default:          if (logCond) console.log(`${msgTag} [TYPE UNKNOWN]:`, inspect(obj));
+            default:          if (doAutoLog) console.log(`${msgTag} [TYPE UNKNOWN]:`, inspect(obj));
                               return obj;
         }
 
     // Handle object inspection when no message arg is provided.
     } else if (typeof msgOrObj === 'object') {
         const objInfoString = inspect(msgOrObj);
-        const name = ((msgOrObj as any).name) ? ` ${(msgOrObj as any).name}: ` : '';
-        if (logCond) {
-            console.log(`${TAG} ~>${name}`, objInfoString);
-        }
+        const name = Object.keys(msgOrObj).find(key => key === 'name')
+                         ? ` ${msgOrObj.name}: `
+                         : '';
+        if (doAutoLog) console.log(`${TAG} ~>${name}`, objInfoString);
+
         return objInfoString;
     }
 
