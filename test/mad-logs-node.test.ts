@@ -142,6 +142,12 @@ describe('nodeLogFactory', function() {
         log.silly.inspect('log.silly.inspect made me:', nestedObject);
     });
 
+    it(`does not throw when null or undefined is passed to inspect`, function() {
+        const log = nodeLogFactory(TAG);
+        expect(() => log.inspect(null)).to.not.throw();
+        expect(() => log.inspect(undefined as any)).to.not.throw();
+    });
+
     it('returns void from all functions on instance, except inspect', function() {
         const log2 = nodeLogFactory(TAG);
         expect(log2.blankWrap('Logged from blankWrap')).to.be.undefined;

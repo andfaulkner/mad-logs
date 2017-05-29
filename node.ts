@@ -149,7 +149,7 @@ const inspector = (TAG, doAutoLog = isInfo) => (msgOrObj: string | any, obj?: an
         }
 
     // Handle object inspection when no message arg is provided.
-    } else if (typeof msgOrObj === 'object') {
+    } else if (typeof msgOrObj === 'object' && msgOrObj != null) {
         const objInfoString = inspect(msgOrObj);
         const name = Object.keys(msgOrObj).find(key => key === 'name')
                          ? ` ${msgOrObj.name}: `
