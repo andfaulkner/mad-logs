@@ -1,28 +1,29 @@
 /**************************************** TYPE DEFINITIONS ****************************************/
+export declare type RealAny = any;
 export interface InspectFn {
     /**
      * Deep-inspect object & return it as string.
      * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
      * @param {any} obj - Object to inspect.
      */
-    (obj: any): string;
+    (obj: RealAny): string;
     /**
      * Deep-inspect object & return as string.
      * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
      * @param {any} obj - Object to inspect.
      */
-    (msg: string, obj: any): string;
+    (msg: string, RealAny: any): string;
 }
 export declare type AnyArgsWithLastArgT<T> = (T | any)[];
 export interface MadLogFnObj {
-    (...args: any[]): void;
+    (...args: RealAny[]): void;
     thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
-    noTag: (...args: any[]) => void;
+    noTag: (...args: RealAny[]) => void;
     TAG: string;
 }
 export interface NodeMadLogsFuncInstance {
-    (...args: any[]): void;
+    (...args: RealAny[]): void;
     blankWrap: MadLogFnObj;
     blankWrap2: MadLogFnObj;
     blankWrap3: MadLogFnObj;
