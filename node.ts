@@ -1,5 +1,6 @@
 /******************************************** IMPORTS *********************************************/
-import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
+import { isSilly, isVerbose, isDebug, isInfo,
+         isWarn, isError, isWtf, isProduction } from 'env-var-helpers';
 import { inspect as nodeInspect } from 'util';
 import * as isNode from 'detect-node'
 
@@ -12,33 +13,37 @@ if (!isNode && !process.env.mocha) {
 }
 
 /**************************************** TYPE DEFINITIONS ****************************************/
+// For cases where the value truly can be anything (in contrast to cases where any is used because
+// it's too difficult to determine the actual type)
+export type RealAny = any;
+
 export interface InspectFn {
     /**
      * Deep-inspect object & return it as string.
      * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
      * @param {any} obj - Object to inspect.
      */
-    (obj: any): string;
+    (obj: RealAny): string;
     /**
      * Deep-inspect object & return as string.
      * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
      * @param {any} obj - Object to inspect.
      */
-    (msg: string, obj: any): string;
+    (msg: string, RealAny: any): string;
 }
 
 export type AnyArgsWithLastArgT<T> = (T | any)[];
 
 export interface MadLogFnObj {
-    (...args: any[]): void;
+    (...args: RealAny[]): void;
     thru: <T>(...anyArgsWLastArgT: AnyArgsWithLastArgT<T>) => T;
     inspect: InspectFn;
-    noTag: (...args: any[]) => void;
+    noTag: (...args: RealAny[]) => void;
     TAG: string;
 }
 
 export interface NodeMadLogsFuncInstance {
-    (...args: any[]): void; // acts identically to log.info
+    (...args: RealAny[]): void; // acts identically to log.info
     blankWrap: MadLogFnObj;
     blankWrap2: MadLogFnObj;
     blankWrap3: MadLogFnObj;
@@ -64,6 +69,7 @@ export interface NodeMadLogsInstance extends NodeMadLogsFuncInstance {
     fn: (fnName: string) => NodeMadLogsFuncInstance;
 }
 
+type LogFn = (...args: RealAny[]) => void;
 
 /******************************************** HELPERS *********************************************/
 /**
@@ -75,7 +81,7 @@ export interface NodeMadLogsInstance extends NodeMadLogsFuncInstance {
  *                             if process.env.LOG_LEVEL is 'silly' (otherwise it's false).
  * @return {string} Readable string representation of object (standard util.inspect output)
  */
-export const inspect = (obj: any, isHidden?: boolean): string => {
+export const inspect = (obj: RealAny, isHidden?: boolean): string => {
     const depth = (() => {
         let logLevelNorm = (process.env.LOG_LEVEL && typeof process.env.LOG_LEVEL === 'string')
                                ? process.env.LOG_LEVEL.toLowerCase()
@@ -97,12 +103,13 @@ export const inspect = (obj: any, isHidden?: boolean): string => {
     });
 }
 
+
 /**
  * Log given items normally, but let the the last argument pass through as the return value.
- * @param {any[]} args - Items to log (true any)
- * @return {any} Last argument given to function (pass it through unchanged)
+ * @param {RealAny[]} args - Items to log (true RealAny)
+ * @return {RealAny} Last argument given to function (pass it through unchanged)
  */
-const passThruLog = (logFn: (...args: any[]) => void) => <T>(...anyArgsWLastArgT: (T|any)[]): T => {
+const passThruLog = (logFn: LogFn) => <T>(...anyArgsWLastArgT: (T|RealAny)[]): T => {
     if (anyArgsWLastArgT.length > 0) {
         logFn(anyArgsWLastArgT);
         return anyArgsWLastArgT[anyArgsWLastArgT.length - 1];
@@ -123,7 +130,9 @@ const passThruLog = (logFn: (...args: any[]) => void) => <T>(...anyArgsWLastArgT
  *     | @param {string|Object} obj?     - Object for inspection, if 1st arg contained a message string.
  *     | @return {string} Pretty-printed string form of the object being inspected.
  */
-const inspector = (TAG, doAutoLog = isInfo) => (msgOrObj: string | any, obj?: any): string => {
+const inspector = (TAG, doAutoLog = isInfo && !isProduction) =>
+    (msgOrObj: string | RealAny, obj?: RealAny): string =>
+{
     // Handle object inspection when a message arg was provided.
     if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
         const objInfoString = inspect(obj);
@@ -179,7 +188,7 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
      * @param {boolean} blockTag - If true, don't display the tag.
      */
     const logTemplate = (logGate: boolean, logType: LogType, wrap: string = '', blockTag = false) =>
-        (...args: any[]): void =>
+        (...args: RealAny[]): void =>
     {
         if (logGate) {
             if (blockTag) {

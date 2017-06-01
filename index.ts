@@ -1,3 +1,10 @@
+
+//
+//  TODO add sillyError, verboseError, debugError, infoError
+//  TODO add inspect
+//
+
+
 /************************************** THIRD-PARTY IMPORTS ***************************************/
 import * as isNode from 'detect-node';
 
