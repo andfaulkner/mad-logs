@@ -211,15 +211,19 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
             blankWrap3:   logTemplate(isWtf, 'log', `\n\n\n`),
 
             silly:        logTemplate(isSilly, 'log'),
+            sillyWarn:    logTemplate(isSilly, 'warn'),
             sillyError:   logTemplate(isSilly, 'error'),
 
             verbose:      logTemplate(isVerbose, 'log'),
+            verboseWarn:  logTemplate(isVerbose, 'warn'),
             verboseError: logTemplate(isVerbose, 'error'),
 
             debug:        logTemplate(isDebug, 'log'),
+            debugWarn:    logTemplate(isDebug, 'warn'),
             debugError:   logTemplate(isDebug, 'error'),
 
             info:         logTemplate(isInfo, 'log'),
+            infoWarn:     logTemplate(isInfo, 'warn'),
             infoError:    logTemplate(isInfo, 'error'),
 
             warn:         logTemplate(isWarn, 'warn'),

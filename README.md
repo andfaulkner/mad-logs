@@ -392,26 +392,8 @@ Examples:
         // [[ Does not log anything ]]
         // => {Returns} ::  `{ a: 'asdf', b: 'oooo', c: [Object] }`
 
-### NodeJS output tag blocking - sub-function present on all top-level functions on a log instance
-*   prevent tag from being shown, while keeping logging restricted based on LOG_LEVEL env variable.
-
-Examples:
-
-    import { nodeLogFactory, buildFileTag, colors } from 'mad-logs/lib/node';
-    const log = nodeLogFactory(buildFileTag('[fun-node-file.ts]', colors.blue.bgWhite));
-
-    log.info.noTag('Log me without a tag');
-    // => 'Log me without a tag'
-
-    log.info('Log me with a tag');
-    // => [fun-node-file.ts]      Log me with a tag
-    //     /\--- colorized in the terminal, but under-the-hood the output is more like:
-    // => '\u001b[34m\u001b[47m[fun-node-file.ts]\u001b[49m\u001b[39m             Log me with a tag'
-
-
 ### NodeJS function-scoped logs: someFileScopedLogInstance.fn('fnName')
-*   Essentially returns new instance of log from a file-scoped instance of a log.
-    *   This automatically contains the given name of the function in the logged output string.
+*   Essentially returns new instance of log from a file-scoped instance of a log, which automatically contains the given name of the function in the logged output string.
 
 Examples:
 

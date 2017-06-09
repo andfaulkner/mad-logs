@@ -99,6 +99,11 @@ describe('nodeLogFactory', function() {
         expect(log.verboseError).to.be.a('function');
         expect(log.debugError).to.be.a('function');
         expect(log.infoError).to.be.a('function');
+
+        expect(log.sillyError).to.be.a('function');
+        expect(log.verboseError).to.be.a('function');
+        expect(log.debugError).to.be.a('function');
+        expect(log.infoError).to.be.a('function');
     });
 
 
@@ -162,6 +167,11 @@ describe('nodeLogFactory', function() {
         expect(log2.wtf('Logged from wtf')).to.be.undefined;
         expect(log2.always('Logged from always')).to.be.undefined;
 
+        expect(log2.sillyWarn('Logged from silly')).to.be.undefined;
+        expect(log2.verboseWarn('Logged from verbose')).to.be.undefined;
+        expect(log2.debugWarn('Logged from debug')).to.be.undefined;
+        expect(log2.infoWarn('Logged from info')).to.be.undefined;
+
         expect(log2.sillyError('Logged from silly')).to.be.undefined;
         expect(log2.verboseError('Logged from verbose')).to.be.undefined;
         expect(log2.debugError('Logged from debug')).to.be.undefined;
@@ -181,6 +191,11 @@ describe('nodeLogFactory', function() {
         expect(log3.warn.thru).to.be.a('function');
         expect(log3.wtf.thru).to.be.a('function');
         expect(log3.always.thru).to.be.a('function');
+
+        expect(log3.sillyWarn.thru).to.be.a('function');
+        expect(log3.verboseWarn.thru).to.be.a('function');
+        expect(log3.debugWarn.thru).to.be.a('function');
+        expect(log3.infoWarn.thru).to.be.a('function');
 
         expect(log3.sillyError.thru).to.be.a('function');
         expect(log3.verboseError.thru).to.be.a('function');
@@ -202,6 +217,11 @@ describe('nodeLogFactory', function() {
         expect(log4.wtf.thru(         'grrrr')).to.eql('grrrr');
         expect(log4.always.thru(      'grrrr')).to.eql('grrrr');
 
+        expect(log4.sillyWarn.thru(   'grrrr')).to.eql('grrrr');
+        expect(log4.verboseWarn.thru( 'grrrr')).to.eql('grrrr');
+        expect(log4.debugWarn.thru(   'grrrr')).to.eql('grrrr');
+        expect(log4.infoWarn.thru(    'grrrr')).to.eql('grrrr');
+
         expect(log4.sillyError.thru(  'grrrr')).to.eql('grrrr');
         expect(log4.verboseError.thru('grrrr')).to.eql('grrrr');
         expect(log4.debugError.thru(  'grrrr')).to.eql('grrrr');
@@ -222,6 +242,11 @@ describe('nodeLogFactory', function() {
         expect(log5.warn.thru(      'my_tag',   'expected_return')).to.eql('expected_return');
         expect(log5.wtf.thru(       'my_tag',   'expected_return')).to.eql('expected_return');
 
+        expect(log5.sillyWarn.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.verboseWarn.thru('my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.debugWarn.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
+        expect(log5.infoWarn.thru(   'my_tag', 'expected_return')).to.eql('expected_return');
+
         expect(log5.sillyError.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
         expect(log5.verboseError.thru('my_tag', 'expected_return')).to.eql('expected_return');
         expect(log5.debugError.thru(  'my_tag', 'expected_return')).to.eql('expected_return');
@@ -240,6 +265,11 @@ describe('nodeLogFactory', function() {
         expect(log5.error.thru(     'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
         expect(log5.warn.thru(      'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
         expect(log5.wtf.thru(       'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+
+        expect(log5.sillyWarn.thru(  'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.verboseWarn.thru('my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.debugWarn.thru(  'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
+        expect(log5.infoWarn.thru(   'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
 
         expect(log5.sillyError.thru(  'my_tag', 'v2', 'expected_return')).to.eql('expected_return');
         expect(log5.verboseError.thru('my_tag', 'v2', 'expected_return')).to.eql('expected_return');

@@ -34,6 +34,10 @@ export interface NodeMadLogsFuncInstance {
     warn: MadLogFnObj;
     error: MadLogFnObj;
     wtf: MadLogFnObj;
+    sillyWarn: MadLogFnObj;
+    verboseWarn: MadLogFnObj;
+    debugWarn: MadLogFnObj;
+    infoWarn: MadLogFnObj;
     sillyError: MadLogFnObj;
     verboseError: MadLogFnObj;
     debugError: MadLogFnObj;
