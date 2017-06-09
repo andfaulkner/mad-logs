@@ -55,6 +55,11 @@ export interface NodeMadLogsFuncInstance {
     error: MadLogFnObj;
     wtf: MadLogFnObj;
 
+    sillyWarn: MadLogFnObj;
+    verboseWarn: MadLogFnObj;
+    debugWarn: MadLogFnObj;
+    infoWarn: MadLogFnObj;
+
     sillyError: MadLogFnObj;
     verboseError: MadLogFnObj;
     debugError: MadLogFnObj;
@@ -136,9 +141,7 @@ const inspector = (TAG, doAutoLog = isInfo && !isProduction) =>
     // Handle object inspection when a message arg was provided.
     if (obj && ((typeof obj === 'object') || (typeof obj === 'function'))) {
         const objInfoString = inspect(obj);
-        if (doAutoLog) {
-            console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
-        }
+        if (doAutoLog) console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
         return objInfoString;
 
     // If provided val was a string, include warning in the log, but return val as-is.
@@ -239,12 +242,16 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
                     // TODO find cleaner solution than repeating above function calls w/ added arg
                     switch(logFnName) {
                         case 'silly':        return logTemplate(isSilly, 'log', '', true);
+                        case 'sillyWarn':    return logTemplate(isSilly, 'warn', '', true);
                         case 'sillyError':   return logTemplate(isSilly, 'error', '', true);
                         case 'verbose':      return logTemplate(isVerbose, 'log', '', true);
+                        case 'verboseWarn':  return logTemplate(isVerbose, 'warn', '', true);
                         case 'verboseError': return logTemplate(isVerbose, 'error', '', true);
                         case 'debug':        return logTemplate(isDebug, 'log', '', true);
+                        case 'debugWarn':    return logTemplate(isDebug, 'warn', '', true);
                         case 'debugError':   return logTemplate(isDebug, 'error', '', true);
                         case 'info':         return logTemplate(isInfo, 'log', '', true);
+                        case 'infoWarn':     return logTemplate(isInfo, 'warn', '', true);
                         case 'infoError':    return logTemplate(isInfo, 'error', '', true);
                         case 'warn':         return logTemplate(isWarn, 'warn', '', true);
                         case 'error':        return logTemplate(isError, 'error', '', true);
@@ -255,13 +262,17 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
                 inspect: (() => {
                     switch (logFnName) {
                         case 'silly':        return inspector(fTAG, isSilly);
+                        case 'sillyWarn':    return inspector(fTAG, isSilly);
                         case 'sillyError':   return inspector(fTAG, isSilly);
                         case 'verbose':      return inspector(fTAG, isVerbose);
+                        case 'verboseWarn':  return inspector(fTAG, isVerbose);
                         case 'verboseError': return inspector(fTAG, isVerbose);
                         case 'debug':        return inspector(fTAG, isDebug);
+                        case 'debugWarn':    return inspector(fTAG, isVerbose);
                         case 'debugError':   return inspector(fTAG, isDebug);
-                        case 'infoError':    return inspector(fTAG, isInfo);
                         case 'info':         return inspector(fTAG, isInfo);
+                        case 'infoWarn':     return inspector(fTAG, isInfo);
+                        case 'infoError':    return inspector(fTAG, isInfo);
                         case 'warn':         return inspector(fTAG, isWarn);
                         case 'error':        return inspector(fTAG, isError);
                         case 'wtf':          return inspector(fTAG, isWtf);
