@@ -61,7 +61,12 @@ const defConfig = { logLevel: logLevelBase };
 /**
  * Defines the available log levels in the application.
  */
-const logValues = { silly: 1, verbose: 2, debug: 3, info: 4, warn: 5, error: 6, wtf: 7 };
+export const logValues = { silly: 1, verbose: 2, debug: 3, info: 4, warn: 5, error: 6, wtf: 7 };
+
+/**
+ * Export type containing all usable log levels.
+ */
+export type LogLevels = keyof typeof logValues;
 
 /**
  * Get the log level value (number) corresponding to the log level string.
