@@ -23,6 +23,22 @@ export interface MadLog {
     error: <T>(...args: Array<(string | any)>) => T;
     wtf: <T>(...args: Array<(string | any)>) => T;
 }
+/**
+ * Defines the available log levels in the application.
+ */
+export declare const logValues: {
+    silly: number;
+    verbose: number;
+    debug: number;
+    info: number;
+    warn: number;
+    error: number;
+    wtf: number;
+};
+/**
+ * Export type containing all usable log levels.
+ */
+export declare type LogLevels = keyof typeof logValues;
 /************************************ MAIN LOG OBJECT FACTORY *************************************/
 /**
  *  Build 'logger' object for reuse throughout any module it's constructed in. Strings passed
