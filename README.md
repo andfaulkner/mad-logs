@@ -27,7 +27,7 @@
 
 ----
 
-## Usage (browser, commonJS);
+## Usage (browser, commonJS)
 Import the library 
 
     // my-fun-file.ts
