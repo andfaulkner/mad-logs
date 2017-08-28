@@ -217,6 +217,12 @@ export const madLogMarkers = {
         style: (isNode) ? `${isoStyles.white}${isoStyles.bgBlack}`
                         : `color: ${colours.orange};`,
     },
+    theBird: {
+        tagPrefix: '🤘🏼✋🖐🏼🖖🏼👋🏼🖕🏼🤘🏼[',
+        tagSuffix: ']🖕🏼👋🏼🖕🏼🖖🏼🖐🏼✋🤘🏼',
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
+                        : `color: green; background-color: yellow; ${style.bold}`,
+    },    
     theHeist: {
         tagPrefix: "🚚==|💰😰🔫😎|_",
         tagSuffix: "_|😎🔧🔒|📦",
