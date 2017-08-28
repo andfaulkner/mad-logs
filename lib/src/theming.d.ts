@@ -68,6 +68,11 @@ export declare const madLogMarkers: {
         tagPrefix: string;
         style: string;
     };
+    bracelet: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     brainwave: {
         tagPrefix: string;
         tagSuffix: string;
@@ -233,6 +238,11 @@ export declare const logMarkers: {} & {
     barbells: {
         tagSuffix: string;
         tagPrefix: string;
+        style: string;
+    };
+    bracelet: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     brainwave: {
