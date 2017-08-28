@@ -131,6 +131,12 @@ export const madLogMarkers = {
         tagPrefix: '^^^^',
         style: `color: ${colours.green}; ${style.bold};`,
     },
+    hatBlock: {
+        tagPrefix: '😀⛑👒🎩🎓👑[',
+        tagSuffix: ']👑🎓🎩👒⛑',
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
+                        : `color: lightgreen; background-color: blue; ${style.bold}`,
+    },
     hotPursuit: {
         tagPrefix: '🎄🎄 !🍯🐻---🎄!🐝🐝--- [',
         tagSuffix: '] !🐝🐝🐝🐝--- 🎄🎄',
@@ -141,7 +147,7 @@ export const madLogMarkers = {
         tagPrefix: '😀😀😀😀😀[',
         tagSuffix: ']😀😀😀😀😀',
         style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
-                        : `color: yellow; background-color: black;`,
+                        : `color: yellow; background-color: black; ${style.bold}`,
     },
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
