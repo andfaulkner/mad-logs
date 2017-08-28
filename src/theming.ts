@@ -95,6 +95,12 @@ export const madLogMarkers = {
         style: (isNode) ? `${isoStyles.black}${isoStyles.bgWhite}`
                         : `color: ${colours.brown};`,
     },
+    cult: {
+        tagPrefix: '👪,👩‍👩‍👧‍👧👨‍👨‍👦‍👦👨‍👨‍👧‍👦',
+        tagSuffix: '👨‍👨‍👧‍👦👨‍👨‍👦‍👦👩‍👩‍👧‍👧.👪',
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
+                        : `color: purple; background-color: lightblue; ${style.bold}`,
+    },
     default: {
         tagPrefix: '[',
         tagSuffix: ']',
@@ -132,8 +138,8 @@ export const madLogMarkers = {
         style: `color: ${colours.green}; ${style.bold};`,
     },
     hatBlock: {
-        tagPrefix: '😀⛑👒🎩🎓👑[',
-        tagSuffix: ']👑🎓🎩👒⛑',
+        tagPrefix: '😀⛑👒🎩🎓👑',
+        tagSuffix: '👑🎓🎩👒⛑',
         style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
                         : `color: lightgreen; background-color: blue; ${style.bold}`,
     },
