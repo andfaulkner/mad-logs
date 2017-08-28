@@ -230,7 +230,7 @@ describe('logMarkers', function() {
     });
 
     // Another example, to include one with emojis
-    it(`includes style 'rockIsDead', which includes prefix >>-- and suffix ---|>`, function() {
+    it(`includes style 'rockIsDead', which includes 💀☠🎸💀💎💀, 💃💃💃🎧😃, etc.`, function() {
         expect(logMarkers.rockIsDead).to.exist;
         expect(logMarkers.rockIsDead.tagPrefix).to.match(/💀☠🎸💀💎💀🎸💀 \|/);
         expect(logMarkers.rockIsDead.tagSuffix).to.match(/\| 😃🔊♪♪💃💃💃💃💃🎧😃/);

@@ -137,6 +137,12 @@ export const madLogMarkers = {
         style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
                         : `color: ${colours.black}; background-color: ${colours.orangeBasic};`,
     },
+    joy: {
+        tagPrefix: '😀😀😀😀😀[',
+        tagSuffix: ']😀😀😀😀😀',
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
+                        : `color: yellow; background-color: black;`,
+    },
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
