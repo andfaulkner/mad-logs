@@ -108,6 +108,11 @@ export declare const madLogMarkers: {
         tagPrefix: string;
         style: string;
     };
+    hatBlock: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     hotPursuit: {
         tagPrefix: string;
         tagSuffix: string;
@@ -258,6 +263,11 @@ export declare const logMarkers: {} & {
     grasslands: {
         tagSuffix: string;
         tagPrefix: string;
+        style: string;
+    };
+    hatBlock: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     hotPursuit: {
