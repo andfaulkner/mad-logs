@@ -183,6 +183,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    theBird: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     theHeist: {
         tagPrefix: string;
         tagSuffix: string;
@@ -336,6 +341,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     tangerines: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    theBird: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
