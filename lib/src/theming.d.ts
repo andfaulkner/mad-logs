@@ -83,6 +83,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    cult: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     default: {
         tagPrefix: string;
         tagSuffix: string;
@@ -241,6 +246,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     checkmate: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    cult: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;

@@ -98,7 +98,7 @@ export const madLogMarkers = {
     cult: {
         tagPrefix: '👪,👩‍👩‍👧‍👧👨‍👨‍👦‍👦👨‍👨‍👧‍👦',
         tagSuffix: '👨‍👨‍👧‍👦👨‍👨‍👦‍👦👩‍👩‍👧‍👧.👪',
-        style: (isNode) ? `${isoStyles.black}${isoStyles.bgYellow}`
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
                         : `color: purple; background-color: lightblue; ${style.bold}`,
     },
     default: {
