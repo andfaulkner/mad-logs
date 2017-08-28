@@ -77,6 +77,12 @@ export const madLogMarkers = {
         style: (isNode) ? `${isoStyles.gray}${isoStyles.bgWhite}${isoStyles.bold}`
                         : `color: ${colours.darkGray}; ${style.bold}`,
     },
+    bracelet: {
+        tagPrefix: '🔮🔮🔮',
+        tagSuffix: '🔮🔮🔮',
+        style: (isNode) ? `${isoStyles.black}${isoStyles.bold}${isoStyles.underline}`
+                        : `color: white; background-color: violet; ${style.bold}`,
+    },
     brainwave: {
         tagPrefix: '~^~^~^-',
         tagSuffix: '-~^~^~^',
