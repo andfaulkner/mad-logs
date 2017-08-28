@@ -113,6 +113,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    joy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     lakeLouise: {
         tagSuffix: string;
         tagPrefix: string;
@@ -256,6 +261,11 @@ export declare const logMarkers: {} & {
         style: string;
     };
     hotPursuit: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    joy: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
