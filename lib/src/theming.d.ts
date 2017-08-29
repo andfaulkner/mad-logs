@@ -143,6 +143,11 @@ export declare const madLogMarkers: {
         tagPrefix: string;
         style: string;
     };
+    lucky: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     maceWindu: {
         tagPrefix: string;
         tagSuffix: string;
@@ -313,6 +318,11 @@ export declare const logMarkers: {} & {
     lispyKatana: {
         tagSuffix: string;
         tagPrefix: string;
+        style: string;
+    };
+    lucky: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     maceWindu: {
