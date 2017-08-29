@@ -171,6 +171,12 @@ export const madLogMarkers = {
         tagPrefix: '',
         style: `color: ${colours.gray}; ${style.bold};`,
     },
+    lucky: {
+        tagPrefix: '🍀🍀🍀',
+        tagSuffix: '🍀🍀🍀',
+        style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
+                      : `color: darkblue; background-color: darksalmon; ${style.bold}`,
+    },
     maceWindu: {
         tagPrefix: '',
         tagSuffix: ' o==[]::::::::::::::::> ',
