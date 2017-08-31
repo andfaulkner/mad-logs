@@ -204,6 +204,13 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
                       : `color: ${colours.gray}; background-color: ${colours.white}; ${style.bold}`,
     },
+    probeArcade: {
+        tagPrefix: '🚀.👽👽👽👽_👾',
+        tagSuffix: '👾_👽👽👽👽.🚀',
+        style: isNode ? `${isoStyles.white}${isoStyles.bgMagenta}`
+                      : 'color: darkblue; background-color:darksalmon; border-radius: 4px; ' +
+                        'border-style: solid; border-color: black; font-weight:bold;',
+    },
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
@@ -270,3 +277,4 @@ export const madLogMarkers = {
 export const logMarkers = Object.assign({}, madLogMarkers);
 
 // 🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣🗡⚔🔫💧❄☃☄🌊🚚🔒🔐🔓🗝🏦💣💳📦💼🔦🔧🔨🔩🔪🔫
+// 👾👾
