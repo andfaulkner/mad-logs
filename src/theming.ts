@@ -60,6 +60,18 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}${isoStyles.bold}`
                       : `color: ${colours.yellowishGold};`,
     },
+    aquarium: {
+        tagPrefix: ' 🐠 🐌 🐌 ',
+        tagSuffix: ' 🐠🐠🐠 🐙',
+        style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.underline}`
+                      : `color: darkblue; background-color: lightblue;
+                         font-size: 15px; font-weight:bold;
+                         padding: 3px;
+                         border-bottom: solid 2px black;
+                         border-left: solid 2px black; border-right: solid 2px black;
+                         border-radius: 4px;
+                         border-top-left-radius: 1px; border-top-right-radius: 1px;`,
+    },
     arrow: {
         tagPrefix: '>>--',
         tagSuffix: '---|> ',
