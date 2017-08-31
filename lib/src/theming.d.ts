@@ -53,6 +53,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    aquarium: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     arrow: {
         tagPrefix: string;
         tagSuffix: string;
@@ -231,6 +236,11 @@ export declare const madLogMarkers: {
 };
 export declare const logMarkers: {} & {
     angryBird: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    aquarium: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
