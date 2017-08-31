@@ -102,7 +102,7 @@ export const inspect = (obj: RealAny, isHidden?: boolean): string => {
     })();
 
     return nodeInspect(obj, {
-        showHidden: (isHidden) ? isHidden : !!isSilly,
+        showHidden: isHidden || !!isSilly,
         depth,
         colors: true
     });
