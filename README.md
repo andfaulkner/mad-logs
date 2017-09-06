@@ -105,6 +105,7 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 
 ### Available log "marker" styles
 *   angryBird
+*   aquarium
 *   arrow
 *   backAndForth
 *   barbells
@@ -128,6 +129,9 @@ This is what you should be doing - it's a good idea to set process.env.LOG_LEVEL
 *   moProblems
 *   nightmare
 *   pipeDream
+*   potOfGold
+*   probeArcade
+*   rainbowLeaf
 *   rockIsDead
 *   swimmers
 *   smokeyHatesChristmas
