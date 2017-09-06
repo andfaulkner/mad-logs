@@ -1,6 +1,6 @@
 {
     "name": "mad-logs",
-    "version": "8.6.2",
+    "version": "8.6.3",
     "description": "Winston-lite-esque Log lib for terminal and browser debugging, with piles of unignorable log tags and marker styles.",
     "main": "lib/index.js",
     "typings": "lib/index",
@@ -20,7 +20,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/andfaulkner/mad-logs.git#v8.6.2"
+        "url": "git+https://github.com/andfaulkner/mad-logs.git#v8.6.3"
     },
     "keywords": [
         "logging",
