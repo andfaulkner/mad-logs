@@ -176,12 +176,14 @@ export const madLogMarkers = {
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
-        style: `color: ${colours.cyan};`,
+        style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
+                      : `color: ${colours.cyan};`,
     },
     lispyKatana: {
         tagSuffix: ';;;;;;;;;;;;;;()()',
         tagPrefix: '',
-        style: `color: ${colours.gray}; ${style.bold};`,
+        style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
+                      :  `color: ${colours.gray}; ${style.bold};`,
     },
     lucky: {
         tagPrefix: '🍀🍀🍀',
@@ -192,7 +194,8 @@ export const madLogMarkers = {
     maceWindu: {
         tagPrefix: '',
         tagSuffix: ' o==[]::::::::::::::::> ',
-        style: `color: ${colours.violet}; ${style.bold};`,
+        style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
+                       : `color: ${colours.violet}; ${style.bold};`,
     },
     mechanicalAtFists: {
         tagPrefix: '--#@!@#--',
