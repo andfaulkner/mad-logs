@@ -222,6 +222,19 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
                       : `color: ${colours.gray}; background-color: ${colours.white}; ${style.bold}`,
     },
+    potOfGold: {
+        tagPrefix: ' 💰 ',
+        tagSuffix: ' 💰 ',
+        style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.underline}`
+                      : `color: #946C08; font-size: 15px; font-weight: bold;
+                         background-color: palegoldenrod;
+                         padding: 3px;
+                         border-top: solid 1px green;
+                         border-bottom: solid 2.5px darkgreen;
+                         border-left: solid 2.5px darkgreen; border-right: solid 2.5px darkgreen;
+                         border-radius: 10px;
+                         border-top-left-radius: 1px; border-top-right-radius: 1px;`
+    },
     probeArcade: {
         tagPrefix: '🚀.👽👽👽👽_👾',
         tagSuffix: '👾_👽👽👽👽.🚀',
