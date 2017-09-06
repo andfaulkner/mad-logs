@@ -242,6 +242,20 @@ export const madLogMarkers = {
                       : 'color: darkblue; background-color:darksalmon; border-radius: 4px; ' +
                         'border-style: solid; border-color: black; font-weight:bold;',
     },
+    rainbowLeaf: {
+        tagPrefix: ' 🌈  🌈  ',
+        tagSuffix: '  🌈  🌈 ',
+        style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.underline}`
+                      : `color: black; background-color: lightgreen;
+                         font-size: 15px; font-weight:bold;
+                         padding: 3px;
+                         border-top: solid 2px black;                         
+                         border-bottom: solid 2px black;
+                         border-left: solid 2px black; border-right: solid 2px black;
+                         border-radius: 8px;
+                         text-shadow: 1.5px 1.5px 1px cyan;
+                         border-bottom-left-radius: 1px; border-top-right-radius: 1px;`,
+    },
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
