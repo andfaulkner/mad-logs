@@ -203,12 +203,14 @@ export const madLogMarkers = {
     moProblems: {
         tagPrefix: '$$$$$$$ |💰| ',
         tagSuffix: ' |💰| $$$$$$$',
-        style: `color: ${colours.gold}; ${style.bold};`,
+        style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
+                      : `color: ${colours.gold}; ${style.bold};`,
     },
     nightmare: {
         tagPrefix: '>:~',
         tagSuffix: '~:<',
-        style: `color: ${colours.white}; background-color: ${colours.black};`,
+        style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
+                      : `color: ${colours.white}; background-color: ${colours.black};`,
     },
     pipeDream: {
         tagPrefix: '┣╋━╋~🛀~╋━╋┫ ',
