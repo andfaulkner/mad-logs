@@ -178,7 +178,17 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    potOfGold: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     probeArcade: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    rainbowLeaf: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -365,7 +375,17 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
+    potOfGold: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     probeArcade: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    rainbowLeaf: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
