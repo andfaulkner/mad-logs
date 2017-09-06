@@ -153,7 +153,8 @@ export const madLogMarkers = {
     grasslands: {
         tagSuffix: '^^^^',
         tagPrefix: '^^^^',
-        style: `color: ${colours.green}; ${style.bold};`,
+        style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
+                      : `color: ${colours.green}; ${style.bold};`,
     },
     hatBlock: {
         tagPrefix: '😀⛑👒🎩🎓👑',
@@ -195,7 +196,7 @@ export const madLogMarkers = {
         tagPrefix: '',
         tagSuffix: ' o==[]::::::::::::::::> ',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                       : `color: ${colours.violet}; ${style.bold};`,
+                      : `color: ${colours.violet}; ${style.bold};`,
     },
     mechanicalAtFists: {
         tagPrefix: '--#@!@#--',
