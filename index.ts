@@ -162,7 +162,7 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
                 if (logLevelNum < lvl) out(...strs);
                 return strs[strs.length - 1] as T;
             }
-        }
+        };
 
         /************* CONSTRUCT LOG OBJECT METHODS FROM logMethodFactory **************/
         const log   = logMethodFactory(4) as MadLog;
@@ -177,7 +177,7 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
             if (isNode){
                 console.error(bgRed(white((`[ERROR] ${fileTag}`))), ' :: ', ...strs)
             } else {
-                console.error(fileTag, ': ', '%c[ERROR]', 'color: red;', ':: ', ...strs);
+                console.error(fileTag, ' [ERROR] ', ...strs);
             }
             return strs[strs.length - 1];
         });
@@ -188,7 +188,7 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
             if (isNode) {
                 console.error('\n', red(bgWhite(`${wtfTag} ${fileTag}`)), ' :: ', ...strs, '\n');
             } else {
-                console.error(fileTag, ': ', `%c${wtfTag}`, 'color: red;', ':: ', ...strs);
+                console.error(fileTag, ` ${wtfTag} `, ...strs);
             }
             return strs[strs.length - 1];
         });
@@ -214,7 +214,7 @@ function warnLogOut(fileTag: string): ToConsoleFunc {
         if (isNode) {
             console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs);
         } else {
-            console.warn(fileTag, ': ', '%c[WARNING]', 'color: yellow', ':: ', ...strs);
+            console.warn(fileTag, ' [WARNING] ', ...strs);
         }
         return strs[strs.length - 1];
     };
