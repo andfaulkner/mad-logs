@@ -177,7 +177,7 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
             if (isNode){
                 console.error(bgRed(white((`[ERROR] ${fileTag}`))), ' :: ', ...strs)
             } else {
-                console.error(fileTag, ' [ERROR] ', ...strs);
+                console.error(fileTag, opts.style, ' [ERROR] ', ...strs);
             }
             return strs[strs.length - 1];
         });
@@ -188,37 +188,38 @@ export const logFactory = (config: (AppConf | {}) = defConfig) => {
             if (isNode) {
                 console.error('\n', red(bgWhite(`${wtfTag} ${fileTag}`)), ' :: ', ...strs, '\n');
             } else {
-                console.error(fileTag, ` ${wtfTag} `, ...strs);
+                console.error(fileTag, opts.style, ` ${wtfTag} `, ...strs);
             }
             return strs[strs.length - 1];
         });
+
+        /*********************************** HELPERS ***********************************/
+        function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
+            return (isNode)
+                ? `${opts.tagPrefix}${fileName}${opts.tagSuffix}`
+                : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
+        }
+
+        /**
+         * Output a warning to the console with fileTag as a "marker" as ...strs as
+         * the output. Isomorphic.
+         */
+        function warnLogOut(fileTag: string): ToConsoleFunc {
+            return (...strs: any[]): any => {
+                if (isNode) {
+                    console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs);
+                } else {
+                    console.warn(fileTag, opts.style, ' [WARNING] ', ...strs);
+                }
+                return strs[strs.length - 1];
+            };
+        }
 
         /**************** EXPORT FINAL CONSTRUCTED LOG OBJECT-FUNCTION *****************/
         return log;
     };
 }
 
-/******************************************** HELPERS *********************************************/
-function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
-    return (isNode)
-        ? `${opts.tagPrefix}${fileName}${opts.tagSuffix}`
-        : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
-}
-
-/**
- * Output a warning to the console with fileTag as a "marker" as ...strs as
- * the output. Isomorphic.
- */
-function warnLogOut(fileTag: string): ToConsoleFunc {
-    return (...strs: any[]): any => {
-        if (isNode) {
-            console.warn(yellow(`[WARNING] ${fileTag}`), ' :: ', ...strs);
-        } else {
-            console.warn(fileTag, ' [WARNING] ', ...strs);
-        }
-        return strs[strs.length - 1];
-    };
-}
 
 /********************************************* EXPORT *********************************************/
 export { logMarkers }
