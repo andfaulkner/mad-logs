@@ -305,7 +305,7 @@ describe('nodeLogFactory', function() {
         expect(stores.log.logged[1]).to.match(/fnLog_silly/);
         expect(stores.log.logged[1]).to.match(/mad-logs-node\.test\.ts/);
 
-        expect((fnLog as any).fn).to.be.empty;
+        expect((fnLog as any).fn).to.be.undefined;
         expect(log6.fn).to.be.a('function');
     });
 
