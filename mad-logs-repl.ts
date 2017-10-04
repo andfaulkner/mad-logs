@@ -20,7 +20,6 @@ import { nodeLogFactory } from './node';
 
 /****************************************** CONFIG REPL *******************************************/
 // const { padLeft } = madUtils;
-const kotlin = require('kotlin');
 const packageJson = require('./package.json');
 const { defineProperty } = Object;
 
@@ -110,7 +109,6 @@ const ctxProps = {
     // bluebird,
     lodash,
     // moment,
-    kotlin,
     // madUtils,
     _: lodash,
     // _m: madUtils,
