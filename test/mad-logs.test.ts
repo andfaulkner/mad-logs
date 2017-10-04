@@ -1,8 +1,8 @@
 /// <reference path="../node_modules/@types/mocha/index.d.ts" />
 /// <reference path="../node_modules/@types/node/index.d.ts" />
 
-// Ensure environment knows testing is occurring.
-process.env.mocha === true;
+// Ensure environment knows testing is occurring
+(process.env as any).mocha = true;
 
 // Store original process.argv.
 const oldProcArgs = Object.assign({}, process.argv);
@@ -23,8 +23,8 @@ import * as colors from 'colors';
 import { isVerbose } from 'env-var-helpers';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
-import * as madLogs from '../lib/index';
-import { buildFileTag, logFactory, logMarkers, MadLog } from '../lib/index';
+import * as madLogs from '../index';
+import { buildFileTag, logFactory, logMarkers, MadLog } from '../index';
 
 /******************************************** HELPERS *********************************************/
 /**

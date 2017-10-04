@@ -3,7 +3,7 @@
 
 
 // ensure environment knows testing is occurring
-process.env.mocha === true;
+(process.env as any).mocha = true;
 
 // Store original process.argv
 const oldProcArgs = Object.assign({}, process.argv);
