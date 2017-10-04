@@ -72,3 +72,9 @@ doc/local_notes
 .vscode
 .awcache
 *.sublime-workspace
+
+lib/mad-logs-repl.*
+lib/test/*
+
+# Exclude repl history file
+.node_history
