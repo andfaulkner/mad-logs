@@ -1,0 +1,4 @@
+/// <reference path="../../node_modules/@types/mocha/index.d.ts" />
+/// <reference path="../../node_modules/@types/node/index.d.ts" />
+/************************************** THIRD-PARTY IMPORTS ***************************************/
+import 'mocha';
