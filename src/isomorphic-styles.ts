@@ -1,3 +1,8 @@
+import { madLogMarkers } from './theming';
+
+import { isNode } from 'detect-node';
+
+
 const cssInverse = 'filter: invert(100%); -moz-filter: invert(100%); -webkit-filter: invert(100%);';
 
 /**
@@ -45,3 +50,67 @@ export const isomorphicStyles = {
     strikethrough: { cli: '\u001b[9m', browser: 'text-decoration: line-through' },
     underline:     { cli: '\u001b[4m', browser: 'text-decoration: underline'    },
 };
+
+/****************************************** NODE STYLES *******************************************/
+const node = {
+    black     : (str: string): string => `\u001b[30m${str}\u001b[0m`,
+    red       : (str: string): string => `\u001b[31m${str}\u001b[0m`,
+    green     : (str: string): string => `\u001b[32m${str}\u001b[0m`,
+    yellow    : (str: string): string => `\u001b[33m${str}\u001b[0m`,
+    blue      : (str: string): string => `\u001b[34m${str}\u001b[0m`,
+    magenta   : (str: string): string => `\u001b[35m${str}\u001b[0m`,
+    cyan      : (str: string): string => `\u001b[36m${str}\u001b[0m`,
+    white     : (str: string): string => `\u001b[37m${str}\u001b[0m`,
+    gray      : (str: string): string => `\u001b[90m${str}\u001b[0m`,
+
+    bgBlack   : (str: string): string => `\u001b[40m${str}\u001b[0m`,
+    bgRed     : (str: string): string => `\u001b[41m${str}\u001b[0m`,
+    bgGreen   : (str: string): string => `\u001b[42m${str}\u001b[0m`,
+    bgYellow  : (str: string): string => `\u001b[43m${str}\u001b[0m`,
+    bgBlue    : (str: string): string => `\u001b[44m${str}\u001b[0m`,
+    bgMagenta : (str: string): string => `\u001b[45m${str}\u001b[0m`,
+    bgCyan    : (str: string): string => `\u001b[46m${str}\u001b[0m`,
+    bgWhite   : (str: string): string => `\u001b[47m${str}\u001b[0m`,
+
+    bold      : (str: string): string => `\u001b[1m${str}\u001b[0m`,
+    underline : (str: string): string => `\u001b[2m${str}\u001b[0m`,
+    italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
+};
+
+
+export interface LogOpts {
+  tagPrefix: string;
+  tagSuffix: string;
+  style: string;
+}
+
+function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
+    return (isNode)
+        ? `${opts.tagPrefix}${fileName}${opts.tagSuffix}`
+        : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
+}
+
+export const isoStyles = {
+    a: isNode ? (fileName: string) => node.blue(node.bgWhite(`[${fileName}]`))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.aquarium),
+
+    b: isNode ? (fileName: string) => node.magenta(node.bgBlue(`[${fileName}]`))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.rainbowLeaf),
+
+    c: isNode ? (fileName: string) => node.bold(node.white(node.bgMagenta(`[${fileName}]`)))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.lucky),
+
+    d: isNode ? (fileName: string) => node.bold(node.cyan(node.bgBlue(`[${fileName}]`)))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.probeArcade),
+
+    e: isNode ? (fileName: string) => node.italic(node.bold(node.yellow(node.bgBlack(`[${fileName}]`))))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.potOfGold),
+
+    f: isNode ? (fileName: string) => node.bgWhite(node.black(`[${fileName}]`))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.cult),
+
+    g: isNode ? (fileName: string) => node.bold(node.bgMagenta(node.cyan(`[${fileName}]`)))
+              : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.bracelet),
+}
+
+export { node as nodeStyling }
