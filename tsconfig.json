@@ -24,22 +24,11 @@
     "exclude": [
         "*.js",
         "*.json",
-        "lib/*.d.ts",
-        "lib/src/*.d.ts",
-        "lib",
-        "lib/src",
-        "./lib",
-        "./lib/src"
+        "lib"
     ],
     "include": [
-        "./shared.ts",
-        "./index.ts",
-        "./mad-logs-repl.ts",
-        "./server-styles.ts",
-        "./node.ts",
-        "./src/build-file-tag-string.ts",
-        "./src/theming.ts",
-        "./src/isomorphic-styles.ts",
+        "./*.ts",
+        "./src/*.ts",
         "./test/*.ts",
         "./typings/index.d.ts"
     ]
