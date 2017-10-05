@@ -51,6 +51,8 @@ export interface Log {
 
 /******************************************* LOG OBJECT *******************************************/
 /**
+ * @export Main exported class
+ *
  * Isomorphic Log object. Logs differently between Node and Browser.
  */
 export class Log implements Log {
@@ -189,9 +191,11 @@ export class Log implements Log {
 
 /******************************************** FACTORY *********************************************/
 /**
- * Construct new Log object & return it.
+ * @export Use to construct a new Log object & return it. [NOTE: PRIMARY EXPORT]
+ *
  * @param {string} fileName Name of current file (to include before each message this logger emits)
  * @param {Function|string} style String-wrapping function OR string matching 1 of isoStyles' keys
+ *
  * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
  */
 export const logFactory = (filename: string,
