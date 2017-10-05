@@ -16,6 +16,13 @@ import { path as rootPath } from 'app-root-path';
 
 import * as isNode from 'detect-node';
 
+/********************************** REPL NODE ENVIRONMENT SETUP ***********************************/
+util.inspect.defaultOptions.colors = true;
+util.inspect.defaultOptions.depth = 10;
+util.inspect.defaultOptions.breakLength = 100;
+util.inspect.defaultOptions.showHidden = true;
+
+
 /**************************************** PROJECT IMPORTS *****************************************/
 import { Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory } from './shared';
 import { nodeLogFactory } from './node';
@@ -42,7 +49,30 @@ export const defPropConfig = {
     }),
 };
 
+/**
+ * Run when inspect is called in the repl.
+ * More powerful than the default, particularly when inspecting functions.
+ */
+export const inspect = (...args) => {
+    (console.log as any)(...args.map(arg => {
+        let out = '';
 
+        if (arg instanceof Function && Object.keys(arg).length === 0) {
+            return arg.toString();
+        }
+
+        if (typeof arg === 'function') {
+            out = arg.toString() + '\n\n' +
+                  `*** ...ABOVE VALUE (${arg.name || '?'}) ` +
+                  `IS ALSO AN OBJECT (SEE BELOW) :: ***\n`;
+        }
+
+        return out + util.inspect(arg);
+    }));
+};
+
+
+/****************************************** CREATE REPL *******************************************/
 export const r = repl.start({ useColors: true });
 
 // Add REPL history file
@@ -119,7 +149,8 @@ const ctxProps = {
     isNode,
 
     // Logging & object info-related
-    // inspect, getArgs,
+    inspect,
+    // getArgs,
 
     // Navigation, filesystem helpers
     // cd, cat,
@@ -152,5 +183,3 @@ const descriptions = {
 
 // Attach props to REPL (repl is in repl setup)
 bindPropsToRepl(ctxProps, descriptions);
-
-// console.log(`r.context:`, r.context);
