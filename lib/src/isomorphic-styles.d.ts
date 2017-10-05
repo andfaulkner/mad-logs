@@ -1,6 +1,6 @@
 /**
  * @export
- * Collection of styles that can be used in both the browser and the cli
+ * Collection of atomic styles that can be used in both the browser and the cli.
  */
 export declare const isomorphicStyles: {
     default: {
@@ -148,13 +148,34 @@ export interface LogOpts {
     tagSuffix: string;
     style: string;
 }
+/***************************************** STYLES EXPORT ******************************************/
+/**
+ * Series of isomorphic styles (One style for the browser, another for Node)
+ */
 export declare const isoStyles: {
     a: (fileName: string) => string;
+    aquarium: (fileName: string) => string;
     b: (fileName: string) => string;
+    rainbowLeaf: (fileName: string) => string;
     c: (fileName: string) => string;
+    lucky: (fileName: string) => string;
     d: (fileName: string) => string;
+    probeArcade: (fileName: string) => string;
     e: (fileName: string) => string;
+    potOfGold: (fileName: string) => string;
     f: (fileName: string) => string;
+    cult: (fileName: string) => string;
     g: (fileName: string) => string;
+    bracelet: (fileName: string) => string;
+    h: (fileName: string) => string;
+    rockIsDead: (fileName: string) => string;
+    i: (fileName: string) => string;
+    smokeyHatesChristmas: (fileName: string) => string;
+    j: (fileName: string) => string;
+    joy: (fileName: string) => string;
+    k: (fileName: string) => string;
+    hatBlock: (fileName: string) => string;
+    l: (fileName: string) => string;
+    theHeist: (fileName: string) => string;
 };
 export { node as nodeStyling };
