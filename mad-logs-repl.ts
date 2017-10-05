@@ -14,8 +14,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { path as rootPath } from 'app-root-path';
 
+import * as isNode from 'detect-node';
+
 /**************************************** PROJECT IMPORTS *****************************************/
-import { Log as SharedLog } from './shared';
+import { Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory } from './shared';
 import { nodeLogFactory } from './node';
 
 /****************************************** CONFIG REPL *******************************************/
@@ -113,6 +115,9 @@ const ctxProps = {
     _: lodash,
     // _m: madUtils,
 
+    // Are we in Node?
+    isNode,
+
     // Logging & object info-related
     // inspect, getArgs,
 
@@ -124,6 +129,12 @@ const ctxProps = {
     // package.json content
     packageJson,
 
+    // Import mad-logs modules
+    SharedLog,
+    SharedStyles,
+    sharedLogFactory,
+    nodeLogFactory
+
     // *** Bind mad-logs parts to REPL global scope ***
 
 };
@@ -133,7 +144,10 @@ const ctxProps = {
  */
 const descriptions = {
     _:                     'lodash alias',
-    _m:                    'mad-utils alias',
+    SharedLog:             'Log module for use in both node & the browser',
+    SharedStyles:          'Collection of styles usable in both Node & the browser',
+    sharedLogFactory:      'Constructor for shared logger',
+    nodeLogFactory:        'Factory to build a node-specific logger',
 };
 
 // Attach props to REPL (repl is in repl setup)
