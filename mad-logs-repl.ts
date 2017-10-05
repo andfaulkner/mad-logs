@@ -60,7 +60,6 @@ export const inspect = (...args) => {
     return util.inspect(args[0]);
 };
 
-
 /**
  * Run when inspect is called in the repl.
  * More powerful than the default, particularly when inspecting functions.
@@ -72,13 +71,11 @@ export const inspect = (...args) => {
 //             out = arg.toString();
 //             return arg.toString();
 //         }
-
 //         if (typeof arg === 'function') {
 //             out = arg.toString() + '\n\n' +
 //                   `*** ...ABOVE VALUE (${arg.name || '?'}) ` +
 //                   `IS ALSO AN OBJECT (SEE BELOW) :: ***\n`;
 //         }
-
 //         return(out += util.inspect + '\n');
 //     }));
 //     return out;

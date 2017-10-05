@@ -201,7 +201,8 @@ export class Log implements Log {
 export const logFactory = (filename: string,
                            style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles],
                            inspector?: Function
-): Log & ((...args: Array<(string | any)>) => void) =>
+): Log & ((...args: Array<(string | any)>) => void)
+       & { inspect: (obj: any) => (string | void) } =>
 {
     const log = new Log(filename, style, inspector);
     return Object.assign(log.info.bind(log), log, { inspect: log.inspector.info.bind(log) });
