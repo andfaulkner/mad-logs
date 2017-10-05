@@ -1,7 +1,7 @@
 /************************************** THIRD-PARTY MODULES ***************************************/
 import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
 import { isoStyles, nodeStyling } from './src/isomorphic-styles';
-import { isNode } from 'detect-node';
+import * as isNode from 'detect-node';
 
 /**************************************** TYPE DEFINITIONS ****************************************/
 export interface Log {
@@ -23,8 +23,10 @@ export interface Log {
 export class Log implements Log {
     public styler: typeof isoStyles[keyof typeof isoStyles];
 
-    constructor(public filename: string, style: keyof typeof isoStyles) {
-        this.styler = isoStyles[style];
+    constructor(public filename: string, style: keyof typeof isoStyles | IsoStyleFunc) {
+        if (typeof style === 'undefined' || style == null) this.styler = isoStyles.a;
+        else if (typeof style === 'string')                this.styler = isoStyles[style];
+        else                                               this.styler = style;
     }
 
     silly<T>  (...args: Array<(string | any)>): T {
@@ -88,9 +90,12 @@ export class Log implements Log {
 
 }
 
+export type IsoStyleFunc = typeof isoStyles[keyof typeof isoStyles];
+
 /**
  * Construct new Log object & return it.
  */
-const logFactory = (filename: string, style: keyof typeof isoStyles): Log => {
-    return new Log(filename, style);
-};
+export const logFactory = (filename: string, style: keyof typeof isoStyles | IsoStyleFunc): Log =>
+    new Log(filename, style);
+
+export { isoStyles as Styles }
