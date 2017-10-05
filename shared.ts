@@ -33,8 +33,8 @@ const _showInspectRes =
         output = inspectFn(obj);
     }
 
-    console.log(`${bookend}${styler(filename)} :: \n${output}${bookend}\n`);
-    return output;
+    console.log(`${bookend}${styler(filename)} :: \n${output}${bookend}`);
+    // return output;
 };
 
 /**************************************** TYPE DEFINITIONS ****************************************/
@@ -204,7 +204,7 @@ export const logFactory = (filename: string,
 ): Log & ((...args: Array<(string | any)>) => void) =>
 {
     const log = new Log(filename, style, inspector);
-    return Object.assign(log.info.bind(log), log);
+    return Object.assign(log.info.bind(log), log, { inspect: log.inspector.info.bind(log) });
 }
 
 export { isoStyles as Styles }

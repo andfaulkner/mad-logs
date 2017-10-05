@@ -51,26 +51,38 @@ export const defPropConfig = {
 
 /**
  * Run when inspect is called in the repl.
- * More powerful than the default, particularly when inspecting functions.
  */
 export const inspect = (...args) => {
     (console.log as any)(...args.map(arg => {
-        let out = '';
-
-        if (arg instanceof Function && Object.keys(arg).length === 0) {
-            return arg.toString();
-        }
-
-        if (typeof arg === 'function') {
-            out = arg.toString() + '\n\n' +
-                  `*** ...ABOVE VALUE (${arg.name || '?'}) ` +
-                  `IS ALSO AN OBJECT (SEE BELOW) :: ***\n`;
-        }
-
-        return out + util.inspect(arg);
+        if (typeof arg === 'function') return arg.toString();
+        return util.inspect(arg);
     }));
+    return util.inspect(args[0]);
 };
 
+
+/**
+ * Run when inspect is called in the repl.
+ * More powerful than the default, particularly when inspecting functions.
+ */
+// export const inspect = (...args) => {
+//     let out = '';
+//     (console.log as any)(...args.map(arg => {
+//         if (arg instanceof Function && Object.keys(arg).length === 0) {
+//             out = arg.toString();
+//             return arg.toString();
+//         }
+
+//         if (typeof arg === 'function') {
+//             out = arg.toString() + '\n\n' +
+//                   `*** ...ABOVE VALUE (${arg.name || '?'}) ` +
+//                   `IS ALSO AN OBJECT (SEE BELOW) :: ***\n`;
+//         }
+
+//         return(out += util.inspect + '\n');
+//     }));
+//     return out;
+// };
 
 /****************************************** CREATE REPL *******************************************/
 export const r = repl.start({ useColors: true });
