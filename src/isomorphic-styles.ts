@@ -85,7 +85,7 @@ export interface LogOpts {
 function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
     return (isNode)
         ? `${opts.tagPrefix}${fileName}${opts.tagSuffix}`
-        : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} `;
+        : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fileName}]${opts.tagSuffix} ;`;
 }
 
 /********************************************* STYLES *********************************************/
