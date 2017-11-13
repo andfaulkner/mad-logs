@@ -91,51 +91,63 @@ function buildFileTagForBrowser(fileName: string, opts: LogOpts): string {
 /********************************************* STYLES *********************************************/
 const aquarium =
     isNode ? (fileName: string) => node.blue(node.bgWhite(`[${fileName}]`))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.aquarium);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.aquarium),
+                                    madLogMarkers.aquarium.style];
 
 const rainbowLeaf =
     isNode ? (fileName: string) => node.magenta(node.bgBlue(`[${fileName}]`))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.rainbowLeaf);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.rainbowLeaf),
+                                    madLogMarkers.rainbowLeaf.style];
 
 const lucky =
     isNode ? (fileName: string) => node.bold(node.white(node.bgMagenta(`[${fileName}]`)))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.lucky);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.lucky),
+                                    madLogMarkers.lucky.style];
 
 const probeArcade =
     isNode ? (fileName: string) => node.bold(node.cyan(node.bgBlue(`[${fileName}]`)))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.probeArcade);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.probeArcade),
+                                    madLogMarkers.probeArcade.style];
 
 const potOfGold =
     isNode ? (fileName: string) => node.italic(node.bold(node.yellow(node.bgBlack(`[${fileName}]`))))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.potOfGold);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.potOfGold),
+                                    madLogMarkers.potOfGold.style];
 
 const cult =
     isNode ? (fileName: string) => node.bgWhite(node.black(`[${fileName}]`))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.cult);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.cult),
+                                    madLogMarkers.cult.style];
 
 const bracelet =
     isNode ? (fileName: string) => node.bold(node.bgMagenta(node.cyan(`[${fileName}]`)))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.bracelet);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.bracelet),
+                                    madLogMarkers.bracelet.style];
 
 const rockIsDead =
     isNode ? (fileName: string) => node.bold(node.bgBlack(node.magenta(`[${fileName}]`)))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.rockIsDead);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.rockIsDead),
+                                    madLogMarkers.rockIsDead.style];
 
 const smokeyHatesChristmas =
     isNode ? (fileName: string) => node.underline(node.bgGreen(node.white(`[${fileName}]`)))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.smokeyHatesChristmas);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.smokeyHatesChristmas),
+                                    madLogMarkers.smokeyHatesChristmas.style];
 
 const joy =
     isNode ? (fileName: string) => node.bgYellow(node.magenta(` [${fileName}] `))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.joy);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.joy),
+                                    madLogMarkers.joy.style];
 
 const hatBlock =
     isNode ? (fileName: string) => node.bgCyan(node.black(` [${fileName}] `))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.hatBlock);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.hatBlock),
+                                    madLogMarkers.hatBlock.style];
 
 const theHeist =
     isNode ? (fileName: string) => node.underline(node.bold(node.white(node.bgBlack(` [${fileName}] `))))
-           : (fileName: string) => buildFileTagForBrowser(fileName, madLogMarkers.theHeist);
+           : (fileName: string) => [buildFileTagForBrowser(fileName, madLogMarkers.theHeist),
+                                    madLogMarkers.theHeist.style];
 
 
 /***************************************** STYLES EXPORT ******************************************/

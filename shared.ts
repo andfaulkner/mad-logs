@@ -14,7 +14,7 @@ const bookend = `\n***************\n`;
  */
 const _showInspectRes =
     (obj: any,
-     styler: (s: string) => string,
+     styler: (s: string) => (string | string[]),
      filename: string,
      inspectFn: Function
 ) => {
@@ -33,7 +33,10 @@ const _showInspectRes =
         output = inspectFn(obj);
     }
 
-    console.log(`${bookend}${styler(filename)} :: \n${output}${bookend}`);
+    const tagObj = styler(this.filename);
+    console.log.apply(console, [bookend].concat(Array.isArray(tagObj) ? tagObj : [tagObj])
+                                        .concat(' :: \n${output}${bookend}'));
+    // console.log.apply(console, [bookend, `${styler(filename)} :: \n${output}${bookend}`);
     // return output;
 };
 
@@ -104,35 +107,40 @@ export class Log implements Log {
 
     silly = <T>(...args: Array<(string | any)>): T => {
         if (isSilly) {
-            console.log(this.styler(this.filename), ...args);
+            const tagObj = this.styler(this.filename);
+            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
             return args[0];
         }
     }
 
     verbose = <T>(...args: Array<(string | any)>): T => {
         if (isVerbose) {
-            console.log(this.styler(this.filename), ...args);
+            const tagObj = this.styler(this.filename);
+            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
             return args[0];
         }
     }
 
     debug = <T>(...args: Array<(string | any)>): T => {
         if (isDebug) {
-            console.log(this.styler(this.filename), ...args);
+            const tagObj = this.styler(this.filename);
+            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
             return args[0];
         }
     }
 
     info = <T>(...args: Array<(string | any)>): T => {
         if (isInfo) {
-            console.log(this.styler(this.filename), ...args);
+            const tagObj = this.styler(this.filename);
+            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
             return args[0];
         }
     }
 
     warn = <T>(...args: Array<(string | any)>): T => {
         if (isWarn) {
-            console.log(this.styler(this.filename), ...args);
+            const tagObj = this.styler(this.filename);
+            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
             return args[0];
         }
     }
@@ -143,7 +151,9 @@ export class Log implements Log {
                 const { bgRed, white, bold } = nodeStyling;
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
-                console.error(this.styler(this.filename), ' [ERROR] ', ...args);
+                const tagObj = this.styler(this.filename);
+                console.error.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj]
+                                                 .concat([' [ERROR] ']).concat(args));
             }
         }
         return args[args.length - 1];
@@ -155,7 +165,9 @@ export class Log implements Log {
                 const { bgRed, white, bold } = nodeStyling;
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
-                console.error(this.styler(this.filename), ' [ERROR] ', ...args);
+                const tagObj = this.styler(this.filename);
+                console.error.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj]
+                                                 .concat([' [WTF ERROR] ']).concat(args));
             }
         }
         return args[args.length - 1];

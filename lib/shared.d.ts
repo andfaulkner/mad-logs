@@ -61,7 +61,7 @@ export declare class Log implements Log {
  *
  * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
  */
-export declare const logFactory: (filename: string, style?: ((fileName: string) => string) | "a" | "aquarium" | "b" | "rainbowLeaf" | "c" | "lucky" | "d" | "probeArcade" | "e" | "potOfGold" | "f" | "cult" | "g" | "bracelet" | "h" | "rockIsDead" | "i" | "smokeyHatesChristmas" | "j" | "joy" | "k" | "hatBlock" | "l" | "theHeist", inspector?: Function) => Log & ((...args: any[]) => void) & {
+export declare const logFactory: (filename: string, style?: ((fileName: string) => string) | ((fileName: string) => string[]) | "a" | "aquarium" | "b" | "rainbowLeaf" | "c" | "lucky" | "d" | "probeArcade" | "e" | "potOfGold" | "f" | "cult" | "g" | "bracelet" | "h" | "rockIsDead" | "i" | "smokeyHatesChristmas" | "j" | "joy" | "k" | "hatBlock" | "l" | "theHeist", inspector?: Function) => Log & ((...args: any[]) => void) & {
     inspect: (obj: any) => string | void;
 };
 export { isoStyles as Styles };
