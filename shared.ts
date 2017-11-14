@@ -108,7 +108,7 @@ export class Log implements Log {
     silly = <T>(...args: Array<(string | any)>): T => {
         if (isSilly) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
+            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
     }
@@ -116,7 +116,7 @@ export class Log implements Log {
     verbose = <T>(...args: Array<(string | any)>): T => {
         if (isVerbose) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
+            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
     }
@@ -124,7 +124,7 @@ export class Log implements Log {
     debug = <T>(...args: Array<(string | any)>): T => {
         if (isDebug) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
+            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
     }
@@ -132,7 +132,7 @@ export class Log implements Log {
     info = <T>(...args: Array<(string | any)>): T => {
         if (isInfo) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
+            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
     }
@@ -140,7 +140,7 @@ export class Log implements Log {
     warn = <T>(...args: Array<(string | any)>): T => {
         if (isWarn) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj].concat(args));
+            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
     }
@@ -152,7 +152,7 @@ export class Log implements Log {
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
                 const tagObj = this.styler(this.filename);
-                console.error.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj]
+                console.error.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj])
                                                  .concat([' [ERROR] ']).concat(args));
             }
         }
@@ -166,7 +166,7 @@ export class Log implements Log {
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
                 const tagObj = this.styler(this.filename);
-                console.error.apply(console, (Array.isArray(tagObj)) ? tagObj : [tagObj]
+                console.error.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj])
                                                  .concat([' [WTF ERROR] ']).concat(args));
             }
         }
