@@ -174,7 +174,7 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}`
                       : `color: yellow; background-color: black; ${style.bold}`,
     },
-    kingRageVHS: {
+    kingRageBlock: {
         tagPrefix: '(👁‍🗨🗣🗯)',
         tagSuffix: '(👁‍🗨🗣🗯)',
         style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`

@@ -268,7 +268,7 @@ describe('logMarkers', function() {
     );
 
     styleTester(
-        'kingRageVHS',
+        'kingRageBlock',
         '"(👁‍🗨🗣🗯)" (and various styles)',
         ['(👁‍🗨🗣🗯)', 'background-color: purple;', 'color: pink;']
     );

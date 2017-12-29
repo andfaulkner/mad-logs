@@ -138,7 +138,7 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    kingRageVHS: {
+    kingRageBlock: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -340,7 +340,7 @@ export declare const logMarkers: {} & {
         tagSuffix: string;
         style: string;
     };
-    kingRageVHS: {
+    kingRageBlock: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
