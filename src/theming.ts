@@ -174,6 +174,13 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}`
                       : `color: yellow; background-color: black; ${style.bold}`,
     },
+    kingRageVHS: {
+        tagPrefix: '(👁‍🗨🗣🗯)',
+        tagSuffix: '(👁‍🗨🗣🗯)',
+        style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
+                      : `color: pink; background-color: purple; font-size: 16px; padding: 3px; ` +
+                        `border-style: solid; border-radius: 10; border-color: black;`
+    },
     lakeLouise: {
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
@@ -249,7 +256,7 @@ export const madLogMarkers = {
                       : `color: black; background-color: lightgreen;
                          font-size: 15px; font-weight:bold;
                          padding: 3px;
-                         border-top: solid 2px black;                         
+                         border-top: solid 2px black;
                          border-bottom: solid 2px black;
                          border-left: solid 2px black; border-right: solid 2px black;
                          border-radius: 8px;
@@ -291,7 +298,7 @@ export const madLogMarkers = {
         tagSuffix: ']🖕🏼👋🏼🖕🏼🖖🏼🖐🏼✋🤘🏼',
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}`
                       : `color: green; background-color: yellow; ${style.bold}`,
-    },    
+    },
     theHeist: {
         tagPrefix: "🚚==|💰😰🔫😎|_",
         tagSuffix: "_|😎🔧🔒|📦",
