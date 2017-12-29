@@ -217,6 +217,13 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
                       : `color: ${colours.gold}; ${style.bold};`,
     },
+    mrsPotatoVHS: {
+        tagPrefix: '(👃👁👂)',
+        tagSuffix: '(👂👁👅)',
+        style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
+                      : `color:black; background-color:white; font-weight:900; font-size:17px;` +
+                        `border-style:solid; border-color:black; border-width:5px; padding:1.5px;`,
+    },
     nightmare: {
         tagPrefix: '>:~',
         tagSuffix: '~:<',
