@@ -294,6 +294,26 @@ describe('logMarkers', function() {
         // test against the text intended for the terminal (but captured by the stub)
         expect(output[0]).to.match(/\|\|┗┛┏┓mad-logs.test.ts┏┓┗┛\|\| color: #FFFFFF; background-color: #FF69B4; Should be logged/); // tslint:disable-line
     });
+
+    it(`has style kingRageVHS, which adds "(👁‍🗨🗣🗯)" (among other things) to output if used in log constructor`, function() {
+        const eblLogger = logFactory()('mad-logs.test.ts', logMarkers.kingRageVHS);
+
+        // Stub console.log and most of console's internals
+        const output = stdout.inspectSync(function() {
+            eblLogger('Should be logged');
+        });
+
+        if (isVerbose) {
+            console.log('Output of kingRageVHS log (below):');
+            console.log(output[0]);
+        }
+
+        // test against the text intended for the terminal (but captured by the stub)
+        expect(output[0]).to.contain('(👁‍🗨🗣🗯)');
+        expect(output[0]).to.contain('mad-logs.test.ts');
+        expect(output[0]).to.contain('background-color: purple;');
+        expect(output[0]).to.contain('color: pink;');
+    });
 });
 
 // Restore original process.argv
