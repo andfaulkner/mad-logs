@@ -272,6 +272,12 @@ describe('logMarkers', function() {
         '"(👁‍🗨🗣🗯)" (and various styles)',
         ['(👁‍🗨🗣🗯)', 'background-color: purple;', 'color: pink;']
     );
+
+    styleTester(
+        'mrsPotatoVHS',
+        '(👃👁👂), (👂👁👅), and various styles (including an ultra-thick black border)',
+        ['(👃👁👂)', '(👂👁👅)', `color: black;`, `border-style: solid;`, `border-width: 5px;`]
+    );
 });
 
 // Restore original process.argv

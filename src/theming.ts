@@ -221,8 +221,8 @@ export const madLogMarkers = {
         tagPrefix: '(👃👁👂)',
         tagSuffix: '(👂👁👅)',
         style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
-                      : `color:black; background-color:white; font-weight:900; font-size:17px;` +
-                        `border-style:solid; border-color:black; border-width:5px; padding:1.5px;`,
+                      : `color: black; font-weight: 900; font-size: 17px; padding: 1.5px; ` +
+                        `border-style: solid; border-color: black; border-width: 5px;`,
     },
     nightmare: {
         tagPrefix: '>:~',
