@@ -258,23 +258,7 @@ describe('logMarkers', function() {
         });
     });
 
-    // Manual repeat example of previous test group, as comparison for writing more tests
-    it(`has style arrow, which adds >>-- & ---|> to output if used in log constructor`, function() {
-        const arrowLogger = logFactory()('mad-logs.test.ts', logMarkers.arrow);
-
-        // Stub console.log and most of console's internals
-        const output = stdout.inspectSync(function() {
-            arrowLogger('Should be logged');
-        });
-
-        if (isVerbose) {
-            console.log('Output of arrow log (below):');
-            console.log(output[0]);
-        }
-
-        // test against the text intended for the terminal (but captured by the stub)
-        expect(output[0]).to.match(/>>--mad-logs.test.ts---\|>   Should be logged/);
-    });
+    styleTester('arrow', '>>-- & ---|>', [], [/>>--mad-logs.test.ts---\|>   Should be logged/]);
 
     styleTester(
         'escherBarbieLego',
