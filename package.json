@@ -67,6 +67,7 @@
         "lodash": "^4.17.4",
         "lodash.partial": "^4.2.1",
         "mocha": "^3.2.0",
+        "nodemon": "^1.15.1",
         "prettier": "^1.11.0",
         "repl.history": "^0.1.4",
         "sinon": "^1.17.6",
