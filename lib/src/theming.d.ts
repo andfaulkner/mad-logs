@@ -254,7 +254,7 @@ export declare const madLogMarkers: {
         style: string;
     };
 };
-export declare const logMarkers: {} & {
+export declare const logMarkers: {
     angryBird: {
         tagPrefix: string;
         tagSuffix: string;
