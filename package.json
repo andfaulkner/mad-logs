@@ -47,7 +47,7 @@
         "@types/lodash": "^4.14.77",
         "colors": "^1.1.2",
         "detect-node": "^2.0.3",
-        "env-var-helpers": "^3.0.0",
+        "env-var-helpers": "^3.3.0",
         "global": "^4.3.1",
         "lodash.isfunction": "^3.0.8",
         "string.prototype.padend": "^3.0.0"
