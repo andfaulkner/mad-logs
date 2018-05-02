@@ -73,7 +73,7 @@
         "sinon": "^4.4.9",
         "test-console": "^1.1.0",
         "ts-node": "^5.0.0",
-        "typescript": "^2.7.2"
+        "typescript": "2.8.3"
     },
     "peerDependencies": {
         "lodash": "^4.x"
