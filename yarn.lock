@@ -652,9 +652,9 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-env-var-helpers@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-3.4.0.tgz#565b5fb089f255d6f59be71d2b07a6829cf96605"
+env-var-helpers@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-3.4.1.tgz#c4595627e63d677f6529160e7b69b6140a8b67aa"
 
 error-ex@^1.2.0:
   version "1.3.1"
