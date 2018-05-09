@@ -95,7 +95,7 @@ const {black, blue, cyan, green, magenta, red, white, yellow, gray} = node;
 const {underline, bold, italic} = node;
 
 // node.blue(node.bgWhite(`[${fName}]`)
-// black.bgMagenta << GOOD
+// bold(white(bgMagenta
 
 /********************************************* STYLES *********************************************/
 const aquarium = isNode
@@ -140,18 +140,18 @@ const cult = isNode
           madLogMarkers.cult.style,
       ];
 
-const hatBlock = isNode
-    ? (fName: string) => bgCyan(black(` [${fName}] `))
-    : (fName: string) => [
-          buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
-          madLogMarkers.hatBlock.style,
-      ];
-
 const escherBarbieLego = isNode
     ? (fName: string) => bgMagenta(black(`||┗┛┏┓ [${fName}] ┏┓┗┛||`))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.escherBarbieLego),
           madLogMarkers.escherBarbieLego.style,
+      ];
+
+const hatBlock = isNode
+    ? (fName: string) => bgCyan(black(` [${fName}] `))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
+          madLogMarkers.hatBlock.style,
       ];
 
 const joy = isNode
@@ -162,10 +162,17 @@ const joy = isNode
       ];
 
 const lucky = isNode
-    ? (fName: string) => bold(white(bgMagenta(`[${fName}]`)))
+    ? (fName: string) => bold(white(bgGreen(`[${fName}]`)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.lucky),
           madLogMarkers.lucky.style,
+      ];
+
+const maceWindu = isNode
+    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.maceWindu),
+          madLogMarkers.maceWindu.style,
       ];
 
 const probeArcade = isNode
@@ -222,9 +229,11 @@ export const isoStyles = {
     backAndForth,
     bracelet,
     cult,
+    escherBarbieLego,
     hatBlock,
     joy,
     lucky,
+    maceWindu,
     probeArcade,
     potOfGold,
     rainbowLeaf,
