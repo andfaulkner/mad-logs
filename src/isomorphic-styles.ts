@@ -181,18 +181,21 @@ const theHeist =
  */
 // prettier-ignore
 export const isoStyles = {
-    a: aquarium,              aquarium,
-    b: rainbowLeaf,           rainbowLeaf,
-    c: lucky,                 lucky,
-    d: probeArcade,           probeArcade,
-    e: potOfGold,             potOfGold,
-    f: cult,                  cult,
-    g: bracelet,              bracelet,
-    h: rockIsDead,            rockIsDead,
-    i: smokeyHatesChristmas,  smokeyHatesChristmas,
-    j: joy,                   joy,
-    k: hatBlock,              hatBlock,
-    l: theHeist,              theHeist,
+    aquarium,
+    angryBird,
+    arrow,
+    backAndForth,
+    bracelet,
+    cult,
+    hatBlock,
+    joy,
+    lucky,
+    probeArcade,
+    potOfGold,
+    rainbowLeaf,
+    rockIsDead,
+    smokeyHatesChristmas,
+    theHeist,
 };
 
 export { node as nodeStyling }
