@@ -7,11 +7,15 @@ Tooling / build
     *   tsconfig - skips lib checks
 
 Added isomorphic styles:
+    *   isoStyles.none
+        *   For producing unstyled text (note: still wraps the file name in '[' and ']  ')
     *   isoStyles.angryBird
     *   isoStyles.arrow
     *   isoStyles.backAndForth
     *   isoStyles.escherBarbieLego
     *   isoStyles.maceWindu
+
+Default style for isomorphic export set to isoStyles.none (only when no style specified)
 
 Breaking changes
 ----------------
@@ -20,7 +24,6 @@ mad-logs/lib/shared: Remove letter-named isomorphic styles from isoStyles object
     *   Removed isoStyles.b
     *   ...
     *   Removed isoStyles.l
-
 
 
 9.1.2
