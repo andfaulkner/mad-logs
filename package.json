@@ -44,7 +44,6 @@
     },
     "homepage": "https://github.com/andfaulkner/mad-logs#readme",
     "dependencies": {
-        "@types/node": "8.10.0",
         "colors": "^1.1.2",
         "detect-node": "^2.0.3",
         "env-var-helpers": "^4.0.1",
@@ -57,6 +56,7 @@
         "@types/colors": "^1.1.1",
         "@types/lodash": "^4.14.108",
         "@types/mocha": "^5.2.0",
+        "@types/node": "8.10.0",
         "@types/object-assign": "^4.0.30",
         "app-root-path": "^2.0.1",
         "chai": "^4.1.2",
