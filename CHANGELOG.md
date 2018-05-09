@@ -1,15 +1,23 @@
 10.0.0
 ======
 Tooling / build
-    Add prettier
-    Update tslint
-    Add .gitattributes
-    tsconfig - skips lib checks
+    *   Add prettier
+    *   Update tslint
+    *   Add .gitattributes
+    *   tsconfig - skips lib checks
 
 Added isomorphic styles:
-    Added angryBird
-    Added arrow
-    Added backAndForth
+    *   Added angryBird
+    *   Added arrow
+    *   Added backAndForth
+
+Breaking changes
+----------------
+mad-logs/lib/shared: Remove letter-named isomorphic styles from isoStyles object
+    *   Removed isoStyles.a
+    *   Removed isoStyles.b
+    *   ...
+    *   Removed isoStyles.l
 
 
 
