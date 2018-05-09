@@ -8,6 +8,7 @@ const cssInverse = 'filter: invert(100%); -moz-filter: invert(100%); -webkit-fil
  * @export
  * Collection of atomic styles that can be used in both the browser and the cli.
  */
+// prettier-ignore
 export const isomorphicStyles = {
     default: {
         cli:     '\u001b[49m\u001b[0m',
@@ -50,6 +51,7 @@ export const isomorphicStyles = {
 };
 
 /****************************************** NODE STYLES *******************************************/
+// prettier-ignore
 const node = {
     black     : (str: string): string => `\u001b[30m${str}\u001b[0m`,
     red       : (str: string): string => `\u001b[31m${str}\u001b[0m`,
@@ -94,17 +96,28 @@ const {black, blue, cyan, green, magenta, red, white, yellow, gray} = node;
 const {underline, bold, italic} = node;
 
 // node.blue(node.bgWhite(`[${fName}]`)
+// black.bgMagenta << GOOD
 
 /********************************************* STYLES *********************************************/
 const aquarium =
-    isNode ? (fName: string) => bgBlue(white(bold(underline(`[${fName}]`))))
+    isNode ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.aquarium),
                                 madLogMarkers.aquarium.style];
 
 const angryBird =
-    isNode ? (fName: string) => blue(bgBlack(bgYellow(`[${fName}]`)))
+    isNode ? (fName: string) => bgYellow(black(`[${fName}]`))
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.angryBird),
                                 madLogMarkers.angryBird.style];
+
+const arrow =
+    isNode ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`)))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.arrow),
+                                madLogMarkers.arrow.style];
+
+const backAndForth =
+    isNode ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`)))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.backAndForth),
+                                madLogMarkers.backAndForth.style];
 
 const rainbowLeaf =
     isNode ? (fName: string) => magenta(bgBlue(`[${fName}]`))
@@ -166,6 +179,7 @@ const theHeist =
 /**
  * Series of isomorphic styles (One style for the browser, another for Node)
  */
+// prettier-ignore
 export const isoStyles = {
     a: aquarium,              aquarium,
     b: rainbowLeaf,           rainbowLeaf,
