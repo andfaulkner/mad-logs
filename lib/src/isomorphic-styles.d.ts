@@ -153,6 +153,7 @@ export interface LogOpts {
  * Series of isomorphic styles (One style for the browser, another for Node)
  */
 export declare const isoStyles: {
+    none: ((fName: string) => string) | ((fName: string) => string[]);
     aquarium: ((fName: string) => string) | ((fName: string) => string[]);
     angryBird: ((fName: string) => string) | ((fName: string) => string[]);
     arrow: ((fName: string) => string) | ((fName: string) => string[]);
