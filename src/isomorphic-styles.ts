@@ -1,4 +1,4 @@
-import { madLogMarkers } from './theming';
+import {madLogMarkers} from './theming';
 
 import * as isNode from 'detect-node';
 
@@ -77,17 +77,16 @@ const node = {
     italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
 };
 
-
 export interface LogOpts {
-  tagPrefix: string;
-  tagSuffix: string;
-  style: string;
+    tagPrefix: string;
+    tagSuffix: string;
+    style: string;
 }
 
 function buildFileTagForBrowser(fName: string, opts: LogOpts): string {
-    return (isNode)
+    return isNode
         ? `${opts.tagPrefix}${fName}${opts.tagSuffix}`
-        : `${((opts.style) ? '%c' : '')}${opts.tagPrefix}[${fName}]${opts.tagSuffix} ;`;
+        : `${opts.style ? '%c' : ''}${opts.tagPrefix}[${fName}]${opts.tagSuffix} ;`;
 }
 
 // Extract colours
@@ -99,81 +98,110 @@ const {underline, bold, italic} = node;
 // black.bgMagenta << GOOD
 
 /********************************************* STYLES *********************************************/
-const aquarium =
-    isNode ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.aquarium),
-                                madLogMarkers.aquarium.style];
+const aquarium = isNode
+    ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.aquarium),
+          madLogMarkers.aquarium.style,
+      ];
 
-const angryBird =
-    isNode ? (fName: string) => bgYellow(black(`[${fName}]`))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.angryBird),
-                                madLogMarkers.angryBird.style];
+const angryBird = isNode
+    ? (fName: string) => bgYellow(black(`[${fName}]`))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.angryBird),
+          madLogMarkers.angryBird.style,
+      ];
 
-const arrow =
-    isNode ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.arrow),
-                                madLogMarkers.arrow.style];
+const arrow = isNode
+    ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.arrow),
+          madLogMarkers.arrow.style,
+      ];
 
-const backAndForth =
-    isNode ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.backAndForth),
-                                madLogMarkers.backAndForth.style];
+const backAndForth = isNode
+    ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.backAndForth),
+          madLogMarkers.backAndForth.style,
+      ];
 
-const bracelet =
-    isNode ? (fName: string) => bold(bgMagenta(cyan(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.bracelet),
-                                madLogMarkers.bracelet.style];
+const bracelet = isNode
+    ? (fName: string) => bold(bgMagenta(cyan(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.bracelet),
+          madLogMarkers.bracelet.style,
+      ];
 
-const cult =
-    isNode ? (fName: string) => bgWhite(black(`[${fName}]`))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.cult),
-                                madLogMarkers.cult.style];
+const cult = isNode
+    ? (fName: string) => bgWhite(black(`[${fName}]`))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.cult),
+          madLogMarkers.cult.style,
+      ];
 
-const hatBlock =
-    isNode ? (fName: string) => bgCyan(black(` [${fName}] `))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
-                                madLogMarkers.hatBlock.style];
+const hatBlock = isNode
+    ? (fName: string) => bgCyan(black(` [${fName}] `))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
+          madLogMarkers.hatBlock.style,
+      ];
 
-const joy =
-    isNode ? (fName: string) => bgYellow(magenta(` [${fName}] `))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.joy),
-                                madLogMarkers.joy.style];
+const joy = isNode
+    ? (fName: string) => bgYellow(magenta(` [${fName}] `))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.joy),
+          madLogMarkers.joy.style,
+      ];
 
-const lucky =
-    isNode ? (fName: string) => bold(white(bgMagenta(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.lucky),
-                                madLogMarkers.lucky.style];
+const lucky = isNode
+    ? (fName: string) => bold(white(bgMagenta(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.lucky),
+          madLogMarkers.lucky.style,
+      ];
 
-const probeArcade =
-    isNode ? (fName: string) => bold(cyan(bgBlue(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
-                                madLogMarkers.probeArcade.style];
+const probeArcade = isNode
+    ? (fName: string) => bold(cyan(bgBlue(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
+          madLogMarkers.probeArcade.style,
+      ];
 
-const potOfGold =
-    isNode ? (fName: string) => italic(bold(yellow(bgBlack(`[${fName}]`))))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
-                                madLogMarkers.potOfGold.style];
+const potOfGold = isNode
+    ? (fName: string) => italic(bold(yellow(bgBlack(`[${fName}]`))))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
+          madLogMarkers.potOfGold.style,
+      ];
 
-const rainbowLeaf =
-    isNode ? (fName: string) => magenta(bgBlue(`[${fName}]`))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
-                                madLogMarkers.rainbowLeaf.style];
+const rainbowLeaf = isNode
+    ? (fName: string) => magenta(bgBlue(`[${fName}]`))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
+          madLogMarkers.rainbowLeaf.style,
+      ];
 
-const rockIsDead =
-    isNode ? (fName: string) => bold(bgBlack(magenta(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.rockIsDead),
-                                madLogMarkers.rockIsDead.style];
+const rockIsDead = isNode
+    ? (fName: string) => bold(bgBlack(magenta(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.rockIsDead),
+          madLogMarkers.rockIsDead.style,
+      ];
 
-const smokeyHatesChristmas =
-    isNode ? (fName: string) => underline(bgGreen(white(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
-                                madLogMarkers.smokeyHatesChristmas.style];
+const smokeyHatesChristmas = isNode
+    ? (fName: string) => underline(bgGreen(white(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
+          madLogMarkers.smokeyHatesChristmas.style,
+      ];
 
-const theHeist =
-    isNode ? (fName: string) => underline(bold(white(bgBlack(` [${fName}] `))))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.theHeist),
-                                madLogMarkers.theHeist.style];
-
+const theHeist = isNode
+    ? (fName: string) => underline(bold(white(bgBlack(` [${fName}] `))))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.theHeist),
+          madLogMarkers.theHeist.style,
+      ];
 
 /***************************************** STYLES EXPORT ******************************************/
 /**
@@ -198,4 +226,4 @@ export const isoStyles = {
     theHeist,
 };
 
-export { node as nodeStyling }
+export {node as nodeStyling};
