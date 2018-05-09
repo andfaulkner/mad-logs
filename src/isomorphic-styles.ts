@@ -98,6 +98,13 @@ const {underline, bold, italic} = node;
 // bold(white(bgMagenta
 
 /********************************************* STYLES *********************************************/
+const none = isNode
+    ? (fName: string) => `[${fName}]`
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, {tagPrefix: '[', tagSuffix: ']  ', style: ``}),
+          madLogMarkers.aquarium.style,
+      ];
+
 const aquarium = isNode
     ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
     : (fName: string) => [
@@ -223,6 +230,7 @@ const theHeist = isNode
  */
 // prettier-ignore
 export const isoStyles = {
+    none,
     aquarium,
     angryBird,
     arrow,

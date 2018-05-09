@@ -153,29 +153,22 @@ export interface LogOpts {
  * Series of isomorphic styles (One style for the browser, another for Node)
  */
 export declare const isoStyles: {
-    a: ((fName: string) => string) | ((fName: string) => string[]);
     aquarium: ((fName: string) => string) | ((fName: string) => string[]);
-    b: ((fName: string) => string) | ((fName: string) => string[]);
-    rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
-    c: ((fName: string) => string) | ((fName: string) => string[]);
-    lucky: ((fName: string) => string) | ((fName: string) => string[]);
-    d: ((fName: string) => string) | ((fName: string) => string[]);
-    probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
-    e: ((fName: string) => string) | ((fName: string) => string[]);
-    potOfGold: ((fName: string) => string) | ((fName: string) => string[]);
-    f: ((fName: string) => string) | ((fName: string) => string[]);
-    cult: ((fName: string) => string) | ((fName: string) => string[]);
-    g: ((fName: string) => string) | ((fName: string) => string[]);
+    angryBird: ((fName: string) => string) | ((fName: string) => string[]);
+    arrow: ((fName: string) => string) | ((fName: string) => string[]);
+    backAndForth: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
-    h: ((fName: string) => string) | ((fName: string) => string[]);
-    rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
-    i: ((fName: string) => string) | ((fName: string) => string[]);
-    smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
-    j: ((fName: string) => string) | ((fName: string) => string[]);
-    joy: ((fName: string) => string) | ((fName: string) => string[]);
-    k: ((fName: string) => string) | ((fName: string) => string[]);
+    cult: ((fName: string) => string) | ((fName: string) => string[]);
+    escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     hatBlock: ((fName: string) => string) | ((fName: string) => string[]);
-    l: ((fName: string) => string) | ((fName: string) => string[]);
+    joy: ((fName: string) => string) | ((fName: string) => string[]);
+    lucky: ((fName: string) => string) | ((fName: string) => string[]);
+    maceWindu: ((fName: string) => string) | ((fName: string) => string[]);
+    probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
+    potOfGold: ((fName: string) => string) | ((fName: string) => string[]);
+    rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
+    rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
+    smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
     theHeist: ((fName: string) => string) | ((fName: string) => string[]);
 };
 export { node as nodeStyling };
