@@ -97,7 +97,7 @@ export class Log implements Log {
         this.inspectFn = Log.inspectFn || ((obj: string) => obj);
 
         // Set the styler function based on the given value of the style prop.
-        if (typeof style === 'undefined' || style == null) this.styler = isoStyles.a;
+        if (typeof style === 'undefined' || style == null) this.styler = isoStyles.none;
         else if (typeof style === 'string')                this.styler = isoStyles[style];
         else                                               this.styler = style;
     }
