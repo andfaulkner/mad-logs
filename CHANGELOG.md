@@ -1,3 +1,18 @@
+10.0.0
+======
+Tooling / build
+    Add prettier
+    Update tslint
+    Add .gitattributes
+    tsconfig - skips lib checks
+
+Added isomorphic styles:
+    Added angryBird
+    Added arrow
+    Added backAndForth
+
+
+
 9.1.2
 =====
 Upgraded modules to latest:
