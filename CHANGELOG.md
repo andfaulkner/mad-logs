@@ -7,9 +7,11 @@ Tooling / build
     *   tsconfig - skips lib checks
 
 Added isomorphic styles:
-    *   Added angryBird
-    *   Added arrow
-    *   Added backAndForth
+    *   isoStyles.angryBird
+    *   isoStyles.arrow
+    *   isoStyles.backAndForth
+    *   isoStyles.escherBarbieLego
+    *   isoStyles.maceWindu
 
 Breaking changes
 ----------------
