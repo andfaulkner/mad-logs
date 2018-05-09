@@ -147,6 +147,13 @@ const hatBlock = isNode
           madLogMarkers.hatBlock.style,
       ];
 
+const escherBarbieLego = isNode
+    ? (fName: string) => bgMagenta(black(`||┗┛┏┓ [${fName}] ┏┓┗┛||`))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.escherBarbieLego),
+          madLogMarkers.escherBarbieLego.style,
+      ];
+
 const joy = isNode
     ? (fName: string) => bgYellow(magenta(` [${fName}] `))
     : (fName: string) => [
