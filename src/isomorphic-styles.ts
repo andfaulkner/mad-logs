@@ -93,9 +93,11 @@ const {bgBlack, bgBlue, bgCyan, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow} = 
 const {black, blue, cyan, green, magenta, red, white, yellow, gray} = node;
 const {underline, bold, italic} = node;
 
+// node.blue(node.bgWhite(`[${fName}]`)
+
 /********************************************* STYLES *********************************************/
 const aquarium =
-    isNode ? (fName: string) => blue(bgWhite(`[${fName}]`))
+    isNode ? (fName: string) => bgBlue(white(bold(underline(`[${fName}]`))))
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.aquarium),
                                 madLogMarkers.aquarium.style];
 
