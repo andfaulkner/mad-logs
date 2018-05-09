@@ -119,10 +119,25 @@ const backAndForth =
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.backAndForth),
                                 madLogMarkers.backAndForth.style];
 
-const rainbowLeaf =
-    isNode ? (fName: string) => magenta(bgBlue(`[${fName}]`))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
-                                madLogMarkers.rainbowLeaf.style];
+const bracelet =
+    isNode ? (fName: string) => bold(bgMagenta(cyan(`[${fName}]`)))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.bracelet),
+                                madLogMarkers.bracelet.style];
+
+const cult =
+    isNode ? (fName: string) => bgWhite(black(`[${fName}]`))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.cult),
+                                madLogMarkers.cult.style];
+
+const hatBlock =
+    isNode ? (fName: string) => bgCyan(black(` [${fName}] `))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
+                                madLogMarkers.hatBlock.style];
+
+const joy =
+    isNode ? (fName: string) => bgYellow(magenta(` [${fName}] `))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.joy),
+                                madLogMarkers.joy.style];
 
 const lucky =
     isNode ? (fName: string) => bold(white(bgMagenta(`[${fName}]`)))
@@ -139,15 +154,10 @@ const potOfGold =
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
                                 madLogMarkers.potOfGold.style];
 
-const cult =
-    isNode ? (fName: string) => bgWhite(black(`[${fName}]`))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.cult),
-                                madLogMarkers.cult.style];
-
-const bracelet =
-    isNode ? (fName: string) => bold(bgMagenta(cyan(`[${fName}]`)))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.bracelet),
-                                madLogMarkers.bracelet.style];
+const rainbowLeaf =
+    isNode ? (fName: string) => magenta(bgBlue(`[${fName}]`))
+           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
+                                madLogMarkers.rainbowLeaf.style];
 
 const rockIsDead =
     isNode ? (fName: string) => bold(bgBlack(magenta(`[${fName}]`)))
@@ -158,16 +168,6 @@ const smokeyHatesChristmas =
     isNode ? (fName: string) => underline(bgGreen(white(`[${fName}]`)))
            : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
                                 madLogMarkers.smokeyHatesChristmas.style];
-
-const joy =
-    isNode ? (fName: string) => bgYellow(magenta(` [${fName}] `))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.joy),
-                                madLogMarkers.joy.style];
-
-const hatBlock =
-    isNode ? (fName: string) => bgCyan(black(` [${fName}] `))
-           : (fName: string) => [buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
-                                madLogMarkers.hatBlock.style];
 
 const theHeist =
     isNode ? (fName: string) => underline(bold(white(bgBlack(` [${fName}] `))))
