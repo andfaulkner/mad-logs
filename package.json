@@ -60,7 +60,7 @@
         "@types/object-assign": "^4.0.30",
         "app-root-path": "^2.0.1",
         "chai": "^4.1.2",
-        "eslint": "^4.8.0",
+        "eslint": "^4.19.1",
         "eslint-plugin-import": "^2.11.0",
         "eslint-plugin-promise": "^3.4.0",
         "lodash": "^4.17.10",
