@@ -1901,6 +1901,17 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+mad-logs@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.0.0.tgz#c09dcc010e286d9969bfdc5cdaf8f75f768b57ef"
+  dependencies:
+    colors "^1.1.2"
+    detect-node "^2.0.3"
+    env-var-helpers "^4.0.1"
+    global "^4.3.1"
+    lodash.isfunction "^3.0.8"
+    string.prototype.padend "^3.0.0"
+
 mad-logs@^9.1.1, mad-logs@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-9.1.2.tgz#2c7fb30e86972b9ba05be1ae73ca1266e3ffa73e"
@@ -1913,9 +1924,9 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.54.1:
-  version "0.54.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.54.1.tgz#4980f2ac04a27d6f1a2c4198976b67dd9f7a9565"
+mad-utils@^0.54.3:
+  version "0.54.3"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.54.3.tgz#d60ab39566b538e56efeae55a5e86009dbf7cce6"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.0"
     "@types/chai" "^4.1.3"
@@ -1935,7 +1946,7 @@ mad-utils@^0.54.1:
     detect-node "^2.0.3"
     fs-extra-promise "^1.0.1"
     handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^9.1.2"
+    mad-logs "^10.0.0"
     moment "^2.22.1"
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
