@@ -80,7 +80,6 @@
         "vrsource-tslint-rules": "^5.8.2"
     },
     "peerDependencies": {
-        "lodash": "^4.x",
-        "mad-utils": ">=0.50.0"
+        "lodash": "^4.x"
     }
 }

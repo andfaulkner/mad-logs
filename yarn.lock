@@ -678,8 +678,8 @@ crypto-random-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
 csstype@^2.2.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.4.2.tgz#158e36c69566bf968da63d0ba14eda1c20e8643a"
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.0.tgz#53e1c242f422d5d976b81f42707bd9b8934492ee"
 
 dashdash@^1.12.0:
   version "1.14.1"
