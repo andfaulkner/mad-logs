@@ -85,8 +85,8 @@
   resolved "https://registry.yarnpkg.com/@types/node-polyglot/-/node-polyglot-0.4.31.tgz#4185cb3a52a468ca12c349ef26cd6d76ee203ca0"
 
 "@types/node@*":
-  version "10.0.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.6.tgz#c0bce8e539bf34c1b850c13ff46bead2fecc2e58"
+  version "10.0.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.8.tgz#37b4d91d4e958e4c2ba0be2b86e7ed4ff19b0858"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -1924,9 +1924,9 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.54.3:
-  version "0.54.3"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.54.3.tgz#d60ab39566b538e56efeae55a5e86009dbf7cce6"
+mad-utils@^0.55.0:
+  version "0.55.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.55.0.tgz#55e718caa375ef0fabdeb1c454a0fc54e433d0bd"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.0"
     "@types/chai" "^4.1.3"
