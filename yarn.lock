@@ -1924,9 +1924,9 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.55.0:
-  version "0.55.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.55.0.tgz#55e718caa375ef0fabdeb1c454a0fc54e433d0bd"
+mad-utils@^0.55.1:
+  version "0.55.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.55.1.tgz#c14126704241337ffca3da056ea563c865e2ebe1"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.0"
     "@types/chai" "^4.1.3"
