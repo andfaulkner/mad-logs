@@ -142,6 +142,7 @@ declare const node: {
     bold: (str: string) => string;
     underline: (str: string) => string;
     italic: (str: string) => string;
+    rainbow: (str: string) => string;
 };
 export interface LogOpts {
     tagPrefix: string;

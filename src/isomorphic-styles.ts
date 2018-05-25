@@ -3,6 +3,7 @@ import {madLogMarkers} from './theming';
 import * as isNode from 'detect-node';
 
 const cssInverse = 'filter: invert(100%); -moz-filter: invert(100%); -webkit-filter: invert(100%);';
+const rainbowColors = ['red', 'yellow', 'green', 'blue', 'magenta'];
 
 /**
  * @export
@@ -75,7 +76,15 @@ const node = {
     bold      : (str: string): string => `\u001b[1m${str}\u001b[0m`,
     underline : (str: string): string => `\u001b[2m${str}\u001b[0m`,
     italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
-};
+    rainbow: (str: string) =>
+        str
+            .split('')
+            .map(
+                (char, idx) =>
+                    char === ' ' ? char : node[rainbowColors[idx++ % rainbowColors.length]](char)
+            )
+            .join(''),
+}
 
 export interface LogOpts {
     tagPrefix: string;
@@ -92,7 +101,7 @@ function buildFileTagForBrowser(fName: string, opts: LogOpts): string {
 // Extract colours
 const {bgBlack, bgBlue, bgCyan, bgGreen, bgMagenta, bgRed, bgWhite, bgYellow} = node;
 const {black, blue, cyan, green, magenta, red, white, yellow, gray} = node;
-const {underline, bold, italic} = node;
+const {underline, bold, italic, rainbow} = node;
 
 // node.blue(node.bgWhite(`[${fName}]`)
 // bold(white(bgMagenta
@@ -197,7 +206,7 @@ const potOfGold = isNode
       ];
 
 const rainbowLeaf = isNode
-    ? (fName: string) => magenta(bgBlue(`[${fName}]`))
+    ? (fName: string) => rainbow(`[${fName}]`)
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
           madLogMarkers.rainbowLeaf.style,
