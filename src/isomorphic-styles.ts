@@ -191,18 +191,18 @@ const maceWindu = isNode
           madLogMarkers.maceWindu.style,
       ];
 
-const probeArcade = isNode
-    ? (fName: string) => bold(cyan(bgBlue(`[${fName}]`)))
-    : (fName: string) => [
-          buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
-          madLogMarkers.probeArcade.style,
-      ];
-
 const potOfGold = isNode
     ? (fName: string) => italic(bold(yellow(bgBlack(`[${fName}]`))))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
           madLogMarkers.potOfGold.style,
+      ];
+
+const probeArcade = isNode
+    ? (fName: string) => bold(cyan(bgBlue(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
+          madLogMarkers.probeArcade.style,
       ];
 
 const rainbowLeaf = isNode
