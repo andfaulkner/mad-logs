@@ -174,5 +174,6 @@ export declare const isoStyles: {
     tangerines: ((fName: string) => string) | ((fName: string) => string[]);
     theBird: ((fName: string) => string) | ((fName: string) => string[]);
     theHeist: ((fName: string) => string) | ((fName: string) => string[]);
+    vendetta: ((fName: string) => string) | ((fName: string) => string[]);
 };
 export { node as nodeStyling };

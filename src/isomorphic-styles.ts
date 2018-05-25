@@ -247,6 +247,13 @@ const theHeist = isNode
           madLogMarkers.theHeist.style,
       ];
 
+const vendetta = isNode
+    ? (fName: string) => underline(bold(white(bgRed(` [${fName}] `))))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.vendetta),
+          madLogMarkers.vendetta.style,
+      ];
+
 /***************************************** STYLES EXPORT ******************************************/
 /**
  * Series of isomorphic styles (One style for the browser, another for Node)
@@ -273,6 +280,7 @@ export const isoStyles = {
     tangerines,
     theBird,
     theHeist,
+    vendetta,
 };
 
 export {node as nodeStyling};
