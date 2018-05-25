@@ -26,6 +26,8 @@ import { isVerbose } from 'env-var-helpers';
 import * as madLogs from '../index';
 import { buildFileTag, logFactory, logMarkers, MadLog } from '../index';
 
+import * as sharedMadLogs from '../shared';
+
 /******************************************** HELPERS *********************************************/
 /**
  * Prevents console.error messages emitted by code from reaching the console for given function
@@ -278,6 +280,13 @@ describe('logMarkers', function() {
         '(👃👁👂), (👂👁👅), and various styles (including an ultra-thick black border)',
         ['(👃👁👂)', '(👂👁👅)', `color: black;`, `border-style: solid;`, `border-width: 5px;`]
     );
+});
+
+describe('shared module', function() {
+    describe('styles', function () {
+        const log = sharedMadLogs.logFactory('okok', sharedMadLogs.Styles.rainbowLeaf);
+        log.info('TEST LOG WITH RAINBOW');
+    })
 });
 
 // Restore original process.argv
