@@ -226,6 +226,13 @@ const smokeyHatesChristmas = isNode
           madLogMarkers.smokeyHatesChristmas.style,
       ];
 
+const tangerines = isNode
+    ? (fName: string) => rainbow(bgBlack(bold(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.tangerines),
+          madLogMarkers.tangerines.style,
+      ];
+
 const theHeist = isNode
     ? (fName: string) => underline(bold(white(bgBlack(` [${fName}] `))))
     : (fName: string) => [
@@ -256,6 +263,7 @@ export const isoStyles = {
     rainbowLeaf,
     rockIsDead,
     smokeyHatesChristmas,
+    tangerines,
     theHeist,
 };
 
