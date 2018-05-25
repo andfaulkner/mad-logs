@@ -1,3 +1,16 @@
+10.1.0
+======
+Added isomorphic styles:
+    *   springy
+    *   swimmers
+    *   tangerines
+    *   theBird
+    *   vendetta
+
+Create new "rainbow" type string modifier
+
+Change rainbowLeaf isomorphic style to use "rainbow" modifier for filename string in node 
+
 10.0.0
 ======
 Tooling / build
