@@ -233,6 +233,13 @@ const springy = isNode
           madLogMarkers.springy.style,
       ];
 
+const swimmers = isNode
+    ? (fName: string) => underline(bgWhite(blue(`~~[${fName}]~~@`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.swimmers),
+          madLogMarkers.swimmers.style,
+      ];
+
 const tangerines = isNode
     ? (fName: string) => rainbow(bgBlack(bold(`[${fName}]`)))
     : (fName: string) => [
@@ -285,6 +292,7 @@ export const isoStyles = {
     rockIsDead,
     smokeyHatesChristmas,
     springy,
+    swimmers,
     tangerines,
     theBird,
     theHeist,

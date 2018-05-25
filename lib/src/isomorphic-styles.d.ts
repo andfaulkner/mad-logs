@@ -172,6 +172,7 @@ export declare const isoStyles: {
     rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
     smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
     springy: ((fName: string) => string) | ((fName: string) => string[]);
+    swimmers: ((fName: string) => string) | ((fName: string) => string[]);
     tangerines: ((fName: string) => string) | ((fName: string) => string[]);
     theBird: ((fName: string) => string) | ((fName: string) => string[]);
     theHeist: ((fName: string) => string) | ((fName: string) => string[]);
