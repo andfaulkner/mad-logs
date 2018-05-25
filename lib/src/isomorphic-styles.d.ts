@@ -171,6 +171,7 @@ export declare const isoStyles: {
     rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
     rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
     smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
+    springy: ((fName: string) => string) | ((fName: string) => string[]);
     tangerines: ((fName: string) => string) | ((fName: string) => string[]);
     theBird: ((fName: string) => string) | ((fName: string) => string[]);
     theHeist: ((fName: string) => string) | ((fName: string) => string[]);
