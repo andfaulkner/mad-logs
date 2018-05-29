@@ -50,8 +50,8 @@
   resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
 
 "@types/express-serve-static-core@*":
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.11.1.tgz#f6f7212382d59b19d696677bcaa48a37280f5d45"
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.11.2.tgz#b3c4bd7d45f765dbb782842fa80200967ae14eba"
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
@@ -85,8 +85,8 @@
   resolved "https://registry.yarnpkg.com/@types/node-polyglot/-/node-polyglot-0.4.31.tgz#4185cb3a52a468ca12c349ef26cd6d76ee203ca0"
 
 "@types/node@*":
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.0.tgz#2783ee1b6c47cbd4044f4a233976c1ac5fa9e942"
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.3.tgz#5c16980936c4e3c83ce64e8ed71fb37bd7aea135"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -1901,9 +1901,9 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-mad-logs@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.0.0.tgz#c09dcc010e286d9969bfdc5cdaf8f75f768b57ef"
+mad-logs@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.1.0.tgz#e83cf8248ce7bc9a5410bf08ba673c57536ee7f8"
   dependencies:
     colors "^1.1.2"
     detect-node "^2.0.3"
@@ -1924,9 +1924,9 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.56.0:
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.56.0.tgz#ed9290aa55ffa9fd5388ab6eafdbfbdf635fda55"
+mad-utils@^0.57.1:
+  version "0.57.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.57.1.tgz#a53ee805b47bbe9527eb11153899a0c385e6d9ff"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.0"
     "@types/chai" "^4.1.3"
@@ -1946,7 +1946,7 @@ mad-utils@^0.56.0:
     detect-node "^2.0.3"
     fs-extra-promise "^1.0.1"
     handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^10.0.0"
+    mad-logs "^10.1.0"
     moment "^2.22.1"
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
