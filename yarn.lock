@@ -85,8 +85,8 @@
   resolved "https://registry.yarnpkg.com/@types/node-polyglot/-/node-polyglot-0.4.31.tgz#4185cb3a52a468ca12c349ef26cd6d76ee203ca0"
 
 "@types/node@*":
-  version "10.1.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.4.tgz#606651d3f8a8bec08b8cb262161aab9209f4a29d"
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.0.tgz#078516315a84d56216b5d4fed8f75d59d3b16cac"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -104,8 +104,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.3.8":
-  version "16.3.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.14.tgz#f90ac6834de172e13ecca430dcb6814744225d36"
+  version "16.3.16"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.16.tgz#78fc44a90b45701f50c8a7008f733680ba51fc86"
   dependencies:
     csstype "^2.2.0"
 
@@ -1924,9 +1924,9 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.57.3:
-  version "0.57.3"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.57.3.tgz#fb01b67e8d2558510da8688e8c2c47fd26627cd0"
+mad-utils@^0.57.4:
+  version "0.57.4"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.57.4.tgz#d6db6722e00675f924124e186142f6d1ebc80e60"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.0"
     "@types/chai" "^4.1.3"
@@ -2061,8 +2061,8 @@ mocha@^5.1.1:
     supports-color "4.4.0"
 
 moment@^2.22.1:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 ms@2.0.0:
   version "2.0.0"
