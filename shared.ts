@@ -1,6 +1,6 @@
 /************************************** THIRD-PARTY MODULES ***************************************/
-import { isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf } from 'env-var-helpers';
-import { isoStyles, nodeStyling } from './src/isomorphic-styles';
+import {isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf} from 'env-var-helpers';
+import {isoStyles, nodeStyling} from './src/isomorphic-styles';
 import * as isNode from 'detect-node';
 
 /**************************************** HELPERS & CONFIG ****************************************/
@@ -12,35 +12,37 @@ const bookend = `\n***************\n`;
  * Basic function to run the inspect function against the given object.
  * Both logs & returns the inspect result.
  */
-const _showInspectRes =
-    (obj: any,
-     styler: (s: string) => (string | string[]),
-     filename: string,
-     inspectFn: Function
+const _showInspectRes = (
+    obj: any,
+    styler: (s: string) => string | string[],
+    filename: string,
+    inspectFn: Function
 ) => {
     let output: string;
 
     if (typeof obj === 'undefined') {
         output = 'undefined';
-
     } else if (obj == null) {
         output = 'null';
-
     } else if (typeof obj === 'string' || typeof obj === 'number') {
-        output = obj.toString()
-
+        output = obj.toString();
     } else {
         output = inspectFn(obj);
     }
 
     const tagObj = styler(this.filename);
-    console.log.apply(console, [bookend].concat(Array.isArray(tagObj) ? tagObj : [tagObj])
-                                        .concat(' :: \n${output}${bookend}'));
+    console.log.apply(
+        console,
+        [bookend]
+            .concat(Array.isArray(tagObj) ? tagObj : [tagObj])
+            .concat(' :: \n${output}${bookend}')
+    );
     // console.log.apply(console, [bookend, `${styler(filename)} :: \n${output}${bookend}`);
     // return output;
 };
 
 /**************************************** TYPE DEFINITIONS ****************************************/
+// prettier-ignore
 export interface Log {
     silly:   <T>(...args: Array<(string | any)>) => T
     verbose: <T>(...args: Array<(string | any)>) => T
@@ -50,7 +52,6 @@ export interface Log {
     error:   <T>(...args: Array<(string | any)>) => T
     wtf:     <T>(...args: Array<(string | any)>) => T
 }
-
 
 /******************************************* LOG OBJECT *******************************************/
 /**
@@ -65,13 +66,11 @@ export class Log implements Log {
      */
     static inspectFn: Function;
 
-
     /* INSTANCE PROPERTIES */
 
     protected filename: string;
-    protected styler: typeof isoStyles[keyof typeof isoStyles]
-    protected inspectFn: Function
-
+    protected styler: typeof isoStyles[keyof typeof isoStyles];
+    protected inspectFn: Function;
 
     /* INITIALIZATION */
 
@@ -85,10 +84,11 @@ export class Log implements Log {
      * If none is defined, use a fallback (passthrough) instead
 
      */
-    constructor(filename: string,
-                style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles],
-                inspectFn?: Function)
-    {
+    constructor(
+        filename: string,
+        style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles],
+        inspectFn?: Function
+    ) {
         // Set the file name
         this.filename = filename;
 
@@ -98,80 +98,85 @@ export class Log implements Log {
 
         // Set the styler function based on the given value of the style prop.
         if (typeof style === 'undefined' || style == null) this.styler = isoStyles.none;
-        else if (typeof style === 'string')                this.styler = isoStyles[style];
-        else                                               this.styler = style;
+        else if (typeof style === 'string') this.styler = isoStyles[style];
+        else this.styler = style;
     }
-
 
     /* METHODS */
 
-    silly = <T>(...args: Array<(string | any)>): T => {
+    silly = <T>(...args: Array<string | any>): T => {
         if (isSilly) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
+            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
-    }
+    };
 
-    verbose = <T>(...args: Array<(string | any)>): T => {
+    verbose = <T>(...args: Array<string | any>): T => {
         if (isVerbose) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
+            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
-    }
+    };
 
-    debug = <T>(...args: Array<(string | any)>): T => {
+    debug = <T>(...args: Array<string | any>): T => {
         if (isDebug) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
+            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
-    }
+    };
 
-    info = <T>(...args: Array<(string | any)>): T => {
+    info = <T>(...args: Array<string | any>): T => {
         if (isInfo) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
+            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
-    }
+    };
 
-    warn = <T>(...args: Array<(string | any)>): T => {
+    warn = <T>(...args: Array<string | any>): T => {
         if (isWarn) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj]).concat(args));
+            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[0];
         }
-    }
+    };
 
-    error =  <T>(...args: Array<(string | T | any)>): T => {
+    error = <T>(...args: Array<string | T | any>): T => {
         if (isError) {
-            if (isNode){
-                const { bgRed, white, bold } = nodeStyling;
+            if (isNode) {
+                const {bgRed, white, bold} = nodeStyling;
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
                 const tagObj = this.styler(this.filename);
-                console.error.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj])
-                                                 .concat([' [ERROR] ']).concat(args));
+                console.error.apply(
+                    console,
+                    (Array.isArray(tagObj) ? tagObj : [tagObj]).concat([' [ERROR] ']).concat(args)
+                );
             }
         }
         return args[args.length - 1];
-    }
+    };
 
-    wtf = <T>(...args: Array<(string | T | any)>): T => {
+    wtf = <T>(...args: Array<string | T | any>): T => {
         if (isError) {
-            if (isNode){
-                const { bgRed, white, bold } = nodeStyling;
+            if (isNode) {
+                const {bgRed, white, bold} = nodeStyling;
                 console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
             } else {
                 const tagObj = this.styler(this.filename);
-                console.error.apply(console, ((Array.isArray(tagObj)) ? tagObj : [tagObj])
-                                                 .concat([' [WTF ERROR] ']).concat(args));
+                console.error.apply(
+                    console,
+                    (Array.isArray(tagObj) ? tagObj : [tagObj])
+                        .concat([' [WTF ERROR] '])
+                        .concat(args)
+                );
             }
         }
         return args[args.length - 1];
-    }
+    };
 
     /* OBJECT INSPECTION */
 
@@ -197,9 +202,8 @@ export class Log implements Log {
         wtf: (obj: any): string | void => {
             if (isWtf) return _showInspectRes(obj, this.styler, this.filename, this.inspectFn);
         },
-    }))()
+    }))();
 }
-
 
 /******************************************** FACTORY *********************************************/
 /**
@@ -210,14 +214,13 @@ export class Log implements Log {
  *
  * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
  */
-export const logFactory = (filename: string,
-                           style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles],
-                           inspector?: Function
-): Log & ((...args: Array<(string | any)>) => void)
-       & { inspect: (obj: any) => (string | void) } =>
-{
+export const logFactory = (
+    filename: string,
+    style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles],
+    inspector?: Function
+): Log & ((...args: Array<string | any>) => void) & {inspect: (obj: any) => string | void} => {
     const log = new Log(filename, style, inspector);
-    return Object.assign(log.info.bind(log), log, { inspect: log.inspector.info.bind(log) });
-}
+    return Object.assign(log.info.bind(log), log, {inspect: log.inspector.info.bind(log)});
+};
 
-export { isoStyles as Styles }
+export {isoStyles as Styles};
