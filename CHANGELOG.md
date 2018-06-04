@@ -1,3 +1,7 @@
+10.1.1 (WIP)
+============
+Prettier run on shared module
+
 10.1.0
 ======
 Added isomorphic styles:
