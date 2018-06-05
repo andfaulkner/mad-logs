@@ -284,8 +284,26 @@ describe('logMarkers', function() {
 
 describe('shared module', function() {
     describe('styles', function () {
-        const log = sharedMadLogs.logFactory('okok', sharedMadLogs.Styles.rainbowLeaf);
-        log.info('TEST LOG WITH RAINBOW');
+        it(`angryBird`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.angryBird);
+            log.info('Test log :: angryBird style');
+        });
+        it(`aquarium`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.aquarium);
+            log.info('Test log :: aquarium style');
+        });
+        it(`cult`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.cult);
+            log.info('Test log :: cult style');
+        });
+        it(`rainbowLeaf`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rainbowLeaf);
+            log.info('Test log :: rainbowLeaf style');
+        });
+        it(`zebra`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.zebra);
+            log.info('Test log :: zebra style');
+        });
     })
 });
 
