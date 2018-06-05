@@ -115,18 +115,18 @@ const none = isNode
           madLogMarkers.aquarium.style,
       ];
 
-const aquarium = isNode
-    ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
-    : (fName: string) => [
-          buildFileTagForBrowser(fName, madLogMarkers.aquarium),
-          madLogMarkers.aquarium.style,
-      ];
-
 const angryBird = isNode
     ? (fName: string) => bgYellow(black(`[${fName}]`))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.angryBird),
           madLogMarkers.angryBird.style,
+      ];
+
+const aquarium = isNode
+    ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.aquarium),
+          madLogMarkers.aquarium.style,
       ];
 
 const arrow = isNode

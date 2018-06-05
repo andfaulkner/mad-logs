@@ -276,12 +276,6 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgGreen}`
                       : `color: ${colours.yellow}; background-color: ${colours.midDarkGreen};`,
     },
-    swimmers: {
-        tagPrefix: '~~~~@ ',
-        tagSuffix: '',
-        style: isNode ? `${isoStyles.blue};${isoStyles.bgWhite}`
-                      : `color: ${colours.blue}; ${style.bold};`,
-    },
     smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
         tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
@@ -293,6 +287,12 @@ export const madLogMarkers = {
         tagSuffix: '--\\__/-►',
         style: isNode ? `${isoStyles.blue}${isoStyles.bgWhite}`
                       : `color: ${colours.blue}; background-color: ${colours.white};`,
+    },
+    swimmers: {
+        tagPrefix: '~~~~@ ',
+        tagSuffix: '',
+        style: isNode ? `${isoStyles.blue};${isoStyles.bgWhite}`
+                      : `color: ${colours.blue}; ${style.bold};`,
     },
     tangerines: {
         tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',

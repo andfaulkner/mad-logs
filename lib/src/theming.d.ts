@@ -208,17 +208,17 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    swimmers: {
-        tagPrefix: string;
-        tagSuffix: string;
-        style: string;
-    };
     smokeyHatesChristmas: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
     };
     springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    swimmers: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -415,17 +415,17 @@ export declare const logMarkers: {
         tagSuffix: string;
         style: string;
     };
-    swimmers: {
-        tagPrefix: string;
-        tagSuffix: string;
-        style: string;
-    };
     smokeyHatesChristmas: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
     };
     springy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    swimmers: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
