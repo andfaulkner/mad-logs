@@ -331,6 +331,10 @@ describe('shared module', function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.maceWindu);
             log.info('Test log :: maceWindu style');
         });
+        it(`mrsPotatoVHS`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.mrsPotatoVHS);
+            log.info('Test log :: mrsPotatoVHS style');
+        });
         it(`nightmare`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.nightmare);
             log.info('Test log :: nightmare style');
