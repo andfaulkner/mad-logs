@@ -331,13 +331,36 @@ describe('shared module', function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.maceWindu);
             log.info('Test log :: maceWindu style');
         });
+        it(`nightmare`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.nightmare);
+            log.info('Test log :: nightmare style');
+        });
         it(`pipeDream`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.pipeDream);
             log.info('Test log :: pipeDream style');
         });
+        it(`potOfGold`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.potOfGold);
+            log.info('Test log :: potOfGold style');
+        });
+        it(`probeArcade`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.probeArcade);
+            log.info('Test log :: probeArcade style');
+        });
         it(`rainbowLeaf`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rainbowLeaf);
             log.info('Test log :: rainbowLeaf style');
+        });
+        it(`rockIsDead`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rockIsDead);
+            log.info('Test log :: rockIsDead style');
+        });
+        it(`smokeyHatesChristmas`, function() {
+            const log = sharedMadLogs.logFactory(
+                'MadLogs.test',
+                sharedMadLogs.Styles.smokeyHatesChristmas
+            );
+            log.info('Test log :: smokeyHatesChristmas style');
         });
         it(`zebra`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.zebra);
