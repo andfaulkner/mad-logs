@@ -296,6 +296,10 @@ describe('shared module', function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.cult);
             log.info('Test log :: cult style');
         });
+        it(`pipeDream`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.pipeDream);
+            log.info('Test log :: pipeDream style');
+        });
         it(`rainbowLeaf`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rainbowLeaf);
             log.info('Test log :: rainbowLeaf style');
