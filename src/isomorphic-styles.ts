@@ -76,12 +76,14 @@ const node = {
     bold      : (str: string): string => `\u001b[1m${str}\u001b[0m`,
     underline : (str: string): string => `\u001b[2m${str}\u001b[0m`,
     italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
-    rainbow: (str: string) =>
+    rainbow   : (str: string) =>
         str
             .split('')
             .map(
                 (char, idx) =>
-                    char === ' ' ? char : node[rainbowColors[idx++ % rainbowColors.length]](char)
+                    char === ' '
+                        ? char
+                        : node.bold(node.bgBlack(node[rainbowColors[idx++ % rainbowColors.length]](char)))
             )
             .join(''),
 }
