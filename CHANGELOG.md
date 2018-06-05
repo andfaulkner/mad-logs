@@ -1,15 +1,18 @@
-10.1.1 (WIP)
-============
+10.1.1
+======
 Prettier run on shared module
 
 Added isomorphic styles:
     *   nightmare
     *   pipeDream
     *   zebra
+    *   mrsPotatoVHS
 
 Fix potOfGold style (more readable, added 💰 emojis)
 
 Reorganized styles (alphabetical)
+
+Unit tests for (approximately) 15 more isomorphic styles
 
 10.1.0
 ======
