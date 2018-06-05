@@ -192,6 +192,13 @@ const maceWindu = isNode
           madLogMarkers.maceWindu.style,
       ];
 
+const mrsPotatoVHS = isNode
+    ? (fName: string) => underline(black(bgYellow(`(👃 👁 👂) ${fName} (👂 👁 👅 )`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.mrsPotatoVHS),
+          madLogMarkers.mrsPotatoVHS.style,
+      ];
+
 const nightmare = isNode
     ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`)))
     : (fName: string) => [
@@ -308,6 +315,7 @@ export const isoStyles = {
     joy,
     lucky,
     maceWindu,
+    mrsPotatoVHS,
     nightmare,
     pipeDream,
     potOfGold,
