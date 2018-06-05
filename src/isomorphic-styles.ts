@@ -192,6 +192,13 @@ const maceWindu = isNode
           madLogMarkers.maceWindu.style,
       ];
 
+const pipeDream = isNode
+    ? (fName: string) => italic(bold(white(bgBlack(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.pipeDream),
+          madLogMarkers.pipeDream.style,
+      ];
+
 const potOfGold = isNode
     ? (fName: string) => italic(bold(yellow(bgBlack(`[${fName}]`))))
     : (fName: string) => [
@@ -295,6 +302,7 @@ export const isoStyles = {
     lucky,
     maceWindu,
     probeArcade,
+    pipeDream,
     potOfGold,
     rainbowLeaf,
     rockIsDead,
