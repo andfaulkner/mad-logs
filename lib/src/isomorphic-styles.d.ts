@@ -167,6 +167,7 @@ export declare const isoStyles: {
     lucky: ((fName: string) => string) | ((fName: string) => string[]);
     maceWindu: ((fName: string) => string) | ((fName: string) => string[]);
     probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
+    pipeDream: ((fName: string) => string) | ((fName: string) => string[]);
     potOfGold: ((fName: string) => string) | ((fName: string) => string[]);
     rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
     rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
