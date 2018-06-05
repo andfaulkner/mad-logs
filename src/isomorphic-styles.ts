@@ -207,7 +207,7 @@ const pipeDream = isNode
       ];
 
 const potOfGold = isNode
-    ? (fName: string) => italic(bold(yellow(bgBlack(`💰 [${fName}] 💰`))))
+    ? (fName: string) => italic(bold(yellow(bgBlack(`💰  [${fName}] 💰  `))))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
           madLogMarkers.potOfGold.style,
