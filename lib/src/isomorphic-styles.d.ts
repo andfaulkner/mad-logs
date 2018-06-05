@@ -155,8 +155,8 @@ export interface LogOpts {
  */
 export declare const isoStyles: {
     none: ((fName: string) => string) | ((fName: string) => string[]);
-    aquarium: ((fName: string) => string) | ((fName: string) => string[]);
     angryBird: ((fName: string) => string) | ((fName: string) => string[]);
+    aquarium: ((fName: string) => string) | ((fName: string) => string[]);
     arrow: ((fName: string) => string) | ((fName: string) => string[]);
     backAndForth: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
@@ -166,9 +166,9 @@ export declare const isoStyles: {
     joy: ((fName: string) => string) | ((fName: string) => string[]);
     lucky: ((fName: string) => string) | ((fName: string) => string[]);
     maceWindu: ((fName: string) => string) | ((fName: string) => string[]);
-    probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
     pipeDream: ((fName: string) => string) | ((fName: string) => string[]);
     potOfGold: ((fName: string) => string) | ((fName: string) => string[]);
+    probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
     rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
     rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
     smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
