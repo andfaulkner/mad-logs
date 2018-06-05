@@ -290,8 +290,8 @@ const zebra = isNode
 // prettier-ignore
 export const isoStyles = {
     none,
-    aquarium,
     angryBird,
+    aquarium,
     arrow,
     backAndForth,
     bracelet,
@@ -301,9 +301,9 @@ export const isoStyles = {
     joy,
     lucky,
     maceWindu,
-    probeArcade,
     pipeDream,
     potOfGold,
+    probeArcade,
     rainbowLeaf,
     rockIsDead,
     smokeyHatesChristmas,
