@@ -2,6 +2,15 @@
 ============
 Prettier run on shared module
 
+Added isomorphic styles:
+    *   nightmare
+    *   pipeDream
+    *   zebra
+
+Fix potOfGold style (more readable, added 💰 emojis)
+
+Reorganized styles (alphabetical)
+
 10.1.0
 ======
 Added isomorphic styles:
