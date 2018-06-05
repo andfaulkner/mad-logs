@@ -292,9 +292,44 @@ describe('shared module', function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.aquarium);
             log.info('Test log :: aquarium style');
         });
+        it(`arrow`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.arrow);
+            log.info('Test log :: arrow style');
+        });
+        it(`backAndForth`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.backAndForth);
+            log.info('Test log :: backAndForth style');
+        });
+        it(`bracelet`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.bracelet);
+            log.info('Test log :: bracelet style');
+        });
         it(`cult`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.cult);
             log.info('Test log :: cult style');
+        });
+        it(`escherBarbieLego`, function() {
+            const log = sharedMadLogs.logFactory(
+                'MadLogs.test',
+                sharedMadLogs.Styles.escherBarbieLego
+            );
+            log.info('Test log :: escherBarbieLego style');
+        });
+        it(`hatBlock`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.hatBlock);
+            log.info('Test log :: hatBlock style');
+        });
+        it(`joy`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.joy);
+            log.info('Test log :: joy style');
+        });
+        it(`lucky`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.lucky);
+            log.info('Test log :: lucky style');
+        });
+        it(`maceWindu`, function() {
+            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.maceWindu);
+            log.info('Test log :: maceWindu style');
         });
         it(`pipeDream`, function() {
             const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.pipeDream);
