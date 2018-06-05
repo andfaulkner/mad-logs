@@ -177,5 +177,6 @@ export declare const isoStyles: {
     theBird: ((fName: string) => string) | ((fName: string) => string[]);
     theHeist: ((fName: string) => string) | ((fName: string) => string[]);
     vendetta: ((fName: string) => string) | ((fName: string) => string[]);
+    zebra: ((fName: string) => string) | ((fName: string) => string[]);
 };
 export { node as nodeStyling };
