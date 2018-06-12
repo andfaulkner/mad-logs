@@ -321,7 +321,7 @@ process.argv = Object.assign({}, oldProcArgs);
 function testIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
     it(styleName, function() {
         const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles[styleName]);
-        log.info('Test log :: ${styleName} style');
+        log.info(`Test log :: ${styleName} style`);
     });
 }
 
