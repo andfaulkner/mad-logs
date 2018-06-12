@@ -192,6 +192,13 @@ const maceWindu = isNode
           madLogMarkers.maceWindu.style,
       ];
 
+const moProblems = isNode
+    ? (fName: string) => bold(black(bgWhite(`$$$$$$$ |💰| [${fName}] |💰| $$$$$$$`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.moProblems),
+          madLogMarkers.moProblems.style,
+      ];
+
 const mrsPotatoVHS = isNode
     ? (fName: string) => underline(black(bgYellow(`(👃 👁 👂) ${fName} (👂 👁 👅 )`)))
     : (fName: string) => [
