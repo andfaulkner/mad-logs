@@ -284,6 +284,7 @@ describe('logMarkers', function() {
 
 describe('shared module', function() {
     describe('styles', function () {
+        testIsoStyle('none');
         testIsoStyle('angryBird');
         testIsoStyle(`aquarium`);
         testIsoStyle(`arrow`);
@@ -304,6 +305,12 @@ describe('shared module', function() {
         testIsoStyle(`rainbowLeaf`);
         testIsoStyle(`rockIsDead`);
         testIsoStyle(`smokeyHatesChristmas`);
+        testIsoStyle(`springy`);
+        testIsoStyle(`swimmers`);
+        testIsoStyle(`tangerines`);
+        testIsoStyle(`theBird`);
+        testIsoStyle(`theHeist`);
+        testIsoStyle(`vendetta`);
         testIsoStyle(`zebra`);
     })
 });
