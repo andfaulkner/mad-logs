@@ -249,7 +249,7 @@ const rockIsDead = isNode
       ];
 
 const smokeyHatesChristmas = isNode
-    ? (fName: string) => underline(bgGreen(white(`[${fName}]`)))
+    ? (fName: string) => `🎄 🔥 ` + white(bold(bgGreen(`[${fName}]`))) + `🔥 🎄 `
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
           madLogMarkers.smokeyHatesChristmas.style,
