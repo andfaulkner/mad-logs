@@ -166,6 +166,7 @@ export declare const isoStyles: {
     joy: ((fName: string) => string) | ((fName: string) => string[]);
     lucky: ((fName: string) => string) | ((fName: string) => string[]);
     maceWindu: ((fName: string) => string) | ((fName: string) => string[]);
+    moProblems: ((fName: string) => string) | ((fName: string) => string[]);
     mrsPotatoVHS: ((fName: string) => string) | ((fName: string) => string[]);
     nightmare: ((fName: string) => string) | ((fName: string) => string[]);
     pipeDream: ((fName: string) => string) | ((fName: string) => string[]);

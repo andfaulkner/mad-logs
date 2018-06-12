@@ -193,7 +193,7 @@ const maceWindu = isNode
       ];
 
 const moProblems = isNode
-    ? (fName: string) => bold(black(bgWhite(`$$$$$$$ |💰| [${fName}] |💰| $$$$$$$`)))
+    ? (fName: string) => bold(black(bgWhite(`$$$ |💰 | [${fName}] |💰 | $$$`)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.moProblems),
           madLogMarkers.moProblems.style,
@@ -322,6 +322,7 @@ export const isoStyles = {
     joy,
     lucky,
     maceWindu,
+    moProblems,
     mrsPotatoVHS,
     nightmare,
     pipeDream,
