@@ -1,3 +1,10 @@
+10.1.2
+======
+Fix "underline" wrapper for isomorphic styles
+Fix "rainbow" wrapper for isomorphic styles
+Add moProblems isomorphic style
+Visible filename & added emojis in Node for smokeyHatesChristmas isomorphic style
+
 10.1.1
 ======
 Prettier run on shared module
