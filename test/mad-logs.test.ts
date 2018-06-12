@@ -284,101 +284,39 @@ describe('logMarkers', function() {
 
 describe('shared module', function() {
     describe('styles', function () {
-        it(`angryBird`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.angryBird);
-            log.info('Test log :: angryBird style');
-        });
-        it(`aquarium`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.aquarium);
-            log.info('Test log :: aquarium style');
-        });
-        it(`arrow`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.arrow);
-            log.info('Test log :: arrow style');
-        });
-        it(`backAndForth`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.backAndForth);
-            log.info('Test log :: backAndForth style');
-        });
-        it(`bracelet`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.bracelet);
-            log.info('Test log :: bracelet style');
-        });
-        it(`cult`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.cult);
-            log.info('Test log :: cult style');
-        });
-        it(`escherBarbieLego`, function() {
-            const log = sharedMadLogs.logFactory(
-                'MadLogs.test',
-                sharedMadLogs.Styles.escherBarbieLego
-            );
-            log.info('Test log :: escherBarbieLego style');
-        });
-        it(`hatBlock`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.hatBlock);
-            log.info('Test log :: hatBlock style');
-        });
-        it(`joy`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.joy);
-            log.info('Test log :: joy style');
-        });
-        it(`lucky`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.lucky);
-            log.info('Test log :: lucky style');
-        });
-        it(`maceWindu`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.maceWindu);
-            log.info('Test log :: maceWindu style');
-        });
-        it(`moProblems`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.moProblems);
-            log.info('Test log :: moProblems style');
-        });
-        it(`mrsPotatoVHS`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.mrsPotatoVHS);
-            log.info('Test log :: mrsPotatoVHS style');
-        });
-        it(`nightmare`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.nightmare);
-            log.info('Test log :: nightmare style');
-        });
-        it(`pipeDream`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.pipeDream);
-            log.info('Test log :: pipeDream style');
-        });
-        it(`potOfGold`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.potOfGold);
-            log.info('Test log :: potOfGold style');
-        });
-        it(`probeArcade`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.probeArcade);
-            log.info('Test log :: probeArcade style');
-        });
-        it(`rainbowLeaf`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rainbowLeaf);
-            log.info('Test log :: rainbowLeaf style');
-        });
-        it(`rockIsDead`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.rockIsDead);
-            log.info('Test log :: rockIsDead style');
-        });
-        it(`smokeyHatesChristmas`, function() {
-            const log = sharedMadLogs.logFactory(
-                'MadLogs.test',
-                sharedMadLogs.Styles.smokeyHatesChristmas
-            );
-            log.info('Test log :: smokeyHatesChristmas style');
-        });
-        it(`zebra`, function() {
-            const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles.zebra);
-            log.info('Test log :: zebra style');
-        });
+        testIsoStyle('angryBird');
+        testIsoStyle(`aquarium`);
+        testIsoStyle(`arrow`);
+        testIsoStyle(`backAndForth`);
+        testIsoStyle(`bracelet`);
+        testIsoStyle(`cult`);
+        testIsoStyle(`escherBarbieLego`);
+        testIsoStyle(`hatBlock`);
+        testIsoStyle(`joy`);
+        testIsoStyle(`lucky`);
+        testIsoStyle(`maceWindu`);
+        testIsoStyle(`moProblems`);
+        testIsoStyle(`mrsPotatoVHS`);
+        testIsoStyle(`nightmare`);
+        testIsoStyle(`pipeDream`);
+        testIsoStyle(`potOfGold`);
+        testIsoStyle(`probeArcade`);
+        testIsoStyle(`rainbowLeaf`);
+        testIsoStyle(`rockIsDead`);
+        testIsoStyle(`smokeyHatesChristmas`);
+        testIsoStyle(`zebra`);
     })
 });
 
 // Restore original process.argv
 process.argv = Object.assign({}, oldProcArgs);
+
+function testIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
+    it(styleName, function() {
+        const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles[styleName]);
+        log.info('Test log :: ${styleName} style');
+    });
+}
 
 function styleTester(
     styleName: string,
