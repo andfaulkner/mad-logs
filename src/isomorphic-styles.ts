@@ -74,7 +74,7 @@ const node = {
     bgWhite   : (str: string): string => `\u001b[47m${str}\u001b[0m`,
 
     bold      : (str: string): string => `\u001b[1m${str}\u001b[0m`,
-    underline : (str: string): string => `\u001b[2m${str}\u001b[0m`,
+    underline : (str: string): string => `\u001b[4m${str}\u001b[0m`,
     italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
     rainbow   : (str: string) =>
         str
@@ -256,21 +256,21 @@ const smokeyHatesChristmas = isNode
       ];
 
 const springy = isNode
-    ? (fName: string) => underline(bgWhite(black(`[${fName}]`)))
+    ? (fName: string) => underline(bold(bgWhite(black(`[${fName}]`))))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.springy),
           madLogMarkers.springy.style,
       ];
 
 const swimmers = isNode
-    ? (fName: string) => underline(bgWhite(blue(`~~[${fName}]~~@`)))
+    ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`))))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.swimmers),
           madLogMarkers.swimmers.style,
       ];
 
 const tangerines = isNode
-    ? (fName: string) => rainbow(bgBlack(bold(`[${fName}]`)))
+    ? (fName: string) => rainbow(`[${fName}]`)
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.tangerines),
           madLogMarkers.tangerines.style,
