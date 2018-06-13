@@ -164,6 +164,7 @@ export declare const isoStyles: {
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     hatBlock: ((fName: string) => string) | ((fName: string) => string[]);
     joy: ((fName: string) => string) | ((fName: string) => string[]);
+    lakeLouise: ((fName: string) => string) | ((fName: string) => string[]);
     lucky: ((fName: string) => string) | ((fName: string) => string[]);
     maceWindu: ((fName: string) => string) | ((fName: string) => string[]);
     mechanicalAtFists: ((fName: string) => string) | ((fName: string) => string[]);
