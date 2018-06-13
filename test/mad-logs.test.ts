@@ -294,6 +294,7 @@ describe('shared module', function() {
         testIsoStyle(`escherBarbieLego`);
         testIsoStyle(`hatBlock`);
         testIsoStyle(`joy`);
+        testIsoStyle(`kingRageBlock`);
         testIsoStyle(`lakeLouise`);
         testIsoStyle(`lucky`);
         testIsoStyle(`maceWindu`);
