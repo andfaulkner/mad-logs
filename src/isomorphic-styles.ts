@@ -123,7 +123,7 @@ const angryBird = isNode
       ];
 
 const aquarium = isNode
-    ? (fName: string) => bgBlue(white(bold(`[${fName}]`)))
+    ? (fName: string) => bgBlue(white(bold(`🐠 🐙 [${fName}]🐙 🐠 `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.aquarium),
           madLogMarkers.aquarium.style,
@@ -186,7 +186,7 @@ const kingRageBlock = isNode
       ];
 
 const lakeLouise = isNode
-    ? (fName: string) => bold(bgBlue(magenta(`[${fName}]`))) + '  '
+    ? (fName: string) => bgCyan(white(bold((`🏞️  [${fName}] 🏞️ `)))) + '  '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.lakeLouise),
           madLogMarkers.lakeLouise.style,
@@ -235,7 +235,7 @@ const nightmare = isNode
       ];
 
 const pipeDream = isNode
-    ? (fName: string) => italic(bold(white(bgBlack(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))))
+    ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.pipeDream),
           madLogMarkers.pipeDream.style,
@@ -249,7 +249,7 @@ const potOfGold = isNode
       ];
 
 const probeArcade = isNode
-    ? (fName: string) => bold(cyan(bgBlue(`[${fName}]`)))
+    ? (fName: string) => bold(cyan(bgBlue(`👽  [${fName}] 👽 `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
           madLogMarkers.probeArcade.style,
@@ -270,7 +270,7 @@ const rockIsDead = isNode
       ];
 
 const smokeyHatesChristmas = isNode
-    ? (fName: string) => `🎄 🔥 ` + white(bold(bgGreen(`[${fName}]`))) + `🔥 🎄 `
+    ? (fName: string) => white(bold(bgGreen(`🎄 🔥 [${fName}]🔥 🎄 `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
           madLogMarkers.smokeyHatesChristmas.style,
