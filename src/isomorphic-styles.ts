@@ -192,6 +192,13 @@ const maceWindu = isNode
           madLogMarkers.maceWindu.style,
       ];
 
+const mechanicalAtFists = isNode
+    ? (fName: string) => bold(black(bgWhite(`--#@[${fName}]@#--`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.mechanicalAtFists),
+          madLogMarkers.mechanicalAtFists.style,
+      ];
+
 const moProblems = isNode
     ? (fName: string) => bold(black(bgWhite(`$$$ |💰 | [${fName}] |💰 | $$$`)))
     : (fName: string) => [
@@ -322,6 +329,7 @@ export const isoStyles = {
     joy,
     lucky,
     maceWindu,
+    mechanicalAtFists,
     moProblems,
     mrsPotatoVHS,
     nightmare,
