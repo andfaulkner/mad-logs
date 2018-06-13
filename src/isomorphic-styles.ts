@@ -151,7 +151,7 @@ const bracelet = isNode
       ];
 
 const cult = isNode
-    ? (fName: string) => bgWhite(black(`[${fName}]`))
+    ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  [${fName}] 👪 👨‍👨‍👧‍👦 `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.cult),
           madLogMarkers.cult.style,
