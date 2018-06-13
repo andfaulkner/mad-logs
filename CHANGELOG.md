@@ -1,8 +1,15 @@
 10.1.3
 ======
 Added isomorphic styles:
+    *   kingRageBlock
     *   lakeLouise
     *   mechanicalAtFists
+
+Improves/fixes isormophic styles:
+    *   aquarium
+    *   pipeDream
+    *   probeArcade
+    *   smokeyHatesChristmas
 
 10.1.2
 ======
