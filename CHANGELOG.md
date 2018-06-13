@@ -1,6 +1,8 @@
-10.1.4
-======
+10.1.4 [WIP]
+============
 Improves/fixes (and adds emojis to) isomorphic styles:
+    *   cult
+    *   joy
     *   lucky
 
 10.1.3
