@@ -178,6 +178,13 @@ const joy = isNode
           madLogMarkers.joy.style,
       ];
 
+const kingRageBlock = isNode
+    ? (fName: string) => bgRed(white(bold(`👁‍🗨 🗣 🗯 [${fName}]👁‍🗨 🗣 🗯 `))) + '  '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.kingRageBlock),
+          madLogMarkers.kingRageBlock.style,
+      ];
+
 const lakeLouise = isNode
     ? (fName: string) => bold(bgBlue(magenta(`[${fName}]`))) + '  '
     : (fName: string) => [
@@ -334,6 +341,7 @@ export const isoStyles = {
     escherBarbieLego,
     hatBlock,
     joy,
+    kingRageBlock,
     lakeLouise,
     lucky,
     maceWindu,
