@@ -172,7 +172,7 @@ const hatBlock = isNode
       ];
 
 const joy = isNode
-    ? (fName: string) => bgYellow(magenta(` [${fName}] `))
+    ? (fName: string) => bgYellow(black((`😀 😀 [${fName}]😀 😀 `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.joy),
           madLogMarkers.joy.style,
