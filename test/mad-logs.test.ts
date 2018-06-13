@@ -296,6 +296,7 @@ describe('shared module', function() {
         testIsoStyle(`joy`);
         testIsoStyle(`lucky`);
         testIsoStyle(`maceWindu`);
+        testIsoStyle(`mechanicalAtFists`);
         testIsoStyle(`moProblems`);
         testIsoStyle(`mrsPotatoVHS`);
         testIsoStyle(`nightmare`);
