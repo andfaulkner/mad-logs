@@ -178,6 +178,13 @@ const joy = isNode
           madLogMarkers.joy.style,
       ];
 
+const lakeLouise = isNode
+    ? (fName: string) => bold(bgBlue(magenta(`[${fName}]`))) + '  '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.lakeLouise),
+          madLogMarkers.lakeLouise.style,
+      ];
+
 const lucky = isNode
     ? (fName: string) => bold(white(bgGreen(`[${fName}]`)))
     : (fName: string) => [
@@ -327,6 +334,7 @@ export const isoStyles = {
     escherBarbieLego,
     hatBlock,
     joy,
+    lakeLouise,
     lucky,
     maceWindu,
     mechanicalAtFists,
