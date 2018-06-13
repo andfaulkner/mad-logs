@@ -1,3 +1,8 @@
+10.1.4
+======
+Improves/fixes (and adds emojis to) isomorphic styles:
+    *   lucky
+
 10.1.3
 ======
 Added isomorphic styles:
