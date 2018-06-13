@@ -1,3 +1,9 @@
+10.1.3
+======
+Added isomorphic styles:
+    *   lakeLouise
+    *   mechanicalAtFists
+
 10.1.2
 ======
 Fix "underline" wrapper for isomorphic styles
