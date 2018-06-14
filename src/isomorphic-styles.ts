@@ -256,7 +256,7 @@ const probeArcade = isNode
       ];
 
 const rainbowLeaf = isNode
-    ? (fName: string) => rainbow(`[${fName}]`)
+    ? (fName: string) => '🌈  ' + rainbow(`[${fName}]`) + ' 🌈  '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.rainbowLeaf),
           madLogMarkers.rainbowLeaf.style,
