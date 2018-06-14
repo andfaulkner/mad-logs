@@ -298,7 +298,7 @@ const tangerines = isNode
       ];
 
 const theBird = isNode
-    ? (fName: string) => underline(black(bgYellow(`[${fName}]`))) + ' '
+    ? (fName: string) => white(bold(bgMagenta(`🖕🏼 [${fName}]🖕🏼 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.theBird),
           madLogMarkers.theBird.style,
