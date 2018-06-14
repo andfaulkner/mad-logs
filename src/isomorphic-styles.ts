@@ -291,7 +291,7 @@ const swimmers = isNode
       ];
 
 const tangerines = isNode
-    ? (fName: string) => rainbow(`[${fName}]`)
+    ? (fName: string) => '🍊  ' + rainbow(`[${fName}]`) + ' 🍊  '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.tangerines),
           madLogMarkers.tangerines.style,

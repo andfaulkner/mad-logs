@@ -295,7 +295,7 @@ export const madLogMarkers = {
                       : `color: ${colours.blue}; ${style.bold};`,
     },
     tangerines: {
-        tagPrefix: 'o(o)(){o}()@(o)OO@(){O}() _ ',
+        tagPrefix: '🍊 o(o)(){o}()@(o)OO@(){O}() 🍊',
         tagSuffix: ' _ ()()()*()',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
                       : `color: ${colours.orange};`,
