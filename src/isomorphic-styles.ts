@@ -144,7 +144,7 @@ const backAndForth = isNode
       ];
 
 const bracelet = isNode
-    ? (fName: string) => bold(bgMagenta(cyan(`[${fName}]`)))
+    ? (fName: string) => bold(bgMagenta(cyan(`⌚ [${fName}]⌚ `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.bracelet),
           madLogMarkers.bracelet.style,
