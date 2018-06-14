@@ -165,7 +165,7 @@ const escherBarbieLego = isNode
       ];
 
 const hatBlock = isNode
-    ? (fName: string) => bgCyan(black(`[${fName}]`)) + ' '
+    ? (fName: string) => bgCyan(black(`🎩  [${fName}] 🎩 `)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
           madLogMarkers.hatBlock.style,
