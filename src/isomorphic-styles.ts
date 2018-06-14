@@ -116,7 +116,7 @@ const none = isNode
       ];
 
 const angryBird = isNode
-    ? (fName: string) => bgYellow(black(`[${fName}]`))
+    ? (fName: string) => bgYellow(black(`🐥 [${fName}]🐥 `)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.angryBird),
           madLogMarkers.angryBird.style,
