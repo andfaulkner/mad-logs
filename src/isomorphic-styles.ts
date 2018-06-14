@@ -277,7 +277,7 @@ const smokeyHatesChristmas = isNode
       ];
 
 const springy = isNode
-    ? (fName: string) => underline(bold(bgWhite(black(`[${fName}]`))))
+    ? (fName: string) => underline(bold(white(`⚙️  [${fName}] ⚙️ `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.springy),
           madLogMarkers.springy.style,
