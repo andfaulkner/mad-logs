@@ -165,7 +165,7 @@ const escherBarbieLego = isNode
       ];
 
 const hatBlock = isNode
-    ? (fName: string) => bgCyan(black(` [${fName}] `))
+    ? (fName: string) => bgCyan(black(`[${fName}]`)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
           madLogMarkers.hatBlock.style,
@@ -298,21 +298,21 @@ const tangerines = isNode
       ];
 
 const theBird = isNode
-    ? (fName: string) => underline(black(bgYellow(` [${fName}] `)))
+    ? (fName: string) => underline(black(bgYellow(`[${fName}]`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.theBird),
           madLogMarkers.theBird.style,
       ];
 
 const theHeist = isNode
-    ? (fName: string) => underline(bold(white(bgBlack(` [${fName}] `))))
+    ? (fName: string) => underline(bold(white(bgBlack(`[${fName}]`)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.theHeist),
           madLogMarkers.theHeist.style,
       ];
 
 const vendetta = isNode
-    ? (fName: string) => underline(bold(white(bgRed(` [${fName}] `))))
+    ? (fName: string) => underline(bold(white(bgRed(`[${fName}]`)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.vendetta),
           madLogMarkers.vendetta.style,
