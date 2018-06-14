@@ -1,9 +1,18 @@
-10.1.4 [WIP]
-============
+10.1.4
+======
 Improves/fixes (and adds emojis to) isomorphic styles:
+    *   angryBird
+    *   bracelet
     *   cult
+    *   hatBlock
     *   joy
     *   lucky
+    *   rainbowLeaf
+    *   springy
+    *   tangerines
+    *   theBird
+
+Remove spaces before file names for multiple styles
 
 10.1.3
 ======
