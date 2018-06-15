@@ -164,6 +164,13 @@ const escherBarbieLego = isNode
           madLogMarkers.escherBarbieLego.style,
       ];
 
+const grasslands = isNode
+    ? (fName: string) => black(bgGreen((`^^^[${fName}]^^^`))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
+          madLogMarkers.hatBlock.style,
+      ];
+
 const hatBlock = isNode
     ? (fName: string) => bgCyan(black(`🎩  [${fName}] 🎩 `)) + ' '
     : (fName: string) => [
@@ -346,6 +353,7 @@ export const isoStyles = {
     bracelet,
     cult,
     escherBarbieLego,
+    grasslands,
     hatBlock,
     hotPursuit,
     joy,
