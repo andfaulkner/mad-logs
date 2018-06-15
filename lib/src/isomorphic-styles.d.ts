@@ -160,6 +160,7 @@ export declare const isoStyles: {
     arrow: ((fName: string) => string) | ((fName: string) => string[]);
     backAndForth: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
+    checkmate: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
     dirtRoad: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);

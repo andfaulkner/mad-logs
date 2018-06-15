@@ -150,6 +150,13 @@ const bracelet = isNode
           madLogMarkers.bracelet.style,
       ];
 
+const checkmate = isNode
+    ? (fName: string) => bold(bgRed(cyan(`♜♞♝♚♛[${fName}]♛♚♝♞♜`))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.checkmate),
+          madLogMarkers.checkmate.style,
+      ];
+
 const cult = isNode
     ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  [${fName}] 👪 👨‍👨‍👧‍👦 `)))
     : (fName: string) => [
@@ -365,6 +372,7 @@ export const isoStyles = {
     arrow,
     backAndForth,
     bracelet,
+    checkmate,
     cult,
     dirtRoad,
     escherBarbieLego,
