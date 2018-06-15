@@ -8,6 +8,7 @@ Added isomorphic styles:
     *   grasslands
     *   farmerBrown
     *   dirtRoad
+    *   checkmate
 
 10.1.4
 ======
