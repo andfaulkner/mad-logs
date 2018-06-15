@@ -263,7 +263,7 @@ const rainbowLeaf = isNode
       ];
 
 const rockIsDead = isNode
-    ? (fName: string) => bold(bgBlack(magenta(`[${fName}]`)))
+    ? (fName: string) => bold(bgBlack(magenta(`🎸  [${fName}] 🎸  `)))
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.rockIsDead),
           madLogMarkers.rockIsDead.style,
