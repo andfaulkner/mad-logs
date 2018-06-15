@@ -161,6 +161,7 @@ export declare const isoStyles: {
     backAndForth: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
+    dirtRoad: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     farmerBrown: ((fName: string) => string) | ((fName: string) => string[]);
     grasslands: ((fName: string) => string) | ((fName: string) => string[]);

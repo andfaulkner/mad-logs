@@ -157,6 +157,13 @@ const cult = isNode
           madLogMarkers.cult.style,
       ];
 
+const dirtRoad = isNode
+    ? (fName: string) => bold(bgCyan(white(`= = [${fName}] = =`))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.dirtRoad),
+          madLogMarkers.dirtRoad.style,
+      ];
+
 const escherBarbieLego = isNode
     ? (fName: string) => bgMagenta(black(`||┗┛┏┓ [${fName}] ┏┓┗┛||`))
     : (fName: string) => [
@@ -359,6 +366,7 @@ export const isoStyles = {
     backAndForth,
     bracelet,
     cult,
+    dirtRoad,
     escherBarbieLego,
     farmerBrown,
     grasslands,
