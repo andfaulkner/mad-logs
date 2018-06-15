@@ -292,6 +292,7 @@ describe('shared module', function() {
         testIsoStyle(`bracelet`);
         testIsoStyle(`cult`);
         testIsoStyle(`escherBarbieLego`);
+        testIsoStyle(`farmerBrown`);
         testIsoStyle(`grasslands`);
         testIsoStyle(`hatBlock`);
         testIsoStyle(`hotPursuit`);
