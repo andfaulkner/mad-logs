@@ -171,6 +171,13 @@ const hatBlock = isNode
           madLogMarkers.hatBlock.style,
       ];
 
+const hotPursuit = isNode
+    ? (fName: string) => bgRed(white(`🍯 🐻 [${fName}]🐝 🐝 `)) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.hotPursuit),
+          madLogMarkers.hotPursuit.style,
+      ];
+
 const joy = isNode
     ? (fName: string) => bgYellow(black((`😀 😀 [${fName}]😀 😀 `)))
     : (fName: string) => [
@@ -340,6 +347,7 @@ export const isoStyles = {
     cult,
     escherBarbieLego,
     hatBlock,
+    hotPursuit,
     joy,
     kingRageBlock,
     lakeLouise,
