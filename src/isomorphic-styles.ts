@@ -164,11 +164,18 @@ const escherBarbieLego = isNode
           madLogMarkers.escherBarbieLego.style,
       ];
 
+const farmerBrown = isNode
+    ? (fName: string) => bold(white(bgGreen((`🐑 🐂 [${fName}]🐂 🐑 `)))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.farmerBrown),
+          madLogMarkers.farmerBrown.style,
+      ];
+
 const grasslands = isNode
     ? (fName: string) => black(bgGreen((`^^^[${fName}]^^^`))) + ' '
     : (fName: string) => [
-          buildFileTagForBrowser(fName, madLogMarkers.hatBlock),
-          madLogMarkers.hatBlock.style,
+          buildFileTagForBrowser(fName, madLogMarkers.grasslands),
+          madLogMarkers.grasslands.style,
       ];
 
 const hatBlock = isNode
@@ -353,6 +360,7 @@ export const isoStyles = {
     bracelet,
     cult,
     escherBarbieLego,
+    farmerBrown,
     grasslands,
     hatBlock,
     hotPursuit,

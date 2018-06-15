@@ -162,6 +162,7 @@ export declare const isoStyles: {
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
+    farmerBrown: ((fName: string) => string) | ((fName: string) => string[]);
     grasslands: ((fName: string) => string) | ((fName: string) => string[]);
     hatBlock: ((fName: string) => string) | ((fName: string) => string[]);
     hotPursuit: ((fName: string) => string) | ((fName: string) => string[]);
