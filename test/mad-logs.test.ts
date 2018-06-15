@@ -290,6 +290,7 @@ describe('shared module', function() {
         testIsoStyle(`arrow`);
         testIsoStyle(`backAndForth`);
         testIsoStyle(`bracelet`);
+        testIsoStyle(`checkmate`);
         testIsoStyle(`cult`);
         testIsoStyle(`dirtRoad`);
         testIsoStyle(`escherBarbieLego`);
