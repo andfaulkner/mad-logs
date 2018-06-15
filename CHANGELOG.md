@@ -1,3 +1,8 @@
+10.1.5
+======
+Improves/fixes (and adds emojis to) isomorphic styles:
+    *   rockIsDead
+
 10.1.4
 ======
 Improves/fixes (and adds emojis to) isomorphic styles:
