@@ -1,7 +1,11 @@
-10.1.5
-======
+10.1.5 (WIP)
+============
 Improves/fixes (and adds emojis to) isomorphic styles:
     *   rockIsDead
+
+Added isomorphic styles:
+    *   hotPursuit
+    *   grasslands
 
 10.1.4
 ======
