@@ -151,7 +151,7 @@ const bracelet = isNode
       ];
 
 const checkmate = isNode
-    ? (fName: string) => bold(bgRed(cyan(`♜♞♝♚♛[${fName}]♛♚♝♞♜`))) + ' '
+    ? (fName: string) => bgYellow(black(`♜ ♞ ♝ ♚ ♛ [${fName}]♛ ♚ ♝ ♞ ♜ `)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.checkmate),
           madLogMarkers.checkmate.style,
