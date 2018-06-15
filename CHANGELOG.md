@@ -6,6 +6,8 @@ Improves/fixes (and adds emojis to) isomorphic styles:
 Added isomorphic styles:
     *   hotPursuit
     *   grasslands
+    *   farmerBrown
+    *   dirtRoad
 
 10.1.4
 ======
