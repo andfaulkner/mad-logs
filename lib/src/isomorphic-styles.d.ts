@@ -163,6 +163,7 @@ export declare const isoStyles: {
     cult: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     hatBlock: ((fName: string) => string) | ((fName: string) => string[]);
+    hotPursuit: ((fName: string) => string) | ((fName: string) => string[]);
     joy: ((fName: string) => string) | ((fName: string) => string[]);
     kingRageBlock: ((fName: string) => string) | ((fName: string) => string[]);
     lakeLouise: ((fName: string) => string) | ((fName: string) => string[]);

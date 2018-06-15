@@ -172,7 +172,7 @@ const hatBlock = isNode
       ];
 
 const hotPursuit = isNode
-    ? (fName: string) => bgRed(white(`🍯 🐻 [${fName}]🐝 🐝 `)) + ' '
+    ? (fName: string) => bgRed(white(bold((`🍯 🐻 [${fName}]🐝 🐝 `)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.hotPursuit),
           madLogMarkers.hotPursuit.style,
