@@ -109,7 +109,7 @@ const {underline, bold, italic, rainbow} = node;
 
 /********************************************* STYLES *********************************************/
 const none = isNode
-    ? (fName: string) => `[${fName}]`
+    ? (fName: string) => `[${fName}] `
     : (fName: string) => [
           buildFileTagForBrowser(fName, {tagPrefix: '[', tagSuffix: ']  ', style: ``}),
           madLogMarkers.aquarium.style,
@@ -123,21 +123,21 @@ const angryBird = isNode
       ];
 
 const aquarium = isNode
-    ? (fName: string) => bgBlue(white(bold(`🐠 🐙 [${fName}]🐙 🐠 `)))
+    ? (fName: string) => bgBlue(white(bold(`🐠 🐙 [${fName}]🐙 🐠 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.aquarium),
           madLogMarkers.aquarium.style,
       ];
 
 const arrow = isNode
-    ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`)))
+    ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.arrow),
           madLogMarkers.arrow.style,
       ];
 
 const backAndForth = isNode
-    ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`)))
+    ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.backAndForth),
           madLogMarkers.backAndForth.style,
@@ -151,14 +151,14 @@ const barbells = isNode
       ];
 
 const bracelet = isNode
-    ? (fName: string) => bold(bgMagenta(cyan(`⌚ [${fName}]⌚ `)))
+    ? (fName: string) => bold(bgMagenta(cyan(`⌚ [${fName}]⌚ `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.bracelet),
           madLogMarkers.bracelet.style,
       ];
 
 const brainwave = isNode
-    ? (fName: string) => bold(bgBlue(cyan(`~^~^~[${fName}]~^~^~`)))
+    ? (fName: string) => bold(bgBlue(cyan(`~^~^~[${fName}]~^~^~`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.brainwave),
           madLogMarkers.brainwave.style,
@@ -172,7 +172,7 @@ const checkmate = isNode
       ];
 
 const cult = isNode
-    ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  [${fName}] 👪 👨‍👨‍👧‍👦 `)))
+    ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  [${fName}] 👪 👨‍👨‍👧‍👦 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.cult),
           madLogMarkers.cult.style,
@@ -186,7 +186,7 @@ const dirtRoad = isNode
       ];
 
 const escherBarbieLego = isNode
-    ? (fName: string) => bgMagenta(black(`||┗┛┏┓ [${fName}] ┏┓┗┛||`))
+    ? (fName: string) => bgMagenta(black(`||┗┛┏┓ [${fName}] ┏┓┗┛||`)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.escherBarbieLego),
           madLogMarkers.escherBarbieLego.style,
@@ -221,7 +221,7 @@ const hotPursuit = isNode
       ];
 
 const joy = isNode
-    ? (fName: string) => bgYellow(black((`😀 😀 [${fName}]😀 😀 `)))
+    ? (fName: string) => bgYellow(black((`😀 😀 [${fName}]😀 😀 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.joy),
           madLogMarkers.joy.style,
@@ -242,63 +242,63 @@ const lakeLouise = isNode
       ];
 
 const lucky = isNode
-    ? (fName: string) => bold(white(bgGreen(`🍀 [${fName}]🍀 `)))
+    ? (fName: string) => bold(white(bgGreen(`🍀 [${fName}]🍀 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.lucky),
           madLogMarkers.lucky.style,
       ];
 
 const maceWindu = isNode
-    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`)))
+    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.maceWindu),
           madLogMarkers.maceWindu.style,
       ];
 
 const mechanicalAtFists = isNode
-    ? (fName: string) => bold(black(bgWhite(`--#@[${fName}]@#--`)))
+    ? (fName: string) => bold(black(bgWhite(`--#@[${fName}]@#--`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.mechanicalAtFists),
           madLogMarkers.mechanicalAtFists.style,
       ];
 
 const moProblems = isNode
-    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰`)))
+    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.moProblems),
           madLogMarkers.moProblems.style,
       ];
 
 const mrsPotatoVHS = isNode
-    ? (fName: string) => underline(black(bgYellow(`(👃 👁 👂) ${fName} (👂 👁 👅 )`)))
+    ? (fName: string) => underline(black(bgYellow(`(👃 👁 👂) ${fName} (👂 👁 👅 )`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.mrsPotatoVHS),
           madLogMarkers.mrsPotatoVHS.style,
       ];
 
 const nightmare = isNode
-    ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`)))
+    ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.nightmare),
           madLogMarkers.nightmare.style,
       ];
 
 const pipeDream = isNode
-    ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`)))
+    ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.pipeDream),
           madLogMarkers.pipeDream.style,
       ];
 
 const potOfGold = isNode
-    ? (fName: string) => italic(bold(yellow(bgBlack(`💰  [${fName}] 💰  `))))
+    ? (fName: string) => italic(bold(yellow(bgBlack(`💰  [${fName}] 💰  `)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.potOfGold),
           madLogMarkers.potOfGold.style,
       ];
 
 const probeArcade = isNode
-    ? (fName: string) => bold(cyan(bgBlue(`👽  [${fName}] 👽 `)))
+    ? (fName: string) => bold(cyan(bgBlue(`👽  [${fName}] 👽 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.probeArcade),
           madLogMarkers.probeArcade.style,
@@ -312,14 +312,14 @@ const rainbowLeaf = isNode
       ];
 
 const rockIsDead = isNode
-    ? (fName: string) => bold(bgBlack(magenta(`🎸  [${fName}] 🎸  `)))
+    ? (fName: string) => bold(bgBlack(magenta(`🎸  [${fName}] 🎸  `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.rockIsDead),
           madLogMarkers.rockIsDead.style,
       ];
 
 const smokeyHatesChristmas = isNode
-    ? (fName: string) => white(bold(bgGreen(`🎄 🔥 [${fName}]🔥 🎄 `)))
+    ? (fName: string) => white(bold(bgGreen(`🎄 🔥 [${fName}]🔥 🎄 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.smokeyHatesChristmas),
           madLogMarkers.smokeyHatesChristmas.style,
@@ -333,7 +333,7 @@ const springy = isNode
       ];
 
 const swimmers = isNode
-    ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`))))
+    ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.swimmers),
           madLogMarkers.swimmers.style,
@@ -368,7 +368,7 @@ const vendetta = isNode
       ];
 
 const zebra = isNode
-    ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`))))
+    ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`)))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.zebra),
           madLogMarkers.zebra.style,
