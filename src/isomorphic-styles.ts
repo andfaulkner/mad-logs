@@ -193,14 +193,14 @@ const escherBarbieLego = isNode
       ];
 
 const farmerBrown = isNode
-    ? (fName: string) => bold(white(bgGreen((`🐑 🐂 [${fName}]🐂 🐑 `)))) + ' '
+    ? (fName: string) => bold(white(bgGreen(`🐑 🐂 [${fName}]🐂 🐑 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.farmerBrown),
           madLogMarkers.farmerBrown.style,
       ];
 
 const grasslands = isNode
-    ? (fName: string) => black(bgGreen((`^^^[${fName}]^^^`))) + ' '
+    ? (fName: string) => black(bgGreen(`^^^[${fName}]^^^`)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.grasslands),
           madLogMarkers.grasslands.style,
@@ -214,14 +214,14 @@ const hatBlock = isNode
       ];
 
 const hotPursuit = isNode
-    ? (fName: string) => bgRed(white(bold((`🍯 🐻 [${fName}]🐝 🐝 `)))) + ' '
+    ? (fName: string) => bgRed(white(bold(`🍯 🐻 [${fName}]🐝 🐝 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.hotPursuit),
           madLogMarkers.hotPursuit.style,
       ];
 
 const joy = isNode
-    ? (fName: string) => bgYellow(black((`😀 😀 [${fName}]😀 😀 `))) + ' '
+    ? (fName: string) => bgYellow(black(`😀 😀 [${fName}]😀 😀 `)) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.joy),
           madLogMarkers.joy.style,
@@ -235,7 +235,7 @@ const kingRageBlock = isNode
       ];
 
 const lakeLouise = isNode
-    ? (fName: string) => bgCyan(white(bold((`🏞️  [${fName}] 🏞️ `)))) + '  '
+    ? (fName: string) => bgCyan(white(bold(`🏞️  [${fName}] 🏞️ `))) + '  '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.lakeLouise),
           madLogMarkers.lakeLouise.style,
