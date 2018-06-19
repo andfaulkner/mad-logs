@@ -143,6 +143,13 @@ const backAndForth = isNode
           madLogMarkers.backAndForth.style,
       ];
 
+const barbells = isNode
+    ? (fName: string) => underline(bold(bgBlack(white(`|-()-()-[ ${fName} ]-()-()-|`)))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.barbells),
+          madLogMarkers.barbells.style,
+      ];
+
 const bracelet = isNode
     ? (fName: string) => bold(bgMagenta(cyan(`⌚ [${fName}]⌚ `)))
     : (fName: string) => [
@@ -371,6 +378,7 @@ export const isoStyles = {
     aquarium,
     arrow,
     backAndForth,
+    barbells,
     bracelet,
     checkmate,
     cult,

@@ -159,6 +159,7 @@ export declare const isoStyles: {
     aquarium: ((fName: string) => string) | ((fName: string) => string[]);
     arrow: ((fName: string) => string) | ((fName: string) => string[]);
     backAndForth: ((fName: string) => string) | ((fName: string) => string[]);
+    barbells: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
     checkmate: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
