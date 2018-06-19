@@ -10,12 +10,7 @@ global.process.argv = Array.from(global.process.argv) || process.argv || [];
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
 import {expect} from 'chai';
-import * as sinon from 'sinon';
-
-import * as fs from 'fs';
-import * as path from 'path';
-import * as partial from 'lodash.partial';
-import {stderr, stdout} from 'test-console';
+import {stdout} from 'test-console';
 import * as colors from 'colors';
 import {isVerbose} from 'env-var-helpers';
 

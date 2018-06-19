@@ -7,19 +7,12 @@
 /************************************** THIRD-PARTY IMPORTS ***************************************/
 // Testing modules
 import 'mocha';
-import * as sinon from 'sinon';
 import {expect} from 'chai';
-import {stderr, stdout} from 'test-console';
+import {stdout} from 'test-console';
 
 // Utility modules
-import * as fs from 'fs';
-import * as path from 'path';
 import {inspect as nodeInspect} from 'util';
 import * as _ from 'lodash';
-
-// Spawn other apps
-import {spawn, spawnSync, fork} from 'child_process';
-const spawnSyncOpts = {detached: true, env: process.env, stdio: 'inherit'};
 
 /************************************ IMPORT FILE TO BE TESTED ************************************/
 import {inspect, nodeLogFactory, buildFileTag} from '../node';
