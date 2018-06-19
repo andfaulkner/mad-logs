@@ -1,3 +1,8 @@
+10.1.6 (WIP)
+============
+Added isomorphic styles:
+    *   barbells
+
 10.1.5
 ======
 Improves/fixes (and adds emojis to) isomorphic styles:
