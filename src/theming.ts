@@ -1,11 +1,12 @@
 import isNode from 'detect-node';
-import { isomorphicStyles as isoStyles } from './isomorphic-styles';
+import {isomorphicStyles as isoStyles} from './isomorphic-styles';
 
 /************************************************************************************************
  *
  * Colours and styles for use in console log messages
  *
  */
+// prettier-ignore
 export const colours = {
     violet:           '#551A8B',
     orange:           '#EE7600',
@@ -34,10 +35,9 @@ export const colours = {
 };
 
 export const style = {
-    bold:      'font-weight: bold;',
+    bold: 'font-weight: bold;',
     underline: 'text-decoration: underline;',
 };
-
 
 /************************************************************************************************
  *
@@ -53,6 +53,7 @@ export const style = {
  * @example logFactory()('my-cool-file', madLogMarkers.vendetta)
  *
  */
+// prettier-ignore
 export const madLogMarkers = {
     angryBird: {
         tagPrefix: '＼(｀0´)／',
@@ -334,6 +335,3 @@ export const madLogMarkers = {
 };
 
 export const logMarkers = Object.assign({}, madLogMarkers);
-
-// 🌪⚡🌬 🔥🌤🌩🌟☔🌈☂🌦🌨⛄✨🎋🎍🌋💣🗡⚔🔫💧❄☃☄🌊🚚🔒🔐🔓🗝🏦💣💳📦💼🔦🔧🔨🔩🔪🔫
-// 👾👾
