@@ -3,14 +3,14 @@ export declare type RealAny = any;
 export interface InspectFn {
     /**
      * Deep-inspect object & return it as string.
-     * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log).
-     * @param {any} obj - Object to inspect.
+     * If env var LOG_LEVEL >= info, also log it (with the file tag included in the log)
+     * @param {any} obj Object to inspect
      */
     (obj: RealAny): string;
     /**
-     * Deep-inspect object & return as string.
-     * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included.
-     * @param {any} obj - Object to inspect.
+     * Deep-inspect object & return as string
+     * If env var LOG_LEVEL >= info, also log it, with the text in msg & the filename tag included
+     * @param {any} obj Object to inspect
      */
     (msg: string, RealAny: any): string;
 }
@@ -50,23 +50,26 @@ export interface NodeMadLogsInstance extends NodeMadLogsFuncInstance {
 }
 /******************************************** HELPERS *********************************************/
 /**
- * Preconfigured version of Node's util.inspect function. Automatically changes
- * depth based on the current process.env.LOG_LEVEL.
+ * Preconfigured version of Node's util.inspect function
+ * Automatically changes depth based on the current process.env.LOG_LEVEL
  *
  * @param {Object} obj - Object to inspect
- * @param {boolean} isHidden - [OPTIONAL] If true, show hidden values. Defaults to true
- *                             if process.env.LOG_LEVEL is 'silly' (otherwise it's false).
+ * @param {boolean} isHidden [OPTIONAL] If true, show hidden values. Defaults to true
+ *                           if process.env.LOG_LEVEL is 'silly' (otherwise it's false)
  * @return {string} Readable string representation of object (standard util.inspect output)
  */
 export declare const inspect: (obj: any, isHidden?: boolean) => string;
 /********************************************* EXPORT *********************************************/
 /**
- * Create a special log for the current file.
- * Produces an ultra-dynamic object with functions that also operate as objects at every layer.
- * The "root-level" function acts like log.info. Each key on that function contains a function
- * that either does specialized logging, or logs dependent on the current LOG_LEVEL value.
+ * Create a special log for the current file
  *
- * @param {string} TAG - filename, possible decorated by a style.
+ * Produces dynamic object w functions that also operate as objects at each
+ * layer, with the "root-level" function acting like log.info
+ *
+ * Each key on that function contains a function that either does specialized
+ * logging, or logs dependent on the current LOG_LEVEL value
+ *
+ * @param {string} TAG Filename, possible decorated by a style
  */
 export declare const nodeLogFactory: (TAG: string) => NodeMadLogsInstance;
 import { buildFileTagString } from './src/build-file-tag-string';
