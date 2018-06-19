@@ -1,3 +1,15 @@
+10.1.7
+======
+Add space to end of all isomorphic styles
+
+Ran prettier on (most) JS & TS files + general cleanups
+
+Cleaned up index.ts
+
+Remove & uninstall modules:
+    *   lodash.isfunction
+    *   lodash.partial
+
 10.1.6
 ======
 Added isomorphic styles:
