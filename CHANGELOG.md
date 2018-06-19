@@ -1,7 +1,11 @@
-10.1.6 (WIP)
-============
+10.1.6
+======
 Added isomorphic styles:
     *   barbells
+    *   brainwave
+
+Improves/fixes isomorphic style:
+    *   moProblems (removes unneeded extra chars)
 
 10.1.5
 ======
