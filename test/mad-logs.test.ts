@@ -289,6 +289,7 @@ describe('shared module', function() {
         testIsoStyle(`aquarium`);
         testIsoStyle(`arrow`);
         testIsoStyle(`backAndForth`);
+        testIsoStyle(`barbells`);
         testIsoStyle(`bracelet`);
         testIsoStyle(`checkmate`);
         testIsoStyle(`cult`);

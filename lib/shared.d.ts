@@ -61,7 +61,7 @@ export declare class Log implements Log {
  *
  * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
  */
-export declare const logFactory: (filename: string, style?: ((fName: string) => string) | ((fName: string) => string[]) | "none" | "angryBird" | "aquarium" | "arrow" | "backAndForth" | "bracelet" | "checkmate" | "cult" | "dirtRoad" | "escherBarbieLego" | "farmerBrown" | "grasslands" | "hatBlock" | "hotPursuit" | "joy" | "kingRageBlock" | "lakeLouise" | "lucky" | "maceWindu" | "mechanicalAtFists" | "moProblems" | "mrsPotatoVHS" | "nightmare" | "pipeDream" | "potOfGold" | "probeArcade" | "rainbowLeaf" | "rockIsDead" | "smokeyHatesChristmas" | "springy" | "swimmers" | "tangerines" | "theBird" | "theHeist" | "vendetta" | "zebra", inspector?: Function) => Log & ((...args: any[]) => void) & {
+export declare const logFactory: (filename: string, style?: ((fName: string) => string) | ((fName: string) => string[]) | "none" | "angryBird" | "aquarium" | "arrow" | "backAndForth" | "barbells" | "bracelet" | "checkmate" | "cult" | "dirtRoad" | "escherBarbieLego" | "farmerBrown" | "grasslands" | "hatBlock" | "hotPursuit" | "joy" | "kingRageBlock" | "lakeLouise" | "lucky" | "maceWindu" | "mechanicalAtFists" | "moProblems" | "mrsPotatoVHS" | "nightmare" | "pipeDream" | "potOfGold" | "probeArcade" | "rainbowLeaf" | "rockIsDead" | "smokeyHatesChristmas" | "springy" | "swimmers" | "tangerines" | "theBird" | "theHeist" | "vendetta" | "zebra", inspector?: Function) => Log & ((...args: any[]) => void) & {
     inspect: (obj: any) => string | void;
 };
 export { isoStyles as Styles };
