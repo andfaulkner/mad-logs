@@ -48,7 +48,6 @@
         "detect-node": "^2.0.3",
         "env-var-helpers": "^4.0.1",
         "global": "^4.3.1",
-        "lodash.isfunction": "^3.0.8",
         "string.prototype.padend": "^3.0.0"
     },
     "devDependencies": {
