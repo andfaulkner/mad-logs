@@ -1,5 +1,5 @@
 const padEnd = require('string.prototype.padend');
-const isFunction = require('lodash.isfunction');
+const isFunction = (val): val is Function => ({}).toString.call(val) == '[object Function]';
 
 /***************************************** ERROR MESSAGES *****************************************/
 const colourizerTypeError =
