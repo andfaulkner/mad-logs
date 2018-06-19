@@ -4,9 +4,6 @@
 // Ensure environment knows testing is occurring
 (process.env as any).mocha = true;
 
-// Store original process.argv.
-const oldProcArgs = Object.assign({}, process.argv);
-
 // Fix process.argv to work with colors.
 process.argv = Array.from(process.argv) || [];
 global.process.argv = Array.from(global.process.argv) || process.argv || [];
@@ -50,6 +47,40 @@ function blockErrorOutput(fn) {
     console.warn = warnOrig;
 
     return {errorLogs, warnLogs, result};
+}
+
+function testIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
+    it(styleName, function() {
+        const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles[styleName]);
+        log.info(`Test log :: ${styleName} style`);
+    });
+}
+
+function styleTester(
+    styleName: string,
+    whatItAddsMsg: string,
+    expectedContents: string[] = [],
+    expectedMatches: RegExp[] = []
+) {
+    it(`has style ${styleName}, which adds ${whatItAddsMsg} to output if used in log constructor`, function() {
+        const eblLogger = logFactory()('mad-logs.test.ts', logMarkers[styleName]);
+
+        // Stub console.log and most of console's internals
+        const output = stdout.inspectSync(function() {
+            eblLogger('Should be logged');
+        });
+
+        // Display the actual log output if verbose mode is on
+        if (isVerbose) {
+            console.log(`Output of ${styleName} log (below):`);
+            console.log(output[0]);
+        }
+
+        const stringsExpectedInOutput = ['mad-logs.test.ts'].concat(expectedContents);
+
+        stringsExpectedInOutput.forEach(str => expect(output[0]).to.contain(str));
+        expectedMatches.forEach(match => expect(output[0]).to.match(match));
+    });
 }
 
 /********************************************* TESTS **********************************************/
@@ -350,40 +381,3 @@ describe('shared module', function() {
         testIsoStyle(`zebra`);
     });
 });
-
-// Restore original process.argv
-process.argv = Object.assign({}, oldProcArgs);
-
-function testIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
-    it(styleName, function() {
-        const log = sharedMadLogs.logFactory('MadLogs.test', sharedMadLogs.Styles[styleName]);
-        log.info(`Test log :: ${styleName} style`);
-    });
-}
-
-function styleTester(
-    styleName: string,
-    whatItAddsMsg: string,
-    expectedContents: string[] = [],
-    expectedMatches: RegExp[] = []
-) {
-    it(`has style ${styleName}, which adds ${whatItAddsMsg} to output if used in log constructor`, function() {
-        const eblLogger = logFactory()('mad-logs.test.ts', logMarkers[styleName]);
-
-        // Stub console.log and most of console's internals
-        const output = stdout.inspectSync(function() {
-            eblLogger('Should be logged');
-        });
-
-        // Display the actual log output if verbose mode is on
-        if (isVerbose) {
-            console.log(`Output of ${styleName} log (below):`);
-            console.log(output[0]);
-        }
-
-        const stringsExpectedInOutput = ['mad-logs.test.ts'].concat(expectedContents);
-
-        stringsExpectedInOutput.forEach(str => expect(output[0]).to.contain(str));
-        expectedMatches.forEach(match => expect(output[0]).to.match(match));
-    });
-}

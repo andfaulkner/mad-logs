@@ -1,11 +1,8 @@
 /// <reference path="../node_modules/@types/mocha/index.d.ts" />
 /// <reference path="../node_modules/@types/node/index.d.ts" />
 
-// ensure environment knows testing is occurring
+// Ensure environment knows testing is occurring
 (process.env as any).mocha = true;
-
-// Store original process.argv
-const oldProcArgs = Object.assign({}, process.argv);
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
 // Testing modules
@@ -20,16 +17,15 @@ import * as path from 'path';
 import {inspect as nodeInspect} from 'util';
 import * as _ from 'lodash';
 
-// spawn other apps
+// Spawn other apps
 import {spawn, spawnSync, fork} from 'child_process';
 const spawnSyncOpts = {detached: true, env: process.env, stdio: 'inherit'};
 
-/******************************************** LOGGING *********************************************/
-
 /************************************ IMPORT FILE TO BE TESTED ************************************/
 import {inspect, nodeLogFactory, buildFileTag} from '../node';
-import * as colors from 'colors';
 
+/******************************************** LOGGING *********************************************/
+import * as colors from 'colors';
 const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
 
 /******************************************** HELPERS *********************************************/
@@ -386,6 +382,3 @@ describe('buildFileTag', function() {
         expect(testOutput).to.not.contain('                 '); // 17 char space
     });
 });
-
-// Restore original process.argv
-process.argv = Object.assign({}, oldProcArgs);
