@@ -2,25 +2,31 @@ const padEnd = require('string.prototype.padend');
 const isFunction = require('lodash.isfunction');
 
 /***************************************** ERROR MESSAGES *****************************************/
-const colourizerTypeError = '[mad-logs] 2nd arg to buildFileTagString must be a function from the' +
-                            ' colors module, a number (representing r-pad length), or be excluded';
+const colourizerTypeError =
+    '[mad-logs] 2nd arg to buildFileTagString must be a function from the' +
+    ' colors module, a number (representing r-pad length), or be excluded';
 const filenameTypeError = '[mad-logs] 1st arg to buildFileTagString must be a string';
-const tooManyArgsError = '[mad-logs] if 2nd arg to buildFileTagString is a number (representing ' +
-                         'right pad length), it must not receive a third arg.';
+const tooManyArgsError =
+    '[mad-logs] if 2nd arg to buildFileTagString is a number (representing ' +
+    'right pad length), it must not receive a third arg.';
 
 /**
  * Throws if buildFileTagString function (bldTag) is given invalid input.
  * Input must be a string, rpad must be a number if it exists.
  */
-const validateBuildFileTagStringInput =
-    (filename: string, colourizerOrRpad: number | any, rpad?: number): void =>
-{
+const validateBuildFileTagStringInput = (
+    filename: string,
+    colourizerOrRpad: number | any,
+    rpad?: number
+): void => {
     if (typeof filename !== 'string') {
         throw new TypeError(filenameTypeError);
     }
-    if ((colourizerOrRpad
-            && (!isFunction(colourizerOrRpad) && !colourizerOrRpad._styles))
-            && (typeof colourizerOrRpad !== 'number')) {
+    if (
+        colourizerOrRpad &&
+        (!isFunction(colourizerOrRpad) && !colourizerOrRpad._styles) &&
+        typeof colourizerOrRpad !== 'number'
+    ) {
         throw new TypeError(colourizerTypeError);
     }
     if (colourizerOrRpad && isFunction(colourizerOrRpad) && !colourizerOrRpad._styles) {
@@ -30,7 +36,6 @@ const validateBuildFileTagStringInput =
         throw new TypeError(tooManyArgsError);
     }
 };
-
 
 /**
  * Build and return tag string for prepending to log outputs. Intended to ID the file from
@@ -48,21 +53,16 @@ const bldTag = (filename: string, colourizer?: Function | number, rpadLen?: numb
     rpadLen = rpadLen || 20;
 
     // if the 2nd arg is a number, use that as the padding size
-    const padlen = (typeof colourizer === 'number')
-        ? colourizer
-        : rpadLen;
+    const padlen = typeof colourizer === 'number' ? colourizer : rpadLen;
 
     // colourize the filename, if a colourizer function is present
-    const colouredFilename = (colourizer && typeof colourizer === 'function')
-        ? colourizer(filename)
-        : filename;
+    const colouredFilename =
+        colourizer && typeof colourizer === 'function' ? colourizer(filename) : filename;
 
     // get width of the colour encoding info
-    const colourWidth = (colourizer)
-        ? (colouredFilename.length - filename.length)
-        : 0;
+    const colourWidth = colourizer ? colouredFilename.length - filename.length : 0;
     const TAG = padEnd(`${colouredFilename}`, padlen + colourWidth, ' ');
     return TAG;
 };
 
-export { bldTag as buildFileTagString }
+export {bldTag as buildFileTagString};
