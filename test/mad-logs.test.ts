@@ -291,6 +291,7 @@ describe('shared module', function() {
         testIsoStyle(`backAndForth`);
         testIsoStyle(`barbells`);
         testIsoStyle(`bracelet`);
+        testIsoStyle(`brainwave`);
         testIsoStyle(`checkmate`);
         testIsoStyle(`cult`);
         testIsoStyle(`dirtRoad`);
