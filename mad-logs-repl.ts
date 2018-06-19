@@ -12,7 +12,7 @@ import * as util from 'util';
 import * as repl from 'repl';
 import * as path from 'path';
 import * as fs from 'fs';
-import { path as rootPath } from 'app-root-path';
+import {path as rootPath} from 'app-root-path';
 
 import * as isNode from 'detect-node';
 
@@ -22,15 +22,14 @@ util.inspect.defaultOptions.depth = 10;
 util.inspect.defaultOptions.breakLength = 100;
 util.inspect.defaultOptions.showHidden = true;
 
-
 /**************************************** PROJECT IMPORTS *****************************************/
-import { Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory } from './shared';
-import { nodeLogFactory } from './node';
+import {Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory} from './shared';
+import {nodeLogFactory} from './node';
 
 /****************************************** CONFIG REPL *******************************************/
 // const { padLeft } = madUtils;
 const packageJson = require('./package.json');
-const { defineProperty } = Object;
+const {defineProperty} = Object;
 
 export const defPropConfig = {
     // Configuration for a global value that cannot be reassigned in the repl.
@@ -38,14 +37,14 @@ export const defPropConfig = {
         configurable: false,
         enumerable: true,
         writable: false,
-        value: lib
+        value: lib,
     }),
     // Configuration for a global value that can be reassigned in the repl.
     mutable: (lib: any) => ({
         configurable: true,
         enumerable: true,
         writable: true,
-        value: lib
+        value: lib,
     }),
 };
 
@@ -53,10 +52,12 @@ export const defPropConfig = {
  * Run when inspect is called in the repl.
  */
 export const inspect = (...args) => {
-    (console.log as any)(...args.map(arg => {
-        if (typeof arg === 'function') return arg.toString();
-        return util.inspect(arg);
-    }));
+    (console.log as any)(
+        ...args.map(arg => {
+            if (typeof arg === 'function') return arg.toString();
+            return util.inspect(arg);
+        })
+    );
     return util.inspect(args[0]);
 };
 
@@ -82,7 +83,7 @@ export const inspect = (...args) => {
 // };
 
 /****************************************** CREATE REPL *******************************************/
-export const r = repl.start({ useColors: true });
+export const r = repl.start({useColors: true});
 
 // Add REPL history file
 const historyFile = path.join(rootPath, '.node_history');
@@ -90,7 +91,6 @@ require('repl.history')(r, historyFile);
 
 // Add IN_REPL property to repl environment. Acts as identifier that REPL is currently running.
 defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
-
 
 /********************************** REPL NODE ENVIRONMENT SETUP ***********************************/
 // util.inspect.defaultOptions.colors = true;
@@ -101,7 +101,6 @@ defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
 /************************************** CONFIG REPL CONTEXT ***************************************/
 // import { cat, cd, ls, pwd, inspect, getArgs } from './script/repl-setup';
 // import { SKIP_VAR_DISPLAY } from './script/repl-setup';
-
 
 /****************************************** REPL HELPERS ******************************************/
 /**
@@ -120,7 +119,6 @@ export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: 
 
     // Iterate through the given context properties.
     for (let [key, val] of lodash.toPairs(ctxProps)) {
-
         // Add current prop's value to repl context. Mutable if requested, immutable otherwise.
         if (typeof val === 'object' && val.val && val.mutable) {
             defineProperty(r.context, key, defPropConfig.mutable(val.val));
@@ -139,7 +137,6 @@ export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: 
     }
     console.log(`> `);
 };
-
 
 /***************************************** PROPS TO BIND ******************************************/
 /**
@@ -173,21 +170,20 @@ const ctxProps = {
     SharedLog,
     SharedStyles,
     sharedLogFactory,
-    nodeLogFactory
+    nodeLogFactory,
 
     // *** Bind mad-logs parts to REPL global scope ***
-
 };
 
 /**
  * Extra descriptions for bound properties.
  */
 const descriptions = {
-    _:                     'lodash alias',
-    SharedLog:             'Log module for use in both node & the browser',
-    SharedStyles:          'Collection of styles usable in both Node & the browser',
-    sharedLogFactory:      'Constructor for shared logger',
-    nodeLogFactory:        'Factory to build a node-specific logger',
+    _: 'lodash alias',
+    SharedLog: 'Log module for use in both node & the browser',
+    SharedStyles: 'Collection of styles usable in both Node & the browser',
+    sharedLogFactory: 'Constructor for shared logger',
+    nodeLogFactory: 'Factory to build a node-specific logger',
 };
 
 // Attach props to REPL (repl is in repl setup)
