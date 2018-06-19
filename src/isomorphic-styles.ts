@@ -157,6 +157,13 @@ const bracelet = isNode
           madLogMarkers.bracelet.style,
       ];
 
+const brainwave = isNode
+    ? (fName: string) => bold(bgBlue(cyan(`~^~^~[${fName}]~^~^~`)))
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.brainwave),
+          madLogMarkers.brainwave.style,
+      ];
+
 const checkmate = isNode
     ? (fName: string) => bgYellow(black(`♜ ♞ ♝ ♚ ♛ [${fName}]♛ ♚ ♝ ♞ ♜ `)) + ' '
     : (fName: string) => [
@@ -380,6 +387,7 @@ export const isoStyles = {
     backAndForth,
     barbells,
     bracelet,
+    brainwave,
     checkmate,
     cult,
     dirtRoad,
