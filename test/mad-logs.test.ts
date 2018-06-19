@@ -17,7 +17,6 @@ import {isVerbose} from 'env-var-helpers';
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../index';
 import {buildFileTag, logFactory, logMarkers, MadLog} from '../index';
-
 import * as sharedMadLogs from '../shared';
 
 /******************************************** HELPERS *********************************************/

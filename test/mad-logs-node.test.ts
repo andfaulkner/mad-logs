@@ -5,14 +5,10 @@
 (process.env as any).mocha = true;
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-// Testing modules
 import 'mocha';
 import {expect} from 'chai';
 import {stdout} from 'test-console';
-
-// Utility modules
 import {inspect as nodeInspect} from 'util';
-import * as _ from 'lodash';
 
 /************************************ IMPORT FILE TO BE TESTED ************************************/
 import {inspect, nodeLogFactory, buildFileTag} from '../node';
@@ -347,7 +343,7 @@ describe('buildFileTag', function() {
         expect(testOutput).to.not.contain('                 '); // 17 char space
         const testOutput2 = buildFileTag('eighteen-char-str!', colors.blue, 25);
         expect(testOutput2).to.contain('       ');
-        expect(_.partial(buildFileTag, 'test-name', colors.blue, 25)).to.not.throw(TypeError);
+        expect(() => buildFileTag('test-name', colors.blue, 25)).to.not.throw(TypeError);
     });
     it('throws if colourizer arg is non-function or function without _styles prop', function() {
         blockLogOutput(() => {
