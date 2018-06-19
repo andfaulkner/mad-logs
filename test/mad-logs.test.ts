@@ -12,19 +12,19 @@ process.argv = Array.from(process.argv) || [];
 global.process.argv = Array.from(global.process.argv) || process.argv || [];
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-import { expect } from 'chai';
+import {expect} from 'chai';
 import * as sinon from 'sinon';
 
 import * as fs from 'fs';
 import * as path from 'path';
 import * as partial from 'lodash.partial';
-import { stderr, stdout } from 'test-console';
+import {stderr, stdout} from 'test-console';
 import * as colors from 'colors';
-import { isVerbose } from 'env-var-helpers';
+import {isVerbose} from 'env-var-helpers';
 
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../index';
-import { buildFileTag, logFactory, logMarkers, MadLog } from '../index';
+import {buildFileTag, logFactory, logMarkers, MadLog} from '../index';
 
 import * as sharedMadLogs from '../shared';
 
@@ -49,7 +49,7 @@ function blockErrorOutput(fn) {
     console.error = errorOrig;
     console.warn = warnOrig;
 
-    return { errorLogs, warnLogs, result };
+    return {errorLogs, warnLogs, result};
 }
 
 /********************************************* TESTS **********************************************/
@@ -59,11 +59,11 @@ describe('logFactory', function() {
     });
 
     it('returns a function when given a config object with a valid log level', function() {
-        ['silly', 'verbose', 'debug', 'info', 'warn', 'error', 'wtf'].forEach((lvl) => {
-            expect(logFactory({ logLevel: lvl })).to.be.a('function');
+        ['silly', 'verbose', 'debug', 'info', 'warn', 'error', 'wtf'].forEach(lvl => {
+            expect(logFactory({logLevel: lvl})).to.be.a('function');
         });
 
-        expect(logFactory({ logLevel: 'info' })).to.be.a('function');
+        expect(logFactory({logLevel: 'info'})).to.be.a('function');
     });
 
     it('returns function if given no config object (this triggers default log level)', function() {
@@ -71,15 +71,15 @@ describe('logFactory', function() {
         expect(logFactory()).to.be.a('function');
     });
 
-    it('throws TypeError if given an invalid log level or config object', function () {
+    it('throws TypeError if given an invalid log level or config object', function() {
         expect(() => logFactory(['asdf'])).to.throw(TypeError);
-        expect(() => (logFactory as any)({ gr: "arg" })).to.throw(TypeError);
-        expect(() => (logFactory as any)({ logLevel: {} })).to.throw(TypeError);
-        expect(() => logFactory({ logLevel: "notARealLevel" })).to.throw(TypeError);
-        expect(() => logFactory({ logLevel: "" })).to.throw(TypeError);
+        expect(() => (logFactory as any)({gr: 'arg'})).to.throw(TypeError);
+        expect(() => (logFactory as any)({logLevel: {}})).to.throw(TypeError);
+        expect(() => logFactory({logLevel: 'notARealLevel'})).to.throw(TypeError);
+        expect(() => logFactory({logLevel: ''})).to.throw(TypeError);
     });
 
-    it('does not throw TypeError if given no args, null, or an empty config object', function () {
+    it('does not throw TypeError if given no args, null, or an empty config object', function() {
         expect(() => logFactory()).to.not.throw(TypeError);
         expect(() => logFactory(null)).to.not.throw(TypeError);
         expect(() => logFactory({})).to.not.throw(TypeError);
@@ -88,24 +88,23 @@ describe('logFactory', function() {
     describe('log function constructed by logFactory (with no styling)', function() {
         let logger: MadLog;
         before(() => {
-            const config = { logLevel: 'silly' };
+            const config = {logLevel: 'silly'};
             logger = logFactory(config)('mad-logs.test');
         });
 
-        it('returns log function w/ props for each logLvl when given config & filename', function () {
+        it('returns log function w/ props for each logLvl when given config & filename', function() {
             expect(logger).to.exist;
             expect(logger).to.be.a('function');
-            ['silly', 'verbose', 'debug', 'info', 'warn', 'error', 'wtf'].forEach((methodName) => {
+            ['silly', 'verbose', 'debug', 'info', 'warn', 'error', 'wtf'].forEach(methodName => {
                 expect(logger).to.have.property(methodName);
             });
         });
 
-        it('writes to terminal, including a tag w/ filename received by constructor', function () {
+        it('writes to terminal, including a tag w/ filename received by constructor', function() {
             const storeWarnErrorLogs = [];
 
             // stub console.log and most of console's internals
             const output = stdout.inspectSync(function() {
-
                 // override console warn and console error
                 const warnOrig = console.warn;
                 console.warn = (...msgs) => storeWarnErrorLogs.push(msgs);
@@ -133,19 +132,21 @@ describe('logFactory', function() {
                 'mad-logs.test  testOutputSilly\n',
                 'mad-logs.test  testOutputVerbose\n',
                 'mad-logs.test  testOutputDebug\n',
-                'mad-logs.test  testOutputInfo\n'
+                'mad-logs.test  testOutputInfo\n',
             ]);
 
             // ensure the console outputs reached the console.warn & .error using log methods
-            expect(storeWarnErrorLogs.some((curLog) =>
-                curLog.some((lBit) => lBit === 'testOutputWarn'))).to.be.true;
-            expect(storeWarnErrorLogs.some((curLog) =>
-                curLog.some((lBit) => lBit === 'testOutputError'))).to.be.true;
-            expect(storeWarnErrorLogs.some((curLog) =>
-                curLog.some((lBit) => lBit === 'testOutputWtf'))).to.be.true;
+            expect(
+                storeWarnErrorLogs.some(curLog => curLog.some(lBit => lBit === 'testOutputWarn'))
+            ).to.be.true;
+            expect(
+                storeWarnErrorLogs.some(curLog => curLog.some(lBit => lBit === 'testOutputError'))
+            ).to.be.true;
+            expect(storeWarnErrorLogs.some(curLog => curLog.some(lBit => lBit === 'testOutputWtf')))
+                .to.be.true;
         });
 
-        it('All log instance methods return last arg given, when 1 args provided', function () {
+        it('All log instance methods return last arg given, when 1 args provided', function() {
             expect(logger.silly('omnomnom')).to.eql('omnomnom');
             expect(logger.verbose('omnomnom')).to.eql('omnomnom');
             expect(logger.info('omnomnom')).to.eql('omnomnom');
@@ -153,7 +154,7 @@ describe('logFactory', function() {
             expect(logger.error('omnomnom')).to.eql('omnomnom');
             expect(logger.wtf('omnomnom')).to.eql('omnomnom');
         });
-        it('All log instance methods return last arg given, when 2 args provided', function () {
+        it('All log instance methods return last arg given, when 2 args provided', function() {
             expect(logger.silly('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
             expect(logger.verbose('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
             expect(logger.info('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
@@ -161,7 +162,7 @@ describe('logFactory', function() {
             expect(logger.error('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
             expect(logger.wtf('tickaTickaBoomTicka', 'BoomTickaBoom')).to.eql('BoomTickaBoom');
         });
-        it('All log instance methods return last arg given, when 4 args provided', function () {
+        it('All log instance methods return last arg given, when 4 args provided', function() {
             expect(logger.silly('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
             expect(logger.verbose('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
             expect(logger.info('tingtang', 'wallawalla', 'bing', 'bang')).to.eql('bang');
@@ -173,30 +174,51 @@ describe('logFactory', function() {
 });
 
 describe('logMarkers', function() {
-    const styles = ['lakeLouise', 'farmerBrown', 'escherBarbieLego', 'smokeyHatesChristmas',
-                    'barbells', 'angryBird', 'zebra', 'vendetta', 'moProblems', 'theHeist',
-                    'vendetta', 'rockIsDead', 'mechanicalAtFists', 'nightmare', 'tangerines',
-                    'maceWindu', 'grasslands', 'default', 'cartoonSwearing', 'backAndForth'];
+    const styles = [
+        'lakeLouise',
+        'farmerBrown',
+        'escherBarbieLego',
+        'smokeyHatesChristmas',
+        'barbells',
+        'angryBird',
+        'zebra',
+        'vendetta',
+        'moProblems',
+        'theHeist',
+        'vendetta',
+        'rockIsDead',
+        'mechanicalAtFists',
+        'nightmare',
+        'tangerines',
+        'maceWindu',
+        'grasslands',
+        'default',
+        'cartoonSwearing',
+        'backAndForth',
+    ];
 
     // tslint:disable
     const stylesWMatch = [
         {
-          name: 'arrow',
-          outMatch: />>--mad-logs.test.ts---\|>   Should be logged\n/
-        }, {
-          name: 'brainwave',
-          outMatch: /~\^~\^~\^-mad-logs.test.ts-~\^~\^~\^ color: #003366; Should be logged\n/
-        }, {
-          name: 'checkmate',
-          outMatch: /♜♞♝♚♛♝♞♜_ \[mad-logs.test\.ts\] _♟♟♟♟♟♟♟♟ color: #593001; Should be logged/
-        }, {
-          name: 'hotPursuit',
-          outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange; Should be logged/
-        }, {
-          name: 'pipeDream',
-          outMatch: /┣╋━╋~🛀~╋━╋┫ mad-logs.test\.ts ┣┫ color: #777777; background-color: #FFFFFF; font-weight: bold; Should be logged/
+            name: 'arrow',
+            outMatch: />>--mad-logs.test.ts---\|>   Should be logged\n/,
         },
-
+        {
+            name: 'brainwave',
+            outMatch: /~\^~\^~\^-mad-logs.test.ts-~\^~\^~\^ color: #003366; Should be logged\n/,
+        },
+        {
+            name: 'checkmate',
+            outMatch: /♜♞♝♚♛♝♞♜_ \[mad-logs.test\.ts\] _♟♟♟♟♟♟♟♟ color: #593001; Should be logged/,
+        },
+        {
+            name: 'hotPursuit',
+            outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange; Should be logged/,
+        },
+        {
+            name: 'pipeDream',
+            outMatch: /┣╋━╋~🛀~╋━╋┫ mad-logs.test\.ts ┣┫ color: #777777; background-color: #FFFFFF; font-weight: bold; Should be logged/,
+        },
     ];
     // tslint:enable
 
@@ -204,12 +226,12 @@ describe('logMarkers', function() {
         expect(logMarkers).to.exist;
     });
 
-    it('has over 20 defined styles', function () {
+    it('has over 20 defined styles', function() {
         expect(Object.keys(logMarkers)).to.have.length.above(20);
     });
 
-    it('only contains objects with keys tagPrefix, tagSuffix, and style', function () {
-        Object.keys(logMarkers).forEach((markerKey) => {
+    it('only contains objects with keys tagPrefix, tagSuffix, and style', function() {
+        Object.keys(logMarkers).forEach(markerKey => {
             const curLogMarker = logMarkers[markerKey];
             expect(curLogMarker.tagPrefix).to.be.a('string');
             expect(curLogMarker.tagSuffix).to.be.a('string');
@@ -219,7 +241,7 @@ describe('logMarkers', function() {
 
     // Ensure expected styles included (not-exhaustive)
     styles.forEach(style => {
-        it(`includes style ${style}`, function () {
+        it(`includes style ${style}`, function() {
             expect(Object.keys(logMarkers)).to.contain(style);
         });
     });
@@ -242,7 +264,9 @@ describe('logMarkers', function() {
     stylesWMatch.forEach(style => {
         const logger = logFactory()('mad-logs.test.ts', logMarkers[style.name]);
 
-        it(`has style ${style.name}, w/ output that matches ${style.outMatch.toString()}`, function() {
+        it(`has style ${
+            style.name
+        }, w/ output that matches ${style.outMatch.toString()}`, function() {
             // Stub console.log and most of console's internals
             const output = stdout.inspectSync(function() {
                 logger('Should be logged');
@@ -266,14 +290,16 @@ describe('logMarkers', function() {
         'escherBarbieLego',
         '||┗┛┏┓ & ┏┓┗┛|| (and various styles)',
         [],
-        [/\|\|┗┛┏┓mad-logs.test.ts┏┓┗┛\|\| color: #FFFFFF; background-color: #FF69B4; Should be logged/] // tslint:disable-line
+        [
+            /\|\|┗┛┏┓mad-logs.test.ts┏┓┗┛\|\| color: #FFFFFF; background-color: #FF69B4; Should be logged/,
+        ] // tslint:disable-line
     );
 
-    styleTester(
-        'kingRageBlock',
-        '"(👁‍🗨🗣🗯)" (and various styles)',
-        ['(👁‍🗨🗣🗯)', 'background-color: purple;', 'color: pink;']
-    );
+    styleTester('kingRageBlock', '"(👁‍🗨🗣🗯)" (and various styles)', [
+        '(👁‍🗨🗣🗯)',
+        'background-color: purple;',
+        'color: pink;',
+    ]);
 
     styleTester(
         'mrsPotatoVHS',
@@ -283,7 +309,7 @@ describe('logMarkers', function() {
 });
 
 describe('shared module', function() {
-    describe('styles', function () {
+    describe('styles', function() {
         testIsoStyle('none');
         testIsoStyle('angryBird');
         testIsoStyle(`aquarium`);
@@ -322,7 +348,7 @@ describe('shared module', function() {
         testIsoStyle(`theHeist`);
         testIsoStyle(`vendetta`);
         testIsoStyle(`zebra`);
-    })
+    });
 });
 
 // Restore original process.argv
