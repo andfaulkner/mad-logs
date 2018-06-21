@@ -1,6 +1,6 @@
 /**
  * @export
- * Collection of atomic styles that can be used in both the browser and the cli.
+ * Collection of atomic styles that can be used in both the browser and the cli
  */
 export declare const isomorphicStyles: {
     default: {

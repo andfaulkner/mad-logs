@@ -35,13 +35,13 @@ export declare const style: {
 };
 /************************************************************************************************
  *
- *   Collection of predefined styles for differentiating logs between separate files. Values are
- *   intended for by the logFactory, to apply a theme to a specific logger object.
+ *   Collection of predefined styles for differentiating logs between separate files
+ *   Values are intended for use by logFactory, to apply a theme to a specific logger object
  *
- *   -   tagPrefix:     string to show to left of module name in log output
- *   -   tagSuffix:     string to show to right of module name, but before the message
- *   -   style:         string of CSS style directives separated by ;s. Used to style the
- *                      tag (i.e. ${tagPrefix}${filename}${tagSuffix}) beside each log.
+ *   -   tagPrefix: string to show to left of module name in log output
+ *   -   tagSuffix: string to show to right of module name, but before the message
+ *   -   style:     string of CSS style directives separated by ;s. Used to style the
+ *                  tag (i.e. ${tagPrefix}${filename}${tagSuffix}) beside each log
  *
  * @example logFactory()('my-cool-file', madLogMarkers.cartoonSwearing)
  * @example logFactory()('my-cool-file', madLogMarkers.vendetta)
