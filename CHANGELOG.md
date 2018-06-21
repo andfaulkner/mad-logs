@@ -1,3 +1,10 @@
+10.1.8
+======
+Added isomorphic styles:
+    *   xmlHell
+    *   cartoonSwearing
+    *   default (alias to 'none')
+
 10.1.7
 ======
 Add space to end of all isomorphic styles
