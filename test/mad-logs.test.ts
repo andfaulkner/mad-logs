@@ -346,6 +346,7 @@ describe('shared module', function() {
         testIsoStyle(`checkmate`);
         testIsoStyle(`cartoonSwearing`);
         testIsoStyle(`cult`);
+        testIsoStyle(`default`);
         testIsoStyle(`dirtRoad`);
         testIsoStyle(`escherBarbieLego`);
         testIsoStyle(`farmerBrown`);
