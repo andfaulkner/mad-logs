@@ -162,6 +162,7 @@ export declare const isoStyles: {
     barbells: ((fName: string) => string) | ((fName: string) => string[]);
     bracelet: ((fName: string) => string) | ((fName: string) => string[]);
     brainwave: ((fName: string) => string) | ((fName: string) => string[]);
+    cartoonSwearing: ((fName: string) => string) | ((fName: string) => string[]);
     checkmate: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
     dirtRoad: ((fName: string) => string) | ((fName: string) => string[]);
