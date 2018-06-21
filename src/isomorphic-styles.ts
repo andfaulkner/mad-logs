@@ -370,8 +370,8 @@ const vendetta = isNode
 const xmlHell = isNode
     ? (fName: string) => underline(bold(white(bgBlack(`<<< ${fName} >>>`)))) + ' '
     : (fName: string) => [
-          buildFileTagForBrowser(fName, madLogMarkers.vendetta),
-          madLogMarkers.vendetta.style,
+          buildFileTagForBrowser(fName, madLogMarkers.xmlHell),
+          madLogMarkers.xmlHell.style,
       ];
 
 const zebra = isNode
