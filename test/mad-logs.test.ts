@@ -372,6 +372,7 @@ describe('shared module', function() {
         testIsoStyle(`theBird`);
         testIsoStyle(`theHeist`);
         testIsoStyle(`vendetta`);
+        testIsoStyle(`xmlHell`);
         testIsoStyle(`zebra`);
     });
 });
