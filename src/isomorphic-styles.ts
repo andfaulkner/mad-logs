@@ -164,6 +164,13 @@ const brainwave = isNode
           madLogMarkers.brainwave.style,
       ];
 
+const cartoonSwearing = isNode
+    ? (fName: string) => underline(bgCyan(red(`@%@%! [${fName}] !@%@%`))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.cartoonSwearing),
+          madLogMarkers.cartoonSwearing.style,
+      ];
+
 const checkmate = isNode
     ? (fName: string) => bgYellow(black(`♜ ♞ ♝ ♚ ♛ [${fName}]♛ ♚ ♝ ♞ ♜ `)) + ' '
     : (fName: string) => [
@@ -395,6 +402,7 @@ export const isoStyles = {
     barbells,
     bracelet,
     brainwave,
+    cartoonSwearing,
     checkmate,
     cult,
     dirtRoad,
