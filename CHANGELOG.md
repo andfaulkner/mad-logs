@@ -1,3 +1,7 @@
+10.1.9
+======
+Add new cantTouch style
+
 10.1.8
 ======
 Added isomorphic styles:
