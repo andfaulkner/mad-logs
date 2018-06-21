@@ -344,6 +344,7 @@ describe('shared module', function() {
         testIsoStyle(`bracelet`);
         testIsoStyle(`brainwave`);
         testIsoStyle(`checkmate`);
+        testIsoStyle(`cartoonSwearing`);
         testIsoStyle(`cult`);
         testIsoStyle(`dirtRoad`);
         testIsoStyle(`escherBarbieLego`);
