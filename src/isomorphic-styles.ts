@@ -367,6 +367,13 @@ const vendetta = isNode
           madLogMarkers.vendetta.style,
       ];
 
+const xmlHell = isNode
+    ? (fName: string) => underline(bold(white(bgBlack(`<<< ${fName} >>>`)))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.vendetta),
+          madLogMarkers.vendetta.style,
+      ];
+
 const zebra = isNode
     ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`)))) + ' '
     : (fName: string) => [
@@ -417,6 +424,7 @@ export const isoStyles = {
     theBird,
     theHeist,
     vendetta,
+    xmlHell,
     zebra,
 };
 
