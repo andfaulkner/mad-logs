@@ -165,6 +165,7 @@ export declare const isoStyles: {
     cartoonSwearing: ((fName: string) => string) | ((fName: string) => string[]);
     checkmate: ((fName: string) => string) | ((fName: string) => string[]);
     cult: ((fName: string) => string) | ((fName: string) => string[]);
+    default: ((fName: string) => string) | ((fName: string) => string[]);
     dirtRoad: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     farmerBrown: ((fName: string) => string) | ((fName: string) => string[]);
