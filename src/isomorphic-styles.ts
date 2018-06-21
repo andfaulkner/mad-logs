@@ -405,6 +405,7 @@ export const isoStyles = {
     cartoonSwearing,
     checkmate,
     cult,
+    default: none,
     dirtRoad,
     escherBarbieLego,
     farmerBrown,
