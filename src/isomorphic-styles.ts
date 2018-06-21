@@ -164,6 +164,13 @@ const brainwave = isNode
           madLogMarkers.brainwave.style,
       ];
 
+const cantTouch = isNode
+    ? (fName: string) => bold(bgCyan(white(`🔨⏰ [${fName}] ⏰🔨`))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.cantTouch),
+          madLogMarkers.cantTouch.style,
+      ];
+
 const cartoonSwearing = isNode
     ? (fName: string) => underline(bgCyan(red(`@%@%! [${fName}] !@%@%`))) + ' '
     : (fName: string) => [
@@ -402,6 +409,7 @@ export const isoStyles = {
     barbells,
     bracelet,
     brainwave,
+    cantTouch,
     cartoonSwearing,
     checkmate,
     cult,
