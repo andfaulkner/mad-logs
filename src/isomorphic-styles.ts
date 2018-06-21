@@ -7,7 +7,7 @@ const rainbowColors = ['red', 'yellow', 'green', 'blue', 'magenta'];
 
 /**
  * @export
- * Collection of atomic styles that can be used in both the browser and the cli.
+ * Collection of atomic styles that can be used in both the browser and the cli
  */
 // prettier-ignore
 export const isomorphicStyles = {

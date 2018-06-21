@@ -11,8 +11,8 @@ const tooManyArgsError =
     'right pad length), it must not receive a third arg.';
 
 /**
- * Throws if buildFileTagString function (bldTag) is given invalid input.
- * Input must be a string, rpad must be a number if it exists.
+ * Throws if buildFileTagString function (bldTag) is given invalid input
+ * Input must be a string, rpad must be a number if it exists
  */
 const validateBuildFileTagStringInput = (
     filename: string,
@@ -39,27 +39,27 @@ const validateBuildFileTagStringInput = (
 
 /**
  * Build and return tag string for prepending to log outputs. Intended to ID the file from
- * which a log originated, and make it easy to see in the CLI output without close inspection.
+ * which a log originated, and make it easy to see in the CLI output without close inspection
  * Ensures consistency between generated tags (especially in terms of padding)
  *
- * @param  {string} fileName - name of originating file
- * @param  {function} colourizer - chain of composed colors.js functions, set up to apply all
+ * @param  {string} fileName Name of originating file
+ * @param  {function} colourizer Chain of composed colors.js functions, set up to apply all
  *                                 styles in the chain to any string it's passed to
- * @param {number} rpadLen - amount to pad tag with, on the right side
+ * @param {number} rpadLen Amount to pad tag with, on the right side
  * @return {string} styled output string
  */
 const bldTag = (filename: string, colourizer?: Function | number, rpadLen?: number): string => {
     validateBuildFileTagStringInput(filename, colourizer, rpadLen);
     rpadLen = rpadLen || 20;
 
-    // if the 2nd arg is a number, use that as the padding size
+    // If the 2nd arg is a number, use that as the padding size
     const padlen = typeof colourizer === 'number' ? colourizer : rpadLen;
 
-    // colourize the filename, if a colourizer function is present
+    // Colourize the filename, if a colourizer function is present
     const colouredFilename =
         colourizer && typeof colourizer === 'function' ? colourizer(filename) : filename;
 
-    // get width of the colour encoding info
+    // Get width of the colour encoding info
     const colourWidth = colourizer ? colouredFilename.length - filename.length : 0;
     const TAG = padEnd(`${colouredFilename}`, padlen + colourWidth, ' ');
     return TAG;

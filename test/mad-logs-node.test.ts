@@ -20,7 +20,7 @@ const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
 /******************************************** HELPERS *********************************************/
 /**
  * Prevents console.error messages emitted by code from reaching the console for given function
- * @param  {Function} fn - function to run without showing errors
+ * @param  {Function} fn Function to run without showing errors
  * @return {Object<{errorLogs: string[], warnLogs: string[], result: any}>} array containing
  *              warnings & errors outputted running the function, and the function result
  */
@@ -40,10 +40,10 @@ function blockLogOutput(fn: () => any) {
         };
     });
 
-    // Run the function with everything stubbed.
+    // Run the function with everything stubbed
     const result = fn();
 
-    // Restore all the console methods after function done running.
+    // Restore all the console methods after function done running
     Object.keys(stores).forEach(fn => (global.console[fn] = stores[fn].orig));
 
     return {stores, result};
@@ -102,8 +102,8 @@ describe('nodeLogFactory', function() {
         const logItem1Match = /mad\-logs\-node\.test\.ts.+\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.+\}/; // tslint:disable-line
         const logItem2Match = /mad\-logs\-node\.test\.ts.+hello.+\{ a:.+'.*asdf.*'.+,.*b:.+'.*asdfasdf.*'.*,.*name:.*'hello'.+\}/; // tslint:disable-line
 
-        // Returns an object as a terminal-friendly string if the object is the 1st arg.
-        // Also ensures it gets logged.
+        // Returns an object as a terminal-friendly string if the object is the 1st arg
+        // Also ensures it gets logged
         const {stores, result} = blockLogOutput(() => {
             log.inspect(obj);
             log.info.inspect(namedObject);
@@ -113,15 +113,16 @@ describe('nodeLogFactory', function() {
 
         expect(log.inspect(obj)).to.match(retItem1Match);
 
-        // If inspect is passed a single argument, and it's a string, return the string as-is.
+        // If inspect is passed a single argument, and it's a string, return the string as-is
         // (but still log it. WIP: test the logging aspect)
         expect(log.inspect('asdf')).to.eql('asdf');
 
-        // Returns an object as a terminal-friendly string if the object is the 2nd arg.
-        // (but still logs it. WIP: test the logging aspect)
+        // Returns an object as a terminal-friendly string if the object is the 2nd arg
+        // (but still logs it)
+        // @TODO Test the logging aspect of log.inspect
         expect(log.inspect('my object:', obj)).to.match(retItem1Match);
 
-        // WIP test all of the following 'logging' behaviours from inspect.
+        // @TODO test all of the following 'logging' behaviours from inspect (see below)
         log.inspect(obj);
         log.inspect('my string');
         log.inspect('my object', obj);
@@ -274,7 +275,7 @@ describe('nodeLogFactory', function() {
         const log6 = nodeLogFactory(TAG);
         const fnLog = log6.fn('someMethod');
 
-        // Store the log output of everything run inside, globally.
+        // Store the log output of everything run inside, globally
         const {stores, result} = blockLogOutput(() => {
             fnLog.info('fnLog_info');
             fnLog.silly('fnLog_silly');
