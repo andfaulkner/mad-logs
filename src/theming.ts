@@ -102,6 +102,13 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.blue}${isoStyles.bgWhite}`
                       : `color: ${colours.darkMidnightBlue};`,
     },
+    cantTouch: {
+        tagPrefix: '🔨⏰',
+        tagSuffix: '⏰🔨',
+        style: isNode ? `${isoStyles.white}${isoStyles.bgCyan}${isoStyles.bold}`
+                      : `color: ${colours.yellow}; background-color: ${colours.brown}; ` +
+                        `font-size: 17px; padding: 2px; border-radius: 6px`,
+    },
     cartoonSwearing: {
         tagPrefix: '@%@%@%',
         tagSuffix: '@%@%@%',
