@@ -83,6 +83,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    cantTouch: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     cartoonSwearing: {
         tagPrefix: string;
         tagSuffix: string;
@@ -286,6 +291,11 @@ export declare const logMarkers: {
         style: string;
     };
     brainwave: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    cantTouch: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
