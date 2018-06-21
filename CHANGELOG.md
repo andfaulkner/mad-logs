@@ -5,6 +5,8 @@ Added isomorphic styles:
     *   cartoonSwearing
     *   default (alias to 'none')
 
+More consistent comment docs
+
 10.1.7
 ======
 Add space to end of all isomorphic styles
