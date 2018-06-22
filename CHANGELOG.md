@@ -1,6 +1,6 @@
 10.1.10 (WIP)
 =============
-
+Improve cantTouch style in Node (Fix emoji spacing, add 'stop' emoji)
 
 10.1.9
 ======
