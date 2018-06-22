@@ -165,7 +165,7 @@ const brainwave = isNode
       ];
 
 const cantTouch = isNode
-    ? (fName: string) => bold(bgCyan(white(`🔨⏰ [${fName}] ⏰🔨`))) + ' '
+    ? (fName: string) => bold(bgCyan(white(`✋ 🔨 ⏰ [${fName}]✋ 🔨 ⏰ `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.cantTouch),
           madLogMarkers.cantTouch.style,
