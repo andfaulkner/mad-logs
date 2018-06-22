@@ -107,7 +107,7 @@ export const madLogMarkers = {
         tagSuffix: '⏰🔨',
         style: isNode ? `${isoStyles.white}${isoStyles.bgCyan}${isoStyles.bold}`
                       : `color: ${colours.yellow}; background-color: ${colours.brown}; ` +
-                        `font-size: 17px; padding: 2px; border-radius: 6px`,
+                        `font-size: 17px; padding: 2px; border-radius: 6px;`,
     },
     cartoonSwearing: {
         tagPrefix: '@%@%@%',
