@@ -1,6 +1,12 @@
-10.1.10 (WIP)
-=============
+10.1.10
+=======
 Improve cantTouch style in Node (Fix emoji spacing, add 'stop' emoji)
+
+Fix moProblems style spacing in Node/isomorphic
+
+Add new isomorphic/browser/node styles:
+    *   neverEnough 
+    *   ohMy
 
 10.1.9
 ======
