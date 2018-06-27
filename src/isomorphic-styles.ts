@@ -290,6 +290,13 @@ const mrsPotatoVHS = isNode
           madLogMarkers.mrsPotatoVHS.style,
       ];
 
+const neverEnough = isNode
+    ? (fName: string) => bold(blue(bgWhite(`🔔 🐮 🔔 [${fName}]🔔 🐮 🔔 `))) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.neverEnough),
+          madLogMarkers.neverEnough.style,
+      ];
+
 const nightmare = isNode
     ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`))) + ' '
     : (fName: string) => [
@@ -428,6 +435,7 @@ export const isoStyles = {
     mechanicalAtFists,
     moProblems,
     mrsPotatoVHS,
+    neverEnough,
     nightmare,
     pipeDream,
     potOfGold,
