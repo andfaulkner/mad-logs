@@ -362,6 +362,7 @@ describe('shared module', function() {
         testIsoStyle(`mechanicalAtFists`);
         testIsoStyle(`moProblems`);
         testIsoStyle(`mrsPotatoVHS`);
+        testIsoStyle(`neverEnough`);
         testIsoStyle(`nightmare`);
         testIsoStyle(`pipeDream`);
         testIsoStyle(`potOfGold`);
