@@ -181,6 +181,7 @@ export declare const isoStyles: {
     mechanicalAtFists: ((fName: string) => string) | ((fName: string) => string[]);
     moProblems: ((fName: string) => string) | ((fName: string) => string[]);
     mrsPotatoVHS: ((fName: string) => string) | ((fName: string) => string[]);
+    neverEnough: ((fName: string) => string) | ((fName: string) => string[]);
     nightmare: ((fName: string) => string) | ((fName: string) => string[]);
     pipeDream: ((fName: string) => string) | ((fName: string) => string[]);
     potOfGold: ((fName: string) => string) | ((fName: string) => string[]);

@@ -183,6 +183,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    neverEnough: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     nightmare: {
         tagPrefix: string;
         tagSuffix: string;
@@ -391,6 +396,11 @@ export declare const logMarkers: {
         style: string;
     };
     mrsPotatoVHS: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    neverEnough: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
