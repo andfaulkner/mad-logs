@@ -304,6 +304,13 @@ const nightmare = isNode
           madLogMarkers.nightmare.style,
       ];
 
+const ohMy = isNode
+    ? (fName: string) => black(bgGreen(`🦁 🐯 🐻  ${fName} 🐻 🐯 🦁 `)) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.ohMy),
+          madLogMarkers.ohMy.style,
+      ];
+
 const pipeDream = isNode
     ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))) + ' '
     : (fName: string) => [
@@ -438,6 +445,7 @@ export const isoStyles = {
     neverEnough,
     nightmare,
     pipeDream,
+    ohMy,
     potOfGold,
     probeArcade,
     rainbowLeaf,
