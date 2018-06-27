@@ -248,6 +248,14 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
                       : `color: ${colours.white}; background-color: ${colours.black};`,
     },
+    ohMy: {
+        tagPrefix: ' 🦁🐯🐻 ',
+        tagSuffix: ' 🐻🐯🦁 ',
+        style: isNode ? `${isoStyles.bgGreen}${isoStyles.black}`
+                      : `color: orange; background-color: darkgreen;` +
+                        `font-size: 17px; padding: 3px;` +
+                        `border-top-right-radius: 20px; border-top-left-radius: 20px;`
+    },
     pipeDream: {
         tagPrefix: '┣╋━╋~🛀~╋━╋┫ ',
         tagSuffix: ' ┣┫',
