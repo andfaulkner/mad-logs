@@ -193,6 +193,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    ohMy: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     pipeDream: {
         tagPrefix: string;
         tagSuffix: string;
@@ -406,6 +411,11 @@ export declare const logMarkers: {
         style: string;
     };
     nightmare: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    ohMy: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
