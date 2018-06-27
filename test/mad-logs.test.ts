@@ -363,6 +363,7 @@ describe('shared module', function() {
         testIsoStyle(`moProblems`);
         testIsoStyle(`mrsPotatoVHS`);
         testIsoStyle(`neverEnough`);
+        testIsoStyle(`ohMy`);
         testIsoStyle(`nightmare`);
         testIsoStyle(`pipeDream`);
         testIsoStyle(`potOfGold`);
