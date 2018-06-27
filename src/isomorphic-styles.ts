@@ -277,7 +277,7 @@ const mechanicalAtFists = isNode
       ];
 
 const moProblems = isNode
-    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰`))) + ' '
+    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.moProblems),
           madLogMarkers.moProblems.style,
