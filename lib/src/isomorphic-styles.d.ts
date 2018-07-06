@@ -190,6 +190,7 @@ export declare const isoStyles: {
     probeArcade: ((fName: string) => string) | ((fName: string) => string[]);
     rainbowLeaf: ((fName: string) => string) | ((fName: string) => string[]);
     rockIsDead: ((fName: string) => string) | ((fName: string) => string[]);
+    seafoamSalad: ((fName: string) => string) | ((fName: string) => string[]);
     smokeyHatesChristmas: ((fName: string) => string) | ((fName: string) => string[]);
     springy: ((fName: string) => string) | ((fName: string) => string[]);
     swimmers: ((fName: string) => string) | ((fName: string) => string[]);

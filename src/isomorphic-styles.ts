@@ -354,7 +354,7 @@ const rockIsDead = isNode
       ];
 
 const seafoamSalad = isNode
-    ? (fName: string) => white(bgGreen(`🍓 ${fName}🍅 `)) + ' '
+    ? (fName: string) => bold(white(bgGreen(`🍓  ${fName} 🍅 `))) + ' '
     : (fName: string) => [
           buildFileTagForBrowser(fName, madLogMarkers.seafoamSalad),
           madLogMarkers.seafoamSalad.style,

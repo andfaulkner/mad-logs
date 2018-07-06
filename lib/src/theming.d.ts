@@ -69,8 +69,8 @@ export declare const madLogMarkers: {
         style: string;
     };
     barbells: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     bracelet: {
@@ -109,8 +109,8 @@ export declare const madLogMarkers: {
         style: string;
     };
     dirtRoad: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     escherBarbieLego: {
@@ -154,13 +154,13 @@ export declare const madLogMarkers: {
         style: string;
     };
     lakeLouise: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     lispyKatana: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     lucky: {
@@ -224,6 +224,11 @@ export declare const madLogMarkers: {
         style: string;
     };
     rockIsDead: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    seafoamSalad: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
@@ -296,8 +301,8 @@ export declare const logMarkers: {
         style: string;
     };
     barbells: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     bracelet: {
@@ -336,8 +341,8 @@ export declare const logMarkers: {
         style: string;
     };
     dirtRoad: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     escherBarbieLego: {
@@ -381,13 +386,13 @@ export declare const logMarkers: {
         style: string;
     };
     lakeLouise: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     lispyKatana: {
-        tagSuffix: string;
         tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     lucky: {
@@ -451,6 +456,11 @@ export declare const logMarkers: {
         style: string;
     };
     rockIsDead: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    seafoamSalad: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
