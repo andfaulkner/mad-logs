@@ -123,9 +123,14 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
-    grasslands: {
-        tagSuffix: string;
+    fresh: {
         tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    grasslands: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     hatBlock: {
@@ -345,9 +350,14 @@ export declare const logMarkers: {
         tagSuffix: string;
         style: string;
     };
-    grasslands: {
-        tagSuffix: string;
+    fresh: {
         tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    grasslands: {
+        tagPrefix: string;
+        tagSuffix: string;
         style: string;
     };
     hatBlock: {

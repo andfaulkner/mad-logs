@@ -170,6 +170,7 @@ export declare const isoStyles: {
     dirtRoad: ((fName: string) => string) | ((fName: string) => string[]);
     escherBarbieLego: ((fName: string) => string) | ((fName: string) => string[]);
     farmerBrown: ((fName: string) => string) | ((fName: string) => string[]);
+    fresh: ((fName: string) => string) | ((fName: string) => string[]);
     grasslands: ((fName: string) => string) | ((fName: string) => string[]);
     hatBlock: ((fName: string) => string) | ((fName: string) => string[]);
     hotPursuit: ((fName: string) => string) | ((fName: string) => string[]);

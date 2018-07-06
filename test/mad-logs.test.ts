@@ -351,6 +351,7 @@ describe('shared module', function() {
         testIsoStyle(`dirtRoad`);
         testIsoStyle(`escherBarbieLego`);
         testIsoStyle(`farmerBrown`);
+        testIsoStyle(`fresh`);
         testIsoStyle(`grasslands`);
         testIsoStyle(`hatBlock`);
         testIsoStyle(`hotPursuit`);
