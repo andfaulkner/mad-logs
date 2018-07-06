@@ -230,15 +230,15 @@ describe('logMarkers', function() {
         },
         {
             name: 'brainwave',
-            outMatch: /~\^~\^~\^-mad-logs.test.ts-~\^~\^~\^ color: #003366; Should be logged\n/,
+            outMatch: /~\^~\^~\^-mad-logs.test.ts-~\^~\^~\^ color: #003366 Should be logged\n/,
         },
         {
             name: 'checkmate',
-            outMatch: /♜♞♝♚♛♝♞♜_ \[mad-logs.test\.ts\] _♟♟♟♟♟♟♟♟ color: #593001; Should be logged/,
+            outMatch: /♜♞♝♚♛♝♞♜_ \[mad-logs.test\.ts\] _♟♟♟♟♟♟♟♟ color: #593001 Should be logged/,
         },
         {
             name: 'hotPursuit',
-            outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange; Should be logged/,
+            outMatch: /🎄🎄 !🍯🐻\-\-\-🎄!🐝🐝\-\-\- \[mad-logs.test\.ts\] !🐝🐝🐝🐝\-\-\- 🎄🎄 color: #000000; background-color: orange Should be logged/,
         },
         {
             name: 'pipeDream',
@@ -316,7 +316,7 @@ describe('logMarkers', function() {
         '||┗┛┏┓ & ┏┓┗┛|| (and various styles)',
         [],
         [
-            /\|\|┗┛┏┓mad-logs.test.ts┏┓┗┛\|\| color: #FFFFFF; background-color: #FF69B4; Should be logged/,
+            /\|\|┗┛┏┓mad-logs.test.ts┏┓┗┛\|\| color: #FFFFFF; background-color: #FF69B4 Should be logged/,
         ] // tslint:disable-line
     );
 
@@ -329,7 +329,7 @@ describe('logMarkers', function() {
     styleTester(
         'mrsPotatoVHS',
         '(👃👁👂), (👂👁👅), and various styles (including an ultra-thick black border)',
-        ['(👃👁👂)', '(👂👁👅)', `color: black;`, `border-style: solid;`, `border-width: 5px;`]
+        ['(👃👁👂)', '(👂👁👅)', `color: black;`, `border-style: solid;`, `border-width: 5px`]
     );
 });
 
