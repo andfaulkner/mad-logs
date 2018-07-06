@@ -85,8 +85,8 @@ export const madLogMarkers = {
                       : `color: ${colours.brown}; ${style.bold} ${style.underline}`,
     },
     barbells: {
-        tagSuffix: '--()-()',
         tagPrefix: '()-()--',
+        tagSuffix: '--()-()',
         style: isNode ? `${isoStyles.gray}${isoStyles.bgWhite}${isoStyles.bold}`
                       : `color: ${colours.darkGray}; ${style.bold}`,
     },
@@ -134,8 +134,8 @@ export const madLogMarkers = {
                       : `color: ${colours.darkGreen};`,
     },
     dirtRoad: {
-        tagSuffix: '= = = =',
         tagPrefix: '= = = =',
+        tagSuffix: '= = = =',
         style: isNode ? `${isoStyles.bgGray}${isoStyles.yellow}${isoStyles.bold}`
                       : `color:          ${colours.tan};
                            ${style.bold}
@@ -199,14 +199,14 @@ export const madLogMarkers = {
                         `border-style: solid; border-radius: 10; border-color: black;`
     },
     lakeLouise: {
-        tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
+        tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
                       : `color: ${colours.cyan};`,
     },
     lispyKatana: {
-        tagSuffix: ';;;;;;;;;;;;;;()()',
         tagPrefix: '',
+        tagSuffix: ';;;;;;;;;;;;;;()()',
         style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
                       :  `color: ${colours.gray}; ${style.bold};`,
     },
