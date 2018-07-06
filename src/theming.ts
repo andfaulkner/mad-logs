@@ -158,9 +158,18 @@ export const madLogMarkers = {
         tagSuffix: '-[🐑🐂🐑] ',
         style: '',
     },
+    fresh: {
+        tagPrefix: '📖 👶>👵 🔄',
+        tagSuffix: '⌛💺⬅️👑🔔💨',
+        style: isNode ? `${isoStyles.bgMagenta}${isoStyles.white}`
+                      : `color: palegreen; background-color: lightmagenta; ` +
+                        `font-size: 15px; padding: 2px; ` +
+                        `border-bottom-right-radius: 20px; border-top-left-radius: 20px; ` +
+                        `border: 1.5px black solid;`,
+    },
     grasslands: {
-        tagSuffix: '^^^^',
         tagPrefix: '^^^^',
+        tagSuffix: '^^^^',
         style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
                       : `color: ${colours.green}; ${style.bold};`,
     },
