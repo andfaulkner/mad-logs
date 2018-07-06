@@ -4,7 +4,7 @@
 // Ensure environment knows testing is occurring
 (process.env as any).mocha = true;
 
-// Fix process.argv to work with colors.
+// Fix process.argv to work with colors
 process.argv = Array.from(process.argv) || [];
 global.process.argv = Array.from(global.process.argv) || process.argv || [];
 
@@ -22,9 +22,9 @@ import * as sharedMadLogs from '../shared';
 /******************************************** HELPERS *********************************************/
 /**
  * Prevents console.error messages emitted by code from reaching the console for given function
- * @param  {Function} fn - function to run without showing errors
+ * @param  {Function} fn function to run without showing errors
  * @return {Object<{errorLogs: string[], warnLogs: string[], result: any}>} array containing
- *              warnings & errors outputted running the function, and the function result
+ *              warnings & errors outputted running the function & the function result
  */
 function blockErrorOutput(fn) {
     const errorLogs = [];
@@ -128,15 +128,15 @@ describe('logFactory', function() {
         it('writes to terminal, including a tag w/ filename received by constructor', function() {
             const storeWarnErrorLogs = [];
 
-            // stub console.log and most of console's internals
+            // Stub console.log and most of console's internals
             const output = stdout.inspectSync(function() {
-                // override console warn and console error
+                // Override console warn and console error
                 const warnOrig = console.warn;
                 console.warn = (...msgs) => storeWarnErrorLogs.push(msgs);
                 const errorOrig = console.error;
                 console.error = (...msgs) => storeWarnErrorLogs.push(msgs);
 
-                // log using the library, with the console fully stubbed
+                // Log using the library, with the console fully stubbed
                 logger('testOutputBaseLog');
                 logger.silly('testOutputSilly');
                 logger.verbose('testOutputVerbose');
@@ -146,12 +146,12 @@ describe('logFactory', function() {
                 logger.error('testOutputError');
                 logger.wtf('testOutputWtf');
 
-                // restore the remaining console methods
+                // Restore the remaining console methods
                 console.warn = warnOrig;
                 console.error = errorOrig;
             });
 
-            // test against the text intended for the terminal (but captured by the stub)
+            // Test against the text intended for the terminal (but captured by the stub)
             expect(output).to.have.members([
                 'mad-logs.test  testOutputBaseLog\n',
                 'mad-logs.test  testOutputSilly\n',
@@ -160,7 +160,7 @@ describe('logFactory', function() {
                 'mad-logs.test  testOutputInfo\n',
             ]);
 
-            // ensure the console outputs reached the console.warn & .error using log methods
+            // Ensure the console outputs reached the console.warn & .error using log methods
             expect(
                 storeWarnErrorLogs.some(curLog => curLog.some(lBit => lBit === 'testOutputWarn'))
             ).to.be.true;
@@ -264,28 +264,28 @@ describe('logMarkers', function() {
         });
     });
 
-    // Ensure expected styles included (not-exhaustive)
+    // Ensure expected styles included [non-exhaustive]
     styles.forEach(style => {
         it(`includes style ${style}`, function() {
             expect(Object.keys(logMarkers)).to.contain(style);
         });
     });
 
-    // Just an example
+    // Example style test (ensures styles work)
     it(`includes style 'arrow', which includes prefix >>-- and suffix ---|>`, function() {
         expect(logMarkers.arrow).to.exist;
         expect(logMarkers.arrow.tagPrefix).to.match(/>>--/);
         expect(logMarkers.arrow.tagSuffix).to.match(/--|>/);
     });
 
-    // Another example, to include one with emojis
+    // Another example to include style with emojis
     it(`includes style 'rockIsDead', which includes 💀☠🎸💀💎💀, 💃💃💃🎧😃, etc.`, function() {
         expect(logMarkers.rockIsDead).to.exist;
         expect(logMarkers.rockIsDead.tagPrefix).to.match(/💀☠🎸💀💎💀🎸💀 \|/);
         expect(logMarkers.rockIsDead.tagSuffix).to.match(/\| 😃🔊♪♪💃💃💃💃💃🎧😃/);
     });
 
-    // Ensure expected styles included, & giving expected output when used in a log (not-exhaustive)
+    // Ensure expected styles included & give expected output when used in a log [non-exhaustive]
     stylesWMatch.forEach(style => {
         const logger = logFactory()('mad-logs.test.ts', logMarkers[style.name]);
 
