@@ -1,19 +1,13 @@
 /// <reference path="./node_modules/@types/node/index.d.ts" />
-
 declare function require(name: string);
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-// import * as moment from 'moment';
 import * as lodash from 'lodash';
-// import * as madUtils from 'mad-utils/lib/node';
-// import * as bluebird from 'bluebird';
 import * as util from 'util';
-
 import * as repl from 'repl';
 import * as path from 'path';
 import * as fs from 'fs';
 import {path as rootPath} from 'app-root-path';
-
 import * as isNode from 'detect-node';
 
 /********************************** REPL NODE ENVIRONMENT SETUP ***********************************/
@@ -61,27 +55,6 @@ export const inspect = (...args) => {
     return util.inspect(args[0]);
 };
 
-/**
- * Run when inspect is called in the repl.
- * More powerful than the default, particularly when inspecting functions.
- */
-// export const inspect = (...args) => {
-//     let out = '';
-//     (console.log as any)(...args.map(arg => {
-//         if (arg instanceof Function && Object.keys(arg).length === 0) {
-//             out = arg.toString();
-//             return arg.toString();
-//         }
-//         if (typeof arg === 'function') {
-//             out = arg.toString() + '\n\n' +
-//                   `*** ...ABOVE VALUE (${arg.name || '?'}) ` +
-//                   `IS ALSO AN OBJECT (SEE BELOW) :: ***\n`;
-//         }
-//         return(out += util.inspect + '\n');
-//     }));
-//     return out;
-// };
-
 /****************************************** CREATE REPL *******************************************/
 export const r = repl.start({useColors: true});
 
@@ -91,12 +64,6 @@ require('repl.history')(r, historyFile);
 
 // Add IN_REPL property to repl environment. Acts as identifier that REPL is currently running.
 defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
-
-/********************************** REPL NODE ENVIRONMENT SETUP ***********************************/
-// util.inspect.defaultOptions.colors = true;
-// util.inspect.defaultOptions.depth = 10;
-// util.inspect.defaultOptions.breakLength = 100;
-// util.inspect.defaultOptions.showHidden = true;
 
 /************************************** CONFIG REPL CONTEXT ***************************************/
 // import { cat, cd, ls, pwd, inspect, getArgs } from './script/repl-setup';
