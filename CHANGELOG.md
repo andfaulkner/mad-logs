@@ -1,3 +1,7 @@
+10.2.0
+======
+Remove trailing semicolons from browser styles
+
 10.1.12
 =======
 Add 'seafoamSalad' style
