@@ -371,6 +371,7 @@ describe('shared module', function() {
         testIsoStyle(`probeArcade`);
         testIsoStyle(`rainbowLeaf`);
         testIsoStyle(`rockIsDead`);
+        testIsoStyle(`seafoamSalad`);
         testIsoStyle(`smokeyHatesChristmas`);
         testIsoStyle(`springy`);
         testIsoStyle(`swimmers`);
