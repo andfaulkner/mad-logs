@@ -162,7 +162,7 @@ export const madLogMarkers = {
         tagPrefix: '📖 👶>👵 🔄',
         tagSuffix: '⌛💺⬅️👑🔔💨',
         style: isNode ? `${isoStyles.bgMagenta}${isoStyles.white}`
-                      : `color: palegreen; background-color: lightmagenta; ` +
+                      : `color: palegreen; background-color: magenta; ` +
                         `font-size: 15px; padding: 2px; ` +
                         `border-bottom-right-radius: 20px; border-top-left-radius: 20px; ` +
                         `border: 1.5px black solid;`,
