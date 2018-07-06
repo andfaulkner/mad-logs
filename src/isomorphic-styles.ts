@@ -213,6 +213,13 @@ const farmerBrown = isNode
           madLogMarkers.farmerBrown.style,
       ];
 
+const fresh = isNode
+    ? (fName: string) => white(bgMagenta(`📖 👶 >👵 🔄  ${fName} ⌛ 💺 ⬅️ 👑 🔔 💨 `)) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.fresh),
+          madLogMarkers.fresh.style,
+      ];
+
 const grasslands = isNode
     ? (fName: string) => black(bgGreen(`^^^[${fName}]^^^`)) + ' '
     : (fName: string) => [
@@ -431,6 +438,7 @@ export const isoStyles = {
     dirtRoad,
     escherBarbieLego,
     farmerBrown,
+    fresh,
     grasslands,
     hatBlock,
     hotPursuit,
