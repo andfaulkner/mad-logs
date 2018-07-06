@@ -1,3 +1,7 @@
+10.1.12
+=======
+Add 'seafoamSalad' style
+
 10.1.11
 =======
 Add 'fresh' style
