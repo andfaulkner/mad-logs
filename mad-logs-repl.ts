@@ -21,7 +21,6 @@ import {Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory
 import {nodeLogFactory} from './node';
 
 /****************************************** CONFIG REPL *******************************************/
-// const { padLeft } = madUtils;
 const packageJson = require('./package.json');
 const {defineProperty} = Object;
 
@@ -64,10 +63,6 @@ require('repl.history')(r, historyFile);
 
 // Add IN_REPL property to repl environment. Acts as identifier that REPL is currently running.
 defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
-
-/************************************** CONFIG REPL CONTEXT ***************************************/
-// import { cat, cd, ls, pwd, inspect, getArgs } from './script/repl-setup';
-// import { SKIP_VAR_DISPLAY } from './script/repl-setup';
 
 /****************************************** REPL HELPERS ******************************************/
 /**
@@ -123,12 +118,6 @@ const ctxProps = {
 
     // Logging & object info-related
     inspect,
-    // getArgs,
-
-    // Navigation, filesystem helpers
-    // cd, cat,
-    // ls:  { val: ls, mutable: true },
-    // pwd: { val: pwd, mutable: true },
 
     // package.json content
     packageJson,
@@ -138,8 +127,6 @@ const ctxProps = {
     SharedStyles,
     sharedLogFactory,
     nodeLogFactory,
-
-    // *** Bind mad-logs parts to REPL global scope ***
 };
 
 /**
