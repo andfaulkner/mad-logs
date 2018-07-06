@@ -59,7 +59,7 @@ export const madLogMarkers = {
         tagPrefix: '＼(｀0´)／',
         tagSuffix: '',
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}${isoStyles.bold}`
-                      : `color: ${colours.yellowishGold};`,
+                      : `color: ${colours.yellowishGold}`,
     },
     aquarium: {
         tagPrefix: ' 🐠 🐌 🐌 ',
@@ -71,7 +71,7 @@ export const madLogMarkers = {
                          border-bottom: solid 2px black;
                          border-left: solid 2px black; border-right: solid 2px black;
                          border-radius: 4px;
-                         border-top-left-radius: 1px; border-top-right-radius: 1px;`,
+                         border-top-left-radius: 1px; border-top-right-radius: 1px`,
     },
     arrow: {
         tagPrefix: '>>--',
@@ -100,26 +100,26 @@ export const madLogMarkers = {
         tagPrefix: '~^~^~^-',
         tagSuffix: '-~^~^~^',
         style: isNode ? `${isoStyles.blue}${isoStyles.bgWhite}`
-                      : `color: ${colours.darkMidnightBlue};`,
+                      : `color: ${colours.darkMidnightBlue}`,
     },
     cantTouch: {
         tagPrefix: '🔨⏰',
         tagSuffix: '⏰🔨',
         style: isNode ? `${isoStyles.white}${isoStyles.bgCyan}${isoStyles.bold}`
                       : `color: ${colours.yellow}; background-color: ${colours.brown}; ` +
-                        `font-size: 17px; padding: 2px; border-radius: 6px;`,
+                        `font-size: 17px; padding: 2px; border-radius: 6px`,
     },
     cartoonSwearing: {
         tagPrefix: '@%@%@%',
         tagSuffix: '@%@%@%',
         style: isNode ? `${isoStyles.magenta}${isoStyles.bold}`
-                      : `color: ${colours.indigo};`,
+                      : `color: ${colours.indigo}`,
     },
     checkmate: {
         tagPrefix: '♜♞♝♚♛♝♞♜_ [',
         tagSuffix: '] _♟♟♟♟♟♟♟♟',
         style: isNode ? `${isoStyles.black}${isoStyles.bgWhite}`
-                      : `color: ${colours.brown};`,
+                      : `color: ${colours.brown}`,
     },
     cult: {
         tagPrefix: '👪,👩‍👩‍👧‍👧👨‍👨‍👦‍👦👨‍👨‍👧‍👦',
@@ -131,7 +131,7 @@ export const madLogMarkers = {
         tagPrefix: '[',
         tagSuffix: ']',
         style: isNode ? `${isoStyles.black}${isoStyles.bgWhite}`
-                      : `color: ${colours.darkGreen};`,
+                      : `color: ${colours.darkGreen}`,
     },
     dirtRoad: {
         tagPrefix: '= = = =',
@@ -145,13 +145,13 @@ export const madLogMarkers = {
                            padding-top:    2px;
                            padding-bottom: 2px;
                            margin-top:     2px;
-                           margin-bottom:  2px;`,
+                           margin-bottom:  2px`,
     },
     escherBarbieLego: {
         tagPrefix: '||┗┛┏┓',
         tagSuffix: '┏┓┗┛||',
         style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
-                      : `color: ${colours.white}; background-color: ${colours.hotPink};`,
+                      : `color: ${colours.white}; background-color: ${colours.hotPink}`,
     },
     farmerBrown: {
         tagPrefix: '[🐑🐂🐑]-',
@@ -165,13 +165,13 @@ export const madLogMarkers = {
                       : `color: palegreen; background-color: magenta; ` +
                         `font-size: 15px; padding: 2px; ` +
                         `border-bottom-right-radius: 20px; border-top-left-radius: 20px; ` +
-                        `border: 1.5px black solid;`,
+                        `border: 1.5px black solid`,
     },
     grasslands: {
         tagPrefix: '^^^^',
         tagSuffix: '^^^^',
         style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
-                      : `color: ${colours.green}; ${style.bold};`,
+                      : `color: ${colours.green}; ${style.bold}`,
     },
     hatBlock: {
         tagPrefix: '😀⛑👒🎩🎓👑',
@@ -183,7 +183,7 @@ export const madLogMarkers = {
         tagPrefix: '🎄🎄 !🍯🐻---🎄!🐝🐝--- [',
         tagSuffix: '] !🐝🐝🐝🐝--- 🎄🎄',
         style: isNode ? `${isoStyles.black}${isoStyles.bgYellow}`
-                      : `color: ${colours.black}; background-color: ${colours.orangeBasic};`,
+                      : `color: ${colours.black}; background-color: ${colours.orangeBasic}`,
     },
     joy: {
         tagPrefix: '😀😀😀😀😀[',
@@ -196,19 +196,19 @@ export const madLogMarkers = {
         tagSuffix: '(👁‍🗨🗣🗯)',
         style: isNode ? `${isoStyles.bgWhite}${isoStyles.magenta}`
                       : `color: pink; background-color: purple; font-size: 16px; padding: 3px; ` +
-                        `border-style: solid; border-radius: 10; border-color: black;`
+                        `border-style: solid; border-radius: 10; border-color: black`
     },
     lakeLouise: {
         tagPrefix: '\\/\\/\\/\\/\\/\\/^^',
         tagSuffix: '^^\\/\\/\\/\\/\\/\\/',
         style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
-                      : `color: ${colours.cyan};`,
+                      : `color: ${colours.cyan}`,
     },
     lispyKatana: {
         tagPrefix: '',
         tagSuffix: ';;;;;;;;;;;;;;()()',
         style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
-                      :  `color: ${colours.gray}; ${style.bold};`,
+                      :  `color: ${colours.gray}; ${style.bold}`,
     },
     lucky: {
         tagPrefix: '🍀🍀🍀',
@@ -220,26 +220,26 @@ export const madLogMarkers = {
         tagPrefix: '',
         tagSuffix: ' o==[]::::::::::::::::> ',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                      : `color: ${colours.violet}; ${style.bold};`,
+                      : `color: ${colours.violet}; ${style.bold}`,
     },
     mechanicalAtFists: {
         tagPrefix: '--#@!@#--',
         tagSuffix: ' || ',
         style: isNode ? `${isoStyles.blue}${isoStyles.bold}${isoStyles.bgWhite}`
-                      : `color: ${colours.indigo};`,
+                      : `color: ${colours.indigo}`,
     },
     moProblems: {
         tagPrefix: '$$$$$$$ |💰| ',
         tagSuffix: ' |💰| $$$$$$$',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                      : `color: ${colours.gold}; ${style.bold};`,
+                      : `color: ${colours.gold}; ${style.bold}`,
     },
     mrsPotatoVHS: {
         tagPrefix: '(👃👁👂)',
         tagSuffix: '(👂👁👅)',
         style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
                       : `color: black; font-weight: 900; font-size: 17px; padding: 1.5px; ` +
-                        `border-style: solid; border-color: black; border-width: 5px;`,
+                        `border-style: solid; border-color: black; border-width: 5px`,
     },
     neverEnough: {
         tagPrefix: '🔔🐮🔔',
@@ -249,13 +249,13 @@ export const madLogMarkers = {
                          `font-size: 17px;` +
                          `padding: 3px;` +
                          `border-radius: 2px;` +
-                         `border-top-right-radius:15px; border-top-left-radius: 15px;`,
+                         `border-top-right-radius:15px; border-top-left-radius: 15px`,
     },
     nightmare: {
         tagPrefix: '>:~',
         tagSuffix: '~:<',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                      : `color: ${colours.white}; background-color: ${colours.black};`,
+                      : `color: ${colours.white}; background-color: ${colours.black}`,
     },
     ohMy: {
         tagPrefix: ' 🦁🐯🐻 ',
@@ -263,7 +263,7 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.bgGreen}${isoStyles.black}`
                       : `color: orange; background-color: darkgreen;` +
                         `font-size: 17px; padding: 3px;` +
-                        `border-top-right-radius: 20px; border-top-left-radius: 20px;`
+                        `border-top-right-radius: 20px; border-top-left-radius: 20px`
     },
     pipeDream: {
         tagPrefix: '┣╋━╋~🛀~╋━╋┫ ',
@@ -282,14 +282,14 @@ export const madLogMarkers = {
                          border-bottom: solid 2.5px darkgreen;
                          border-left: solid 2.5px darkgreen; border-right: solid 2.5px darkgreen;
                          border-radius: 10px;
-                         border-top-left-radius: 1px; border-top-right-radius: 1px;`
+                         border-top-left-radius: 1px; border-top-right-radius: 1px`
     },
     probeArcade: {
         tagPrefix: '🚀.👽👽👽👽_👾',
         tagSuffix: '👾_👽👽👽👽.🚀',
         style: isNode ? `${isoStyles.white}${isoStyles.bgMagenta}`
                       : 'color: darkblue; background-color:darksalmon; border-radius: 4px; ' +
-                        'border-style: solid; border-color: black; font-weight:bold;',
+                        'border-style: solid; border-color: black; font-weight:bold',
     },
     rainbowLeaf: {
         tagPrefix: ' 🌈  🌈  ',
@@ -303,13 +303,13 @@ export const madLogMarkers = {
                          border-left: solid 2px black; border-right: solid 2px black;
                          border-radius: 8px;
                          text-shadow: 1.5px 1.5px 1px cyan;
-                         border-bottom-left-radius: 1px; border-top-right-radius: 1px;`,
+                         border-bottom-left-radius: 1px; border-top-right-radius: 1px`,
     },
     rockIsDead: {
         tagPrefix: '💀☠🎸💀💎💀🎸💀 |',
         tagSuffix: '| 😃🔊♪♪💃💃💃💃💃🎧😃',
         style: isNode ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgGreen}`
-                      : `color: ${colours.yellow}; background-color: ${colours.midDarkGreen};`,
+                      : `color: ${colours.yellow}; background-color: ${colours.midDarkGreen}`,
     },
     seafoamSalad: {
         tagPrefix: '🍓',
@@ -324,25 +324,25 @@ export const madLogMarkers = {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
         tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
         style: isNode ? `${isoStyles.green}${isoStyles.bold}${isoStyles.bgWhite}`
-                      : `color: ${colours.orange}; ${style.underline}; ${style.bold};`,
+                      : `color: ${colours.orange}; ${style.underline}; ${style.bold}`,
     },
     springy: {
         tagPrefix: '◀-\\__/--',
         tagSuffix: '--\\__/-►',
         style: isNode ? `${isoStyles.blue}${isoStyles.bgWhite}`
-                      : `color: ${colours.blue}; background-color: ${colours.white};`,
+                      : `color: ${colours.blue}; background-color: ${colours.white}`,
     },
     swimmers: {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
         style: isNode ? `${isoStyles.blue};${isoStyles.bgWhite}`
-                      : `color: ${colours.blue}; ${style.bold};`,
+                      : `color: ${colours.blue}; ${style.bold}`,
     },
     tangerines: {
         tagPrefix: '🍊 o(o)(){o}()@(o)OO@(){O}() 🍊',
         tagSuffix: ' _ ()()()*()',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                      : `color: ${colours.orange};`,
+                      : `color: ${colours.orange}`,
     },
     theBird: {
         tagPrefix: '🤘🏼✋🖐🏼🖖🏼👋🏼🖕🏼🤘🏼[',
@@ -355,7 +355,7 @@ export const madLogMarkers = {
         tagSuffix: "_|😎🔧🔒|📦",
         style: isNode ? `${isoStyles.black}${isoStyles.bold}${isoStyles.bgWhite}`
                       : `color: ${colours.white}; ${style.underline}; ` +
-                          `background-color: ${colours.darkGray}; ${style.bold};`
+                          `background-color: ${colours.darkGray}; ${style.bold}`
     },
     vendetta: {
         tagPrefix: "/~~VVV~~|| ",
@@ -373,7 +373,7 @@ export const madLogMarkers = {
         tagPrefix: '| | | | |',
         tagSuffix: '| | | | |',
         style: isNode ? `${isoStyles.white}${isoStyles.bgBlack}`
-                      : `color: ${colours.white}; background-color: ${colours.black};`
+                      : `color: ${colours.white}; background-color: ${colours.black}`
     }
 };
 
