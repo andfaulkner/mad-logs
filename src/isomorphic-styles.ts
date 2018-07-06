@@ -353,6 +353,13 @@ const rockIsDead = isNode
           madLogMarkers.rockIsDead.style,
       ];
 
+const seafoamSalad = isNode
+    ? (fName: string) => white(bgGreen(`🍓 ${fName}🍅 `)) + ' '
+    : (fName: string) => [
+          buildFileTagForBrowser(fName, madLogMarkers.seafoamSalad),
+          madLogMarkers.seafoamSalad.style,
+      ];
+
 const smokeyHatesChristmas = isNode
     ? (fName: string) => white(bold(bgGreen(`🎄 🔥 [${fName}]🔥 🎄 `))) + ' '
     : (fName: string) => [
@@ -458,6 +465,7 @@ export const isoStyles = {
     probeArcade,
     rainbowLeaf,
     rockIsDead,
+    seafoamSalad,
     smokeyHatesChristmas,
     springy,
     swimmers,
