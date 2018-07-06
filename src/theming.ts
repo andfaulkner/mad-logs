@@ -311,6 +311,15 @@ export const madLogMarkers = {
         style: isNode ? `${isoStyles.yellow}${isoStyles.bold}${isoStyles.bgGreen}`
                       : `color: ${colours.yellow}; background-color: ${colours.midDarkGreen};`,
     },
+    seafoamSalad: {
+        tagPrefix: '🍓',
+        tagSuffix: '🍅',
+        style: isNode ? `${isoStyles.bgGreen}${isoStyles.white}`
+                      : `color: darkgreen; background-color: lightgreen;` +
+                        `font-size: 15px; font-weight: bold; padding: 0px; ` +
+                        `border-top-left-radius: 20px; border-top-right-radius: 20px; ` +
+                        `border-bottom: 3.5px green solid`,
+    },
     smokeyHatesChristmas: {
         tagPrefix: '🔥🎄🔥🎄🔥🎄🔥|',
         tagSuffix: '|🔥🎄🔥🎄🔥🎄🔥',
