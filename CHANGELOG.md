@@ -1,3 +1,7 @@
+10.1.11
+=======
+Add 'fresh' style
+
 10.1.10
 =======
 Improve cantTouch style in Node (Fix emoji spacing, add 'stop' emoji)
