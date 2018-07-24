@@ -1,3 +1,7 @@
+10.2.1 (WIP)
+============
+Upgrade mad-utils to v0.62.0
+
 10.2.0
 ======
 Remove trailing semicolons from browser styles
