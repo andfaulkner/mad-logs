@@ -20,6 +20,11 @@ util.inspect.defaultOptions.showHidden = true;
 import {Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory} from './shared';
 import {nodeLogFactory} from './node';
 
+const madLogs = {
+    shared: {Log: SharedLog, Styles: SharedStyles, logFactory: sharedLogFactory},
+    node: {nodeLogFactory},
+};
+
 /****************************************** CONFIG REPL *******************************************/
 const packageJson = require('./package.json');
 const {defineProperty} = Object;
@@ -108,7 +113,6 @@ const ctxProps = {
     // Helper libraries
     // bluebird,
     lodash,
-    // moment,
     // madUtils,
     _: lodash,
     // _m: madUtils,
@@ -123,10 +127,7 @@ const ctxProps = {
     packageJson,
 
     // Import mad-logs modules
-    SharedLog,
-    SharedStyles,
-    sharedLogFactory,
-    nodeLogFactory,
+    madLogs,
 };
 
 /**
@@ -134,6 +135,14 @@ const ctxProps = {
  */
 const descriptions = {
     _: 'lodash alias',
+    madLogs:
+        `Contains mad-logs shared & Node modules. Children: shared, node. ` +
+        `Under shared, Styles contains collection of styles usable in Node ` +
+        `or the browser, logFactory is a logger constructor, Log is the whole log module.` +
+        `\nExample use:
+        const {logFactory, Styles} = madLogs.shared;
+        const log = logFactory('banner-carousel-container.tsx', Styles.ohMy);
+        log.info('Hello mad-logs!');`,
     SharedLog: 'Log module for use in both node & the browser',
     SharedStyles: 'Collection of styles usable in both Node & the browser',
     sharedLogFactory: 'Constructor for shared logger',
