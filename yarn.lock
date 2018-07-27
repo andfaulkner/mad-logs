@@ -90,8 +90,8 @@
   resolved "https://registry.yarnpkg.com/@types/node-polyglot/-/node-polyglot-0.4.31.tgz#4185cb3a52a468ca12c349ef26cd6d76ee203ca0"
 
 "@types/node@*":
-  version "10.5.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
+  version "10.5.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.3.tgz#5bcfaf088ad17894232012877669634c06b20cc5"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -113,8 +113,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.3.8":
-  version "16.4.6"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.7.tgz#f33f6d759a7e1833befa15224d68942d178a5a3f"
   dependencies:
     csstype "^2.2.0"
 
@@ -683,8 +683,8 @@ crypto-random-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
 csstype@^2.2.0:
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.6.tgz#2ae1db2319642d8b80a668d2d025c6196071e788"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1951,9 +1951,9 @@ mad-utils@^0.61.0:
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
 
-mad-utils@^0.62.0:
-  version "0.62.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.62.0.tgz#bcae3cbe2c84f3c72c7d60abf60afa0db93ad64e"
+mad-utils@^0.63.0:
+  version "0.63.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.63.0.tgz#77a33d6e600d06abfc1ea1fcc54bdf81a2ac8f22"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.1"
     "@types/chai" "^4.1.4"
@@ -1975,7 +1975,6 @@ mad-utils@^0.62.0:
     handlebars-webpack-plugin "^1.2.0"
     mad-logs "^10.2.0"
     mad-utils "^0.61.0"
-    moment "^2.22.2"
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
 
