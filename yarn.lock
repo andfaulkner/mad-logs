@@ -1951,9 +1951,9 @@ mad-utils@^0.61.0:
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
 
-mad-utils@^0.63.0:
-  version "0.63.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.63.0.tgz#77a33d6e600d06abfc1ea1fcc54bdf81a2ac8f22"
+mad-utils@^0.63.1:
+  version "0.63.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.63.1.tgz#309cc6f941421ed3a4d0b035ed49003cd6c74743"
   dependencies:
     "@ottawamhealth/errorsmith" "^0.3.1"
     "@types/chai" "^4.1.4"
