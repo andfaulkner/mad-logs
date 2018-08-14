@@ -2,14 +2,14 @@
 # yarn lockfile v1
 
 
-"@ottawamhealth/errorsmith@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@ottawamhealth/errorsmith/-/errorsmith-0.3.1.tgz#b13d6da43779ec5750c3ee94b26cd09e6ad66f19"
+"@ottawamhealth/errorsmith@^0.4.1":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@ottawamhealth/errorsmith/-/errorsmith-0.4.2.tgz#f2ebaeb797feb4f2c46bb26bf38e1f4f29b1b5bc"
   dependencies:
     app-root-path "^2.0.1"
     clarify "^2.1.0"
     detect-node "^2.0.3"
-    mad-logs "^9.1.1"
+    mad-logs "^10.3.0"
     traceback "^0.3.1"
 
 "@sinonjs/formatio@^2.0.0":
@@ -1925,7 +1925,17 @@ mad-logs@^10.2.0:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-logs@^9.1.1, mad-logs@^9.1.2:
+mad-logs@^10.3.0, mad-logs@^10.3.2:
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.3.2.tgz#32e1c89389cdfcc7b31ceb35afd25b991e6d82e5"
+  dependencies:
+    colors "^1.1.2"
+    detect-node "^2.0.3"
+    env-var-helpers "^5.0.0"
+    global "^4.3.1"
+    string.prototype.padend "^3.0.0"
+
+mad-logs@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-9.1.2.tgz#2c7fb30e86972b9ba05be1ae73ca1266e3ffa73e"
   dependencies:
@@ -1937,11 +1947,11 @@ mad-logs@^9.1.1, mad-logs@^9.1.2:
     lodash.isfunction "^3.0.8"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.61.0:
-  version "0.61.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.61.0.tgz#64d171b7c289e56508522db08ab6152ac39f1dd8"
+mad-utils@^0.66.1:
+  version "0.66.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.66.1.tgz#3bacf5b5f1adda0e4d37869cd8cc7bdd9b5da5f6"
   dependencies:
-    "@ottawamhealth/errorsmith" "^0.3.1"
+    "@ottawamhealth/errorsmith" "^0.4.1"
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
     "@types/deep-freeze-strict" "^1.1.0"
@@ -1959,62 +1969,7 @@ mad-utils@^0.61.0:
     detect-node "^2.0.3"
     fs-extra-promise "^1.0.1"
     handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^10.2.0"
-    moment "^2.22.2"
-    reflect-metadata "^0.1.10"
-    ua-parser-js "^0.7.13"
-
-mad-utils@^0.65.1:
-  version "0.65.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.65.1.tgz#914ad04ea79ca5df8b65d553a7c67fedbd072782"
-  dependencies:
-    "@ottawamhealth/errorsmith" "^0.3.1"
-    "@types/chai" "^4.1.4"
-    "@types/connect" "^3.4.30"
-    "@types/deep-freeze-strict" "^1.1.0"
-    "@types/express" "^4.0.35"
-    "@types/history" "^4.6.0"
-    "@types/node-polyglot" "^0.4.30"
-    "@types/react" "^16.3.8"
-    "@types/react-dom" "^16.0.5"
-    "@types/ua-parser-js" "^0.7.31"
-    app-root-path "^2.0.1"
-    chai "^4.0.2"
-    common-constants "^4.1.0"
-    connect "^3.6.2"
-    deep-freeze-strict "^1.1.1"
-    detect-node "^2.0.3"
-    fs-extra-promise "^1.0.1"
-    handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^10.2.0"
-    mad-utils "^0.61.0"
-    reflect-metadata "^0.1.10"
-    ua-parser-js "^0.7.13"
-
-mad-utils@^0.66.0:
-  version "0.66.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.66.0.tgz#ea115acb494fb8b463eb27023396d5df9b7e89fe"
-  dependencies:
-    "@ottawamhealth/errorsmith" "^0.3.1"
-    "@types/chai" "^4.1.4"
-    "@types/connect" "^3.4.30"
-    "@types/deep-freeze-strict" "^1.1.0"
-    "@types/express" "^4.0.35"
-    "@types/history" "^4.6.0"
-    "@types/node-polyglot" "^0.4.30"
-    "@types/react" "^16.3.8"
-    "@types/react-dom" "^16.0.5"
-    "@types/ua-parser-js" "^0.7.31"
-    app-root-path "^2.0.1"
-    chai "^4.0.2"
-    common-constants "^4.1.0"
-    connect "^3.6.2"
-    deep-freeze-strict "^1.1.1"
-    detect-node "^2.0.3"
-    fs-extra-promise "^1.0.1"
-    handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^10.2.0"
-    mad-utils "^0.65.1"
+    mad-logs "^10.3.2"
     reflect-metadata "^0.1.10"
     ua-parser-js "^0.7.13"
 
@@ -2126,10 +2081,6 @@ mocha@^5.2.0:
     minimatch "3.0.4"
     mkdirp "0.5.1"
     supports-color "5.4.0"
-
-moment@^2.22.2:
-  version "2.22.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 ms@2.0.0:
   version "2.0.0"
