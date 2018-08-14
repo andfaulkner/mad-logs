@@ -71,10 +71,6 @@
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
-"@types/node-polyglot@^0.4.30":
-  version "0.4.31"
-  resolved "https://registry.yarnpkg.com/@types/node-polyglot/-/node-polyglot-0.4.31.tgz#4185cb3a52a468ca12c349ef26cd6d76ee203ca0"
-
 "@types/node@*":
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.7.0.tgz#d384b2c8625414ab2aa18fdf989c288d6a7a8202"
@@ -1889,16 +1885,15 @@ mad-logs@^10.3.3:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.66.3:
-  version "0.66.3"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.66.3.tgz#54a789f467f301ccf4725d98561b63bb04ff3e7b"
+mad-utils@^0.67.0:
+  version "0.67.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.67.0.tgz#c132c4a0a8e05656175ac733e87ae5657463c256"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
     "@types/deep-freeze-strict" "^1.1.0"
     "@types/express" "^4.0.35"
     "@types/history" "^4.6.0"
-    "@types/node-polyglot" "^0.4.30"
     "@types/react" "^16.3.8"
     "@types/react-dom" "^16.0.5"
     "@types/ua-parser-js" "^0.7.31"
