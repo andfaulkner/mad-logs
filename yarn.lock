@@ -2,16 +2,6 @@
 # yarn lockfile v1
 
 
-"@ottawamhealth/errorsmith@^0.4.1":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@ottawamhealth/errorsmith/-/errorsmith-0.4.2.tgz#f2ebaeb797feb4f2c46bb26bf38e1f4f29b1b5bc"
-  dependencies:
-    app-root-path "^2.0.1"
-    clarify "^2.1.0"
-    detect-node "^2.0.3"
-    mad-logs "^10.3.0"
-    traceback "^0.3.1"
-
 "@sinonjs/formatio@^2.0.0":
   version "2.0.0"
   resolved "http://registry.npmjs.org/@sinonjs/formatio/-/formatio-2.0.0.tgz#84db7e9eb5531df18a8c5e0bfb6e449e55e654b2"
@@ -527,12 +517,6 @@ ci-info@^1.0.0:
 circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
-
-clarify@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/clarify/-/clarify-2.1.0.tgz#8dd48539e202e4e009d2c7fa7fe1b69cdf262527"
-  dependencies:
-    stack-chain "^2.0.0"
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -1895,7 +1879,7 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-mad-logs@^10.3.0, mad-logs@^10.3.3:
+mad-logs@^10.3.3:
   version "10.3.3"
   resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.3.3.tgz#de4fa8b7e4067e0e500d279fd2dee062019be7bc"
   dependencies:
@@ -1905,11 +1889,10 @@ mad-logs@^10.3.0, mad-logs@^10.3.3:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.66.2:
-  version "0.66.2"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.66.2.tgz#2048c9500ce7eebd2ef76e3eaba8fa9046d3d6c2"
+mad-utils@^0.66.3:
+  version "0.66.3"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.66.3.tgz#54a789f467f301ccf4725d98561b63bb04ff3e7b"
   dependencies:
-    "@ottawamhealth/errorsmith" "^0.4.1"
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
     "@types/deep-freeze-strict" "^1.1.0"
@@ -2823,10 +2806,6 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-stack-chain@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/stack-chain/-/stack-chain-2.0.0.tgz#d73d1172af89565f07438b5bcc086831b6689b2d"
-
 static-extend@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
@@ -3020,10 +2999,6 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
   dependencies:
     punycode "^1.4.1"
-
-traceback@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/traceback/-/traceback-0.3.1.tgz#64ef24a8168fcbe37ab17be3e99a40248b0bff85"
 
 ts-node@^6.1.1:
   version "6.1.1"
