@@ -863,6 +863,10 @@ env-var-helpers@^5.0.0:
   dependencies:
     mad-logs "^10.2.0"
 
+env-var-helpers@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.0.1.tgz#e02762d57e7e998051c04fd76a4582c41e6a8bce"
+
 error-ex@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/error-ex/-/error-ex-1.3.1.tgz#f855a86ce61adc4e8621c3cda21e7a7612c3a8dc"
