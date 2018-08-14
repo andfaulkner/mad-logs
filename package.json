@@ -48,6 +48,7 @@
         "detect-node": "^2.0.3",
         "env-var-helpers": "^4.0.1",
         "global": "^4.3.1",
+        "mad-utils": "^0.65.1",
         "string.prototype.padend": "^3.0.0"
     },
     "devDependencies": {
@@ -63,7 +64,6 @@
         "eslint-plugin-import": "^2.12.0",
         "eslint-plugin-promise": "^3.8.0",
         "lodash": "^4.17.10",
-        "mad-utils": "^0.65.1",
         "mocha": "^5.2.0",
         "nodemon": "^1.17.5",
         "prettier": "^1.13.5",
