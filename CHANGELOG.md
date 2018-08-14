@@ -1,4 +1,4 @@
-10.3.1
+10.3.2
 ======
 Upgrade mad-utils to v0.62.0
 Upgrade env-var-helpers to v5.0.0 (breaking change, vastly different output)
