@@ -392,6 +392,10 @@ buffer-from@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.0.0.tgz#4cb8832d23612589b0406e9e2956c17f06fdf531"
 
+buffer-from@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
+
 builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
@@ -1885,9 +1889,9 @@ mad-logs@^10.3.3:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.67.0:
-  version "0.67.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.67.0.tgz#c132c4a0a8e05656175ac733e87ae5657463c256"
+mad-utils@^0.68.0:
+  version "0.68.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.68.0.tgz#9e90512707da23de42a8b1f2e23294e99b215cb7"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
@@ -1907,6 +1911,7 @@ mad-utils@^0.67.0:
     handlebars-webpack-plugin "^1.2.0"
     mad-logs "^10.3.3"
     reflect-metadata "^0.1.10"
+    ts-node "6.1"
     ua-parser-js "^0.7.13"
 
 make-dir@^1.0.0:
@@ -2994,6 +2999,19 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
   dependencies:
     punycode "^1.4.1"
+
+ts-node@6.1:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-6.1.2.tgz#3221ca727a84bc66db1de8b647896621e38e8eaf"
+  dependencies:
+    arrify "^1.0.0"
+    buffer-from "^1.1.0"
+    diff "^3.1.0"
+    make-error "^1.1.1"
+    minimist "^1.2.0"
+    mkdirp "^0.5.1"
+    source-map-support "^0.5.6"
+    yn "^2.0.0"
 
 ts-node@^6.1.1:
   version "6.1.1"
