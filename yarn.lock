@@ -101,8 +101,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.3.8":
-  version "16.4.13"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.13.tgz#1385f5dc3486aa493849a32ccce626a817543e28"
+  version "16.4.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.14.tgz#47c604c8e46ed674bbdf4aabf82b34b9041c6a04"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1735,7 +1735,7 @@ json-stringify-safe@~5.0.1:
 
 jsonfile@^2.1.0:
   version "2.4.0"
-  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
+  resolved "http://registry.npmjs.org/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -1852,9 +1852,9 @@ mad-logs@^10.3.3:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.71.0:
-  version "0.71.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.71.0.tgz#b70662b631fc1cab2c3ab86fcf24162853472e20"
+mad-utils@^0.72.0:
+  version "0.72.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.72.0.tgz#5d70c3e9b1c291c8cb83fb34d862c013e0a842e9"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
