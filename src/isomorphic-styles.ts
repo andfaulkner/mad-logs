@@ -99,7 +99,7 @@ export interface LogOpts {
 function buildFileTagForBrowser(fName: string, opts: LogOpts): string {
     return isNode
         ? `${opts.tagPrefix}${fName}${opts.tagSuffix}`
-        : `${opts.style ? '%c' : ''}${opts.tagPrefix}[${fName}]${opts.tagSuffix} ;`;
+        : `${opts.style ? '%c' : ''}${opts.tagPrefix}[${fName}]${opts.tagSuffix}`;
 }
 
 // Extract colours
