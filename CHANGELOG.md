@@ -1,3 +1,7 @@
+10.3.4
+======
+Remove semicolon at end of file names in browser console in shared module
+
 10.3.3 [BREAKING CHANGES]
 =========================
 Upgrade mad-utils to v0.62.0
