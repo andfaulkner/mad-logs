@@ -1,3 +1,7 @@
+10.3.5
+======
+Fix documentation to be more IDE-friendly
+
 10.3.4
 ======
 Remove semicolon at end of file names in browser console in shared module
