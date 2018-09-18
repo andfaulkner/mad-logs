@@ -1,4 +1,4 @@
-10.3.5
+10.3.6
 ======
 Fix documentation to be more IDE-friendly
 
