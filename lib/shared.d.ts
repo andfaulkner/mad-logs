@@ -11,28 +11,33 @@ export interface Log {
 }
 /******************************************* LOG OBJECT *******************************************/
 /**
- * @export Main exported class
- *
- * Isomorphic Log object. Logs differently between Node and Browser.
+ * Isomorphic Log object
+ * Logs differently between Node and Browser
  */
 export declare class Log implements Log {
     /**
-     * If defined, use this value for inspecting objects.
-     * Allows dependency injecting node's inspect in once, and getting it everywhere.
+     * If defined, use this value for inspecting objects
+     * Allows dependency injecting node's inspect in once, and getting it everywhere
      */
     static inspectFn: Function;
     protected filename: string;
     protected styler: typeof isoStyles[keyof typeof isoStyles];
     protected inspectFn: Function;
     /**
-     * @constructor for Log object
-     * @param {string} fileName Current file name, to include before each message this logger emits
-     * @param {Function|string} style String-wrapping function OR 1 of isoStyles' keys (string)
-     * @param {Function?} inspectFn If given, becomes new global inspector for all Log objects.
-     *                              Uses a fallback inspect fn if none provided.
-     *                              Allows DI of node's inspect without having browser issues.
-     * If none is defined, use a fallback (passthrough) instead
-
+     * Constructor for Log object
+     *
+     * @param {string} fileName Current file name, to include before each
+     *                          message this logger emits
+     * @param {Function|string} style String-wrapping function OR 1 of
+     *                                isoStyles' keys (string)
+     *                                If `none` is given, pass to console.log
+     *                                with fileName wrapped by [] & no styles
+     * @param {Function?} inspectFn {OPTIONAL} If given, becomes new global
+     *                              inspector for all Log objects
+     *                              Uses a fallback inspect (passthrough) fn if
+     *                              none provided
+     *                              Allows DI of node's inspect without having
+     *                              browser issues
      */
     constructor(filename: string, style?: keyof typeof isoStyles | typeof isoStyles[keyof typeof isoStyles], inspectFn?: Function);
     silly: <T>(...args: any[]) => T;
@@ -54,12 +59,14 @@ export declare class Log implements Log {
 }
 /******************************************** FACTORY *********************************************/
 /**
- * @export Use to construct a new Log object & return it. [NOTE: PRIMARY EXPORT]
+ * Use to construct a new Log object & return it
  *
- * @param {string} fileName Name of current file (to include before each message this logger emits)
- * @param {Function|string} style String-wrapping function OR string matching 1 of isoStyles' keys
- *
- * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
+ * @param {string} fileName Name of current file (to include before each message
+ *                          this logger emits)
+ * @param {Function|string} style String-wrapping function OR string matching 1
+ *                                of isoStyles' keys
+ * @return {Log & Function} Log instance
+ *                          Also runs as standalone function (delegates to this.info)
  */
 export declare const logFactory: (filename: string, style?: ((fName: string) => string) | ((fName: string) => string[]) | "none" | "angryBird" | "aquarium" | "arrow" | "backAndForth" | "barbells" | "bracelet" | "brainwave" | "cantTouch" | "cartoonSwearing" | "checkmate" | "cult" | "default" | "dirtRoad" | "escherBarbieLego" | "farmerBrown" | "fresh" | "grasslands" | "hatBlock" | "hotPursuit" | "joy" | "kingRageBlock" | "lakeLouise" | "lucky" | "maceWindu" | "mechanicalAtFists" | "moProblems" | "mrsPotatoVHS" | "neverEnough" | "nightmare" | "pipeDream" | "ohMy" | "potOfGold" | "probeArcade" | "rainbowLeaf" | "rockIsDead" | "seafoamSalad" | "smokeyHatesChristmas" | "springy" | "swimmers" | "tangerines" | "theBird" | "theHeist" | "vendetta" | "xmlHell" | "zebra", inspector?: Function) => Log & ((...args: any[]) => void) & {
     inspect: (obj: any) => string | void;
