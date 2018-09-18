@@ -7,10 +7,8 @@ import * as isNode from 'detect-node';
 const bookend = `\n***************\n`;
 
 /**
- * @private
- *
- * Basic function to run the inspect function against the given object.
- * Both logs & returns the inspect result.
+ * Basic function to run the inspect function against the given object
+ * Both logs & returns the inspect result
  */
 const _showInspectRes = (
     obj: any,
@@ -55,14 +53,13 @@ export interface Log {
 
 /******************************************* LOG OBJECT *******************************************/
 /**
- * @export Main exported class
- *
- * Isomorphic Log object. Logs differently between Node and Browser.
+ * Isomorphic Log object
+ * Logs differently between Node and Browser
  */
 export class Log implements Log {
     /**
-     * If defined, use this value for inspecting objects.
-     * Allows dependency injecting node's inspect in once, and getting it everywhere.
+     * If defined, use this value for inspecting objects
+     * Allows dependency injecting node's inspect in once, and getting it everywhere
      */
     static inspectFn: Function;
 
@@ -75,14 +72,20 @@ export class Log implements Log {
     /* INITIALIZATION */
 
     /**
-     * @constructor for Log object
-     * @param {string} fileName Current file name, to include before each message this logger emits
-     * @param {Function|string} style String-wrapping function OR 1 of isoStyles' keys (string)
-     * @param {Function?} inspectFn If given, becomes new global inspector for all Log objects.
-     *                              Uses a fallback inspect fn if none provided.
-     *                              Allows DI of node's inspect without having browser issues.
-     * If none is defined, use a fallback (passthrough) instead
-
+     * Constructor for Log object
+     *
+     * @param {string} fileName Current file name, to include before each
+     *                          message this logger emits
+     * @param {Function|string} style String-wrapping function OR 1 of
+     *                                isoStyles' keys (string)
+     *                                If `none` is given, pass to console.log
+     *                                with fileName wrapped by [] & no styles
+     * @param {Function?} inspectFn {OPTIONAL} If given, becomes new global
+     *                              inspector for all Log objects
+     *                              Uses a fallback inspect (passthrough) fn if
+     *                              none provided
+     *                              Allows DI of node's inspect without having
+     *                              browser issues
      */
     constructor(
         filename: string,
@@ -92,11 +95,11 @@ export class Log implements Log {
         // Set the file name
         this.filename = filename;
 
-        // Define new 'global' inspectFn if one was given; use fallback otherwise.
+        // Define new 'global' inspectFn if one was given; use fallback otherwise
         if (inspectFn) Log.inspectFn = inspectFn;
         this.inspectFn = Log.inspectFn || ((obj: string) => obj);
 
-        // Set the styler function based on the given value of the style prop.
+        // Set the styler function based on the given value of the style prop
         if (typeof style === 'undefined' || style == null) this.styler = isoStyles.none;
         else if (typeof style === 'string') this.styler = isoStyles[style];
         else this.styler = style;
@@ -207,12 +210,14 @@ export class Log implements Log {
 
 /******************************************** FACTORY *********************************************/
 /**
- * @export Use to construct a new Log object & return it. [NOTE: PRIMARY EXPORT]
+ * Use to construct a new Log object & return it
  *
- * @param {string} fileName Name of current file (to include before each message this logger emits)
- * @param {Function|string} style String-wrapping function OR string matching 1 of isoStyles' keys
- *
- * @return {Log & Function} Log instance. Also runs as standalone function (delegates to this.info)
+ * @param {string} fileName Name of current file (to include before each message
+ *                          this logger emits)
+ * @param {Function|string} style String-wrapping function OR string matching 1
+ *                                of isoStyles' keys
+ * @return {Log & Function} Log instance
+ *                          Also runs as standalone function (delegates to this.info)
  */
 export const logFactory = (
     filename: string,
