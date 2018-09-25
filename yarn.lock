@@ -72,8 +72,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
 "@types/node@*":
-  version "10.10.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.10.1.tgz#d5c96ca246a418404914d180b7fdd625ad18eca6"
+  version "10.11.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.0.tgz#ddd0d67a3b6c3810dd1a59e36675fa82de5e19ae"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -798,11 +798,7 @@ encodeurl@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
-env-var-helpers@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.0.1.tgz#e02762d57e7e998051c04fd76a4582c41e6a8bce"
-
-env-var-helpers@^5.1.0:
+env-var-helpers@^5.0.1, env-var-helpers@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.1.0.tgz#1726bcaad142eb2ca70fc2e08b9ac9326cc97bf4"
 
@@ -1856,9 +1852,9 @@ mad-logs@^10.3.6:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.74.1:
-  version "0.74.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.74.1.tgz#aacc306ce536b101d254fd2aa837018516c61a72"
+mad-utils@^0.74.2:
+  version "0.74.2"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.74.2.tgz#5fefa680333a42a6c5d6e0948bbeb4b984905445"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
