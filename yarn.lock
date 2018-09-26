@@ -1852,9 +1852,9 @@ mad-logs@^10.3.6:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.74.2:
-  version "0.74.2"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.74.2.tgz#5fefa680333a42a6c5d6e0948bbeb4b984905445"
+mad-utils@^0.75.0:
+  version "0.75.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.75.0.tgz#b88e523aca880becf2e76990cee64b71b95b989d"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
