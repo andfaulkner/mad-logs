@@ -72,8 +72,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
 "@types/node@*":
-  version "10.11.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.0.tgz#ddd0d67a3b6c3810dd1a59e36675fa82de5e19ae"
+  version "10.11.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.3.tgz#c055536ac8a5e871701aa01914be5731539d01ee"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -84,18 +84,16 @@
   resolved "https://registry.yarnpkg.com/@types/object-assign/-/object-assign-4.0.30.tgz#8949371d5a99f4381ee0f1df0a9b7a187e07e652"
 
 "@types/prop-types@*":
-  version "15.5.5"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.5.tgz#17038dd322c2325f5da650a94d5f9974943625e3"
-  dependencies:
-    "@types/react" "*"
+  version "15.5.6"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
 
 "@types/range-parser@*":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.2.tgz#fa8e1ad1d474688a757140c91de6dace6f4abc8d"
 
 "@types/react-dom@^16.0.5":
-  version "16.0.7"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.7.tgz#54d0f867a76b90597e8432030d297982f25c20ba"
+  version "16.0.8"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.8.tgz#6e1366ed629cadf55860cbfcc25db533f5d2fa7d"
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
@@ -1863,9 +1861,9 @@ mad-logs@^10.3.6:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.75.1:
-  version "0.75.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.75.1.tgz#458baed44645830407e29b5f9b2afd6b75adebc5"
+mad-utils@^0.75.2:
+  version "0.75.2"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.75.2.tgz#19b6eb9a511040e1268899c32fcb5f8babe21378"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
