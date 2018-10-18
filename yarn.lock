@@ -56,8 +56,8 @@
     "@types/serve-static" "*"
 
 "@types/history@^4.6.0":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.1.tgz#66849a23ceef917b57f0787c885f41ce03480f5c"
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
 
 "@types/lodash@^4.14.109":
   version "4.14.109"
@@ -1861,9 +1861,9 @@ mad-logs@^10.3.6:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.77.0:
-  version "0.77.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.77.0.tgz#5f9fb132e3527dae4ed80db76441b8065dd19b4b"
+mad-utils@^0.78.1:
+  version "0.78.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.78.1.tgz#ffbefabce56c7f132f27090b27ce98d2b9060607"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
