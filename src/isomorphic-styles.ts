@@ -350,7 +350,7 @@ const rainbowLeaf = isNode
       ];
 
 const rockIsDead = isNode
-    ? (fName: string) => bold(bgBlack(magenta(`🎸  [${fName}] 🎸  `))) + ' '
+    ? (fName: string) => bold(bgBlack(magenta(`🎸  ${fName} 🎸  `))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.rockIsDead),
           madLogMarkers.rockIsDead.style,
@@ -385,14 +385,14 @@ const swimmers = isNode
       ];
 
 const tangerines = isNode
-    ? (fName: string) => '🍊  ' + rainbow(`[${fName}]`) + ' 🍊  '
+    ? (fName: string) => '🍊  ' + rainbow(fName) + ' 🍊  '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.tangerines),
           madLogMarkers.tangerines.style,
       ];
 
 const theBird = isNode
-    ? (fName: string) => white(bold(bgMagenta(`🖕🏼 [${fName}]🖕🏼 `))) + ' '
+    ? (fName: string) => white(bold(bgMagenta(`🖕🏼  ${fName} 🖕🏼 `))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.theBird),
           madLogMarkers.theBird.style,
