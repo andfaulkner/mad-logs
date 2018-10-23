@@ -63,7 +63,7 @@
         "eslint-plugin-import": "^2.12.0",
         "eslint-plugin-promise": "^3.8.0",
         "lodash": "^4.17.10",
-        "mad-utils": "^0.78.1",
+        "mad-utils": "^0.78.2",
         "mocha": "^5.2.0",
         "nodemon": "^1.17.5",
         "prettier": "^1.13.5",

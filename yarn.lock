@@ -807,7 +807,7 @@ encodeurl@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
-env-var-helpers@^5.0.1, env-var-helpers@^5.1.0:
+env-var-helpers@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.1.0.tgz#1726bcaad142eb2ca70fc2e08b9ac9326cc97bf4"
 
@@ -1851,19 +1851,19 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-mad-logs@^10.3.6:
-  version "10.3.6"
-  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-10.3.6.tgz#d693ffe053395f4040946731ded4adf8cb768258"
+mad-logs@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-11.0.0.tgz#cc4b00de8bffc54ad217a1ff31db09798371bef1"
   dependencies:
     colors "^1.1.2"
     detect-node "^2.0.3"
-    env-var-helpers "^5.0.1"
+    env-var-helpers "^5.1.0"
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.78.1:
-  version "0.78.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.78.1.tgz#ffbefabce56c7f132f27090b27ce98d2b9060607"
+mad-utils@^0.78.2:
+  version "0.78.2"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.78.2.tgz#c280450ff87d3dad5b8de22bcd832ac4e5cb4b14"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
@@ -1881,7 +1881,7 @@ mad-utils@^0.78.1:
     detect-node "^2.0.3"
     fs-extra-promise "^1.0.1"
     handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^10.3.6"
+    mad-logs "^11.0.0"
     reflect-metadata "^0.1.10"
     ts-node "6.1"
     ua-parser-js "^0.7.13"
