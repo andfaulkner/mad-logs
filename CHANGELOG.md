@@ -1,3 +1,33 @@
+11.0.0 [HUGE BREAKING CHANGES]
+==============================
+Default export now proxies to shared module - build log with:
+
+    import {logFactory, Styles} from 'mad-logs/lib/shared';
+    const log = logFactory(`input-util-components.tsx`, Styles.angryBird);
+
+...instead of:
+
+    import {logFactory, madLogMarkers} from 'mad-logs';
+    const log = logFactory()(`input-util-components.tsx`, madLogMarkers.angryBird);
+
+Imports no longer available:
+*   `madLogMarkers` (replaced with `Styles`, but it works differently)
+*   `LogOpts`
+*   `AppConf`
+*   `MadLog` (replaced with `Log` e.g. `import {Log} from 'mad-logs';`)
+*   `logValues`
+*   `buildFileTag` (however, node variant still has it, for now)
+
+Shared module exports `LogLevels` type
+
+Total removal of original non-isomorphic mad-log module
+
+Styles (shared):
+*   Remove braces from almost all Node log outputs
+*   Style `lucky` background colour changed to yellow
+
+
+----------------------------------------------------------------------------------------------------
 10.3.6
 ======
 Fix documentation to be more IDE-friendly
@@ -175,6 +205,7 @@ mad-logs/lib/shared: Remove letter-named isomorphic styles from isoStyles object
     *   Removed isoStyles.l
 
 
+----------------------------------------------------------------------------------------------------
 9.1.2
 =====
 Upgraded modules to latest:
