@@ -158,6 +158,14 @@ export const madLogMarkers = {
         tagSuffix: '-[🐑🐂🐑] ',
         style: '',
     },
+    fountain: {
+        tagPrefix: '🙏 ',
+        tagSuffix: ' 🙏 ',
+        // Colour is an ultra-dark blue
+        style: `font-size: 18px; background-color: steelblue; color: #02025d;` +
+               `border-top-left-radius: 25px; border-top-right-radius: 2px;` +
+               `border-bottom-right-radius: 2px`,
+    },
     fresh: {
         tagPrefix: '📖 👶>👵 🔄',
         tagSuffix: '⌛💺⬅️👑🔔💨',
