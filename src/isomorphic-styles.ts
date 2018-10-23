@@ -364,7 +364,7 @@ const seafoamSalad = isNode
       ];
 
 const smokeyHatesChristmas = isNode
-    ? (fName: string) => white(bold(bgGreen(`🎄 🔥 [${fName}]🔥 🎄 `))) + ' '
+    ? (fName: string) => white(bold(bgGreen(`🎄 🔥  ${fName} 🔥 🎄 `))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.smokeyHatesChristmas),
           madLogMarkers.smokeyHatesChristmas.style,
