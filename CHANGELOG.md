@@ -25,7 +25,13 @@ Total removal of original non-isomorphic mad-log module
 Styles (shared):
 *   Remove braces from almost all Node log outputs
 *   Style `lucky` background colour changed to yellow
+*   New fountain style
 
+Internal:
+*   Slightly cleaner tests
+*   Expanded docs
+*   REPL moved to script dir
+*   Cleaner code throughout
 
 ----------------------------------------------------------------------------------------------------
 10.3.6
