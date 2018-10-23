@@ -42,14 +42,19 @@ const _showInspectRes = (
 /**************************************** TYPE DEFINITIONS ****************************************/
 // prettier-ignore
 export interface Log {
-    silly:   <T>(...args: Array<(string | any)>) => T
-    verbose: <T>(...args: Array<(string | any)>) => T
-    debug:   <T>(...args: Array<(string | any)>) => T
-    info:    <T>(...args: Array<(string | any)>) => T
-    warn:    <T>(...args: Array<(string | any)>) => T
-    error:   <T>(...args: Array<(string | any)>) => T
-    wtf:     <T>(...args: Array<(string | any)>) => T
+    silly:   <T>(...args: (string | any)[]) => T
+    verbose: <T>(...args: (string | any)[]) => T
+    debug:   <T>(...args: (string | any)[]) => T
+    info:    <T>(...args: (string | any)[]) => T
+    warn:    <T>(...args: (string | any)[]) => T
+    error:   <T>(...args: (string | any)[]) => T
+    wtf:     <T>(...args: (string | any)[]) => T
 }
+
+/**
+ * Available log levels in the application
+ */
+export type LogLevels = keyof Log['inspector'];
 
 /******************************************* LOG OBJECT *******************************************/
 /**
