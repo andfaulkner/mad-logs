@@ -133,7 +133,7 @@ const aquarium = isNode
       ];
 
 const arrow = isNode
-    ? (fName: string) => gray(bold(bgWhite(`--[${fName}]-->`))) + ' '
+    ? (fName: string) => gray(bold(bgWhite(`>>--[${fName}]-->`))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.arrow),
           madLogMarkers.arrow.style,
@@ -294,7 +294,7 @@ const moProblems = isNode
       ];
 
 const mrsPotatoVHS = isNode
-    ? (fName: string) => underline(black(bgYellow(`(👃 👁 👂) ${fName} (👂 👁 👅 )`))) + ' '
+    ? (fName: string) => underline(black(bgYellow(`👃 👁 👂 ${fName} 👂 👁 👅 `))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.mrsPotatoVHS),
           madLogMarkers.mrsPotatoVHS.style,
