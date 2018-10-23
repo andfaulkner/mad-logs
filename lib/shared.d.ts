@@ -1,20 +1,15 @@
 import { isoStyles } from './src/isomorphic-styles';
 /**************************************** TYPE DEFINITIONS ****************************************/
-export interface Log {
-    silly: <T>(...args: Array<(string | any)>) => T;
-    verbose: <T>(...args: Array<(string | any)>) => T;
-    debug: <T>(...args: Array<(string | any)>) => T;
-    info: <T>(...args: Array<(string | any)>) => T;
-    warn: <T>(...args: Array<(string | any)>) => T;
-    error: <T>(...args: Array<(string | any)>) => T;
-    wtf: <T>(...args: Array<(string | any)>) => T;
-}
+/**
+ * Available log levels in the application
+ */
+export declare type LogLevels = keyof Log['inspector'];
 /******************************************* LOG OBJECT *******************************************/
 /**
  * Isomorphic Log object
  * Logs differently between Node and Browser
  */
-export declare class Log implements Log {
+export declare class Log {
     /**
      * If defined, use this value for inspecting objects
      * Allows dependency injecting node's inspect in once, and getting it everywhere
