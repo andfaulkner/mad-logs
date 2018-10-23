@@ -266,7 +266,7 @@ const lakeLouise = isNode
       ];
 
 const lucky = isNode
-    ? (fName: string) => bold(white(bgGreen(`🍀  ${fName} 🍀 `))) + ' '
+    ? (fName: string) => bold(white(bgYellow(`🍀  ${fName} 🍀 `))) + ' '
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.lucky),
           madLogMarkers.lucky.style,
