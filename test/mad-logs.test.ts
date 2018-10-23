@@ -1,13 +1,6 @@
 /// <reference path="../node_modules/@types/mocha/index.d.ts" />
 /// <reference path="../node_modules/@types/node/index.d.ts" />
 
-// Ensure environment knows testing is occurring
-(process.env as any).mocha = true;
-
-// Fix process.argv to work with colors
-process.argv = Array.from(process.argv) || [];
-global.process.argv = Array.from(global.process.argv) || process.argv || [];
-
 /************************************** THIRD-PARTY IMPORTS ***************************************/
 import {expect} from 'chai';
 import {stdout} from 'test-console';
@@ -221,11 +214,11 @@ describe(`Styles`, function() {
         },
         {
             name: `checkmate`,
-            outMatch: /♜ ♞ ♝ ♚ ♛ \[mad\-logs\.test\.ts\]♛ ♚ ♝ ♞ ♜.* Should be logged/,
+            outMatch: /♜ ♞ ♝ ♚ ♛ mad\-logs\.test\.ts ♛ ♚ ♝ ♞ ♜.* Should be logged/,
         },
         {
             name: `hotPursuit`,
-            outMatch: /🍯 🐻 \[mad\-logs\.test\.ts\]🐝 🐝.* Should be logged/,
+            outMatch: /🍯 🐻  mad\-logs\.test\.ts 🐝 🐝.* Should be logged/,
         },
         {
             name: `pipeDream`,
@@ -300,12 +293,12 @@ describe(`Styles`, function() {
         `escherBarbieLego`,
         `||┗┛┏┓ & ┏┓┗┛|| (and various styles)`,
         [],
-        [/\|\|┗┛┏┓ \[mad\-logs\.test\.ts\] ┏┓┗┛\|\|.* Should be logged/] // tslint:disable-line
+        [/\|\|┗┛┏┓  mad\-logs\.test\.ts  ┏┓┗┛\|\|.* Should be logged/] // tslint:disable-line
     );
 
     styleTester(`kingRageBlock`, `👁‍🗨🗣🗯 - and various styles in browser`, [
-        `👁‍🗨 🗣 🗯 [`,
-        `]👁‍🗨 🗣 🗯`,
+        `👁‍🗨 🗣 🗯 `,
+        `👁‍🗨 🗣 🗯`,
     ]);
 
     styleTester(
@@ -315,53 +308,52 @@ describe(`Styles`, function() {
     );
 });
 
-describe(`shared module`, function() {
-    describe(`styles`, function() {
-        visualTestIsoStyle(`none`);
-        visualTestIsoStyle(`angryBird`);
-        visualTestIsoStyle(`aquarium`);
-        visualTestIsoStyle(`arrow`);
-        visualTestIsoStyle(`backAndForth`);
-        visualTestIsoStyle(`barbells`);
-        visualTestIsoStyle(`bracelet`);
-        visualTestIsoStyle(`brainwave`);
-        visualTestIsoStyle(`checkmate`);
-        visualTestIsoStyle(`cartoonSwearing`);
-        visualTestIsoStyle(`cult`);
-        visualTestIsoStyle(`cantTouch`);
-        visualTestIsoStyle(`default`);
-        visualTestIsoStyle(`dirtRoad`);
-        visualTestIsoStyle(`escherBarbieLego`);
-        visualTestIsoStyle(`farmerBrown`);
-        visualTestIsoStyle(`fresh`);
-        visualTestIsoStyle(`grasslands`);
-        visualTestIsoStyle(`hatBlock`);
-        visualTestIsoStyle(`hotPursuit`);
-        visualTestIsoStyle(`joy`);
-        visualTestIsoStyle(`kingRageBlock`);
-        visualTestIsoStyle(`lakeLouise`);
-        visualTestIsoStyle(`lucky`);
-        visualTestIsoStyle(`maceWindu`);
-        visualTestIsoStyle(`mechanicalAtFists`);
-        visualTestIsoStyle(`moProblems`);
-        visualTestIsoStyle(`mrsPotatoVHS`);
-        visualTestIsoStyle(`neverEnough`);
-        visualTestIsoStyle(`ohMy`);
-        visualTestIsoStyle(`nightmare`);
-        visualTestIsoStyle(`pipeDream`);
-        visualTestIsoStyle(`potOfGold`);
-        visualTestIsoStyle(`probeArcade`);
-        visualTestIsoStyle(`rainbowLeaf`);
-        visualTestIsoStyle(`rockIsDead`);
-        visualTestIsoStyle(`seafoamSalad`);
-        visualTestIsoStyle(`smokeyHatesChristmas`);
-        visualTestIsoStyle(`springy`);
-        visualTestIsoStyle(`swimmers`);
-        visualTestIsoStyle(`tangerines`);
-        visualTestIsoStyle(`theBird`);
-        visualTestIsoStyle(`theHeist`);
-        visualTestIsoStyle(`vendetta`);
-        visualTestIsoStyle(`xmlHell`);
-        visualTestIsoStyle(`zebra`);
-    });
+/****************************************** VISUAL TESTS ******************************************/
+describe(`Isomorphic styles (visual tests of output in Node)`, function() {
+    visualTestIsoStyle(`none`);
+    visualTestIsoStyle(`angryBird`);
+    visualTestIsoStyle(`aquarium`);
+    visualTestIsoStyle(`arrow`);
+    visualTestIsoStyle(`backAndForth`);
+    visualTestIsoStyle(`barbells`);
+    visualTestIsoStyle(`bracelet`);
+    visualTestIsoStyle(`brainwave`);
+    visualTestIsoStyle(`checkmate`);
+    visualTestIsoStyle(`cartoonSwearing`);
+    visualTestIsoStyle(`cult`);
+    visualTestIsoStyle(`cantTouch`);
+    visualTestIsoStyle(`default`);
+    visualTestIsoStyle(`dirtRoad`);
+    visualTestIsoStyle(`escherBarbieLego`);
+    visualTestIsoStyle(`farmerBrown`);
+    visualTestIsoStyle(`fresh`);
+    visualTestIsoStyle(`grasslands`);
+    visualTestIsoStyle(`hatBlock`);
+    visualTestIsoStyle(`hotPursuit`);
+    visualTestIsoStyle(`joy`);
+    visualTestIsoStyle(`kingRageBlock`);
+    visualTestIsoStyle(`lakeLouise`);
+    visualTestIsoStyle(`lucky`);
+    visualTestIsoStyle(`maceWindu`);
+    visualTestIsoStyle(`mechanicalAtFists`);
+    visualTestIsoStyle(`moProblems`);
+    visualTestIsoStyle(`mrsPotatoVHS`);
+    visualTestIsoStyle(`neverEnough`);
+    visualTestIsoStyle(`ohMy`);
+    visualTestIsoStyle(`nightmare`);
+    visualTestIsoStyle(`pipeDream`);
+    visualTestIsoStyle(`potOfGold`);
+    visualTestIsoStyle(`probeArcade`);
+    visualTestIsoStyle(`rainbowLeaf`);
+    visualTestIsoStyle(`rockIsDead`);
+    visualTestIsoStyle(`seafoamSalad`);
+    visualTestIsoStyle(`smokeyHatesChristmas`);
+    visualTestIsoStyle(`springy`);
+    visualTestIsoStyle(`swimmers`);
+    visualTestIsoStyle(`tangerines`);
+    visualTestIsoStyle(`theBird`);
+    visualTestIsoStyle(`theHeist`);
+    visualTestIsoStyle(`vendetta`);
+    visualTestIsoStyle(`xmlHell`);
+    visualTestIsoStyle(`zebra`);
 });
