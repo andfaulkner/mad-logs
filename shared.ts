@@ -109,7 +109,7 @@ export class Log {
         if (isSilly) {
             const tagObj = this.styler(this.filename);
             console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
-            return args[0];
+            return args[args.length - 1];
         }
     };
 
@@ -117,7 +117,7 @@ export class Log {
         if (isVerbose) {
             const tagObj = this.styler(this.filename);
             console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
-            return args[0];
+            return args[args.length - 1];
         }
     };
 
@@ -125,7 +125,7 @@ export class Log {
         if (isDebug) {
             const tagObj = this.styler(this.filename);
             console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
-            return args[0];
+            return args[args.length - 1];
         }
     };
 
@@ -133,7 +133,7 @@ export class Log {
         if (isInfo) {
             const tagObj = this.styler(this.filename);
             console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
-            return args[0];
+            return args[args.length - 1];
         }
     };
 
@@ -141,7 +141,7 @@ export class Log {
         if (isWarn) {
             const tagObj = this.styler(this.filename);
             console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
-            return args[0];
+            return args[args.length - 1];
         }
     };
 
