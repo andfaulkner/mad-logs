@@ -130,8 +130,8 @@ describe('logFactory', function() {
 
             // Test against the text intended for the terminal (but captured by the stub)
             output.forEach(out => {
-                console.log(`HERE :: out:`, out);
-                expect(out).to.match(/mad\-logs\.test/)
+                if (isVerbose) console.log(`HERE :: out:`, out);
+                expect(out).to.match(/mad\-logs\.test/);
             });
 
             expect(!!output[0].match(/testOutputSilly/)).to.be.true;
@@ -139,25 +139,33 @@ describe('logFactory', function() {
             expect(!!output[2].match(/testOutputDebug/)).to.be.true;
             expect(!!output[3].match(/testOutputInfo/)).to.be.true;
 
-            console.log(`[0] storeWarnErrorLogs:`, storeWarnErrorLogs);
+            if (isVerbose) console.log(`[0] storeWarnErrorLogs:`, storeWarnErrorLogs);
 
             // Ensure the console outputs reached console.warn & .error using log methods
             expect(
-                storeWarnErrorLogs.some(curLog => curLog.some(lBit => {
-                    console.log(`[1] storeWarnErrorLogs --> lBit:`, lBit);
-                    return lBit === 'testOutputWarn'
-                }))
+                storeWarnErrorLogs.some(curLog =>
+                    curLog.some(lBit => {
+                        if (isVerbose) console.log(`[1] storeWarnErrorLogs --> lBit:`, lBit);
+                        return lBit === 'testOutputWarn';
+                    })
+                )
             ).to.be.true;
             expect(
-                storeWarnErrorLogs.some(curLog => curLog.some(lBit => {
-                    console.log(`[2] storeWarnErrorLogs --> lBit:`, lBit);
-                    return lBit === 'testOutputError'
-                }))
+                storeWarnErrorLogs.some(curLog =>
+                    curLog.some(lBit => {
+                        if (isVerbose) console.log(`[2] storeWarnErrorLogs --> lBit:`, lBit);
+                        return lBit === 'testOutputError';
+                    })
+                )
             ).to.be.true;
-            expect(storeWarnErrorLogs.some(curLog => curLog.some(lBit => {
-                console.log(`[3] storeWarnErrorLogs --> lBit:`, lBit);
-                return lBit === 'testOutputWtf';
-            }))).to.be.true;
+            expect(
+                storeWarnErrorLogs.some(curLog =>
+                    curLog.some(lBit => {
+                        if (isVerbose) console.log(`[3] storeWarnErrorLogs --> lBit:`, lBit);
+                        return lBit === 'testOutputWtf';
+                    })
+                )
+            ).to.be.true;
         });
 
         it('All log instance methods return last arg given, when 1 args provided', function() {
@@ -304,9 +312,7 @@ describe('Styles', function() {
         'escherBarbieLego',
         '||┗┛┏┓ & ┏┓┗┛|| (and various styles)',
         [],
-        [
-            /\|\|┗┛┏┓ \[mad\-logs\.test\.ts\] ┏┓┗┛\|\|.* Should be logged/,
-        ] // tslint:disable-line
+        [/\|\|┗┛┏┓ \[mad\-logs\.test\.ts\] ┏┓┗┛\|\|.* Should be logged/] // tslint:disable-line
     );
 
     styleTester('kingRageBlock', '👁‍🗨🗣🗯 - and various styles in browser', [
