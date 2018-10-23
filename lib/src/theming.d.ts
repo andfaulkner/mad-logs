@@ -123,6 +123,11 @@ export declare const madLogMarkers: {
         tagSuffix: string;
         style: string;
     };
+    fountain: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
     fresh: {
         tagPrefix: string;
         tagSuffix: string;
@@ -351,6 +356,11 @@ export declare const logMarkers: {
         style: string;
     };
     farmerBrown: {
+        tagPrefix: string;
+        tagSuffix: string;
+        style: string;
+    };
+    fountain: {
         tagPrefix: string;
         tagSuffix: string;
         style: string;
