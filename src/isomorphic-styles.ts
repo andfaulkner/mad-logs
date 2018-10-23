@@ -134,10 +134,7 @@ const aquarium = isNode
 
 const arrow = isNode
     ? (fName: string) => gray(bold(bgWhite(`>>--[${fName}]-->`))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.arrow),
-          madLogMarkers.arrow.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.arrow), madLogMarkers.arrow.style];
 
 const backAndForth = isNode
     ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`))) + ' '
@@ -190,10 +187,7 @@ const checkmate = isNode
 
 const cult = isNode
     ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  ${fName}  👪 👨‍👨‍👧‍👦 `))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.cult),
-          madLogMarkers.cult.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.cult), madLogMarkers.cult.style];
 
 const dirtRoad = isNode
     ? (fName: string) => bold(bgCyan(white(`= = [${fName}] = =`))) + ' '
@@ -225,10 +219,7 @@ const fountain = isNode
 
 const fresh = isNode
     ? (fName: string) => white(bgMagenta(`📖 👶 >👵 🔄  ${fName} ⌛ 💺 ⬅️ 👑 🔔 💨 `)) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.fresh),
-          madLogMarkers.fresh.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.fresh), madLogMarkers.fresh.style];
 
 const grasslands = isNode
     ? (fName: string) => black(bgGreen(`^^^[${fName}]^^^`)) + ' '
@@ -253,10 +244,7 @@ const hotPursuit = isNode
 
 const joy = isNode
     ? (fName: string) => bgYellow(black(`😀 😀  ${fName} 😀 😀 `)) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.joy),
-          madLogMarkers.joy.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.joy), madLogMarkers.joy.style];
 
 const kingRageBlock = isNode
     ? (fName: string) => bgRed(white(bold(`👁‍🗨 🗣 🗯  ${fName} 👁‍🗨 🗣 🗯 `))) + '  '
@@ -274,10 +262,7 @@ const lakeLouise = isNode
 
 const lucky = isNode
     ? (fName: string) => bold(white(bgYellow(`🍀  ${fName} 🍀 `))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.lucky),
-          madLogMarkers.lucky.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.lucky), madLogMarkers.lucky.style];
 
 const maceWindu = isNode
     ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`))) + ' '
@@ -323,10 +308,7 @@ const nightmare = isNode
 
 const ohMy = isNode
     ? (fName: string) => black(bgGreen(`🦁 🐯 🐻  ${fName} 🐻 🐯 🦁 `)) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.ohMy),
-          madLogMarkers.ohMy.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.ohMy), madLogMarkers.ohMy.style];
 
 const pipeDream = isNode
     ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))) + ' '
@@ -379,10 +361,7 @@ const smokeyHatesChristmas = isNode
 
 const springy = isNode
     ? (fName: string) => underline(bold(white(`⚙️  ${fName} ⚙️ `))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.springy),
-          madLogMarkers.springy.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.springy), madLogMarkers.springy.style];
 
 const swimmers = isNode
     ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`)))) + ' '
@@ -400,10 +379,7 @@ const tangerines = isNode
 
 const theBird = isNode
     ? (fName: string) => white(bold(bgMagenta(`🖕🏼  ${fName} 🖕🏼 `))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.theBird),
-          madLogMarkers.theBird.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.theBird), madLogMarkers.theBird.style];
 
 const theHeist = isNode
     ? (fName: string) => underline(bold(white(bgBlack(`[${fName}]`)))) + ' '
@@ -421,17 +397,11 @@ const vendetta = isNode
 
 const xmlHell = isNode
     ? (fName: string) => underline(bold(white(bgBlack(`<<< ${fName} >>>`)))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.xmlHell),
-          madLogMarkers.xmlHell.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.xmlHell), madLogMarkers.xmlHell.style];
 
 const zebra = isNode
     ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`)))) + ' '
-    : (fName: string) => [
-          buildFileTag(fName, madLogMarkers.zebra),
-          madLogMarkers.zebra.style,
-      ];
+    : (fName: string) => [buildFileTag(fName, madLogMarkers.zebra), madLogMarkers.zebra.style];
 
 /***************************************** STYLES EXPORT ******************************************/
 /**
