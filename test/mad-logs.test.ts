@@ -326,6 +326,7 @@ describe(`Isomorphic styles (visual tests of output in Node)`, function() {
     visualTestIsoStyle(`dirtRoad`);
     visualTestIsoStyle(`escherBarbieLego`);
     visualTestIsoStyle(`farmerBrown`);
+    visualTestIsoStyle(`fountain`);
     visualTestIsoStyle(`fresh`);
     visualTestIsoStyle(`grasslands`);
     visualTestIsoStyle(`hatBlock`);
