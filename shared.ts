@@ -140,7 +140,7 @@ export class Log {
     warn = <T>(...args: Array<string | any>): T => {
         if (isWarn) {
             const tagObj = this.styler(this.filename);
-            console.log.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
+            console.warn.apply(console, (Array.isArray(tagObj) ? tagObj : [tagObj]).concat(args));
             return args[args.length - 1];
         }
     };
