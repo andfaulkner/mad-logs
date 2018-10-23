@@ -52,7 +52,7 @@ export const defPropConfig = {
 export const inspect = (...args) => {
     (console.log as any)(
         ...args.map(arg => {
-            if (typeof arg === 'function') return arg.toString();
+            if (typeof arg === `function`) return arg.toString();
             return util.inspect(arg);
         })
     );
@@ -63,22 +63,28 @@ export const inspect = (...args) => {
 export const r = repl.start({useColors: true});
 
 // Add REPL history file
-const historyFile = path.join(rootPath, '/script/.node_history');
+const historyFile = path.join(rootPath, `/script/.node_history`);
 require('repl.history')(r, historyFile);
 
-// Add IN_REPL property to repl environment. Acts as identifier that REPL is currently running
-defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
+// Add IN_REPL property to repl environment
+// Acts as identifier that REPL is currently running
+defineProperty(r.context.process.env, `IN_REPL`, defPropConfig.immutable(true));
 
 /****************************************** REPL HELPERS ******************************************/
 /**
  * Bind given properties to the repl context, with the given values
- * Display as list on repl load, with descriptions for each specified in descriptions prop
+ * Display as list on repl load, with descriptions for each specified in
+ * descriptions prop
+ *
+ * Example:
+ *     bindPropsToRepl(repl.start(), {_: lodash, projData}, {_: `Util lib`});
+ *
  * @param {Object} activeRepl Started repl (through repl.start())
  * @param {Object} ctxProps Bind each given value to its corresponding key
  *                 e.g. {_: lodash, _m: madUtils, Promise: bluebird}
- * @param {Object} descriptions Optional matching descriptions to display beside prop w/ given key
- *                 e.g.: {_: 'lodash alias', bluebird: 'promises library'}
- * @example bindPropsToRepl(repl.start(), { _: lodash, projData }, { _: 'Util lib' });
+ * @param {Object} descriptions Optional matching descriptions to display
+ *                              beside prop with given key
+ *                 e.g.: {_: `lodash alias`, bluebird: `promises library`}
  */
 export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: string}) => {
     console.log(`\n\nWelcome to the mad-logs REPL!`);
@@ -86,8 +92,9 @@ export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: 
 
     // Iterate through the given context properties
     for (let [key, val] of lodash.toPairs(ctxProps)) {
-        // Add current prop's value to repl context. Mutable if requested, immutable otherwise
-        if (typeof val === 'object' && val.val && val.mutable) {
+        // Add current prop's value to repl context
+        // Mutable if requested, immutable otherwise
+        if (typeof val === `object` && val.val && val.mutable) {
             defineProperty(r.context, key, defPropConfig.mutable(val.val));
         } else {
             defineProperty(r.context, key, defPropConfig.immutable(val));
@@ -96,7 +103,7 @@ export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: 
         // Display prop and (if defined) prop description on repl boot
         if (descriptions[key]) {
             console.log(` * ${key}: ${descriptions[key]}`);
-            // If prop description provided, bind it to the object in the context
+            // If prop description given, bind it to the object in the context
             defineProperty(val, `__repl_description__`, defPropConfig.immutable(descriptions[key]));
         } else {
             console.log(` * ${key}`);
@@ -134,7 +141,7 @@ const ctxProps = {
  * Extra descriptions for bound properties
  */
 const descriptions = {
-    _: 'lodash alias',
+    _: `lodash alias`,
     madLogs:
         `Contains mad-logs shared & Node modules. Children: shared, node. ` +
         `Under shared, Styles contains collection of styles usable in Node ` +
@@ -143,10 +150,10 @@ const descriptions = {
         const {logFactory, Styles} = madLogs.shared;
         const log = logFactory('banner-carousel-container.tsx', Styles.ohMy);
         log.info('Hello mad-logs!');`,
-    SharedLog: 'Log module for use in both node & the browser',
-    SharedStyles: 'Collection of styles usable in both Node & the browser',
-    sharedLogFactory: 'Constructor for shared logger',
-    nodeLogFactory: 'Factory to build a node-specific logger',
+    SharedLog: `Log module for use in both node & the browser`,
+    SharedStyles: `Collection of styles usable in both Node & the browser`,
+    sharedLogFactory: `Constructor for shared logger`,
+    nodeLogFactory: `Factory to build a node-specific logger`,
 };
 
 // Attach props to REPL (repl is in repl setup)
