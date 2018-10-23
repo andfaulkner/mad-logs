@@ -40,17 +40,6 @@ const _showInspectRes = (
 };
 
 /**************************************** TYPE DEFINITIONS ****************************************/
-// prettier-ignore
-export interface Log {
-    silly:   <T>(...args: (string | any)[]) => T
-    verbose: <T>(...args: (string | any)[]) => T
-    debug:   <T>(...args: (string | any)[]) => T
-    info:    <T>(...args: (string | any)[]) => T
-    warn:    <T>(...args: (string | any)[]) => T
-    error:   <T>(...args: (string | any)[]) => T
-    wtf:     <T>(...args: (string | any)[]) => T
-}
-
 /**
  * Available log levels in the application
  */
@@ -61,7 +50,7 @@ export type LogLevels = keyof Log['inspector'];
  * Isomorphic Log object
  * Logs differently between Node and Browser
  */
-export class Log implements Log {
+export class Log {
     /**
      * If defined, use this value for inspecting objects
      * Allows dependency injecting node's inspect in once, and getting it everywhere
