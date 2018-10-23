@@ -1,4 +1,4 @@
-/// <reference path="./node_modules/@types/node/index.d.ts" />
+/// <reference path="../node_modules/@types/node/index.d.ts" />
 declare function require(name: string);
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
@@ -17,8 +17,8 @@ util.inspect.defaultOptions.breakLength = 100;
 util.inspect.defaultOptions.showHidden = true;
 
 /**************************************** PROJECT IMPORTS *****************************************/
-import {Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory} from './shared';
-import {nodeLogFactory} from './node';
+import {Log as SharedLog, Styles as SharedStyles, logFactory as sharedLogFactory} from '../shared';
+import {nodeLogFactory} from '../node';
 
 const madLogs = {
     shared: {Log: SharedLog, Styles: SharedStyles, logFactory: sharedLogFactory},
@@ -26,7 +26,7 @@ const madLogs = {
 };
 
 /****************************************** CONFIG REPL *******************************************/
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 const {defineProperty} = Object;
 
 export const defPropConfig = {
@@ -63,7 +63,7 @@ export const inspect = (...args) => {
 export const r = repl.start({useColors: true});
 
 // Add REPL history file
-const historyFile = path.join(rootPath, '.node_history');
+const historyFile = path.join(rootPath, '/script/.node_history');
 require('repl.history')(r, historyFile);
 
 // Add IN_REPL property to repl environment. Acts as identifier that REPL is currently running
@@ -81,7 +81,7 @@ defineProperty(r.context.process.env, 'IN_REPL', defPropConfig.immutable(true));
  * @example bindPropsToRepl(repl.start(), { _: lodash, projData }, { _: 'Util lib' });
  */
 export const bindPropsToRepl = (ctxProps: Object, descriptions: {[key: string]: string}) => {
-    console.log(`\n\nWelcome to the Javelinscript REPL!`);
+    console.log(`\n\nWelcome to the mad-logs REPL!`);
     console.log(`Custom properties bound to the top-level context:`);
 
     // Iterate through the given context properties
