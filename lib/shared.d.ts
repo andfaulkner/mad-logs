@@ -7,12 +7,14 @@ export declare type LogLevels = keyof Log['inspector'];
 /******************************************* LOG OBJECT *******************************************/
 /**
  * Isomorphic Log object
- * Logs differently between Node and Browser
+ *
+ * Logs differently between node.js & browser when given the same styles
+ * Avoids need for separate browser & node modules
  */
 export declare class Log {
     /**
      * If defined, use this value for inspecting objects
-     * Allows dependency injecting node's inspect in once, and getting it everywhere
+     * Allows dependency injecting node's inspect in once & getting it everywhere
      */
     static inspectFn: Function;
     protected filename: string;
@@ -21,16 +23,19 @@ export declare class Log {
     /**
      * Constructor for Log object
      *
+     * Provide [fileName], [style] item from Style object, and optionally
+     * [inspectFn] function to set as new global inspector of all Log objects
+     *
      * @param {string} fileName Current file name, to include before each
      *                          message this logger emits
      * @param {Function|string} style String-wrapping function OR 1 of
      *                                isoStyles' keys (string)
-     *                                If `none` is given, pass to console.log
-     *                                with fileName wrapped by [] & no styles
+     *                                If `none` given, pass to console.log with
+     *                                fileName wrapped by [] & no styles
      * @param {Function?} inspectFn {OPTIONAL} If given, becomes new global
      *                              inspector for all Log objects
-     *                              Uses a fallback inspect (passthrough) fn if
-     *                              none provided
+     *                              Uses a fallback inspect (passthrough)
+     *                              function if none provided
      *                              Allows DI of node's inspect without having
      *                              browser issues
      */
@@ -42,6 +47,12 @@ export declare class Log {
     warn: <T>(...args: any[]) => T;
     error: <T>(...args: any[]) => T;
     wtf: <T>(...args: any[]) => T;
+    /**
+     * Object inspection
+     *
+     * Inspect object at any given level
+     * Both logs and shows inspect result
+     */
     inspector: {
         silly: (obj: any) => string | void;
         verbose: (obj: any) => string | void;
