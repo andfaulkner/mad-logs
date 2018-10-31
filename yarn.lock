@@ -72,8 +72,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
 "@types/node@*":
-  version "10.12.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.0.tgz#ea6dcbddbc5b584c83f06c60e82736d8fbb0c235"
+  version "10.12.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.1.tgz#da61b64a2930a80fa708e57c45cd5441eb379d5b"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -807,11 +807,7 @@ encodeurl@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
-env-var-helpers@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.1.0.tgz#1726bcaad142eb2ca70fc2e08b9ac9326cc97bf4"
-
-env-var-helpers@^5.2.0:
+env-var-helpers@^5.1.0, env-var-helpers@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.2.0.tgz#7502891ee3344cfb7a3731d1bba22949e87a1389"
 
@@ -1865,9 +1861,9 @@ mad-logs@^11.0.0:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.79.2:
-  version "0.79.2"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.79.2.tgz#49fb739a827dd823f6370daf21f9b5d214fa8f84"
+mad-utils@^0.80.1:
+  version "0.80.1"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.80.1.tgz#53e58cf117648c65053659130f840ae836e9b2ed"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
@@ -3081,8 +3077,8 @@ typescript@2.9.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
 ua-parser-js@^0.7.13:
-  version "0.7.18"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
 
 uglify-js@^3.1.4:
   version "3.4.9"
