@@ -72,8 +72,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
 "@types/node@*":
-  version "10.12.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.1.tgz#da61b64a2930a80fa708e57c45cd5441eb379d5b"
+  version "10.12.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.2.tgz#d77f9faa027cadad9c912cd47f4f8b07b0fb0864"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -327,8 +327,8 @@ block-stream@*:
     inherits "~2.0.0"
 
 bluebird@^3.5.0:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.2.tgz#1be0908e054a751754549c270489c1505d4ab15a"
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
 
 boom@2.x.x:
   version "2.10.1"
@@ -1308,9 +1308,13 @@ got@^6.7.1:
     unzip-response "^2.0.1"
     url-parse-lax "^1.0.0"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
+graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
+
+graceful-fs@^4.1.6, graceful-fs@^4.1.9:
+  version "4.1.15"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
 growl@1.10.5:
   version "1.10.5"
@@ -1861,9 +1865,9 @@ mad-logs@^11.0.0:
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.82.1:
-  version "0.82.1"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.82.1.tgz#a6afcb6d9a9a80171eb4abcc28fd418aa268f392"
+mad-utils@^0.83.0:
+  version "0.83.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.83.0.tgz#8a74a851d81b20c7b472824f6f39880e3c496b36"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
