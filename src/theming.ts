@@ -7,7 +7,7 @@ import {isoStyling} from './isomorphic-styling';
  *
  */
 // prettier-ignore
-export const colours = {
+const colours = {
     violet:           '#551A8B',
     orange:           '#EE7600',
     brown:            '#593001',

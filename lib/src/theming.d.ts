@@ -1,35 +1,3 @@
-/************************************************************************************************
- *
- * Colours and styles for use in console log messages
- *
- */
-export declare const colours: {
-    violet: string;
-    orange: string;
-    brown: string;
-    maroon: string;
-    blue: string;
-    lightBlue: string;
-    darkMidnightBlue: string;
-    midDarkGreen: string;
-    deepRed: string;
-    yellow: string;
-    orangeBasic: string;
-    yellowishGold: string;
-    gold: string;
-    darkGray: string;
-    hotPink: string;
-    tan: string;
-    white: string;
-    indigo: string;
-    green: string;
-    darkGreen: string;
-    gray: string;
-    lightestGray: string;
-    cyan: string;
-    black: string;
-    ultraPaleGreen: string;
-};
 export declare const style: {
     bold: string;
     underline: string;
