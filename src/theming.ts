@@ -35,7 +35,7 @@ const colours = {
     ultraPaleGreen:   '#f0fff0',
 };
 
-export const style = {
+const style = {
     bold: 'font-weight: bold;',
     underline: 'text-decoration: underline;',
 };

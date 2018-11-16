@@ -1,7 +1,3 @@
-export declare const style: {
-    bold: string;
-    underline: string;
-};
 /************************************************************************************************
  *
  *   Collection of predefined styles for differentiating logs between separate files
