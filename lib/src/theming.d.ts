@@ -25,7 +25,7 @@ export declare const colours: {
     green: string;
     darkGreen: string;
     gray: string;
-    lighestGray: string;
+    lightestGray: string;
     cyan: string;
     black: string;
     ultraPaleGreen: string;

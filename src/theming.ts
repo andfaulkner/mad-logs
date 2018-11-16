@@ -29,6 +29,7 @@ export const colours = {
     green:            '#00FF00',
     darkGreen:        '#004000',
     gray:             '#777777',
+    lightestGray:     '#e7e7e7',
     cyan:             '#00FFFF',
     black:            '#000000',
     ultraPaleGreen:   '#f0fff0',
@@ -345,7 +346,8 @@ export const madLogMarkers = {
         tagPrefix: '~~~~@ ',
         tagSuffix: '',
         style: isNode ? `${isoStyling.blue};${isoStyling.bgWhite}`
-                      : `color: ${colours.blue}; ${style.bold};`,
+                      : `color: ${colours.blue}; background-color: ${colours.lightestGray};` +
+                        `${style.bold};`,
     },
     tangerines: {
         tagPrefix: '🍊 o(o)(){o}()@(o)OO@(){O}() 🍊',
