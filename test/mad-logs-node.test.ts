@@ -14,7 +14,7 @@ import {inspect as nodeInspect} from 'util';
 import {inspect, nodeLogFactory, buildFileTag} from '../node';
 
 /******************************************** LOGGING *********************************************/
-import * as colors from 'colors';
+import colors from 'colors';
 const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
 
 /******************************************** HELPERS *********************************************/

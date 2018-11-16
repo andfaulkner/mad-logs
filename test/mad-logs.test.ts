@@ -9,7 +9,6 @@ import {isVerbose} from 'env-var-helpers';
 /*********************************** IMPORT FILES TO BE TESTED ************************************/
 import * as madLogs from '../index';
 import {logFactory, Styles, Log} from '../index';
-import * as sharedMadLogs from '../shared';
 import {madLogMarkers} from '../src/theming';
 
 /******************************************** HELPERS *********************************************/
@@ -18,9 +17,9 @@ import {madLogMarkers} from '../src/theming';
  * Ensure it looks good when outputted, by visual inspection
  * These will automatically pass if they don't throw
  */
-function visualTestIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
+function visualTestIsoStyle(styleName: keyof typeof Styles) {
     it(styleName, function() {
-        const log = sharedMadLogs.logFactory(`MadLogs.test`, sharedMadLogs.Styles[styleName]);
+        const log = logFactory(`MadLogs.test`, Styles[styleName]);
         log.info(`Test log :: ${styleName} style`);
     });
 }
@@ -35,7 +34,7 @@ function visualTestIsoStyle(styleName: keyof typeof sharedMadLogs.Styles) {
  * don't need to match the whole string)
  */
 function styleTester(
-    styleName: keyof typeof sharedMadLogs.Styles,
+    styleName: keyof typeof Styles,
     whatItAddsMsg: string,
     expectedContents: string[] = [],
     expectedMatches: RegExp[] = []

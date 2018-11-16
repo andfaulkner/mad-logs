@@ -2,13 +2,13 @@
 declare function require(name: string);
 
 /************************************** THIRD-PARTY IMPORTS ***************************************/
-import * as lodash from 'lodash';
-import * as util from 'util';
-import * as repl from 'repl';
-import * as path from 'path';
-import * as fs from 'fs';
+import lodash from 'lodash';
+import util from 'util';
+import repl from 'repl';
+import path from 'path';
+import fs from 'fs';
 import {path as rootPath} from 'app-root-path';
-import * as isNode from 'detect-node';
+import isNode from 'detect-node';
 
 /********************************** REPL NODE ENVIRONMENT SETUP ***********************************/
 util.inspect.defaultOptions.colors = true;

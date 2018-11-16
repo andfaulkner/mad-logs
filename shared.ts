@@ -1,7 +1,7 @@
 /************************************** THIRD-PARTY MODULES ***************************************/
 import {isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf} from 'env-var-helpers';
 import {isoStyles, nodeStyling} from './src/isomorphic-styles';
-import * as isNode from 'detect-node';
+import isNode from 'detect-node';
 
 /**************************************** HELPERS & CONFIG ****************************************/
 const bookend = `\n***************\n`;

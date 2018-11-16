@@ -1,5 +1,5 @@
 /// <reference path="./typings/index.d.ts" />
-import * as colors from 'colors';
+import colors from 'colors';
 
 /****
  *

@@ -74,5 +74,5 @@ export declare const inspect: (obj: any, isHidden?: boolean) => string;
 export declare const nodeLogFactory: (TAG: string) => NodeMadLogsInstance;
 import { buildFileTagString } from './src/build-file-tag-string';
 export { buildFileTagString as buildFileTag };
-import * as colors from 'colors';
+import colors from 'colors';
 export { colors };

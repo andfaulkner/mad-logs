@@ -11,7 +11,7 @@ import {
 } from 'env-var-helpers';
 
 import {inspect as nodeInspect} from 'util';
-import * as isNode from 'detect-node';
+import isNode from 'detect-node';
 
 /************************ ENSURE MODULE ONLY LOADED IN CORRECT ENVIRONMENT ************************/
 // Throw error & crash the app if attempt made to load this sub-module outside Node
@@ -335,5 +335,5 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
 import {buildFileTagString} from './src/build-file-tag-string';
 export {buildFileTagString as buildFileTag};
 
-import * as colors from 'colors';
+import colors from 'colors';
 export {colors};
