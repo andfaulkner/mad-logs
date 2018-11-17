@@ -72,8 +72,8 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.2.tgz#202d2b8fe1364c5b617b439b26a54f0e75eac0a7"
 
 "@types/node@*":
-  version "10.12.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.3.tgz#3918b73ceed484e58367be5acb79d1775239e393"
+  version "10.12.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.9.tgz#a07bfa74331471e1dc22a47eb72026843f7b95c8"
 
 "@types/node@8.10.0":
   version "8.10.0"
@@ -99,8 +99,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.3.8":
-  version "16.4.18"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.18.tgz#2e28a2e7f92d3fa7d6a65f2b73275c3e3138a13d"
+  version "16.7.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.6.tgz#80e4bab0d0731ad3ae51f320c4b08bdca5f03040"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -807,7 +807,7 @@ encodeurl@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
-env-var-helpers@^5.1.0, env-var-helpers@^5.2.0:
+env-var-helpers@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/env-var-helpers/-/env-var-helpers-5.2.0.tgz#7502891ee3344cfb7a3731d1bba22949e87a1389"
 
@@ -1855,19 +1855,19 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-mad-logs@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-11.0.0.tgz#cc4b00de8bffc54ad217a1ff31db09798371bef1"
+mad-logs@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/mad-logs/-/mad-logs-11.1.0.tgz#e11578ad848337c4ae5dc279423b76ecb856d458"
   dependencies:
     colors "^1.1.2"
     detect-node "^2.0.3"
-    env-var-helpers "^5.1.0"
+    env-var-helpers "^5.2.0"
     global "^4.3.1"
     string.prototype.padend "^3.0.0"
 
-mad-utils@^0.84.0:
-  version "0.84.0"
-  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.84.0.tgz#f942f59c575ac9a9937d7cdca3c263a9e09dbc05"
+mad-utils@^0.85.0:
+  version "0.85.0"
+  resolved "https://registry.yarnpkg.com/mad-utils/-/mad-utils-0.85.0.tgz#99b676d72c2e6de1a2608bad2fca2ea5f06d3811"
   dependencies:
     "@types/chai" "^4.1.4"
     "@types/connect" "^3.4.30"
@@ -1885,7 +1885,7 @@ mad-utils@^0.84.0:
     detect-node "^2.0.3"
     fs-extra-promise "^1.0.1"
     handlebars-webpack-plugin "^1.2.0"
-    mad-logs "^11.0.0"
+    mad-logs "^11.1.0"
     reflect-metadata "^0.1.10"
     ts-node "6.1"
     ua-parser-js "^0.7.13"
