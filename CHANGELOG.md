@@ -1,3 +1,11 @@
+11.1.0
+======
+Convert to use TS esModuleInterop mode
+
+Remove transpiled output from codebase
+
+Fix Swimmers style to work in Chrome devtools dark mode
+
 11.0.0 [HUGE BREAKING CHANGES]
 ==============================
 Default export now proxies to shared module - build log with:
