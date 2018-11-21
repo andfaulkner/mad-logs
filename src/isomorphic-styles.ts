@@ -5,8 +5,8 @@ import isNode from 'detect-node';
 
 const rainbowColors = [`red`, `yellow`, `green`, `blue`, `magenta`];
 
-/****************************************** NODE STYLES *******************************************/
 // prettier-ignore
+/****************************************** NODE STYLES *******************************************/
 const node = {
     black     : (str: string): string => `\u001b[30m${str}\u001b[0m`,
     red       : (str: string): string => `\u001b[31m${str}\u001b[0m`,

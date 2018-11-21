@@ -18,11 +18,11 @@ const _showInspectRes = (
 ) => {
     let output: string;
 
-    if (typeof obj === 'undefined') {
-        output = 'undefined';
+    if (typeof obj === `undefined`) {
+        output = `undefined`;
     } else if (obj == null) {
-        output = 'null';
-    } else if (typeof obj === 'string' || typeof obj === 'number') {
+        output = `null`;
+    } else if (typeof obj === `string` || typeof obj === `number`) {
         output = obj.toString();
     } else {
         output = inspectFn(obj);
@@ -33,7 +33,7 @@ const _showInspectRes = (
         console,
         [bookend]
             .concat(Array.isArray(tagObj) ? tagObj : [tagObj])
-            .concat(' :: \n${output}${bookend}')
+            .concat(` :: \n${output}${bookend}`)
     );
 };
 
@@ -98,8 +98,8 @@ export class Log {
         this.inspectFn = Log.inspectFn || ((obj: string) => obj);
 
         // Set the styler function based on the given value of the style prop
-        if (typeof style === 'undefined' || style == null) this.styler = isoStyles.none;
-        else if (typeof style === 'string') this.styler = isoStyles[style];
+        if (typeof style === `undefined` || style == null) this.styler = isoStyles.none;
+        else if (typeof style === `string`) this.styler = isoStyles[style];
         else this.styler = style;
     }
 
@@ -149,12 +149,12 @@ export class Log {
         if (isError) {
             if (isNode) {
                 const {bgRed, white, bold} = nodeStyling;
-                console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
+                console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ` :: `, ...args);
             } else {
                 const tagObj = this.styler(this.filename);
                 console.error.apply(
                     console,
-                    (Array.isArray(tagObj) ? tagObj : [tagObj]).concat([' [ERROR] ']).concat(args)
+                    (Array.isArray(tagObj) ? tagObj : [tagObj]).concat([` [ERROR] `]).concat(args)
                 );
             }
         }
@@ -165,13 +165,13 @@ export class Log {
         if (isError) {
             if (isNode) {
                 const {bgRed, white, bold} = nodeStyling;
-                console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ' :: ', ...args);
+                console.error(bgRed(white(bold(`[ERROR] ${this.filename}`))), ` :: `, ...args);
             } else {
                 const tagObj = this.styler(this.filename);
                 console.error.apply(
                     console,
                     (Array.isArray(tagObj) ? tagObj : [tagObj])
-                        .concat([' [WTF ERROR] '])
+                        .concat([` [WTF ERROR] `])
                         .concat(args)
                 );
             }
@@ -212,7 +212,7 @@ export class Log {
 
 /******************************************** FACTORY *********************************************/
 /**
- * Use to construct a new Log object & return it
+ * Construct a new Log object & return it
  *
  * @param {string} fileName Name of current file (to include before each message
  *                          this logger emits)
