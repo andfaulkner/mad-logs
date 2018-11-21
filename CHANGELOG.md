@@ -1,5 +1,5 @@
-11.1.1 [WIP]
-============
+11.1.1
+======
 Add white bg to cartoonSwearing style (to work w Chrome devtools dark mode)
 
 Fix padding in seafoamSalad theme
