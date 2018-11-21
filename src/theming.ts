@@ -114,7 +114,7 @@ export const madLogMarkers = {
         tagPrefix: '@%@%@%',
         tagSuffix: '@%@%@%',
         style: isNode ? `${isoStyling.magenta}${isoStyling.bold}`
-                      : `color: ${colours.indigo}`,
+                      : `color: ${colours.indigo}; background-color: ${colours.white}`,
     },
     checkmate: {
         tagPrefix: '♜♞♝♚♛♝♞♜_ [',
