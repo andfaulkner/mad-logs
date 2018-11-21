@@ -3,7 +3,7 @@ import {isoStyling} from './isomorphic-styling';
 
 import isNode from 'detect-node';
 
-const rainbowColors = ['red', 'yellow', 'green', 'blue', 'magenta'];
+const rainbowColors = [`red`, `yellow`, `green`, `blue`, `magenta`];
 
 /****************************************** NODE STYLES *******************************************/
 // prettier-ignore
@@ -32,16 +32,16 @@ const node = {
     italic    : (str: string): string => `\u001b[3m${str}\u001b[0m`,
     rainbow   : (str: string) =>
         str
-            .split('')
+            .split(``)
             .map(
                 (char, idx) =>
-                    char === ' '
+                    char === ` `
                         ? char
                         : node.bold(
                             node.bgBlack(node[rainbowColors[idx++ % rainbowColors.length]](char))
                         )
             )
-            .join(''),
+            .join(``),
 };
 
 export interface LogOpts {
@@ -69,293 +69,293 @@ const {underline, bold, italic, rainbow} = node;
 const none = isNode
     ? (fName: string) => `[${fName}] `
     : (fName: string) => [
-          buildFileTag(fName, {tagPrefix: '[', tagSuffix: ']  ', style: ``}),
+          buildFileTag(fName, {tagPrefix: `[`, tagSuffix: `]  `, style: ``}),
           madLogMarkers.aquarium.style,
       ];
 
 const angryBird = isNode
-    ? (fName: string) => bgYellow(black(`🐥  ${fName} 🐥 `)) + ' '
+    ? (fName: string) => bgYellow(black(`🐥  ${fName} 🐥 `)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.angryBird),
           madLogMarkers.angryBird.style,
       ];
 
 const aquarium = isNode
-    ? (fName: string) => bgBlue(white(bold(`🐠 🐙  ${fName} 🐙 🐠 `))) + ' '
+    ? (fName: string) => bgBlue(white(bold(`🐠 🐙  ${fName} 🐙 🐠 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.aquarium),
           madLogMarkers.aquarium.style,
       ];
 
 const arrow = isNode
-    ? (fName: string) => gray(bold(bgWhite(`>>--[${fName}]-->`))) + ' '
+    ? (fName: string) => gray(bold(bgWhite(`>>--[${fName}]-->`))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.arrow), madLogMarkers.arrow.style];
 
 const backAndForth = isNode
-    ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`))) + ' '
+    ? (fName: string) => black(bold(bgWhite(`))><(( [${fName}] ))><((`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.backAndForth),
           madLogMarkers.backAndForth.style,
       ];
 
 const barbells = isNode
-    ? (fName: string) => underline(bold(bgBlack(white(`|-()-()-[ ${fName} ]-()-()-|`)))) + ' '
+    ? (fName: string) => underline(bold(bgBlack(white(`|-()-()-[ ${fName} ]-()-()-|`)))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.barbells),
           madLogMarkers.barbells.style,
       ];
 
 const bracelet = isNode
-    ? (fName: string) => bold(bgMagenta(cyan(`⌚  ${fName} ⌚ `))) + ' '
+    ? (fName: string) => bold(bgMagenta(cyan(`⌚  ${fName} ⌚ `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.bracelet),
           madLogMarkers.bracelet.style,
       ];
 
 const brainwave = isNode
-    ? (fName: string) => bold(bgBlue(cyan(`~^~^~[${fName}]~^~^~`))) + ' '
+    ? (fName: string) => bold(bgBlue(cyan(`~^~^~[${fName}]~^~^~`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.brainwave),
           madLogMarkers.brainwave.style,
       ];
 
 const cantTouch = isNode
-    ? (fName: string) => bold(bgCyan(white(`✋ 🔨 ⏰  ${fName} ✋ 🔨 ⏰ `))) + ' '
+    ? (fName: string) => bold(bgCyan(white(`✋ 🔨 ⏰  ${fName} ✋ 🔨 ⏰ `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.cantTouch),
           madLogMarkers.cantTouch.style,
       ];
 
 const cartoonSwearing = isNode
-    ? (fName: string) => underline(bgCyan(red(`@%@%! ${fName} !@%@%`))) + ' '
+    ? (fName: string) => underline(bgCyan(red(`@%@%! ${fName} !@%@%`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.cartoonSwearing),
           madLogMarkers.cartoonSwearing.style,
       ];
 
 const checkmate = isNode
-    ? (fName: string) => bgYellow(black(`♜ ♞ ♝ ♚ ♛ ${fName} ♛ ♚ ♝ ♞ ♜ `)) + ' '
+    ? (fName: string) => bgYellow(black(`♜ ♞ ♝ ♚ ♛ ${fName} ♛ ♚ ♝ ♞ ♜ `)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.checkmate),
           madLogMarkers.checkmate.style,
       ];
 
 const cult = isNode
-    ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  ${fName}  👪 👨‍👨‍👧‍👦 `))) + ' '
+    ? (fName: string) => bold(bgRed(cyan(`👨‍👨‍👧‍👦 👪  ${fName}  👪 👨‍👨‍👧‍👦 `))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.cult), madLogMarkers.cult.style];
 
 const dirtRoad = isNode
-    ? (fName: string) => bold(bgCyan(white(`= = [${fName}] = =`))) + ' '
+    ? (fName: string) => bold(bgCyan(white(`= = [${fName}] = =`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.dirtRoad),
           madLogMarkers.dirtRoad.style,
       ];
 
 const escherBarbieLego = isNode
-    ? (fName: string) => bgMagenta(black(`||┗┛┏┓  ${fName}  ┏┓┗┛||`)) + ' '
+    ? (fName: string) => bgMagenta(black(`||┗┛┏┓  ${fName}  ┏┓┗┛||`)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.escherBarbieLego),
           madLogMarkers.escherBarbieLego.style,
       ];
 
 const farmerBrown = isNode
-    ? (fName: string) => bold(white(bgGreen(`🐑 🐂  ${fName} 🐂 🐑 `))) + ' '
+    ? (fName: string) => bold(white(bgGreen(`🐑 🐂  ${fName} 🐂 🐑 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.farmerBrown),
           madLogMarkers.farmerBrown.style,
       ];
 
 const fountain = isNode
-    ? (fName: string) => white(bgBlack(`🙏  ${fName} 🙏 `)) + ' '
+    ? (fName: string) => white(bgBlack(`🙏  ${fName} 🙏 `)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.fountain),
           madLogMarkers.fountain.style,
       ];
 
 const fresh = isNode
-    ? (fName: string) => white(bgMagenta(`📖 👶 >👵 🔄  ${fName} ⌛ 💺 ⬅️ 👑 🔔 💨 `)) + ' '
+    ? (fName: string) => white(bgMagenta(`📖 👶 >👵 🔄  ${fName} ⌛ 💺 ⬅️ 👑 🔔 💨 `)) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.fresh), madLogMarkers.fresh.style];
 
 const grasslands = isNode
-    ? (fName: string) => black(bgGreen(`^^^[${fName}]^^^`)) + ' '
+    ? (fName: string) => black(bgGreen(`^^^[${fName}]^^^`)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.grasslands),
           madLogMarkers.grasslands.style,
       ];
 
 const hatBlock = isNode
-    ? (fName: string) => bgCyan(black(`🎩  ${fName} 🎩 `)) + ' '
+    ? (fName: string) => bgCyan(black(`🎩  ${fName} 🎩 `)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.hatBlock),
           madLogMarkers.hatBlock.style,
       ];
 
 const hotPursuit = isNode
-    ? (fName: string) => bgRed(white(bold(`🍯 🐻  ${fName} 🐝 🐝 `))) + ' '
+    ? (fName: string) => bgRed(white(bold(`🍯 🐻  ${fName} 🐝 🐝 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.hotPursuit),
           madLogMarkers.hotPursuit.style,
       ];
 
 const joy = isNode
-    ? (fName: string) => bgYellow(black(`😀 😀  ${fName} 😀 😀 `)) + ' '
+    ? (fName: string) => bgYellow(black(`😀 😀  ${fName} 😀 😀 `)) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.joy), madLogMarkers.joy.style];
 
 const kingRageBlock = isNode
-    ? (fName: string) => bgRed(white(bold(`👁‍🗨 🗣 🗯  ${fName} 👁‍🗨 🗣 🗯 `))) + '  '
+    ? (fName: string) => bgRed(white(bold(`👁‍🗨 🗣 🗯  ${fName} 👁‍🗨 🗣 🗯 `))) + `  `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.kingRageBlock),
           madLogMarkers.kingRageBlock.style,
       ];
 
 const lakeLouise = isNode
-    ? (fName: string) => bgCyan(white(bold(`🏞️  ${fName} 🏞️ `))) + '  '
+    ? (fName: string) => bgCyan(white(bold(`🏞️  ${fName} 🏞️ `))) + `  `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.lakeLouise),
           madLogMarkers.lakeLouise.style,
       ];
 
 const lucky = isNode
-    ? (fName: string) => bold(white(bgYellow(`🍀  ${fName} 🍀 `))) + ' '
+    ? (fName: string) => bold(white(bgYellow(`🍀  ${fName} 🍀 `))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.lucky), madLogMarkers.lucky.style];
 
 const maceWindu = isNode
-    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`))) + ' '
+    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.maceWindu),
           madLogMarkers.maceWindu.style,
       ];
 
 const mechanicalAtFists = isNode
-    ? (fName: string) => bold(black(bgWhite(`--#@[${fName}]@#--`))) + ' '
+    ? (fName: string) => bold(black(bgWhite(`--#@[${fName}]@#--`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.mechanicalAtFists),
           madLogMarkers.mechanicalAtFists.style,
       ];
 
 const moProblems = isNode
-    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰 `))) + ' '
+    ? (fName: string) => bold(black(bgWhite(`💰 [${fName}] 💰 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.moProblems),
           madLogMarkers.moProblems.style,
       ];
 
 const mrsPotatoVHS = isNode
-    ? (fName: string) => underline(black(bgYellow(`👃 👁 👂 ${fName} 👂 👁 👅 `))) + ' '
+    ? (fName: string) => underline(black(bgYellow(`👃 👁 👂 ${fName} 👂 👁 👅 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.mrsPotatoVHS),
           madLogMarkers.mrsPotatoVHS.style,
       ];
 
 const neverEnough = isNode
-    ? (fName: string) => bold(blue(bgWhite(`🔔 🐮 🔔  ${fName} 🔔 🐮 🔔 `))) + ' '
+    ? (fName: string) => bold(blue(bgWhite(`🔔 🐮 🔔  ${fName} 🔔 🐮 🔔 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.neverEnough),
           madLogMarkers.neverEnough.style,
       ];
 
 const nightmare = isNode
-    ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`))) + ' '
+    ? (fName: string) => bold(white(bgBlack(`>:~ [${fName}] ~:<`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.nightmare),
           madLogMarkers.nightmare.style,
       ];
 
 const ohMy = isNode
-    ? (fName: string) => black(bgGreen(`🦁 🐯 🐻  ${fName} 🐻 🐯 🦁 `)) + ' '
+    ? (fName: string) => black(bgGreen(`🦁 🐯 🐻  ${fName} 🐻 🐯 🦁 `)) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.ohMy), madLogMarkers.ohMy.style];
 
 const pipeDream = isNode
-    ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))) + ' '
+    ? (fName: string) => bold(bgBlue(white(`┣╋━╋~🛀  ${fName} 🛀~╋━╋┫`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.pipeDream),
           madLogMarkers.pipeDream.style,
       ];
 
 const potOfGold = isNode
-    ? (fName: string) => italic(bold(yellow(bgBlack(`💰  ${fName} 💰  `)))) + ' '
+    ? (fName: string) => italic(bold(yellow(bgBlack(`💰  ${fName} 💰  `)))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.potOfGold),
           madLogMarkers.potOfGold.style,
       ];
 
 const probeArcade = isNode
-    ? (fName: string) => bold(cyan(bgBlue(`👽  ${fName} 👽 `))) + ' '
+    ? (fName: string) => bold(cyan(bgBlue(`👽  ${fName} 👽 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.probeArcade),
           madLogMarkers.probeArcade.style,
       ];
 
 const rainbowLeaf = isNode
-    ? (fName: string) => '🌈  ' + rainbow(fName) + ' 🌈  '
+    ? (fName: string) => `🌈  ` + rainbow(fName) + ` 🌈  `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.rainbowLeaf),
           madLogMarkers.rainbowLeaf.style,
       ];
 
 const rockIsDead = isNode
-    ? (fName: string) => bold(bgBlack(magenta(`🎸  ${fName} 🎸  `))) + ' '
+    ? (fName: string) => bold(bgBlack(magenta(`🎸  ${fName} 🎸  `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.rockIsDead),
           madLogMarkers.rockIsDead.style,
       ];
 
 const seafoamSalad = isNode
-    ? (fName: string) => bold(white(bgGreen(`🍓  ${fName} 🍅 `))) + ' '
+    ? (fName: string) => bold(white(bgGreen(`🍓  ${fName} 🍅 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.seafoamSalad),
           madLogMarkers.seafoamSalad.style,
       ];
 
 const smokeyHatesChristmas = isNode
-    ? (fName: string) => white(bold(bgGreen(`🎄 🔥  ${fName} 🔥 🎄 `))) + ' '
+    ? (fName: string) => white(bold(bgGreen(`🎄 🔥  ${fName} 🔥 🎄 `))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.smokeyHatesChristmas),
           madLogMarkers.smokeyHatesChristmas.style,
       ];
 
 const springy = isNode
-    ? (fName: string) => underline(bold(white(`⚙️  ${fName} ⚙️ `))) + ' '
+    ? (fName: string) => underline(bold(white(`⚙️  ${fName} ⚙️ `))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.springy), madLogMarkers.springy.style];
 
 const swimmers = isNode
-    ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`)))) + ' '
+    ? (fName: string) => underline(bold(bgWhite(blue(`~~[${fName}]~~@`)))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.swimmers),
           madLogMarkers.swimmers.style,
       ];
 
 const tangerines = isNode
-    ? (fName: string) => '🍊  ' + rainbow(fName) + ' 🍊  '
+    ? (fName: string) => `🍊  ` + rainbow(fName) + ` 🍊  `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.tangerines),
           madLogMarkers.tangerines.style,
       ];
 
 const theBird = isNode
-    ? (fName: string) => white(bold(bgMagenta(`🖕🏼  ${fName} 🖕🏼 `))) + ' '
+    ? (fName: string) => white(bold(bgMagenta(`🖕🏼  ${fName} 🖕🏼 `))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.theBird), madLogMarkers.theBird.style];
 
 const theHeist = isNode
-    ? (fName: string) => underline(bold(white(bgBlack(`[${fName}]`)))) + ' '
+    ? (fName: string) => underline(bold(white(bgBlack(`[${fName}]`)))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.theHeist),
           madLogMarkers.theHeist.style,
       ];
 
 const vendetta = isNode
-    ? (fName: string) => underline(bold(white(bgRed(`[${fName}]`)))) + ' '
+    ? (fName: string) => underline(bold(white(bgRed(`[${fName}]`)))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.vendetta),
           madLogMarkers.vendetta.style,
       ];
 
 const xmlHell = isNode
-    ? (fName: string) => underline(bold(white(bgBlack(`<<< ${fName} >>>`)))) + ' '
+    ? (fName: string) => underline(bold(white(bgBlack(`<<< ${fName} >>>`)))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.xmlHell), madLogMarkers.xmlHell.style];
 
 const zebra = isNode
-    ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`)))) + ' '
+    ? (fName: string) => underline(bold(white(bgBlack(`| | | ${fName} | | |`)))) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.zebra), madLogMarkers.zebra.style];
 
 /***************************************** STYLES EXPORT ******************************************/
