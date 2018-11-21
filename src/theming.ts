@@ -330,8 +330,8 @@ export const madLogMarkers = {
         tagPrefix: `🍓`,
         tagSuffix: `🍅`,
         style: isNode ? `${isoStyling.bgGreen}${isoStyling.white}`
-                      : `color: darkgreen; background-color: lightgreen;` +
-                        `font-size: 15px; font-weight: bold; padding: 0px; ` +
+                      : `color: darkgreen; background-color: lightgreen; ` +
+                        `font-size: 15px; font-weight: bold; padding: 0px 8px 0px 8px; ` +
                         `border-top-left-radius: 20px; border-top-right-radius: 20px; ` +
                         `border-bottom: 3.5px green solid`,
     },
