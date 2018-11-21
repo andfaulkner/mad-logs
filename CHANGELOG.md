@@ -1,3 +1,7 @@
+11.1.1 [WIP]
+============
+Add white bg to cartoonSwearing style (to work w Chrome devtools dark mode)
+
 11.1.0
 ======
 Convert to use TS esModuleInterop mode
