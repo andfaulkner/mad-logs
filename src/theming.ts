@@ -1,12 +1,12 @@
 import isNode from 'detect-node';
 import {isoStyling} from './isomorphic-styling';
 
+// prettier-ignore
 /************************************************************************************************
  *
  * Colours and styles for use in console log messages
  *
  */
-// prettier-ignore
 const colours = {
     violet:           `#551A8B`,
     orange:           `#EE7600`,
@@ -40,6 +40,7 @@ const style = {
     underline: `text-decoration: underline;`,
 };
 
+// prettier-ignore
 /************************************************************************************************
  *
  *   Predefined styles to apply to logs
@@ -59,7 +60,6 @@ const style = {
  *   Example usage with logFactory (Styles object built by isomorphic-styles):
  *       const log = logFactory(`example-file.tsx`, Styles.ohMy);
  */
-// prettier-ignore
 export const madLogMarkers = {
     angryBird: {
         tagPrefix: `＼(｀0´)／`,
