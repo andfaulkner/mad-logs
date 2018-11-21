@@ -2,6 +2,14 @@
 ============
 Add white bg to cartoonSwearing style (to work w Chrome devtools dark mode)
 
+Fix padding in seafoamSalad theme
+*   Adds left & right padding, so emoji no longer crosses green border
+
+Working interpolation in inspector outputs (in shared module)
+*   e.g. log.inspector.info
+    *   Doesn't show '${output}${bookend}' at the end out the output anymore
+        *   Interpolates correctly instead
+
 11.1.0
 ======
 Convert to use TS esModuleInterop mode
