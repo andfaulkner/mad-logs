@@ -362,7 +362,7 @@ const zebra = isNode
 /**
  * Series of isomorphic styles (One style for the browser, another for Node)
  */
-export const isoStyles: Record<string, ((fName: string) => string) | ((fName: string) => any[])> = {
+export const isoStyles = {
     none,
     angryBird,
     aquarium,
