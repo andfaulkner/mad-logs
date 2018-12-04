@@ -18,9 +18,9 @@ import {madLogMarkers} from '../src/theming';
  * These will automatically pass if they don't throw
  */
 function visualTestIsoStyle(styleName: keyof typeof Styles) {
-    it(styleName, function() {
+    it(styleName.toString(), function() {
         const log = logFactory(`MadLogs.test`, Styles[styleName]);
-        log.info(`Test log :: ${styleName} style`);
+        log.info(`Test log :: ${styleName.toString()} style`);
     });
 }
 
@@ -39,7 +39,7 @@ function styleTester(
     expectedContents: string[] = [],
     expectedMatches: RegExp[] = []
 ) {
-    it(`has style ${styleName}, which adds ${whatItAddsMsg} to output if used in log constructor`, function() {
+    it(`has style ${styleName.toString()}, which adds ${whatItAddsMsg} to output if used in log constructor`, function() {
         const eblLogger = logFactory(`mad-logs.test.ts`, Styles[styleName]);
 
         // Stub console.log and most of console's internals
@@ -49,7 +49,7 @@ function styleTester(
 
         // Display the actual log output if verbose mode is on
         if (isVerbose) {
-            console.log(`Output of ${styleName} log (below):`);
+            console.log(`Output of ${styleName.toString()} log (below):`);
             console.log(output[0]);
         }
 
