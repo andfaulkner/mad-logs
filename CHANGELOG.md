@@ -1,3 +1,7 @@
+11.2.0
+======
+-   Restore broken typings on Style object
+
 11.1.1
 ======
 Add white bg to cartoonSwearing style (to work w Chrome devtools dark mode)
