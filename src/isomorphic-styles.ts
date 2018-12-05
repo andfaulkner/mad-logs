@@ -220,7 +220,7 @@ const lucky = isNode
     : (fName: string) => [buildFileTag(fName, madLogMarkers.lucky), madLogMarkers.lucky.style];
 
 const maceWindu = isNode
-    ? (fName: string) => bold(white(bgMagenta(`o==[${fName}]::::::::::::::::>`))) + ` `
+    ? (fName: string) => yellow(bgMagenta(`o==[${fName}]::::::::::::::::>`)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.maceWindu),
           madLogMarkers.maceWindu.style,
