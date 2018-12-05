@@ -1,3 +1,7 @@
+// TODO Get TAG out of styles
+// TODO Sane, working inspect
+// TODO Proper this binding into inspect
+
 /************************************** THIRD-PARTY MODULES ***************************************/
 import {isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf} from 'env-var-helpers';
 import {isoStyles, nodeStyling} from './src/isomorphic-styles';

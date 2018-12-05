@@ -74,7 +74,7 @@ const none = isNode
       ];
 
 const angryBird = isNode
-    ? (fName: string) => bgYellow(black(`🐥  ${fName} 🐥 `)) + ` `
+    ? (fName: string) => bgYellow(red(`🐥  ${fName} 🐥 `)) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.angryBird),
           madLogMarkers.angryBird.style,
@@ -88,7 +88,7 @@ const aquarium = isNode
       ];
 
 const arrow = isNode
-    ? (fName: string) => gray(bold(bgWhite(`>>--[${fName}]-->`))) + ` `
+    ? (fName: string) => magenta(bgWhite(`>>--[${fName}]-->`)) + ` `
     : (fName: string) => [buildFileTag(fName, madLogMarkers.arrow), madLogMarkers.arrow.style];
 
 const backAndForth = isNode
@@ -99,7 +99,7 @@ const backAndForth = isNode
       ];
 
 const barbells = isNode
-    ? (fName: string) => underline(bold(bgBlack(white(`|-()-()-[ ${fName} ]-()-()-|`)))) + ` `
+    ? (fName: string) => underline(bgWhite(magenta(`|-()-()-[ ${fName} ]-()-()-|`))) + ` `
     : (fName: string) => [
           buildFileTag(fName, madLogMarkers.barbells),
           madLogMarkers.barbells.style,
