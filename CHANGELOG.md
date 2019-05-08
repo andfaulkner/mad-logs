@@ -1,3 +1,10 @@
+11.3.0
+======
+Make all styles work with browser dark mode (add background colours to them).
+
+Upgrade Typescript to v3.3.3.
+Remove yarn, replace with new npm version.
+
 11.2.0
 ======
 -   Restore broken typings on Style object
