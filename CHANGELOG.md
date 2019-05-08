@@ -1,3 +1,8 @@
+11.4.0
+======
+Fix isomorphic style objects to instead act as conditional strings w different vals for node & browser.
+- Note that changes in v11.3.0 are broken until this is fixed.
+
 11.3.0
 ======
 Make all styles work with browser dark mode (add background colours to them).
