@@ -1,4 +1,4 @@
-/******************************************** IMPORTS *********************************************/
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
 import {
     isSilly,
     isVerbose,
@@ -13,7 +13,7 @@ import {
 import {inspect as nodeInspect} from 'util';
 import isNode from 'detect-node';
 
-/************************ ENSURE MODULE ONLY LOADED IN CORRECT ENVIRONMENT ************************/
+/*----------------------- ENSURE MODULE ONLY LOADED IN CORRECT ENVIRONMENT -----------------------*/
 // Throw error & crash the app if attempt made to load this sub-module outside Node
 if (!isNode && !process.env.mocha) {
     const mlogsErrStr = `mad-logs: Can't import mad-logs/lib/node into browser env. NodeJS only.`;
@@ -21,9 +21,11 @@ if (!isNode && !process.env.mocha) {
     throw new TypeError(mlogsErrStr);
 }
 
-/**************************************** TYPE DEFINITIONS ****************************************/
-// For cases where the value truly can be anything (in contrast to cases where any is used because
-// it's too difficult to determine the actual type)
+/*--------------------------------------- TYPE DEFINITIONS ---------------------------------------*/
+/**
+ * For cases where the value truly can be anything (in contrast to cases where any is used out
+ * of laziness or to temporarily avoid excessive complexity.
+ */
 export type RealAny = any;
 
 export interface InspectFn {
@@ -87,7 +89,7 @@ type LogFn = (...args: RealAny[]) => void;
 
 type LogType = 'log' | 'error' | 'warn';
 
-/******************************************** HELPERS *********************************************/
+/*------------------------------------------- HELPERS --------------------------------------------*/
 /**
  * Preconfigured version of Node's util.inspect function
  * Automatically changes depth based on the current process.env.LOG_LEVEL
@@ -124,15 +126,17 @@ export const inspect = (obj: RealAny, isHidden?: boolean): string => {
 /**
  * Log given items normally, but let the the last argument pass through as the return value
  * @param {RealAny[]} args Items to log (true RealAny)
- * @return {RealAny} Last argument given to function (pass it through unchanged)
+ * @return Last argument given to function (pass it through unchanged)
  */
-const passThruLog = (logFn: LogFn) => <T>(...anyArgsWLastArgT: (T | RealAny)[]): T => {
-    if (anyArgsWLastArgT.length > 0) {
-        logFn(anyArgsWLastArgT);
-        return anyArgsWLastArgT[anyArgsWLastArgT.length - 1];
-    }
-    logFn('');
-};
+const passThruLog =
+    (logFn: LogFn) =>
+    <T>(...anyArgsWLastArgT: (T | RealAny)[]): T => {
+        if (anyArgsWLastArgT.length > 0) {
+            logFn(anyArgsWLastArgT);
+            return anyArgsWLastArgT[anyArgsWLastArgT.length - 1];
+        }
+        logFn('');
+    };
 
 /**
  * Outer function returns a reusable 'inspector' function for returning
@@ -142,51 +146,53 @@ const passThruLog = (logFn: LogFn) => <T>(...anyArgsWLastArgT: (T | RealAny)[]):
  * @param {string} TAG - Decorated name of the file being logged from
  * @param {boolean} doAutoLog If true, don't just return the output, also log it
  *
- * @return {Function} Inspector function with the following params:
+ * @return Inspector function with the following params:
  *     | @param {string|Object} msgOrObj Message describing obj to be inspected (in the 2nd arg)
  *     | @param {string|Object} obj?     Obj for inspection, if 1st arg contained a message str
  *     | @return {string} Pretty-printed string form of the object being inspected
  */
-const inspector = (TAG, doAutoLog = isInfo && !isProduction) => (
-    msgOrObj: string | RealAny,
-    obj?: RealAny
-): string => {
-    // Handle object inspection when a message arg was provided.
-    if (obj && (typeof obj === 'object' || typeof obj === 'function')) {
-        const objInfoString = inspect(obj);
-        if (doAutoLog) console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
-        return objInfoString;
-    } else if (typeof msgOrObj === 'string') {
-        // If provided val was a string, include warning in the log, but return val as-is
-        const msgTag = `${TAG} ~> ${msgOrObj}`;
-        switch (typeof obj) {
-            case 'undefined':
-                if (doAutoLog) console.log(`${msgTag}`);
-                return msgOrObj;
-            case 'string':
-                if (doAutoLog) console.log(`${msgTag}`, obj);
-                return obj;
-            case 'object':
-                if (doAutoLog) console.log(`${msgTag}`, inspect(obj));
-                return obj;
-            case 'function':
-                if (doAutoLog) console.log(`${msgTag}`, (obj as Function).toString());
-                return obj;
-            default:
-                if (doAutoLog) console.log(`${msgTag} [TYPE UNKNOWN]:`, inspect(obj));
-                return obj;
+const inspector =
+    (TAG: string, doAutoLog: boolean = isInfo && !isProduction) =>
+    (msgOrObj: string | RealAny, obj?: RealAny): string => {
+        // Handle object inspection when a message arg was provided.
+        if (obj && (typeof obj === 'object' || typeof obj === 'function')) {
+            const objInfoString = inspect(obj);
+            if (doAutoLog)
+                console.log(`${TAG} ~> ${msgOrObj ? msgOrObj + ': ' : ''}`, objInfoString);
+            return objInfoString;
+        } else if (typeof msgOrObj === 'string') {
+            // If provided val was a string, include warning in the log, but return val as-is
+            const msgTag = `${TAG} ~> ${msgOrObj}`;
+            switch (typeof obj) {
+                case 'undefined':
+                    if (doAutoLog) console.log(`${msgTag}`);
+                    return msgOrObj;
+                case 'string':
+                    if (doAutoLog) console.log(`${msgTag}`, obj);
+                    return obj;
+                case 'object':
+                    if (doAutoLog) console.log(`${msgTag}`, inspect(obj));
+                    return obj;
+                case 'function':
+                    if (doAutoLog) console.log(`${msgTag}`, (obj as Function).toString());
+                    return obj;
+                default:
+                    if (doAutoLog) console.log(`${msgTag} [TYPE UNKNOWN]:`, inspect(obj));
+                    return obj;
+            }
+        } else if (typeof msgOrObj === 'object' && msgOrObj != null) {
+            // Handle object inspection when no message arg is provided
+            const objInfoString = inspect(msgOrObj);
+            const name = Object.keys(msgOrObj).find(key => key === 'name')
+                ? ` ${msgOrObj.name}: `
+                : '';
+            if (doAutoLog) console.log(`${TAG} ~>${name}`, objInfoString);
+
+            return objInfoString;
         }
-    } else if (typeof msgOrObj === 'object' && msgOrObj != null) {
-        // Handle object inspection when no message arg is provided
-        const objInfoString = inspect(msgOrObj);
-        const name = Object.keys(msgOrObj).find(key => key === 'name') ? ` ${msgOrObj.name}: ` : '';
-        if (doAutoLog) console.log(`${TAG} ~>${name}`, objInfoString);
 
-        return objInfoString;
-    }
-
-    return msgOrObj;
-};
+        return msgOrObj;
+    };
 
 /**
  * Actual builder for the log library, minus the fn method
@@ -202,20 +208,17 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
      * @param {string} wrap Text to wrap the output in
      * @param {boolean} blockTag If true, don't display the tag
      */
-    const logTemplate = (
-        logGate: boolean,
-        logType: LogType,
-        wrap: string = '',
-        blockTag = false
-    ) => (...args: RealAny[]): void => {
-        if (logGate) {
-            if (blockTag) {
-                console[logType](`${wrap}`, ...args, `${wrap}`);
-            } else {
-                console[logType](`${wrap}${fTAG} `, ...args, `${wrap}`);
+    const logTemplate =
+        (logGate: boolean, logType: LogType, wrap: string = '', blockTag: boolean = false) =>
+        (...args: RealAny[]): void => {
+            if (logGate) {
+                if (blockTag) {
+                    console[logType](`${wrap}`, ...args, `${wrap}`);
+                } else {
+                    console[logType](`${wrap}${fTAG} `, ...args, `${wrap}`);
+                }
             }
-        }
-    };
+        };
 
     // prettier-ignore
     const logObj = Object.assign(logTemplate(isInfo, 'log'),
@@ -308,9 +311,9 @@ const logObjFactory = (TAG: string, fnName?: string): NodeMadLogsFuncInstance =>
     return logObjBoundDeep;
 };
 
-/********************************************* EXPORT *********************************************/
+/*-------------------------------------------- EXPORT --------------------------------------------*/
 /**
- * Create a special log for the current file
+ * Create a special log for the current file.
  *
  * Produces dynamic object w functions that also operate as objects at each
  * layer, with the "root-level" function acting like log.info
@@ -334,6 +337,3 @@ export const nodeLogFactory = (TAG: string): NodeMadLogsInstance => {
 
 import {buildFileTagString} from './src/build-file-tag-string';
 export {buildFileTagString as buildFileTag};
-
-import colors from 'colors';
-export {colors};

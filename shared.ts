@@ -2,12 +2,14 @@
 // TODO Sane, working inspect
 // TODO Proper this binding into inspect
 
-/************************************** THIRD-PARTY MODULES ***************************************/
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
 import {isSilly, isVerbose, isDebug, isInfo, isWarn, isError, isWtf} from 'env-var-helpers';
-import {isoStyles, nodeStyling} from './src/isomorphic-styles';
 import isNode from 'detect-node';
 
-/**************************************** HELPERS & CONFIG ****************************************/
+/*--------------------------------------- PROJECT MODULES ----------------------------------------*/
+import {isoStyles, nodeStyling} from './src/isomorphic-styles';
+
+/*--------------------------------------- HELPERS & CONFIG ---------------------------------------*/
 const bookend = `\n***************\n`;
 
 /**
@@ -17,7 +19,7 @@ const bookend = `\n***************\n`;
 const _showInspectRes = (
     obj: any,
     styler: (s: string) => string | string[],
-    filename: string,
+    _filename: string,
     inspectFn: Function
 ) => {
     let output: string;
@@ -41,13 +43,13 @@ const _showInspectRes = (
     );
 };
 
-/**************************************** TYPE DEFINITIONS ****************************************/
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
 /**
  * Available log levels in the application
  */
 export type LogLevels = keyof Log['inspector'];
 
-/******************************************* LOG OBJECT *******************************************/
+/*------------------------------------------ LOG OBJECT ------------------------------------------*/
 /**
  * Isomorphic Log object
  *
@@ -214,7 +216,7 @@ export class Log {
     }))();
 }
 
-/******************************************** FACTORY *********************************************/
+/*------------------------------------------- FACTORY --------------------------------------------*/
 /**
  * Construct a new Log object & return it
  *

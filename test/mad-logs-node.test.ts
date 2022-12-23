@@ -4,25 +4,23 @@
 // Ensure environment knows testing is occurring
 (process.env as any).mocha = true;
 
-/************************************** THIRD-PARTY IMPORTS ***************************************/
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
 import 'mocha';
 import {expect} from 'chai';
 import {stdout} from 'test-console';
-import {inspect as nodeInspect} from 'util';
 
-/************************************ IMPORT FILE TO BE TESTED ************************************/
+/*----------------------------------- IMPORT FILE TO BE TESTED -----------------------------------*/
 import {inspect, nodeLogFactory, buildFileTag} from '../node';
 
-/******************************************** LOGGING *********************************************/
-import colors from 'colors';
+/*------------------------------------------- LOGGING --------------------------------------------*/
+import colors from '@colors/colors';
 const TAG = buildFileTag('mad-logs-node.test.ts', colors.bgMagenta.white);
 
-/******************************************** HELPERS *********************************************/
+/*------------------------------------------- HELPERS --------------------------------------------*/
 /**
  * Prevents console.error messages emitted by code from reaching the console for given function
  * @param  {Function} fn Function to run without showing errors
- * @return {Object<{errorLogs: string[], warnLogs: string[], result: any}>} array containing
- *              warnings & errors outputted running the function, and the function result
+ * @return array containing warnings & errors outputted running the function, and the function result
  */
 function blockLogOutput(fn: () => any) {
     const stores = {
@@ -49,7 +47,7 @@ function blockLogOutput(fn: () => any) {
     return {stores, result};
 }
 
-/********************************************* TESTS **********************************************/
+/*-------------------------------------------- TESTS ---------------------------------------------*/
 describe('inspect', function() {
     it('exists', function() {
         expect(inspect).to.exist;

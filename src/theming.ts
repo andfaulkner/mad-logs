@@ -1,4 +1,7 @@
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
 import isNode from 'detect-node';
+
+/*--------------------------------------- PROJECT MODULES ----------------------------------------*/
 import {isoStyling} from './isomorphic-styling';
 
 // prettier-ignore

@@ -1,7 +1,13 @@
-const padEnd = require('string.prototype.padend');
-const isFunction = (val): val is Function => ({}.toString.call(val) == '[object Function]');
+/*------------------------------------- THIRD-PARTY MODULES --------------------------------------*/
+import padEnd from 'string.prototype.padend';
 
-/***************************************** ERROR MESSAGES *****************************************/
+/*------------------------------------------- HELPERS --------------------------------------------*/
+/**
+ * Type guard to detect functions
+ */
+const isFunction = (val: any): val is Function => ({}.toString.call(val) == '[object Function]');
+
+/*---------------------------------------- ERROR MESSAGES ----------------------------------------*/
 const colourizerTypeError =
     '[mad-logs] 2nd arg to buildFileTagString must be a function from the' +
     ' colors module, a number (representing r-pad length), or be excluded';
