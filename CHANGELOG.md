@@ -1,3 +1,14 @@
+12.0.0
+======
+-   Remove dependency on colors module
+    -   Switch to @colors/colors
+-   Minor type fixes
+-   Switch most (but not all) titles to cleaner "------" format, from "======" format.
+-   Update package build node version to v16.16.0
+
+
+
+----------------------------------------------------------------------------------------------------
 11.4.0
 ======
 Fix isomorphic style objects to instead act as conditional strings w different vals for node & browser.
